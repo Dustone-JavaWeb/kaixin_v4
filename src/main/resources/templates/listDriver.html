@@ -7,26 +7,27 @@
             var driverVue={
                 uri:'drivers',
                 beans:[]
-            }
+            };
             var vue=new Vue({
-                el:'#workingArea',
-                data:driverVue,
+                el: '#workingArea',
+                data: driverVue,
                 //when the vue is loaded
                 mounted:function () {
                     this.list();
-                }
+                },
                 methods:{
                     list:function () {
                         var url=this.uri;
                         axios.get(url).then(function (response) {
                             vue.beans=response.data;
-                        })
+                        });
                     }
                 }
-            })
-        })
+            });
+        });
     </script>
     <div id="workingArea">
+        测试
         <table>
             <thead>
                 <tr>

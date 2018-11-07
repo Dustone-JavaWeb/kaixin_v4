@@ -19,8 +19,11 @@ public class Driver {
     private String creditCard;
     private int status;
     private int type;
+    @Column(name="resource_id")
     private int resourceId;
+    @Column(name = "create_time")
     private Timestamp createTime;
+    @Column(name = "edit_time")
     private Timestamp editTime;
     public int getId() {
         return id;
