@@ -1,0 +1,2 @@
+CREATE USER 'kaixin'@'%' IDENTIFIED BY '123456';
+grant all privileges on kaixin.* to 'kaixin'@'%';
