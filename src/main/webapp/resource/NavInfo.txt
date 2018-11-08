@@ -1,0 +1,22 @@
+{
+	"1":{
+		"name":"基础信息管理",
+		"url":"null"
+	},
+	"11":{
+		"name":"客户信息管理",
+		"url":"../frame_page/CustomerList.html"
+	},
+	"12":{
+		"name":"机手信息管理",
+		"url":"../frame_page/DriverList.html"
+	},
+	"14":{
+    	"name":"机器品牌管理",
+    	"url":"../frame_page/MachineTypeList.html"
+    },
+    "15":{
+        "name":"后勤人员管理",
+        "url":"../frame_page/SupportList.html"
+    }
+}

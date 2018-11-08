@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<!--
+<head th:include="include/admin/Header::html('广州铠信')">
+</head>
+-->
+	<head>
+		<script src="../../resource/mdui/js/mdui.js"></script>
+		<script src="../../resource/js/jquery/2.0.0/jquery.min.js"></script>
+		<link href="../../resource/mdui/css/mdui.css" rel="stylesheet" />
+		<link href="../../resource/css/admin/admin.css" rel="stylesheet" />
+		<title>广州铠信</title>
+	</head>
+	<body class="admin_frame_body mdui-theme-primary-blue-grey mdui-drawer-body-left">
+		<!--toolbar-->
+		<div class="mdui-toolbar mdui-color-theme">
+			<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons mdui-color-theme">menu</i></a>
+			<span class="mdui-typo-title mdui-color-theme">广州铠信</span>
+		</div>
+		<button class="mdui-btn" mdui-drawer="{target:'#left-drawer'}">open drawer</button>
+		<!--抽屉-->
+		<div class="mdui-drawer" id="left-drawer">
+			<ul class="mdui-list">
+				<li class="mdui-list-item mdui-ripple">
+					<div class="mdui-list-item-content">测试</div>
+				</li>
+			</ul>
+		</div>
+		<!--
+<script src="js/admin/adminFrame.js"></script>
+-->
+	</body>
+</html>
