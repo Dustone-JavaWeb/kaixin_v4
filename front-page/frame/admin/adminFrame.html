@@ -11,23 +11,48 @@
 		<link href="../../resource/css/admin/admin.css" rel="stylesheet" />
 		<title>广州铠信</title>
 	</head>
-	<body class="admin_frame_body mdui-theme-primary-blue-grey mdui-drawer-body-left">
+	<body class="admin_frame_body mdui-appbar-with-toolbar mdui-theme-primary-pink mdui-theme-accent-pink mdui-loaded mdui-drawer-body-left mdui-locked">
 		<!--toolbar-->
-		<div class="mdui-toolbar mdui-color-theme">
-			<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons mdui-color-theme">menu</i></a>
-			<span class="mdui-typo-title mdui-color-theme">广州铠信</span>
-		</div>
-		<button class="mdui-btn" mdui-drawer="{target:'#left-drawer'}">open drawer</button>
+		<header class="mdui-appbar mdui-appbar-fixed">
+			<div class="mdui-toolbar mdui-color-theme">
+				<a href="javascript:;" id="drawButton" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons mdui-color-theme">menu</i></a>
+				<span class="mdui-typo-title mdui-color-theme">广州铠信</span>
+			</div>
+		</header>
+
 		<!--抽屉-->
-		<div class="mdui-drawer" id="left-drawer">
-			<ul class="mdui-list">
-				<li class="mdui-list-item mdui-ripple">
-					<div class="mdui-list-item-content">测试</div>
+		<div class="mdui-drawer mdui-color-theme" id="left-drawer">
+			<ul class="mdui-list" mdui-collapse="{accordion: true}">
+				<li class="mdui-collapse-item">
+					<div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+						<i class="mdui-list-item-icon mdui-icon material-icons">folder_shared</i>
+						<div class="mdui-list-item-content">基础信息</div>
+						<i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+					</div>
+					<ul class="mdui-collapse-item-body mdui-list mdui-list-dense" style="">
+						<li class="mdui-list-item mdui-ripple"></li>
+						<li class="mdui-list-item mdui-ripple">Language</li>
+						<li class="mdui-list-item mdui-ripple">Location</li>
+						<li class="mdui-list-item mdui-ripple">New vs Returning</li>
+					</ul>
+				</li>
+				<li class="mdui-collapse-item">
+					<div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+						<i class="mdui-list-item-icon mdui-icon material-icons">people</i>
+						<div class="mdui-list-item-content">Audience</div>
+						<i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+					</div>
+					<ul class="mdui-collapse-item-body mdui-list mdui-list-dense" style="">
+						<li class="mdui-list-item mdui-ripple">Overview</li>
+						<li class="mdui-list-item mdui-ripple">Language</li>
+						<li class="mdui-list-item mdui-ripple">Location</li>
+						<li class="mdui-list-item mdui-ripple">New vs Returning</li>
+					</ul>
 				</li>
 			</ul>
 		</div>
-		<!--
-<script src="js/admin/adminFrame.js"></script>
--->
+
+		<script src="../../resource/js/admin/adminFrame.js"></script>
+
 	</body>
 </html>
