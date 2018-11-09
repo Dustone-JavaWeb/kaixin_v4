@@ -13,7 +13,7 @@ public class PageInfoService {
     @Autowired
     SysDrawerDAO sysDrawerDAO;
     public List<SysDrawer> list(){
-        Sort sort=new Sort(Sort.Direction.DESC,"id");
-        return sysDrawerDAO.findAll(sort);
+        Sort sort=new Sort(Sort.Direction.ASC,"id");
+        return sysDrawerDAO.findByParentIdIsNull(sort);
     }
 }
