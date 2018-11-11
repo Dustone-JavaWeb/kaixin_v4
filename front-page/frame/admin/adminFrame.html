@@ -5,16 +5,17 @@
 </head>
 -->
 	<head>
-		<script src="../../resource/mdui/js/mdui.js"></script>
-		<script src="../../resource/js/jquery/2.0.0/jquery.min.js"></script>
-		<script src="../../resource/js/vue/2.5.16/vue.min.js"></script>
-		<script src="../../resource/js/axios/0.17.1/axios.min.js"></script>
-		<script src="../../resource/layui/layui.js"></script>
-		<link href="../../resource/mdui/css/mdui.css" rel="stylesheet" />
+		<script src="../../lib/mdui/js/mdui.js"></script>
+		<script src="../../lib/jquery/2.0.0/jquery.min.js"></script>
+		<script src="../../lib/vue/2.5.16/vue.min.js"></script>
+		<script src="../../lib/axios/0.17.1/axios.min.js"></script>
+		<script src="../../lib/layui/layui.js"></script>
+		<link href="../../lib/layui/css/layui.css" rel="stylesheet"/>
+		<link href="../../lib/mdui/css/mdui.css" rel="stylesheet" />
 		<link href="../../resource/css/admin/admin.css" rel="stylesheet" />
 		<title>广州铠信</title>
 	</head>
-	<body class="admin_frame_body mdui-theme-primary-blue-grey mdui-theme-accent-pink mdui-loaded mdui-drawer-body-left mdui-locked">
+	<body class="admin_frame_body mdui-theme-primary-blue-grey mdui-theme-accent-pink mdui-theme-accent-pink mdui-loaded mdui-drawer-body-left mdui-locked">
 		<!--toolbar-->
 		<!-- <header class="mdui-appbar mdui-appbar-fixed mdui-shadow-0"> -->
 		<div class="mdui-toolbar mdui-color-theme">
@@ -43,21 +44,17 @@
 		</div>
 		<!--tab-->
 		<div id="tabArea">
-			<div id="tabBar" class="mdui-tab mdui-color-theme mdui-tab-full-width">
-				<a href="#mainTab-window" id="mainTab" class="mdui-ripple mdui-ripple-white">主页</a>
-				<a href="#tab2-window" id="tab2" class="mdui-ripple mdui-ripple-white">test2</a>
-			</div>
-			<div id="tabWindows">
-				<div id="mainTab-window">
-					testInfo
-				</div>
-				<div id="tab2-window">
-					<input type="text" />
+			<div class="admin-tab-bar layui-tab layui-tab-card" lay-filter="model" lay-allowClose="true">
+				<ul class="mdui-color-theme layui-tab-title">
+					<li class="layui-this" lay-id="0">控制台</li>
+				</ul>
+				<div class="admin-tab-content layui-tab-content">
+					<div class="layui-tab-item layui-show">1</div>
 				</div>
 			</div>
-
 		</div>
-
+		<script>
+		</script>
 		<script src="../../resource/js/admin/adminFrame.js"></script>
 
 	</body>
