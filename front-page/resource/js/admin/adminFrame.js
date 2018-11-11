@@ -20,7 +20,7 @@ $(function() {
 			if(deleteTabId!=0){
 				navOpened.splice(navOpened.indexOf(deleteTabId),1);
 			}
-			console.log(navOpened);
+			// console.log(navOpened);
 		});
 	});
 
@@ -91,5 +91,5 @@ function transformNavData() {
 			navDataTra.push(each[j]);
 		}
 	}
-	console.log(navDataTra);
+	// console.log(navDataTra);
 }

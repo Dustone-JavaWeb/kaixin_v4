@@ -11,7 +11,7 @@
 		<title>机手管理</title>
 	</head>
 	<body class="mdui-theme-primary-blue-grey mdui-theme-accent-pink">
-		<div class="mdui-container-fluid">
+		<div class="mdui-container-fluid mdui-center" id="queryTable">
 			<div class="admin-select-area mdui-row">
 				<div class="mdui-typo">
 					<h3>筛选条件</h3>
@@ -41,7 +41,7 @@
 			</div>
 
 			<div class="admin-table-area mdui-row">
-				<table class="mdui-table mdui-table-hoverable" id="adminTable">
+				<table class="mdui-table mdui-table-hoverable">
 					<thead>
 						<tr>
 							<td>编号</td>
@@ -73,6 +73,15 @@
 						</tr>
 					</tbody>
 				</table>
+			</div>
+			<div class="admin-table-page mdui-btn-group">
+				<button type="button" class="mdui-btn" @click="jump('first')"><i class="mdui-icon material-icons">first_page</i></button>
+				<button type="button" class="mdui-btn" @click="jump('pre')"><i class="mdui-icon material-icons">navigate_before</i></button>
+				
+				<button v-for="i in pagination.navigatepageNums" type="button" class="mdui-btn" @click="jumpByNumber(i-1)">{{i}}</button>
+				
+				<button type="button" class="mdui-btn" @click="jump('next')"><i class="mdui-icon material-icons">navigate_next</i></button>
+				<button type="button" class="mdui-btn" @click="jump('last')"><i class="mdui-icon material-icons">last_page</i></button>
 			</div>
 		</div>
 		<script src="../../resource/js/admin/driverList.js"></script>

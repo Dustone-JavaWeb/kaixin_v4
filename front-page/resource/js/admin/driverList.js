@@ -3,17 +3,31 @@ var tableVue;
 var ajaxQueryURL = "http://localhost:8080/kaixin/drivers"
 $(function() {
 	tableVue = new Vue({
-		el: '#adminTable',
+		el: '#queryTable',
 		data: {
-			trs: []
+			trs: [],
+			pagination: {}
 		},
 		mounted: function() {
-			var self = this
-			axios.get(ajaxQueryURL).then(function(response) {
-				self.trs = response.data;
-				console.log(self.trs);
-				mdui.mutation();
-			});
+			this.list(0);
+		},
+		methods: {
+			list: function(start) {
+				var self = this
+				axios.get(ajaxQueryURL + "?start=" + start).then(function(response) {
+					self.pagination = response.data;
+					self.trs = response.data.content;
+					mdui.mutation();
+				});
+			},
+			jump: function(page) {
+				var self = this
+				jump(page, self); //定义在adminHeader.html 中
+			},
+			jumpByNumber: function(start) {
+				var self = this
+				jumpByNumber(start, self);
+			}
 		},
 		filters: {
 			status: function(value) {
@@ -27,16 +41,35 @@ $(function() {
 					return '离职';
 				}
 			},
-			type:function(value){
-				if(value==0){
+			type: function(value) {
+				if (value == 0) {
 					return "正式";
-				}else{
+				} else {
 					return "临时";
 				}
 			},
 			date: function(value) {
-				return value.substr(0,10);
+				return value.substr(0, 10);
 			}
 		},
 	})
 });
+
+function jump(page, vue) {
+	if ('first' == page && !vue.pagination.first)
+		vue.list(0);
+
+	else if ('pre' == page && vue.pagination.hasPrevious)
+		vue.list(vue.pagination.number - 1);
+
+	else if ('next' == page && vue.pagination.hasNext)
+		vue.list(vue.pagination.number + 1);
+
+	else if ('last' == page && !vue.pagination.last)
+		vue.list(vue.pagination.totalPages - 1);
+}
+//分页跳转函数，跳转到指定页
+function jumpByNumber(start, vue) {
+	if (start != vue.pagination.number)
+		vue.list(start);
+}
