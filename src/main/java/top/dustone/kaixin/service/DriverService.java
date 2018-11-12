@@ -1,10 +1,7 @@
 package top.dustone.kaixin.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import top.dustone.kaixin.dao.DriverDAO;
 import top.dustone.kaixin.entity.Driver;
@@ -24,6 +21,13 @@ public class DriverService {
         Sort sort=new Sort(Sort.Direction.DESC,"id");
         Pageable pageable=PageRequest.of(start,size,sort);
         Page pageJPA=driverDAO.findAll(pageable);
+        return new Page4Navigator<Driver>(pageJPA,page);
+    }
+    public Page4Navigator<Driver> listByExapmle(Driver driver,int start,int size,int page){
+        Sort sort=new Sort(Sort.Direction.DESC,"id");
+        Pageable pageable=PageRequest.of(start,size,sort);
+        Example<Driver> example=Example.of(driver);
+        Page pageJPA=driverDAO.findAll(example,pageable);
         return new Page4Navigator<Driver>(pageJPA,page);
     }
 }
