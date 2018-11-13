@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import top.dustone.kaixin.entity.Driver;
+import top.dustone.kaixin.util.Page4Navigator;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -23,7 +24,9 @@ public class DriverServiceTest {
     @Test
     public void listByExapmle(){
         Driver driver=new Driver();
+        driver.setName("测试数据");
         System.out.println("hello");
-        System.out.println(driverService.listByExapmle(driver,1,5,1).getContent());
+        Page4Navigator<Driver> result=driverService.listByExapmle(driver,0,5,1);
+        System.out.println(result.getContent());
     }
 }

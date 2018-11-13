@@ -26,7 +26,10 @@ public class DriverService {
     public Page4Navigator<Driver> listByExapmle(Driver driver,int start,int size,int page){
         Sort sort=new Sort(Sort.Direction.DESC,"id");
         Pageable pageable=PageRequest.of(start,size,sort);
-        Example<Driver> example=Example.of(driver);
+        ExampleMatcher exampleMatcher=ExampleMatcher.matching()
+                .withMatcher("name",ExampleMatcher.GenericPropertyMatchers.contains())
+                .withMatcher("paperId",ExampleMatcher.GenericPropertyMatchers.startsWith());
+        Example<Driver> example=Example.of(driver,exampleMatcher);
         Page pageJPA=driverDAO.findAll(example,pageable);
         return new Page4Navigator<Driver>(pageJPA,page);
     }

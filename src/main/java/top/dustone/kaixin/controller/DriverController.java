@@ -2,6 +2,7 @@ package top.dustone.kaixin.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import top.dustone.kaixin.entity.Driver;
@@ -19,5 +20,10 @@ public class DriverController {
         start = start<0?0:start;
         Page4Navigator<Driver> page =driverService.list(start, size, 5);
         return page;
+    }
+    @PostMapping("/drivers_query")
+    public Page4Navigator<Driver> list(Page4Navigator<Driver> query){
+        Page4Navigator<Driver> page=driverService.list(1,5,5);
+        return null;
     }
 }

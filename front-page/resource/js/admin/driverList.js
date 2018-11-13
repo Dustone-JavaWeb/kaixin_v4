@@ -1,33 +1,34 @@
 var tableInfo = [];
 var tableVue;
-var ajaxQueryURL = "http://localhost:8080/kaixin/drivers"
+var ajaxQueryURL = "http://localhost:8080/kaixin/drivers";
 $(function() {
 	tableVue = new Vue({
 		el: '#queryTable',
 		data: {
 			trs: [],
-			pagination: {}
+			pagination: {},
 		},
 		mounted: function() {
 			this.list(0);
 		},
 		methods: {
 			list: function(start) {
-				var self = this
+				var self = this;
 				axios.get(ajaxQueryURL + "?start=" + start).then(function(response) {
 					self.pagination = response.data;
+					console.log(self.pagination);
 					self.trs = response.data.content;
 					mdui.mutation();
 				});
 			},
 			jump: function(page) {
-				var self = this
+				var self = this;
 				jump(page, self); //定义在adminHeader.html 中
 			},
 			jumpByNumber: function(start) {
-				var self = this
+				var self = this;
 				jumpByNumber(start, self);
-			}
+			},
 		},
 		filters: {
 			status: function(value) {

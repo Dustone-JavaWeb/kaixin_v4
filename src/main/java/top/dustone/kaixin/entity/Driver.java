@@ -10,8 +10,7 @@ import java.sql.Timestamp;
 public class Driver {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    private int id;
+    private Integer id;
     private String name;
     private String tel;
     private String personId;
@@ -25,11 +24,11 @@ public class Driver {
     private Timestamp createTime;
     @Column(name = "edit_time")
     private Timestamp editTime;
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

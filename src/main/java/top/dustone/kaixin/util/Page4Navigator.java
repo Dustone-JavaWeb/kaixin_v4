@@ -6,6 +6,9 @@ import java.util.List;
 
 public class Page4Navigator <T>{
     Page<T> pageFromJPA;
+
+    int start;
+
     int navigatePages;
 
     int totalPages;
@@ -19,6 +22,8 @@ public class Page4Navigator <T>{
     int numberOfElements;
 
     List<T> content;
+
+    T example;
 
     boolean isHasContent;
 
@@ -205,5 +210,21 @@ public class Page4Navigator <T>{
 
     public void setNavigatepageNums(int[] navigatepageNums) {
         this.navigatepageNums = navigatepageNums;
+    }
+
+    public T getExample() {
+        return example;
+    }
+
+    public void setExample(T example) {
+        this.example = example;
+    }
+
+    public int getStart() {
+        return start;
+    }
+
+    public void setStart(int start) {
+        this.start = start;
     }
 }
