@@ -24,7 +24,7 @@ public class DriverServiceTest {
     @Test
     public void listByExapmle(){
         Driver driver=new Driver();
-        driver.setName("测试数据");
+        driver.setName("陈岩");
         System.out.println("hello");
         Page4Navigator<Driver> result=driverService.listByExapmle(driver,0,5,1);
         System.out.println(result.getContent());

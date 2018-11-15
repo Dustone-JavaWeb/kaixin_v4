@@ -1,12 +1,18 @@
 var tableInfo = [];
 var tableVue;
-var ajaxQueryURL = "http://localhost:8080/kaixin/drivers";
+var ajaxQueryURL = "http://localhost:8080/kaixin/drivers_query";
+var exchange;
+
 $(function() {
 	tableVue = new Vue({
 		el: '#queryTable',
 		data: {
 			trs: [],
 			pagination: {},
+			requestModel: {
+				start: 0,
+				example: {}
+			}
 		},
 		mounted: function() {
 			this.list(0);
@@ -14,12 +20,25 @@ $(function() {
 		methods: {
 			list: function(start) {
 				var self = this;
-				axios.get(ajaxQueryURL + "?start=" + start).then(function(response) {
+				self.requestModel.start = start;
+				axios.post(ajaxQueryURL, self.requestModel).then(function(response) {
 					self.pagination = response.data;
-					console.log(self.pagination);
 					self.trs = response.data.content;
 					mdui.mutation();
 				});
+				// 				$.ajax({
+				// 					type: "POST",
+				// 					async:true,
+				// 					contentType: "application/json",
+				// 					url: ajaxQueryURL,
+				// 					data: JSON.stringify(self.requestModel),
+				// 					success: function(response) {
+				// 						console.log(response);
+				// 						self.pagination = response;
+				// 						self.trs = response.content;
+				// 						//mdui.mutation();
+				// 					}
+				// 				})
 			},
 			jump: function(page) {
 				var self = this;
@@ -29,6 +48,10 @@ $(function() {
 				var self = this;
 				jumpByNumber(start, self);
 			},
+			query:function() {
+				var self = this;
+				tableQuery(0,self);
+			}
 		},
 		filters: {
 			status: function(value) {
@@ -73,4 +96,7 @@ function jump(page, vue) {
 function jumpByNumber(start, vue) {
 	if (start != vue.pagination.number)
 		vue.list(start);
+}
+function tableQuery(start,vue){
+	vue.list(start);
 }

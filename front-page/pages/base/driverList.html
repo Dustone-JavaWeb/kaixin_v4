@@ -18,23 +18,23 @@
 				</div>
 				<div class="mdui-divider"></div>
 				<form id="select-form" class="admin-select-form">
-					<input class="mdui-textfield-input mdui-col-xs-3" type="text" placeholder="姓名" />
-					<input class="mdui-textfield-input mdui-col-xs-3" type="text" placeholder="电话" />
-					<input class="mdui-textfield-input mdui-col-xs-3" type="text" placeholder="驾驶证编号" />
+					<input v-model="requestModel.example.name" class="mdui-textfield-input mdui-col-xs-3" type="text" placeholder="姓名" />
+					<input v-model="requestModel.example.tel" class="mdui-textfield-input mdui-col-xs-3" type="text" placeholder="电话" />
+					<input v-model="requestModel.example.paperId" class="mdui-textfield-input mdui-col-xs-3" type="text" placeholder="驾驶证编号" />
 					<select class="mdui-select mdui-col-xs-3">
 						<option value="">状态</option>
-						<option value="0">空闲</option>
-						<option value="1">工作</option>
-						<option value="2">休假</option>
-						<option value="-1">离职</option>
+						<option value="空闲">空闲</option>
+						<option value="工作">工作</option>
+						<option value="休假">休假</option>
+						<option value="离职">离职</option>
 					</select>
 					<select class="mdui-select mdui-col-xs-3">
 						<option value="">类型</option>
-						<option value="0">正式</option>
-						<option value="1">临时</option>
+						<option value="普通">普通</option>
+						<option value="临时">临时</option>
 					</select>
-					<button class="mdui-btn mdui-color-theme-accent mdui-ripple mdui-col-xs-3">查询</button>
 				</form>
+				<button v-on:click="query()" class="mdui-btn mdui-color-theme-accent mdui-ripple mdui-col-xs-3">查询</button>
 			</div>
 			<div class="admin-select-area mdui-row">
 				<div class="mdui-divider"></div>
@@ -60,14 +60,14 @@
 							<td>{{tr.tel}}</td>
 							<td>{{tr.paperId}}</td>
 							<td>
-								<div class="mdui-text-color-white mdui-chip-title mdui-color-light-green" v-if="tr.type==0">{{tr.type|type}}</div>
-								<div class="mdui-text-color-white mdui-chip-title mdui-color-yellow-800" v-else-if="tr.type==1">{{tr.type|type}}</div>
+								<div class="mdui-text-color-white mdui-chip-title mdui-color-light-green" v-if="tr.type=='普通'">{{tr.type}}</div>
+								<div class="mdui-text-color-white mdui-chip-title mdui-color-yellow-800" v-else-if="tr.type=='临时'">{{tr.type}}</div>
 							</td>
 							<td>
-								<div class="mdui-text-color-white mdui-chip-title mdui-color-light-green" v-if="tr.status==0">{{tr.status|status}}</div>
-								<div class="mdui-text-color-white mdui-chip-title mdui-color-pink" v-else-if="tr.status==1">{{tr.status|status}}</div>
-								<div class="mdui-text-color-white mdui-chip-title mdui-color-yellow-800" v-else-if="tr.status==2">{{tr.status|status}}</div>
-								<div class="mdui-text-color-white mdui-chip-title mdui-color-grey" v-else-if="tr.status==-1">{{tr.status|status}}</div>
+								<div class="mdui-text-color-white mdui-chip-title mdui-color-light-green" v-if="tr.status=='空闲'">{{tr.status}}</div>
+								<div class="mdui-text-color-white mdui-chip-title mdui-color-pink" v-else-if="tr.status=='工作'">{{tr.status}}</div>
+								<div class="mdui-text-color-white mdui-chip-title mdui-color-yellow-800" v-else-if="tr.status=='休假'">{{tr.status}</div>
+								<div class="mdui-text-color-white mdui-chip-title mdui-color-grey" v-else-if="tr.status=='离职'">{{tr.status}}</div>
 							</td>
 							<td>{{tr.createTime|date}}</td>
 						</tr>

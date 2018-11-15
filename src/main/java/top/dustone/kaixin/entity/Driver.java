@@ -16,8 +16,8 @@ public class Driver {
     private String personId;
     private String paperId;
     private String creditCard;
-    private int status;
-    private int type;
+    private String status;
+    private String type;
     @Column(name="resource_id")
     private int resourceId;
     @Column(name = "create_time")
@@ -72,19 +72,19 @@ public class Driver {
         this.creditCard = creditCard;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public int getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(String type) {
         this.type = type;
     }
 

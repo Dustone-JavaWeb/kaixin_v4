@@ -2,12 +2,11 @@ package top.dustone.kaixin.util;
 
 import org.springframework.data.domain.Page;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Page4Navigator <T>{
     Page<T> pageFromJPA;
-
-    int start;
 
     int navigatePages;
 
@@ -22,8 +21,6 @@ public class Page4Navigator <T>{
     int numberOfElements;
 
     List<T> content;
-
-    T example;
 
     boolean isHasContent;
 
@@ -212,19 +209,24 @@ public class Page4Navigator <T>{
         this.navigatepageNums = navigatepageNums;
     }
 
-    public T getExample() {
-        return example;
-    }
 
-    public void setExample(T example) {
-        this.example = example;
-    }
-
-    public int getStart() {
-        return start;
-    }
-
-    public void setStart(int start) {
-        this.start = start;
+    @Override
+    public String toString() {
+        return "Page4Navigator{" +
+                "pageFromJPA=" + pageFromJPA +
+                ", navigatePages=" + navigatePages +
+                ", totalPages=" + totalPages +
+                ", number=" + number +
+                ", totalElements=" + totalElements +
+                ", size=" + size +
+                ", numberOfElements=" + numberOfElements +
+                ", content=" + content +
+                ", isHasContent=" + isHasContent +
+                ", first=" + first +
+                ", last=" + last +
+                ", isHasNext=" + isHasNext +
+                ", isHasPrevious=" + isHasPrevious +
+                ", navigatepageNums=" + Arrays.toString(navigatepageNums) +
+                '}';
     }
 }
