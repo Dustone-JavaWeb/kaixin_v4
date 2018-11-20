@@ -32,7 +32,7 @@ html {
 	margin-top:20px;
 	margin-left: 30px;
 	margin-right: 30px;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 }
 .admin-table-area{
 	background-color: white;
@@ -40,7 +40,9 @@ html {
 	margin-left: 30px;
 	margin-right: 30px;
 }
-.admin-table-page{
-	margin-left:300px;
-	margin-right:300px;
+.admin-table-control{
+	background-color: white;
+	margin-top:10px;
+	margin-left: 30px;
+	margin-right: 30px;
 }

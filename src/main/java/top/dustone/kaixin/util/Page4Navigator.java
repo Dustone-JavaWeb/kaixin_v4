@@ -22,6 +22,8 @@ public class Page4Navigator <T>{
 
     List<T> content;
 
+    RequestModel<T> example;
+
     boolean isHasContent;
 
     boolean first;
@@ -209,7 +211,13 @@ public class Page4Navigator <T>{
         this.navigatepageNums = navigatepageNums;
     }
 
+    public RequestModel<T> getExample() {
+        return example;
+    }
 
+    public void setExample(RequestModel<T> example) {
+        this.example = example;
+    }
     @Override
     public String toString() {
         return "Page4Navigator{" +

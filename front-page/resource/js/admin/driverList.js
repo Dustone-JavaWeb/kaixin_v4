@@ -1,5 +1,6 @@
 var tableInfo = [];
 var tableVue;
+var infoVue;
 var ajaxQueryURL = "http://localhost:8080/kaixin/drivers_query";
 var exchange;
 
@@ -11,7 +12,10 @@ $(function() {
 			pagination: {},
 			requestModel: {
 				start: 0,
-				example: {}
+				example: {
+					type: "",
+					status: ""
+				}
 			}
 		},
 		mounted: function() {
@@ -21,6 +25,7 @@ $(function() {
 			list: function(start) {
 				var self = this;
 				self.requestModel.start = start;
+				self.requestModel.example = checkEmpty(self.requestModel.example);
 				axios.post(ajaxQueryURL, self.requestModel).then(function(response) {
 					self.pagination = response.data;
 					self.trs = response.data.content;
@@ -48,9 +53,12 @@ $(function() {
 				var self = this;
 				jumpByNumber(start, self);
 			},
-			query:function() {
+			query: function() {
 				var self = this;
-				tableQuery(0,self);
+				tableQuery(0, self);
+			},
+			showInfo: function(id) {
+				showEditWindow(id);
 			}
 		},
 		filters: {
@@ -79,6 +87,39 @@ $(function() {
 	})
 });
 
+function showEditWindow(dId) {
+	var inst = new mdui.Dialog("#editWindow");
+	inst.open();
+	infoVue = new Vue({
+		el: '#detailDialog',
+		data: {
+			entity: {},
+			editOrView: false,
+			title: "机手信息",
+			requestModel: {
+				start: 0,
+				example: {
+					id: dId
+				}
+			}
+		},
+		mounted: function() {
+			this.query();
+		},
+		methods: {
+			query: function() {
+				var self = this;
+				self.requestModel.start = 0;
+				self.requestModel.example = self.requestModel.example;
+				axios.post(ajaxQueryURL, self.requestModel).then(function(response) {
+					self.entity = response.data.content[0];
+					mdui.mutation();
+				});
+			},
+		}
+	});
+}
+
 function jump(page, vue) {
 	if ('first' == page && !vue.pagination.first)
 		vue.list(0);
@@ -97,6 +138,18 @@ function jumpByNumber(start, vue) {
 	if (start != vue.pagination.number)
 		vue.list(start);
 }
-function tableQuery(start,vue){
+
+function tableQuery(start, vue) {
 	vue.list(start);
+}
+
+function checkEmpty(jsonObject) {
+	var result = {};
+	for (var key in jsonObject) {
+		if (jsonObject[key] == "") {
+			continue;
+		}
+		result[key] = jsonObject[key];
+	}
+	return result;
 }
