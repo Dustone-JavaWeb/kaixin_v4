@@ -89,11 +89,60 @@
 			<div class="mdui-container" id="detailDialog">
 				<div class="mdui-row">
 					<div class="mdui-typo">
-						<h3>{{title}}</h3>
+						<h3>
+						{{title}}  
+						<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(1)">{{editButtonText}}</button>
+						<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(0)" v-bind:style="{display:giveUpButtonDisplay}">{{giveUpButtonText}}</button>
+						</h3>
 					</div>
 					<div class="mdui-divider"></div>
-					<input v-model="entity.name" class="mdui-textfield-input mdui-col-xs-3" type="text" placeholder="姓名" />
-					<input v-model="entity.tel" class="mdui-textfield-input mdui-col-xs-3" type="text" placeholder="电话" />
+					<div class="mdui-row">
+						<div class="mdui-col-xs-9">
+							<div class="mdui-textfield mdui-col-xs-6">
+								<label class="mdui-textfield-label">姓名</label>
+								<input v-bind:disabled="inputDisabled" v-model="entity.name" class="mdui-textfield-input" type="text" placeholder="姓名" />
+							</div>
+							<div class="mdui-textfield mdui-col-xs-6">
+								<label class="mdui-textfield-label">电话</label>
+								<input v-bind:disabled="inputDisabled" v-model="entity.tel" class="mdui-textfield-input" type="text" placeholder="电话" />
+							</div>
+							<div class="mdui-textfield mdui-col-xs-6">
+								<label class="mdui-textfield-label">身份证号</label>
+								<input v-bind:disabled="inputDisabled" v-model="entity.tel" class="mdui-textfield-input" type="text" placeholder="身份证号" />
+							</div>
+							<div class="mdui-textfield mdui-col-xs-6">
+								<label class="mdui-textfield-label">驾驶证号</label>
+								<input v-bind:disabled="inputDisabled" v-model="entity.tel" class="mdui-textfield-input" type="text" placeholder="驾驶证号" />
+							</div>
+							<div class="mdui-textfield mdui-col-xs-6">
+								<label class="mdui-textfield-label">银行卡账号</label>
+								<input v-bind:disabled="inputDisabled" v-model="entity.tel" class="mdui-textfield-input" type="text" placeholder="银行卡账号" />
+							</div>
+							<div class="mdui-textfield mdui-col-xs-6">
+								<label class="mdui-textfield-label">状态</label>
+								<select v-bind:disabled="inputDisabled" v-model="entity.status" class="mdui-select" style="width:100%">
+									<option value="">状态</option>
+									<option value="空闲">空闲</option>
+									<option value="工作">工作</option>
+									<option value="休假">休假</option>
+									<option value="离职">离职</option>
+								</select>
+							</div>
+							<div class="mdui-textfield mdui-col-xs-6">
+								<label class="mdui-textfield-label">类型</label>
+								<select v-bind:disabled="inputDisabled" v-model="entity.type" class="mdui-select" style="width:100%">
+									<option value="">类型</option>
+									<option value="普通">普通</option>
+									<option value="临时">临时</option>
+								</select>
+							</div>
+						</div>
+						<div class="mdui-col-xs-3">
+							<div>
+								<img class="mdui-img-fluid" src="../../resource/img/DSC_4407.JPG"/>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

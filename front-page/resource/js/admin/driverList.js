@@ -5,7 +5,7 @@ var ajaxQueryURL = "http://localhost:8080/kaixin/drivers_query";
 var exchange;
 
 $(function() {
-	tableVue = new Vue({
+	new Vue({
 		el: '#queryTable',
 		data: {
 			trs: [],
@@ -19,6 +19,7 @@ $(function() {
 			}
 		},
 		mounted: function() {
+			tableVue = this;
 			this.list(0);
 		},
 		methods: {
@@ -58,6 +59,7 @@ $(function() {
 				tableQuery(0, self);
 			},
 			showInfo: function(id) {
+				console.log(id);
 				showEditWindow(id);
 			}
 		},
@@ -84,31 +86,31 @@ $(function() {
 				return value.substr(0, 10);
 			}
 		},
-	})
-});
-
-function showEditWindow(dId) {
-	var inst = new mdui.Dialog("#editWindow");
-	inst.open();
-	infoVue = new Vue({
+	});
+	new Vue({
 		el: '#detailDialog',
 		data: {
 			entity: {},
-			editOrView: false,
+			inputDisabled: false,
+			editButtonText: '编辑',
+			giveUpButtonText: '放弃',
+			giveUpButtonDisplay:'none',
 			title: "机手信息",
 			requestModel: {
 				start: 0,
 				example: {
-					id: dId
+					id: 0
 				}
 			}
 		},
 		mounted: function() {
-			this.query();
+			infoVue = this;
 		},
 		methods: {
-			query: function() {
+			query: function(dId) {
 				var self = this;
+				self.inputDisabled=true;
+				self.requestModel.example.id = dId;
 				self.requestModel.start = 0;
 				self.requestModel.example = self.requestModel.example;
 				axios.post(ajaxQueryURL, self.requestModel).then(function(response) {
@@ -116,8 +118,33 @@ function showEditWindow(dId) {
 					mdui.mutation();
 				});
 			},
+			switchMode: function(option) {
+				var self = this;
+				console.log(self.inputDisabled);
+				if (self.inputDisabled) {
+					self.inputDisabled=false;
+					self.editButtonText='保存';
+					self.giveUpButtonDisplay='inline';
+				}else{
+					self.inputDisabled=true;
+					self.editButtonText='编辑';
+					self.giveUpButtonDisplay='none';
+				}
+				if(option==0){
+					alert('放弃');
+				}else{
+					alert('保存');
+				}
+				mdui.mutation();
+			}
 		}
 	});
+});
+
+function showEditWindow(dId) {
+	var inst = new mdui.Dialog("#editWindow");
+	infoVue.query(dId);
+	inst.open();
 }
 
 function jump(page, vue) {
