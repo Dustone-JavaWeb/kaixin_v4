@@ -133,6 +133,9 @@ $(function() {
 				if(option==0){
 					alert('放弃');
 				}else{
+					if(self.inputDisabled){
+						
+					}
 					alert('保存');
 				}
 				mdui.mutation();
