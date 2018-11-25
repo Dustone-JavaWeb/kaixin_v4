@@ -24,6 +24,10 @@ public class Page4Navigator <T>{
 
     RequestModel<T> example;
 
+    String responseStatus;
+
+    String responseMessage;
+
     boolean isHasContent;
 
     boolean first;
@@ -218,6 +222,23 @@ public class Page4Navigator <T>{
     public void setExample(RequestModel<T> example) {
         this.example = example;
     }
+
+    public String getResponseStatus() {
+        return responseStatus;
+    }
+
+    public void setResponseStatus(String responseStatus) {
+        this.responseStatus = responseStatus;
+    }
+
+    public String getResponseMessage() {
+        return responseMessage;
+    }
+
+    public void setResponseMessage(String responseMessage) {
+        this.responseMessage = responseMessage;
+    }
+
     @Override
     public String toString() {
         return "Page4Navigator{" +
@@ -229,6 +250,9 @@ public class Page4Navigator <T>{
                 ", size=" + size +
                 ", numberOfElements=" + numberOfElements +
                 ", content=" + content +
+                ", example=" + example +
+                ", responseStatus='" + responseStatus + '\'' +
+                ", responseMessage='" + responseMessage + '\'' +
                 ", isHasContent=" + isHasContent +
                 ", first=" + first +
                 ", last=" + last +

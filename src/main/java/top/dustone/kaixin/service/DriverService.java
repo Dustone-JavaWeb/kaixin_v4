@@ -7,6 +7,7 @@ import top.dustone.kaixin.dao.DriverDAO;
 import top.dustone.kaixin.entity.Driver;
 import top.dustone.kaixin.util.Page4Navigator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -33,5 +34,14 @@ public class DriverService {
         Example<Driver> example=Example.of(driver,exampleMatcher);
         Page pageJPA=driverDAO.findAll(example,pageable);
         return new Page4Navigator<Driver>(pageJPA,page);
+    }
+    public Page4Navigator<Driver> update(Driver driver){
+        System.out.println(driver);
+        driverDAO.save(driver);
+        Page4Navigator<Driver> result=new Page4Navigator<Driver>();
+        List<Driver> content=new ArrayList<Driver>(1);
+        content.add(driver);
+        result.setContent(content);
+        return result;
     }
 }

@@ -1,7 +1,10 @@
 var tableInfo = [];
 var tableVue;
 var infoVue;
-var ajaxQueryURL = "http://localhost:8080/kaixin/drivers_query";
+var infoWindow;
+var baseURL = "http://localhost:8080/kaixin";
+var ajaxQueryURL = baseURL + "/drivers_query";
+var ajaxUpdateURL = baseURL + "/drivers_update";
 var exchange;
 
 $(function() {
@@ -16,7 +19,8 @@ $(function() {
 					type: "",
 					status: ""
 				}
-			}
+			},
+			pageNow:0
 		},
 		mounted: function() {
 			tableVue = this;
@@ -30,21 +34,9 @@ $(function() {
 				axios.post(ajaxQueryURL, self.requestModel).then(function(response) {
 					self.pagination = response.data;
 					self.trs = response.data.content;
+					self.pageNow = response.data.number+1;
 					mdui.mutation();
 				});
-				// 				$.ajax({
-				// 					type: "POST",
-				// 					async:true,
-				// 					contentType: "application/json",
-				// 					url: ajaxQueryURL,
-				// 					data: JSON.stringify(self.requestModel),
-				// 					success: function(response) {
-				// 						console.log(response);
-				// 						self.pagination = response;
-				// 						self.trs = response.content;
-				// 						//mdui.mutation();
-				// 					}
-				// 				})
 			},
 			jump: function(page) {
 				var self = this;
@@ -59,8 +51,23 @@ $(function() {
 				tableQuery(0, self);
 			},
 			showInfo: function(id) {
-				console.log(id);
 				showEditWindow(id);
+			},
+			addEntity: function(){
+				showAddWindow(0);
+			},
+			pageSelected: function(num) {
+				var self = this;
+				console.log(self.pageNow);
+				if (num == self.pageNow) {
+					return {
+						'mdui-color-theme-accent': true
+					}
+				} else {
+					return {
+						'mdui-color-theme-accent': false
+					}
+				}
 			}
 		},
 		filters: {
@@ -94,7 +101,7 @@ $(function() {
 			inputDisabled: false,
 			editButtonText: '编辑',
 			giveUpButtonText: '放弃',
-			giveUpButtonDisplay:'none',
+			giveUpButtonDisplay: 'none',
 			title: "机手信息",
 			requestModel: {
 				start: 0,
@@ -109,34 +116,48 @@ $(function() {
 		methods: {
 			query: function(dId) {
 				var self = this;
-				self.inputDisabled=true;
+				self.inputDisabled = true;
+				self.requestModel.example = {};
 				self.requestModel.example.id = dId;
 				self.requestModel.start = 0;
-				self.requestModel.example = self.requestModel.example;
+				console.log(self.requestModel.example);
 				axios.post(ajaxQueryURL, self.requestModel).then(function(response) {
 					self.entity = response.data.content[0];
 					mdui.mutation();
 				});
 			},
+			prepareToAdd:function(parent){
+				this.entity={};
+				this.inputDisabled=false;
+				this.editButtonText = '保存';
+				this.giveUpButtonDisplay = 'inline';
+			},
 			switchMode: function(option) {
 				var self = this;
-				console.log(self.inputDisabled);
 				if (self.inputDisabled) {
-					self.inputDisabled=false;
-					self.editButtonText='保存';
-					self.giveUpButtonDisplay='inline';
-				}else{
-					self.inputDisabled=true;
-					self.editButtonText='编辑';
-					self.giveUpButtonDisplay='none';
+					self.inputDisabled = false;
+					self.editButtonText = '保存';
+					self.giveUpButtonDisplay = 'inline';
+				} else {
+					self.inputDisabled = true;
+					self.editButtonText = '编辑';
+					self.giveUpButtonDisplay = 'none';
 				}
-				if(option==0){
-					alert('放弃');
-				}else{
-					if(self.inputDisabled){
-						
+				if (option == 0) {
+// 					axios.post(ajaxQueryURL, self.requestModel).then(function(response) {
+// 						self.entity = response.data.content[0];
+// 					});
+					infoWindow.close();
+				} else { 
+					if (self.inputDisabled) {
+						self.requestModel.example = self.entity;
+						axios.post(ajaxUpdateURL, self.requestModel).then(function(response) {
+							self.entity = response.data.content[0];
+							tableQuery(0, tableVue);
+						});
+					}else{
+						//infoWindow.close();
 					}
-					alert('保存');
 				}
 				mdui.mutation();
 			}
@@ -145,9 +166,14 @@ $(function() {
 });
 
 function showEditWindow(dId) {
-	var inst = new mdui.Dialog("#editWindow");
+	infoWindow = new mdui.Dialog("#editWindow");
 	infoVue.query(dId);
-	inst.open();
+	infoWindow.open();
+}
+function showAddWindow(parent){
+	infoWindow = new mdui.Dialog("#editWindow");
+	infoVue.prepareToAdd(parent);
+	infoWindow.open();
 }
 
 function jump(page, vue) {
