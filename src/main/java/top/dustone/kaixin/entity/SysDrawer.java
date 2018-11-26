@@ -20,7 +20,6 @@ public class SysDrawer {
     private SysDrawer parent;
     @OneToMany(mappedBy = "parent")
     private List<SysDrawer> sysDrawers;
-
     public int getId() {
         return id;
     }

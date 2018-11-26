@@ -41,7 +41,7 @@
 							<option value="临时">临时</option>
 						</select>
 					</div>
-				</form>	
+				</form>
 				<div class="admin-layout-box mdui-col-xs-4">
 					<button v-on:click="query()" class="mdui-btn mdui-color-theme-accent mdui-ripple" style="width: 100%">查询</button>
 				</div>
@@ -92,7 +92,8 @@
 				<div class="mdui-btn-group <mdui-col-xs-5x></mdui-col-xs-5x>">
 					<button type="button" class="mdui-btn" @click="jump('first')"><i class="mdui-icon material-icons">first_page</i></button>
 					<button type="button" class="mdui-btn" @click="jump('pre')"><i class="mdui-icon material-icons">navigate_before</i></button>
-					<button v-for="i in pagination.navigatepageNums" v-bind:class="pageSelected(i)" type="button" class="mdui-btn" @click="jumpByNumber(i-1)">{{i}}</button>
+					<button v-for="i in pagination.navigatepageNums" v-bind:class="pageSelected(i)" type="button" class="mdui-btn"
+					 @click="jumpByNumber(i-1)">{{i}}</button>
 					<button type="button" class="mdui-btn" @click="jump('next')"><i class="mdui-icon material-icons">navigate_next</i></button>
 					<button type="button" class="mdui-btn" @click="jump('last')"><i class="mdui-icon material-icons">last_page</i></button>
 				</div>
@@ -159,6 +160,23 @@
 							<div>
 								<img class="mdui-img-fluid" src="../../resource/img/DSC_4407.JPG" />
 							</div>
+						</div>
+					</div>
+					<div class="mdui-typo">
+						<h3>
+							相关资源
+							<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(1)">{{editButtonText}}</button>
+							<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(0)"
+							 v-bind:style="{display:giveUpButtonDisplay}">{{giveUpButtonText}}</button>
+						</h3>
+					</div>
+					<div class="mdui-divider"></div>
+					<div class="mdui-row-xs-3 mdui-row-sm-3 mdui-row-md-3 mdui-row-lg-3 mdui-row-xl-3 mdui-grid-list">
+						<div class="mdui-col">
+							
+						</div>
+						<div class="mdui-col">
+							
 						</div>
 					</div>
 				</div>

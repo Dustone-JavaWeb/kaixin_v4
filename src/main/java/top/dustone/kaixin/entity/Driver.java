@@ -18,8 +18,8 @@ public class Driver {
     private String creditCard;
     private String status;
     private String type;
-    @Column(name="resource_id")
-    private int resourceId;
+    @OneToOne
+    private Resource resource;
     @Column(name = "create_time")
     private Timestamp createTime;
     @Column(name = "edit_time")
@@ -88,13 +88,7 @@ public class Driver {
         this.type = type;
     }
 
-    public int getResourceId() {
-        return resourceId;
-    }
 
-    public void setResourceId(int resourceId) {
-        this.resourceId = resourceId;
-    }
 
     public Timestamp getCreateTime() {
         return createTime;
@@ -112,6 +106,15 @@ public class Driver {
         this.editTime = editTime;
     }
 
+
+    public Resource getResource() {
+        return resource;
+    }
+
+    public void setResource(Resource resource) {
+        this.resource = resource;
+    }
+
     @Override
     public String toString() {
         return "Driver{" +
@@ -121,9 +124,9 @@ public class Driver {
                 ", personId='" + personId + '\'' +
                 ", paperId='" + paperId + '\'' +
                 ", creditCard='" + creditCard + '\'' +
-                ", status=" + status +
-                ", type=" + type +
-                ", resourceId=" + resourceId +
+                ", status='" + status + '\'' +
+                ", type='" + type + '\'' +
+                ", resource=" + resource +
                 ", createTime=" + createTime +
                 ", editTime=" + editTime +
                 '}';
