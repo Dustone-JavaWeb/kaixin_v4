@@ -13,9 +13,12 @@ import java.util.List;
 public class MachineBrandService {
     @Autowired
     MachineBrandDAO machineBrandDAO;
-    public List<MachineBrand> list(){
+    public Page4Navigator<MachineBrand> list(){
         Sort sort=new Sort(Sort.Direction.DESC,"id");
-        return machineBrandDAO.findAll(sort);
+        Page4Navigator<MachineBrand> page4Navigator=new Page4Navigator<MachineBrand>();
+        List<MachineBrand> content=machineBrandDAO.findAll(sort);
+        page4Navigator.setContent(content);
+        return page4Navigator;
     }
     public Page4Navigator<MachineBrand> update(MachineBrand machineBrand){
         machineBrandDAO.save(machineBrand);

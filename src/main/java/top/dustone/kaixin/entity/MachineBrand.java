@@ -3,7 +3,6 @@ package top.dustone.kaixin.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "bean_machine_brand")
@@ -18,8 +17,6 @@ public class MachineBrand {
     private String detail;
     @OneToOne
     private Resource resource;
-    @OneToMany(mappedBy = "machineBrand",fetch = FetchType.EAGER)
-    private List<MachineType> machineTypes;
     public Integer getId() {
         return id;
     }
@@ -68,7 +65,6 @@ public class MachineBrand {
                 ", logo='" + logo + '\'' +
                 ", detail='" + detail + '\'' +
                 ", resource=" + resource +
-                ", machineTypes=" + machineTypes +
                 '}';
     }
 }

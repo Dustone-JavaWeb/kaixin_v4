@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version: 5.5.15)
-# Date: 2018-11-12 22:31:34
+# Date: 2018-11-27 22:31:26
 # Generator: MySQL-Front 5.3  (Build 4.269)
 
 /*!40101 SET NAMES utf8 */;
@@ -39,19 +39,19 @@ CREATE TABLE `bean_driver` (
   `person_id` varchar(32) NOT NULL DEFAULT '' COMMENT '身份证号码',
   `paper_id` varchar(32) DEFAULT NULL COMMENT '驾驶许可证号码',
   `credit_card` varchar(32) DEFAULT '' COMMENT '银行卡号码',
-  `status` int(11) NOT NULL DEFAULT '0' COMMENT '机手状态',
-  `type` int(11) NOT NULL DEFAULT '0' COMMENT '机手类型',
-  `resource_id` int(11) NOT NULL DEFAULT '0' COMMENT '资源ID',
+  `status` varchar(11) NOT NULL DEFAULT '空闲' COMMENT '机手状态',
+  `type` varchar(11) NOT NULL DEFAULT '普通' COMMENT '机手类型',
+  `resource_id` int(11) DEFAULT NULL COMMENT '资源ID',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `edit_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COMMENT='机手信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COMMENT='机手信息表';
 
 #
 # Data for table "bean_driver"
 #
 
-INSERT INTO `bean_driver` VALUES (1,'陈岩','13048062053','6666666','6666666','6666666',1,0,0,'2018-10-28 09:43:30','0000-00-00 00:00:00'),(2,'测试数据12','123123123','21321312','312312321','2313123123',0,0,0,'2018-10-28 11:48:47','0000-00-00 00:00:00'),(3,'测试数据12','123123123','21321312','312312321','2313123123',0,0,0,'2018-10-28 11:48:49','0000-00-00 00:00:00'),(4,'测试数据1','123123123','21321312','312312321','2313123123',0,0,0,'2018-10-28 11:51:04','0000-00-00 00:00:00'),(5,'测试数据2','123123123','21321312','312312321','2313123123',0,0,0,'2018-10-28 11:51:04','0000-00-00 00:00:00'),(6,'测试数据3','123123123','21321312','312312321','2313123123',0,0,0,'2018-10-28 11:51:04','0000-00-00 00:00:00'),(7,'测试数据4','123123123','21321312','312312321','2313123123',-1,0,0,'2018-10-28 11:51:04','0000-00-00 00:00:00'),(8,'测试数据5','123123123','21321312','312312321','2313123123',0,0,0,'2018-10-28 11:51:04','0000-00-00 00:00:00'),(9,'测试数据6','123123123','21321312','312312321','2313123123',2,0,0,'2018-10-28 11:51:04','0000-00-00 00:00:00'),(10,'测试数据7','123123123','21321312','312312321','2313123123',0,0,0,'2018-10-28 11:51:04','0000-00-00 00:00:00'),(11,'测试数据8','123123123','21321312','312312321','2313123123',0,0,0,'2018-10-28 11:51:04','0000-00-00 00:00:00'),(12,'测试数据9','123123123','21321312','312312321','2313123123',0,0,0,'2018-10-28 11:51:04','0000-00-00 00:00:00'),(13,'测试数据10','123123123','21321312','312312321','2313123123',0,0,0,'2018-10-28 11:51:04','0000-00-00 00:00:00'),(14,'测试数据11','123123123','21321312','312312321','2313123123',0,0,0,'2018-10-28 11:51:04','0000-00-00 00:00:00'),(15,'测试数据12','123123123','21321312','312312321','2313123123',0,0,0,'2018-10-28 11:51:04','0000-00-00 00:00:00'),(16,'测试数据13','123123123','21321312','312312321','2313123123',0,0,0,'2018-10-28 11:51:04','0000-00-00 00:00:00'),(17,'测试数据14','123123123','21321312','312312321','2313123123',0,0,0,'2018-10-28 11:51:04','0000-00-00 00:00:00'),(18,'测试数据15','123123123','21321312','312312321','2313123123',0,0,0,'2018-10-28 11:51:04','0000-00-00 00:00:00'),(19,'测试数据16','123123123','21321312','312312321','2313123123',0,0,0,'2018-10-28 11:51:04','0000-00-00 00:00:00');
+INSERT INTO `bean_driver` VALUES (1,'测试数据1','123123123','21321312','312312321','2313123123','空闲','普通',NULL,'2018-11-14 22:55:49','0000-00-00 00:00:00'),(2,'测试数据12','123123123','21321312','312312321','2313123123','空闲','普通',NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(3,'测试数据1213','123123123','21321312','312312321','2313123123','空闲','普通',NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(4,'测试数据1213','123123123','21321312','312312321','2313123123','空闲','普通',NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(5,'测试数据133425','123123123','21321312','312312321','2313123123','空闲','普通',NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(6,'测试数据321','123123123','21321312','312312321','2313123123','空闲','普通',NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(7,'测试数234532据1','123123123','21321312','312312321','2313123123','空闲','普通',NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(8,'测试数2543据1','123123123','21321312','312312321','2313123123','空闲','普通',NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(9,'测试23523数据1','123123123','21321312','312312321','2313123123','空闲','普通',NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(10,'测试43424523数据1','123123123','21321312','312312321','2313123123','空闲','普通',NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(11,'测试数3452据1','123123123','21321312','312312321','2313123123','空闲','普通',NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(12,'测试2452数据1','123123123','21321312','312312321','2313123123','空闲','普通',NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(13,'测52435试数据1','123123123','21321312','312312321','2313123123','空闲','普通',NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(14,'测试2534数据1','123123123','21321312','312312321','2313123123','空闲','普通',NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(15,'测5435试数据1','123123123','21321312','312312321','2313123123','空闲','普通',NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(16,'测试数据12','123123123','21321312','312312321','2313123123','空闲','普通',NULL,'2018-11-14 22:58:06','0000-00-00 00:00:00'),(17,'测试数据1213','123123123','21321312','312312321','2313123123','空闲','普通',NULL,'2018-11-14 22:58:06','0000-00-00 00:00:00'),(18,'测试数据1213','123123123','21321312','312312321','2313123123','空闲','普通',NULL,'2018-11-14 22:58:06','0000-00-00 00:00:00'),(19,'测试数据133425','123123123','21321312','312312321','2313123123','空闲','普通',NULL,'2018-11-14 22:58:06','0000-00-00 00:00:00'),(20,'测试数据321','123123123','21321312','312312321','2313123123','空闲','普通',NULL,'2018-11-14 22:58:06','0000-00-00 00:00:00'),(21,'测试数234532据1','123123123','21321312','312312321','2313123123','空闲','普通',NULL,'2018-11-14 22:58:06','0000-00-00 00:00:00'),(22,'测试数2543据1','123123123','21321312','312312321','2313123123','空闲','普通',NULL,'2018-11-14 22:58:06','0000-00-00 00:00:00'),(23,'测试23523数据1','123123123','21321312','312312321','2313123123','空闲','普通',NULL,'2018-11-14 22:58:06','0000-00-00 00:00:00'),(24,'测试43424523数据1','123123123','21321312','312312321','2313123123','空闲','普通',NULL,'2018-11-14 22:58:06','0000-00-00 00:00:00'),(25,'测试数3452据1','123123123','21321312','312312321','2313123123','空闲','普通',NULL,'2018-11-14 22:58:06','0000-00-00 00:00:00'),(26,'测试2452数据1','123123123','21321312','312312321','2313123123','空闲','普通',NULL,'2018-11-14 22:58:06','0000-00-00 00:00:00'),(27,'李延喜','123123123','21321312','312312321','2313123123','离职','普通',NULL,'2018-11-14 22:58:06','2018-11-25 10:35:33'),(28,'陈岩测试','123123123','21321312','312312321','2313123123','休假','普通',NULL,'2018-11-14 22:58:06','2018-11-25 09:54:17'),(29,'陈三十','123123123','21321312','312312321','2313123123','工作','临时',NULL,'2018-11-14 22:58:06','2018-11-25 10:32:40'),(30,'陈岩','130480','21321312','66666666','2313123123','工作','普通',NULL,'2018-11-14 23:04:26','0000-00-00 00:00:00'),(31,'陈岩','213123123','3123213123','312313123','3123213213123','休假','临时',NULL,'2018-11-25 13:16:03','2018-11-25 13:16:03');
 
 #
 # Structure for table "bean_machine"
@@ -60,15 +60,21 @@ INSERT INTO `bean_driver` VALUES (1,'陈岩','13048062053','6666666','6666666','
 CREATE TABLE `bean_machine` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '机器ID',
   `tid` int(11) NOT NULL DEFAULT '0' COMMENT '机器型号ID',
-  `code` varchar(32) NOT NULL DEFAULT '' COMMENT '机器自编号',
-  `status` int(11) NOT NULL DEFAULT '0' COMMENT '状态',
-  `worktime` int(11) DEFAULT NULL COMMENT '工作时间',
+  `nameplate` varchar(50) DEFAULT NULL COMMENT '铭牌',
+  `code` varchar(32) DEFAULT NULL COMMENT '机器自编号',
+  `owner` varchar(20) DEFAULT NULL COMMENT '机主',
+  `payway` varchar(20) DEFAULT NULL COMMENT '购买方式',
+  `price` int(11) DEFAULT '0' COMMENT '参考价格',
+  `mPay` int(11) DEFAULT '0' COMMENT '月供',
+  `status` varchar(11) DEFAULT NULL COMMENT '状态',
+  `worktime` float(7,2) unsigned DEFAULT NULL COMMENT '工作时间',
   `xyz` varchar(64) DEFAULT NULL COMMENT 'GPS坐标',
   `resource_id` int(11) DEFAULT NULL COMMENT '资源ID',
   `detail` varchar(256) DEFAULT NULL COMMENT '详细备注',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `edit_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `birth` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `edit_time` timestamp NULL DEFAULT '0000-00-00 00:00:00',
+  `birth` timestamp NULL DEFAULT '0000-00-00 00:00:00',
+  `dead_line` timestamp NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `MACHINE_TYPE` (`tid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='机器信息表';
@@ -79,22 +85,44 @@ CREATE TABLE `bean_machine` (
 
 
 #
+# Structure for table "bean_machine_brand"
+#
+
+CREATE TABLE `bean_machine_brand` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL COMMENT '品牌名称',
+  `logo` varchar(255) DEFAULT NULL COMMENT 'logo URL',
+  `detail` varchar(512) DEFAULT NULL COMMENT '描述',
+  `resource_id` int(11) unsigned DEFAULT NULL COMMENT '资源ID',
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+#
+# Data for table "bean_machine_brand"
+#
+
+INSERT INTO `bean_machine_brand` VALUES (1,'烈马','logo.jpg','烈马挖掘机',NULL),(2,'页码','logo.jpg','页码挖掘机',NULL);
+
+#
 # Structure for table "bean_machine_type"
 #
 
 CREATE TABLE `bean_machine_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '机器型号ID',
-  `brand` varchar(32) NOT NULL DEFAULT '' COMMENT '品牌',
+  `brand_id` int(11) unsigned DEFAULT NULL COMMENT '品牌',
   `model` varchar(32) NOT NULL DEFAULT '' COMMENT '型号',
+  `name` varchar(50) DEFAULT NULL,
+  `picture` varchar(100) DEFAULT NULL COMMENT '型号照片',
   `detail` varchar(256) DEFAULT NULL COMMENT '详细描述',
   `resource_id` int(11) DEFAULT NULL COMMENT '资源ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='机器类型表';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='机器类型表';
 
 #
 # Data for table "bean_machine_type"
 #
 
+INSERT INTO `bean_machine_type` VALUES (1,1,'ASD01','小型挖掘机',NULL,'大马力',NULL),(2,1,'AAC','大型挖掘机',NULL,'为全球',NULL),(3,1,'BUZZK','测试挖掘机','','qwerwqerwqerwe rcqwecgwegewrewrecqw',NULL),(4,2,'BUZZK','测试挖掘机','','qwerqwgeryuj',NULL),(5,1,'ADSFSADF','测试挖掘机','','ewgeytjtirmenrt',NULL),(6,2,'SDFAD','测试挖掘机','','wegwgwt',NULL),(7,1,'REHTY','测试挖掘机','','',NULL),(8,1,'WEQRQWR','测试挖掘机','','',NULL),(9,1,'JTYJU','测试挖掘机','','',NULL);
 
 #
 # Structure for table "bean_support"
@@ -126,6 +154,7 @@ CREATE TABLE `com_resource` (
   `name` varchar(128) NOT NULL DEFAULT '' COMMENT '文件名称',
   `type` varchar(16) NOT NULL DEFAULT '' COMMENT '文件类型',
   `url` varchar(512) NOT NULL DEFAULT '' COMMENT '对应相对路径',
+  `size` int(11) unsigned DEFAULT '0' COMMENT '资源大小',
   `parent_id` int(11) DEFAULT NULL COMMENT '父资源ID',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `edit_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -361,4 +390,4 @@ CREATE TABLE `sys_drawer` (
 # Data for table "sys_drawer"
 #
 
-INSERT INTO `sys_drawer` VALUES (1,'基础','folder_shared',NULL,NULL),(2,'机手管理','account_box','http://127.0.0.1:8848/front-page/pages/base/driverList.html',1),(3,'客户管理','people',NULL,1),(4,'机器管理','android',NULL,1),(5,'机器品牌管理','style',NULL,1),(6,'后勤管理','assignment',NULL,1),(7,'日志','event_note',NULL,NULL),(8,'异常','error',NULL,7),(9,'维修单','loop',NULL,7),(10,'加油单','local_drink',NULL,7),(11,'转场单','airport_shuttle',NULL,7),(12,'工单','work',NULL,7),(13,'业务','info',NULL,NULL),(14,'合同','hourglass_full',NULL,13),(15,'客户意向','assistant_photo',NULL,13);
+INSERT INTO `sys_drawer` VALUES (1,'基础','folder_shared',NULL,NULL),(2,'机手管理','account_box','http://127.0.0.1:8848/front-page/pages/base/driverList.html',1),(3,'客户管理','people',NULL,1),(4,'机器管理','android',NULL,1),(5,'机器型号管理','style','http://127.0.0.1:8848/front-page/pages/base/machineTypeList.html',1),(6,'后勤管理','assignment',NULL,1),(7,'日志','event_note',NULL,NULL),(8,'异常','error',NULL,7),(9,'维修单','loop',NULL,7),(10,'加油单','local_drink',NULL,7),(11,'转场单','airport_shuttle',NULL,7),(12,'工单','work',NULL,7),(13,'业务','info',NULL,NULL),(14,'合同','hourglass_full',NULL,13),(15,'客户意向','assistant_photo',NULL,13);

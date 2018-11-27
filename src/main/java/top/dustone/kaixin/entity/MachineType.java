@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "bean_machine_type")
-@JsonIgnoreProperties({ "handler","hibernateLazyInitializer","machineBrand"})
+@JsonIgnoreProperties({ "handler","hibernateLazyInitializer"})
 public class MachineType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +16,8 @@ public class MachineType {
     @JoinColumn(name = "brand_id")
     private MachineBrand machineBrand;
     private String model;
+    private String name;
+    private String picture;
     private String detail;
     @OneToOne
     private Resource resource;
@@ -64,8 +66,26 @@ public class MachineType {
         return "MachineType{" +
                 "id=" + id +
                 ", model='" + model + '\'' +
+                ", name='" + name + '\'' +
+                ", picture='" + picture + '\'' +
                 ", detail='" + detail + '\'' +
                 ", resource=" + resource +
                 '}';
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

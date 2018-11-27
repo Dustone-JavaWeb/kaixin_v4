@@ -14,11 +14,11 @@ $(function() {
 	layui.use('element', function() {
 		var element = layui.element;
 		//监听tab页面关闭
-		element.on('tabDelete(model)', function(data){
+		element.on('tabDelete(model)', function(data) {
 			//console.log(this.parentNode); //当前Tab标题所在的原始DOM元素
-			var deleteTabId=this.parentNode.getAttribute("lay-id");
-			if(deleteTabId!=0){
-				navOpened.splice(navOpened.indexOf(deleteTabId),1);
+			var deleteTabId = this.parentNode.getAttribute("lay-id");
+			if (deleteTabId != 0) {
+				navOpened.splice(navOpened.indexOf(deleteTabId), 1);
 			}
 			// console.log(navOpened);
 		});
@@ -63,8 +63,8 @@ function makeTab(tabId) {
 			var navTab = findTabInfoById(tabId);
 			element.tabAdd('model', {
 				title: navTab.name,
-				content: '<iframe class="tabFrame layadmin-iframe" src="' + navTab.url + '" width="100%" height="' + (
-					document.documentElement.clientHeight-122) + 'px" frameborder="0" scrolling="auto"></iframe>', //支持传入html
+				content: '<iframe class="admin-tab-iframe layadmin-iframe" src="' + navTab.url + '" width="100%" height="' + (
+					document.documentElement.clientHeight - 110) + 'px" frameborder="0" scrolling="auto"></iframe>', //支持传入html
 				id: tabId
 			});
 			navOpened.push(tabId);

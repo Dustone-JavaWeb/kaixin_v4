@@ -13,20 +13,54 @@
 		<title></title>
 	</head>
 	<body class="mdui-theme-primary-blue-grey mdui-theme-accent-pink">
-		<div class="mdui-container-fluid mdui-center" id="showList">
-			<div class="mdui-panel" mdui-panel>
-				<div class="mdui-panel-item mdui-row">
-					<div class="mdui-panel-item-header">
-						<div class="mdui-panel-item-title">
-							<h3>筛选</h3>
+
+		<div class="mdui-container-fluid mdui-center" id="queryList">
+			<div class="admin-select-area mdui-row">
+				<div class="mdui-typo">
+					<h3>品牌</h3>
+				</div>
+				<div class="mdui-divider"></div>
+				<div class="admin-list-area mdui-row-xs-5">
+					<div class="admin-card-list-cell mdui-col" v-for="parentCard in parentCards" @click="chooseBrand(parentCard)">
+						<div class="mdui-card">
+							<div class="mdui-card-header">
+								<img class="mdui-card-header-avatar" src="../../resource/img/machineLogo.png" />
+								<div class="mdui-card-header-title">
+									{{parentCard.name}}
+								</div>
+								<div class="mdui-card-header-subtitle">
+									{{parentCard.detail}}
+								</div>
+							</div>
 						</div>
-						<i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
-					</div>
-					<div class="mdui-panel-item-body">
-						<p>品牌</p>
-						<p>类型</p>
 					</div>
 				</div>
 			</div>
+			<div class="admin-select-area mdui-row">
+				<div class="mdui-typo">
+					<h3>型号</h3>
+				</div>
+				<div class="mdui-divider"></div>
+			</div>
+			<div class="admin-list-area mdui-row-xs-4">
+				<div class="admin-card-list-cell mdui-col" v-bind:class="cardSelected(childCard.machineBrand.id)" v-for="childCard in childCards">
+					<div class="mdui-card">
+						<div class="mdui-card-header">
+							<img class="mdui-card-header-avatar" src="../../resource/img/machineLogo.png" />
+							<div class="mdui-card-header-title">
+								{{childCard.model}}
+							</div>
+							<div class="mdui-card-header-subtitle">
+								{{childCard.name}}
+							</div>
+						</div>
+						<div class="mdui-card-media">
+							<img src="../../resource/img/machineLogo.png" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="../../resource/js/admin/machineTypeList.js"></script>
 	</body>
 </html>
