@@ -61,18 +61,6 @@ public class MachineType {
         this.resource = resource;
     }
 
-    @Override
-    public String toString() {
-        return "MachineType{" +
-                "id=" + id +
-                ", model='" + model + '\'' +
-                ", name='" + name + '\'' +
-                ", picture='" + picture + '\'' +
-                ", detail='" + detail + '\'' +
-                ", resource=" + resource +
-                '}';
-    }
-
     public String getPicture() {
         return picture;
     }
@@ -87,5 +75,18 @@ public class MachineType {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "MachineType{" +
+                "id=" + id +
+                ", machineBrand=" + machineBrand +
+                ", model='" + model + '\'' +
+                ", name='" + name + '\'' +
+                ", picture='" + picture + '\'' +
+                ", detail='" + detail + '\'' +
+                ", resource=" + resource +
+                '}';
     }
 }

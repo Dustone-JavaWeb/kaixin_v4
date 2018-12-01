@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+
 @Entity
-@Table(name="bean_machine")
-@JsonIgnoreProperties({ "handler","hibernateLazyInitializer" })
+@Table(name = "bean_machine")
+@JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 public class Machine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,11 +24,16 @@ public class Machine {
     private String status;
     private float worktime;
     private String xyz;
+    @OneToOne
     private Resource resource;
     private String detail;
+    @Column(name = "create_time")
     private Timestamp createTime;
+    @Column(name = "edit_time")
     private Timestamp editTime;
+    @Column(name = "birth")
     private Timestamp birth;
+    @Column(name = "dead_line")
     private Timestamp deadLine;
 
     public Integer getId() {
