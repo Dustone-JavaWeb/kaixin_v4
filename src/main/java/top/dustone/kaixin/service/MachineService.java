@@ -16,6 +16,7 @@ public class MachineService {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
         Pageable pageable = PageRequest.of(start, size, sort);
         ExampleMatcher exampleMatcher = ExampleMatcher.matching()
+                .withMatcher("machineType.model", ExampleMatcher.GenericPropertyMatchers.exact())
                 .withMatcher("nameplate", ExampleMatcher.GenericPropertyMatchers.startsWith())
                 .withMatcher("code", ExampleMatcher.GenericPropertyMatchers.startsWith())
                 .withMatcher("payway", ExampleMatcher.GenericPropertyMatchers.startsWith());

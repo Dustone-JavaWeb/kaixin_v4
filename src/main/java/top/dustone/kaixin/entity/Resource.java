@@ -106,7 +106,6 @@ public class Resource {
                 ", type='" + type + '\'' +
                 ", url='" + url + '\'' +
                 ", size=" + size +
-                ", parent=" + parent +
                 ", resources=" + resources +
                 ", createTime=" + createTime +
                 ", editTime=" + editTime +

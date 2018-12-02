@@ -3,7 +3,7 @@ var tableVue;
 var infoVue;
 var infoWindow;
 var baseURL = "http://localhost:8080/kaixin";
-var ajaxQueryURL = baseURL + "/drivers_query";
+var ajaxQueryURL = baseURL + "/machines_query";
 var ajaxUpdateURL = baseURL + "/drivers_update";
 var exchange;
 
@@ -16,7 +16,7 @@ $(function() {
 			requestModel: {
 				start: 0,
 				example: {
-					type: "",
+					machineType:{},
 					status: ""
 				}
 			},
@@ -58,6 +58,7 @@ $(function() {
 			},
 			pageSelected: function(num) {
 				var self = this;
+				console.log(self.pageNow);
 				if (num == self.pageNow) {
 					return {
 						'mdui-color-theme-accent': true
@@ -96,17 +97,12 @@ $(function() {
 	new Vue({
 		el: '#detailDialog',
 		data: {
-			entity: {
-				//特殊字段 用于resource列表的初始化
-				resource:{
-					resources:[{}]
-				}
-			},
+			entity: {},
 			inputDisabled: false,
 			editButtonText: '编辑',
 			giveUpButtonText: '放弃',
 			giveUpButtonDisplay: 'none',
-			title: "机手信息",
+			title: "机器信息",
 			requestModel: {
 				start: 0,
 				example: {
@@ -124,9 +120,9 @@ $(function() {
 				self.requestModel.example = {};
 				self.requestModel.example.id = dId;
 				self.requestModel.start = 0;
+				console.log(self.requestModel.example);
 				axios.post(ajaxQueryURL, self.requestModel).then(function(response) {
 					self.entity = response.data.content[0];
-					console.log(self.entity.resource);
 					mdui.mutation();
 				});
 			},

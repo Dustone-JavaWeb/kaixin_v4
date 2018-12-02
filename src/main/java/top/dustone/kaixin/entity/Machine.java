@@ -15,14 +15,14 @@ public class Machine {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tid")
     private MachineType machineType;
-    private String nameplete;
+    private String nameplate;
     private String code;
     private String owner;
     private String payway;
-    private int price;
-    private int mPay;
+    private Integer price;
+    private Integer mPay;
     private String status;
-    private float worktime;
+    private Float worktime;
     private String xyz;
     @OneToOne
     private Resource resource;
@@ -52,12 +52,12 @@ public class Machine {
         this.machineType = machineType;
     }
 
-    public String getNameplete() {
-        return nameplete;
+    public String getNameplate() {
+        return nameplate;
     }
 
-    public void setNameplete(String nameplete) {
-        this.nameplete = nameplete;
+    public void setNameplate(String nameplate) {
+        this.nameplate = nameplate;
     }
 
     public String getCode() {
@@ -84,19 +84,19 @@ public class Machine {
         this.payway = payway;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
-    public int getmPay() {
+    public Integer getmPay() {
         return mPay;
     }
 
-    public void setmPay(int mPay) {
+    public void setmPay(Integer mPay) {
         this.mPay = mPay;
     }
 
@@ -108,11 +108,11 @@ public class Machine {
         this.status = status;
     }
 
-    public float getWorktime() {
+    public Float getWorktime() {
         return worktime;
     }
 
-    public void setWorktime(float worktime) {
+    public void setWorktime(Float worktime) {
         this.worktime = worktime;
     }
 
@@ -177,7 +177,7 @@ public class Machine {
         return "Machine{" +
                 "id=" + id +
                 ", machineType=" + machineType +
-                ", nameplete='" + nameplete + '\'' +
+                ", nameplate='" + nameplate + '\'' +
                 ", code='" + code + '\'' +
                 ", owner='" + owner + '\'' +
                 ", payway='" + payway + '\'' +

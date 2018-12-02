@@ -23,6 +23,7 @@ public class DriverController {
     public Page4Navigator<Driver> list(@RequestBody RequestModel<Driver> requestModel){
         Page4Navigator<Driver> page=driverService.listByExapmle(requestModel.getExample(),requestModel.getStart(),5,5);
         page.setExample(requestModel);
+        System.out.println(page);
         return page;
     }
     @PostMapping("/drivers_update")

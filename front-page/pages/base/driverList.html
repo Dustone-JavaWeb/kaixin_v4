@@ -51,38 +51,40 @@
 			</div>
 
 			<div class="admin-table-area mdui-row">
-				<table class="mdui-table mdui-table-hoverable">
-					<thead>
-						<tr>
-							<td>编号</td>
-							<td>姓名</td>
-							<td>电话</td>
-							<td>驾驶证号</td>
-							<td>类型</td>
-							<td>状态</td>
-							<td>注册时间</td>
-						</tr>
-					</thead>
-					<tbody>
-						<tr v-for="tr in trs" @click="showInfo(tr.id)">
-							<td>{{tr.id}}</td>
-							<td>{{tr.name}}</td>
-							<td>{{tr.tel}}</td>
-							<td>{{tr.paperId}}</td>
-							<td>
-								<div class="mdui-text-color-white mdui-chip-title mdui-color-light-green" v-if="tr.type=='普通'">{{tr.type}}</div>
-								<div class="mdui-text-color-white mdui-chip-title mdui-color-blue-800" v-else-if="tr.type=='临时'">{{tr.type}}</div>
-							</td>
-							<td>
-								<div class="mdui-text-color-white mdui-chip-title mdui-color-light-green" v-if="tr.status=='空闲'">{{tr.status}}</div>
-								<div class="mdui-text-color-white mdui-chip-title mdui-color-pink" v-else-if="tr.status=='工作'">{{tr.status}}</div>
-								<div class="mdui-text-color-white mdui-chip-title mdui-color-yellow-800" v-else-if="tr.status=='休假'">{{tr.status}}</div>
-								<div class="mdui-text-color-white mdui-chip-title mdui-color-grey" v-else-if="tr.status=='离职'">{{tr.status}}</div>
-							</td>
-							<td>{{tr.createTime|date}}</td>
-						</tr>
-					</tbody>
-				</table>
+				<div class="mdui-table-fluid">
+					<table class="mdui-table mdui-table-hoverable">
+						<thead>
+							<tr>
+								<td>编号</td>
+								<td>姓名</td>
+								<td>电话</td>
+								<td>驾驶证号</td>
+								<td>类型</td>
+								<td>状态</td>
+								<td>注册时间</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr v-for="tr in trs" @click="showInfo(tr.id)">
+								<td>{{tr.id}}</td>
+								<td>{{tr.name}}</td>
+								<td>{{tr.tel}}</td>
+								<td>{{tr.paperId}}</td>
+								<td>
+									<div class="mdui-text-color-white mdui-chip-title mdui-color-light-green" v-if="tr.type=='普通'">{{tr.type}}</div>
+									<div class="mdui-text-color-white mdui-chip-title mdui-color-blue-800" v-else-if="tr.type=='临时'">{{tr.type}}</div>
+								</td>
+								<td>
+									<div class="mdui-text-color-white mdui-chip-title mdui-color-light-green" v-if="tr.status=='空闲'">{{tr.status}}</div>
+									<div class="mdui-text-color-white mdui-chip-title mdui-color-pink" v-else-if="tr.status=='工作'">{{tr.status}}</div>
+									<div class="mdui-text-color-white mdui-chip-title mdui-color-yellow-800" v-else-if="tr.status=='休假'">{{tr.status}}</div>
+									<div class="mdui-text-color-white mdui-chip-title mdui-color-grey" v-else-if="tr.status=='离职'">{{tr.status}}</div>
+								</td>
+								<td>{{tr.createTime|date}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 			<div class="admin-table-control mdui-row">
 				<div class="mdui-col-xs-4" style="background: white;">
@@ -172,11 +174,20 @@
 					</div>
 					<div class="mdui-divider"></div>
 					<div class="mdui-row-xs-3 mdui-row-sm-3 mdui-row-md-3 mdui-row-lg-3 mdui-row-xl-3 mdui-grid-list">
-						<div class="mdui-col">
-							
-						</div>
-						<div class="mdui-col">
-							
+						<div v-if="entity.resource!=null">
+							<div class="mdui-col admin-layout-box" v-for="res in entity.resource.resources">
+								<div class="mdui-card">
+									<div class="mdui-card-header">
+										<img class="mdui-card-header-avatar" src="../../resource/img/machineLogo.png" />
+										<div class="mdui-card-header-title">
+											{{res.name}}
+										</div>
+										<div class="mdui-card-header-subtitle">
+											{{res.type}} {{res.size}}KB
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
