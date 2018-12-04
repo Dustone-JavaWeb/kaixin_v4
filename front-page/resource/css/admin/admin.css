@@ -54,6 +54,9 @@ html{
 	margin-left: 30px;
 	margin-right: 30px;
 }
+.mdui-table td{
+	width: 200px;
+}
 
 .admin-info-resource-image {
 	height: 100px;
@@ -61,4 +64,8 @@ html{
 
 .admin-card-list-cell {
 	padding: 5px;
+}
+
+.admin-dialog{
+	overflow-y: auto;
 }

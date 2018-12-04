@@ -64,7 +64,7 @@ function makeTab(tabId) {
 			element.tabAdd('model', {
 				title: navTab.name,
 				content: '<iframe class="admin-tab-iframe layadmin-iframe" src="' + navTab.url + '" width="100%" height="' + (
-					document.documentElement.clientHeight - 110) + 'px" frameborder="0" scrolling="auto"></iframe>', //支持传入html
+					document.documentElement.clientHeight - 101) + 'px" frameborder="0" scrolling="auto"></iframe>', //支持传入html
 				id: tabId
 			});
 			navOpened.push(tabId);

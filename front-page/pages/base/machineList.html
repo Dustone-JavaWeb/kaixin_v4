@@ -184,11 +184,20 @@
 					</div>
 					<div class="mdui-divider"></div>
 					<div class="mdui-row-xs-3 mdui-row-sm-3 mdui-row-md-3 mdui-row-lg-3 mdui-row-xl-3 mdui-grid-list">
-						<div class="mdui-col">
-
-						</div>
-						<div class="mdui-col">
-
+						<div v-if="entity.resource!=null">
+							<div class="mdui-col admin-layout-box" v-for="res in entity.resource.resources">
+								<div class="mdui-card">
+									<div class="mdui-card-header">
+										<img class="mdui-card-header-avatar" src="../../resource/img/machineLogo.png" />
+										<div class="mdui-card-header-title">
+											{{res.name}}
+										</div>
+										<div class="mdui-card-header-subtitle">
+											{{res.type}} {{res.size}}KB
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

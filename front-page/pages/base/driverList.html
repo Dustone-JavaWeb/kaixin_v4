@@ -102,7 +102,7 @@
 			</div>
 		</div>
 
-		<div id="editWindow" class="mdui-dialog">
+		<div id="editWindow" class="admin-dialog mdui-dialog">
 			<div class="mdui-container" id="detailDialog">
 				<div class="mdui-row">
 					<div class="mdui-typo">
@@ -137,11 +137,6 @@
 								 placeholder="驾驶证号" />
 							</div>
 							<div class="mdui-textfield mdui-col-xs-6">
-								<label class="mdui-textfield-label">银行卡账号</label>
-								<input v-bind:disabled="inputDisabled" v-model="entity.creditCard" class="mdui-textfield-input" type="text"
-								 placeholder="银行卡账号" />
-							</div>
-							<div class="mdui-textfield mdui-col-xs-6">
 								<label class="mdui-textfield-label">状态</label>
 								<select v-bind:disabled="inputDisabled" v-model="entity.status" class="mdui-select" style="width:100%">
 									<option value="空闲">空闲</option>
@@ -166,10 +161,41 @@
 					</div>
 					<div class="mdui-typo">
 						<h3>
+							财务信息
+						</h3>
+					</div>
+					<div class="mdui-divider"></div>
+					<div class="mdui-table-fluid">
+						<table class="mdui-table">
+							<thead>
+								<tr>
+									<td>账户类型</td>
+									<td>开户名</td>
+									<td>账号</td>
+									<td>开户银行</td>
+									<td>添加时间</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><input v-bind:disabled="inputDisabled" v-model="entity.bankAccount.type" class="mdui-textfield-input" type="text"
+										placeholder="账户类型" /></td>
+									<td><input v-bind:disabled="inputDisabled" v-model="entity.bankAccount.name" class="mdui-textfield-input" type="text"
+										placeholder="开户名" /></td>
+									<td><input v-bind:disabled="inputDisabled" v-model="entity.bankAccount.number" class="mdui-textfield-input"
+										type="text" placeholder="账号" /></td>
+									<td><input v-bind:disabled="inputDisabled" v-model="entity.bankAccount.bank" class="mdui-textfield-input" type="text"
+										placeholder="开户银行" /></td>
+									<td><input v-bind:disabled="inputDisabled" v-model="entity.bankAccount.createTime" class="mdui-textfield-input"
+										type="text" placeholder="添加时间" /></td>
+									<td>ceshiadhaodihaodishdoishdo</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="mdui-typo">
+						<h3>
 							相关资源
-							<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(1)">{{editButtonText}}</button>
-							<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(0)"
-							 v-bind:style="{display:giveUpButtonDisplay}">{{giveUpButtonText}}</button>
 						</h3>
 					</div>
 					<div class="mdui-divider"></div>

@@ -15,11 +15,12 @@ public class Driver {
     private String tel;
     private String personId;
     private String paperId;
-    private String creditCard;
     private String status;
     private String type;
     @OneToOne
     private Resource resource;
+    @ManyToOne
+    private BankAccount bankAccount;
     @Column(name = "create_time")
     private Timestamp createTime;
     @Column(name = "edit_time")
@@ -62,14 +63,6 @@ public class Driver {
 
     public void setPaperId(String paperId) {
         this.paperId = paperId;
-    }
-
-    public String getCreditCard() {
-        return creditCard;
-    }
-
-    public void setCreditCard(String creditCard) {
-        this.creditCard = creditCard;
     }
 
     public String getStatus() {
@@ -115,6 +108,14 @@ public class Driver {
         this.resource = resource;
     }
 
+    public BankAccount getBankAccount() {
+        return bankAccount;
+    }
+
+    public void setBankAccount(BankAccount bankAccount) {
+        this.bankAccount = bankAccount;
+    }
+
     @Override
     public String toString() {
         return "Driver{" +
@@ -123,10 +124,10 @@ public class Driver {
                 ", tel='" + tel + '\'' +
                 ", personId='" + personId + '\'' +
                 ", paperId='" + paperId + '\'' +
-                ", creditCard='" + creditCard + '\'' +
                 ", status='" + status + '\'' +
                 ", type='" + type + '\'' +
                 ", resource=" + resource +
+                ", bankAccount=" + bankAccount +
                 ", createTime=" + createTime +
                 ", editTime=" + editTime +
                 '}';

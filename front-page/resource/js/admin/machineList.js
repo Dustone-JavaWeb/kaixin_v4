@@ -97,7 +97,13 @@ $(function() {
 	new Vue({
 		el: '#detailDialog',
 		data: {
-			entity: {},
+			entity: {
+				//特殊字段 用于resource列表的初始化
+				resource:{
+					resources:[{}]
+				},
+				machineType:{}
+			},
 			inputDisabled: false,
 			editButtonText: '编辑',
 			giveUpButtonText: '放弃',

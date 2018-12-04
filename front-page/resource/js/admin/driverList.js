@@ -97,6 +97,7 @@ $(function() {
 		el: '#detailDialog',
 		data: {
 			entity: {
+				bankAccount:{},
 				//特殊字段 用于resource列表的初始化
 				resource:{
 					resources:[{}]
@@ -110,7 +111,7 @@ $(function() {
 			requestModel: {
 				start: 0,
 				example: {
-					id: 0
+					id: 0,
 				}
 			}
 		},
