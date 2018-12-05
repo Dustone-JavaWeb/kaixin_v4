@@ -1,6 +1,8 @@
 package top.dustone.kaixin.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -20,6 +22,7 @@ public class Driver {
     @OneToOne
     private Resource resource;
     @ManyToOne
+    @Cascade(value = {CascadeType.ALL})
     private BankAccount bankAccount;
     @Column(name = "create_time")
     private Timestamp createTime;

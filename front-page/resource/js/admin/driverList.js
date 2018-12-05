@@ -127,7 +127,6 @@ $(function() {
 				self.requestModel.start = 0;
 				axios.post(ajaxQueryURL, self.requestModel).then(function(response) {
 					self.entity = response.data.content[0];
-					console.log(self.entity.resource);
 					mdui.mutation();
 				});
 			},
@@ -165,8 +164,16 @@ $(function() {
 					}
 				}
 				mdui.mutation();
+			},
+			setWidth:function(str){
+				var self = this;
+				if(str!=null){
+					return {
+						'width': (str.length*16)+"px"
+					}
+				}
 			}
-		}
+		},
 	});
 });
 
