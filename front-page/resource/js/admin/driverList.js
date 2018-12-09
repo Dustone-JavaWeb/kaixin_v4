@@ -165,13 +165,8 @@ $(function() {
 				}
 				mdui.mutation();
 			},
-			setWidth:function(str){
-				var self = this;
-				if(str!=null){
-					return {
-						'width': (str.length*16)+"px"
-					}
-				}
+			editBank:function(mode){
+				
 			}
 		},
 	});

@@ -162,6 +162,7 @@
 					<div class="mdui-typo">
 						<h3>
 							财务信息
+							<button v-if="entity.bankAccount!=null" class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="editBank(1)">编辑</button>
 						</h3>
 					</div>
 					<div class="mdui-divider"></div>
@@ -178,14 +179,18 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td><input v-bind:style="setWidth(entity.bankAccount.type)" v-bind:disabled="inputDisabled" v-model="entity.bankAccount.type"
+										<td>{{entity.bankAccount.type}}</td>
+										<td>{{entity.bankAccount.name}}</td>
+										<td>{{entity.bankAccount.number}}</td>
+										<td>{{entity.bankAccount.bank}}</td>
+										<!-- <td><input v-bind:style="setWidth(entity.bankAccount.type)" v-bind:disabled="inputDisabled" v-model="entity.bankAccount.type"
 											 class="mdui-textfield-input" type="text" placeholder="账户类型" /></td>
 										<td><input v-bind:style="setWidth(entity.bankAccount.name)" v-bind:disabled="inputDisabled" v-model="entity.bankAccount.name"
 											 class="mdui-textfield-input" type="text" placeholder="开户名" /></td>
 										<td><input v-bind:style="setWidth(entity.bankAccount.number)" v-bind:disabled="inputDisabled" v-model="entity.bankAccount.number"
 											 class="mdui-textfield-input" type="text" placeholder="账号" /></td>
 										<td><input v-bind:style="setWidth(entity.bankAccount.bank)" v-bind:disabled="inputDisabled" v-model="entity.bankAccount.bank"
-											 class="mdui-textfield-input" type="text" placeholder="开户银行" /></td>
+											 class="mdui-textfield-input" type="text" placeholder="开户银行" /></td> -->
 									</tr>
 								</tbody>
 							</table>
