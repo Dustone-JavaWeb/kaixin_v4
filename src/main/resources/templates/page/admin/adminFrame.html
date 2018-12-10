@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:include="include/admin/adminLib.html"></div>
+    <title>广州铠信</title>
+</head>
+<body class="admin_frame_body mdui-theme-primary-blue-grey mdui-theme-accent-pink mdui-theme-accent-pink mdui-loaded mdui-drawer-body-left mdui-locked">
+<!--toolbar-->
+<!-- <header class="mdui-appbar mdui-appbar-fixed mdui-shadow-0"> -->
+<div class="mdui-toolbar mdui-color-theme">
+    <a href="javascript:;" id="drawButton" class="mdui-btn mdui-btn-icon"><i
+            class="mdui-icon material-icons mdui-color-theme">menu</i></a>
+    <span class="mdui-typo-title mdui-color-theme">广州铠信</span>
+</div>
+<!-- </header> -->
+
+<!--抽屉-->
+<div class="mdui-drawer mdui-color-theme" id="left-drawer">
+    <ul class="mdui-list" mdui-collapse="{accordion: true}" id="left-drawer-list">
+        <li class="mdui-collapse-item mdui-color-theme" v-for="item in drawerItems">
+            <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons">{{item.icon}}</i>
+                <div class="mdui-list-item-content">{{item.name}}</div>
+                <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+            </div>
+            <ul class="mdui-collapse-item-body mdui-list mdui-list-dense" style="">
+                <li class="mdui-list-item mdui-ripple" v-for="child in item.sysDrawers">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">{{child.icon}}</i>
+                    <div class="mdui-list-item-content" v-on:click="chooseTab" v-bind:tabId="child.id">{{child.name}}
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<!--tab-->
+<div id="tabArea">
+    <div class="admin-tab-bar layui-tab layui-tab-card" lay-filter="model" lay-allowClose="true">
+        <ul class="mdui-color-theme layui-tab-title">
+            <li class="layui-this" lay-id="0">控制台</li>
+        </ul>
+        <div class="admin-tab-content layui-tab-content">
+            <div class="layui-tab-item layui-show">1</div>
+        </div>
+    </div>
+</div>
+<script src="js/admin/adminFrame.js"></script>
+</body>
+</html>
+
+
