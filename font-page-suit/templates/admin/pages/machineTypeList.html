@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="../../lib/mdui/js/mdui.js"></script>
+		<script src="../../lib/jquery/2.0.0/jquery.min.js"></script>
+		<script src="../../lib/vue/2.5.16/vue.min.js"></script>
+		<script src="../../lib/axios/0.17.1/axios.min.js"></script>
+		<link href="../../lib/mdui/css/mdui.css" rel="stylesheet" />
+		<link href="../../resource/css/admin/admin.css" rel="stylesheet" />
+		<title>机器型号管理</title>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body class="mdui-theme-primary-blue-grey mdui-theme-accent-pink">
+
+		<div class="mdui-container-fluid mdui-center" id="queryList">
+			<div class="admin-select-area mdui-row">
+				<div class="mdui-typo">
+					<h3>品牌</h3>
+				</div>
+				<div class="mdui-divider"></div>
+				<div class="admin-list-area mdui-row-xs-5">
+					<div class="admin-card-list-cell mdui-col" v-for="parentCard in parentCards" @click="chooseBrand(parentCard)">
+						<div class="mdui-card">
+							<div class="mdui-card-header">
+								<img class="mdui-card-header-avatar" src="../../resource/img/machineLogo.png" />
+								<div class="mdui-card-header-title">
+									{{parentCard.name}}
+								</div>
+								<div class="mdui-card-header-subtitle">
+									{{parentCard.detail}}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="admin-select-area mdui-row">
+				<div class="mdui-typo">
+					<h3>型号</h3>
+				</div>
+				<div class="mdui-divider"></div>
+			</div>
+			<div class="admin-list-area mdui-row-xs-4">
+				<div class="admin-card-list-cell mdui-col" v-bind:class="cardSelected(childCard.machineBrand.id)" v-for="childCard in childCards">
+					<div class="mdui-card">
+						<div class="mdui-card-header">
+							<img class="mdui-card-header-avatar" src="../../resource/img/machineLogo.png" />
+							<div class="mdui-card-header-title">
+								{{childCard.model}}
+							</div>
+							<div class="mdui-card-header-subtitle">
+								{{childCard.name}}
+							</div>
+						</div>
+						<div class="mdui-card-media">
+							<img src="../../resource/img/machineLogo.png" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="../../resource/js/admin/machineTypeList.js"></script>
+	</body>
+</html>

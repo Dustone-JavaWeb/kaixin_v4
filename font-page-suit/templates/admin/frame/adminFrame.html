@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<!--
+<head th:include="include/admin/Header::html('广州铠信')">
+</head>
+-->
+	<head>
+		<script src="../../../webapp/lib/mdui/js/mdui.js"></script>
+		<script src="../../../webapp/lib/jquery/2.0.0/jquery.min.js"></script>
+		<script src="../../../webapp/lib/vue/2.5.16/vue.min.js"></script>
+		<script src="../../../webapp/lib/axios/0.17.1/axios.min.js"></script>
+		<script src="../../../webapp/lib/layui/layui.js"></script>
+		<script src="../../../webapp/js/admin/frame/const.js"></script>
+		<script src="../../../webapp/js/admin/frame/environment.js"></script>
+
+		<link href="../../../webapp/lib/layui/css/layui.css" rel="stylesheet" />
+		<link href="../../../webapp/lib/mdui/css/mdui.css" rel="stylesheet" />
+		<link href="../../../webapp/css/admin/admin.css" rel="stylesheet" />
+		<title>广州铠信</title>
+	</head>
+	<body class="admin_frame_body mdui-theme-primary-blue-grey mdui-theme-accent-pink mdui-theme-accent-pink mdui-loaded mdui-drawer-body-left mdui-locked">
+		<!--toolbar-->
+		<!-- <header class="mdui-appbar mdui-appbar-fixed mdui-shadow-0"> -->
+		<div class="mdui-toolbar mdui-color-theme">
+			<a href="javascript:;" id="drawButton" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons mdui-color-theme">menu</i></a>
+			<span class="mdui-typo-title mdui-color-theme">广州铠信</span>
+		</div>
+		<!-- </header> -->
+
+		<!--抽屉-->
+		<div class="mdui-drawer mdui-color-theme" id="left-drawer">
+			<ul class="mdui-list" mdui-collapse="{accordion: true}" id="left-drawer-list">
+				<li class="mdui-collapse-item mdui-color-theme" v-for="item in drawerItems">
+					<div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+						<i class="mdui-list-item-icon mdui-icon material-icons">{{item.icon}}</i>
+						<div class="mdui-list-item-content">{{item.name}}</div>
+						<i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+					</div>
+					<ul class="mdui-collapse-item-body mdui-list mdui-list-dense" style="">
+						<li class="mdui-list-item mdui-ripple" v-for="child in item.sysDrawers">
+							<i class="mdui-list-item-icon mdui-icon material-icons">{{child.icon}}</i>
+							<div class="mdui-list-item-content" v-on:click="chooseTab" v-bind:tabId="child.id">{{child.name}}</div>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<!--tab-->
+		<div style="height: 100%;">
+			<div class="admin-tab-bar layui-tab layui-tab-card" lay-filter="model" lay-allowClose="true">
+				<ul class="mdui-color-theme layui-tab-title">
+					<li lay-id="home/console.html" class="layui-this">
+						<span>控制台</span>
+						<i class="layui-icon layui-unselect layui-tab-close">ဆ</i>
+					</li>
+				</ul>
+				<div class="admin-tab-content layui-tab-content">
+					<div class="layui-tab-item layui-show">1</div>
+				</div>
+			</div>
+		</div>
+		<script src="../../../webapp/js/admin/frame/frame.js"></script>
+	</body>
+</html>

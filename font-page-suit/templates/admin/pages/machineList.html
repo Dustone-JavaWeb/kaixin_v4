@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="../../lib/mdui/js/mdui.js"></script>
+		<script src="../../lib/jquery/2.0.0/jquery.min.js"></script>
+		<script src="../../lib/vue/2.5.16/vue.min.js"></script>
+		<script src="../../lib/axios/0.17.1/axios.min.js"></script>
+		<link href="../../lib/mdui/css/mdui.css" rel="stylesheet" />
+		<link href="../../resource/css/admin/admin.css" rel="stylesheet" />
+		<title>机器管理</title>
+	</head>
+	<body class="mdui-theme-primary-blue-grey mdui-theme-accent-pink">
+		<div class="mdui-container-fluid mdui-center" id="queryTable">
+			<div class="admin-select-area mdui-row">
+				<div class="mdui-typo">
+					<h3>筛选条件</h3>
+				</div>
+				<div class="mdui-divider"></div>
+				<form id="select-form" class="admin-select-form">
+					<div class="admin-layout-box mdui-col-xs-4">
+						<input v-model="requestModel.example.machineType.model" class="mdui-textfield-input" type="text" placeholder="型号" />
+					</div>
+					<div class="admin-layout-box mdui-col-xs-4">
+						<input v-model="requestModel.example.nameplate" class="mdui-textfield-input" type="text" placeholder="铭牌" />
+					</div>
+					<div class="admin-layout-box mdui-col-xs-4">
+						<input v-model="requestModel.example.code" class="mdui-textfield-input" type="text" placeholder="自编号" />
+					</div>
+					<div class="admin-layout-box mdui-col-xs-4">
+						<select v-model="requestModel.example.status" class="mdui-select" style="width: 100%">
+							<option value="空闲">空闲</option>
+							<option value="工作">工作</option>
+							<option value="休假">维修</option>
+							<option value="离职">报废</option>
+							<option value="离职">已出售</option>
+						</select>
+					</div>
+				</form>
+				<div class="admin-layout-box mdui-col-xs-4">
+					<button v-on:click="query()" class="mdui-btn mdui-color-theme-accent mdui-ripple" style="width: 100%">查询</button>
+				</div>
+			</div>
+			<div class="admin-select-area mdui-row">
+				<div class="mdui-divider"></div>
+			</div>
+
+			<div class="admin-table-area mdui-row">
+				<div class="mdui-table-fluid">
+					<table class="mdui-table mdui-table-hoverable">
+						<thead>
+							<tr>
+								<td>ID</td>
+								<td>机器型号</td>
+								<td>铭牌</td>
+								<td>机器自编号</td>
+								<td>机主</td>
+								<td>购买方式</td>
+								<td>购买价格</td>
+								<td>月供</td>
+								<td>工作时间</td>
+								<td>状态</td>
+								<td>创建时间</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr v-for="tr in trs" @click="showInfo(tr.id)">
+								<td>{{tr.id}}</td>
+								<td>{{tr.machineType.model}}</td>
+								<td>{{tr.nameplate}}</td>
+								<td>{{tr.code}}</td>
+								<td>{{tr.owner}}</td>
+								<td>{{tr.payway}}</td>
+								<td>{{tr.price}}</td>
+								<td>{{tr.mPay}}</td>
+								<td>{{tr.worktime}}</td>
+								<td>
+									<div class="mdui-text-color-white mdui-chip-title mdui-color-light-green" v-if="tr.status=='空闲'">{{tr.status}}</div>
+									<div class="mdui-text-color-white mdui-chip-title mdui-color-pink" v-else-if="tr.status=='工作'">{{tr.status}}</div>
+									<div class="mdui-text-color-white mdui-chip-title mdui-color-yellow-800" v-else-if="tr.status=='维修'">{{tr.status}}</div>
+									<div class="mdui-text-color-white mdui-chip-title mdui-color-black" v-else-if="tr.status=='报废'">{{tr.status}}</div>
+									<div class="mdui-text-color-white mdui-chip-title mdui-color-grey" v-else-if="tr.status=='已出售'">{{tr.status}}</div>
+								</td>
+								<td>{{tr.createTime|date}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="admin-table-control mdui-row">
+				<div class="mdui-col-xs-4" style="background: white;">
+					<button type="button" class="mdui-btn mdui-color-theme-accent" @click="addEntity()">新增</button>
+					<button type="button" class="mdui-btn mdui-color-theme-accent" @click="jump('first')">导出</button>
+				</div>
+				<div class="mdui-btn-group <mdui-col-xs-5x></mdui-col-xs-5x>">
+					<button type="button" class="mdui-btn" @click="jump('first')"><i class="mdui-icon material-icons">first_page</i></button>
+					<button type="button" class="mdui-btn" @click="jump('pre')"><i class="mdui-icon material-icons">navigate_before</i></button>
+					<button v-for="i in pagination.navigatepageNums" v-bind:class="pageSelected(i)" type="button" class="mdui-btn"
+					 @click="jumpByNumber(i-1)">{{i}}</button>
+					<button type="button" class="mdui-btn" @click="jump('next')"><i class="mdui-icon material-icons">navigate_next</i></button>
+					<button type="button" class="mdui-btn" @click="jump('last')"><i class="mdui-icon material-icons">last_page</i></button>
+				</div>
+			</div>
+		</div>
+
+		<div id="editWindow" class="mdui-dialog">
+			<div class="mdui-container" id="detailDialog">
+				<div class="mdui-row">
+					<div class="mdui-typo">
+						<h3>
+							{{title}}
+							<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(1)">{{editButtonText}}</button>
+							<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(0)"
+							 v-bind:style="{display:giveUpButtonDisplay}">{{giveUpButtonText}}</button>
+						</h3>
+					</div>
+					<div class="mdui-divider"></div>
+					<div class="mdui-row">
+						<div class="mdui-col-xs-9">
+							<div class="mdui-textfield mdui-col-xs-6">
+								<label class="mdui-textfield-label">机器型号</label>
+								<input v-bind:disabled="inputDisabled" v-model="entity.machineType.model" class="mdui-textfield-input" type="text"
+								 placeholder="机器型号" />
+							</div>
+							<div class="mdui-textfield mdui-col-xs-6">
+								<label class="mdui-textfield-label">铭牌</label>
+								<input v-bind:disabled="inputDisabled" v-model="entity.nameplate" class="mdui-textfield-input" type="text"
+								 placeholder="铭牌" />
+							</div>
+							<div class="mdui-textfield mdui-col-xs-6">
+								<label class="mdui-textfield-label">机器自编号</label>
+								<input v-bind:disabled="inputDisabled" v-model="entity.code" class="mdui-textfield-input" type="text"
+								 placeholder="机器自编号" />
+							</div>
+							<div class="mdui-textfield mdui-col-xs-6">
+								<label class="mdui-textfield-label">机主</label>
+								<input v-bind:disabled="inputDisabled" v-model="entity.owner" class="mdui-textfield-input" type="text"
+								 placeholder="机主" />
+							</div>
+							<div class="mdui-textfield mdui-col-xs-6">
+								<label class="mdui-textfield-label">购买方式</label>
+								<input v-bind:disabled="inputDisabled" v-model="entity.payway" class="mdui-textfield-input" type="text"
+								 placeholder="购买方式" />
+							</div>
+							<div class="mdui-textfield mdui-col-xs-6">
+								<label class="mdui-textfield-label">购买价格</label>
+								<input v-bind:disabled="inputDisabled" v-model="entity.price" class="mdui-textfield-input" type="text"
+								 placeholder="购买价格" />
+							</div>
+							<div class="mdui-textfield mdui-col-xs-6">
+								<label class="mdui-textfield-label">月供</label>
+								<input v-bind:disabled="inputDisabled" v-model="entity.mPay" class="mdui-textfield-input" type="text"
+								 placeholder="月供" />
+							</div>
+							<div class="mdui-textfield mdui-col-xs-6">
+								<label class="mdui-textfield-label">工作时间</label>
+								<input v-bind:disabled="inputDisabled" v-model="entity.worktime" class="mdui-textfield-input" type="text"
+								 placeholder="工作时间" />
+							</div>
+							<div class="mdui-textfield mdui-col-xs-6">
+								<label class="mdui-textfield-label">状态</label>
+								<select v-bind:disabled="inputDisabled" v-model="entity.status" class="mdui-select" style="width:100%">
+									<option value="空闲">空闲</option>
+									<option value="工作">工作</option>
+									<option value="休假">维修</option>
+									<option value="离职">报废</option>
+									<option value="离职">已出售</option>
+								</select>
+							</div>
+						</div>
+						<div class="mdui-col-xs-3">
+							<div>
+								<img class="mdui-img-fluid" src="../../resource/img/DSC_4407.JPG" />
+							</div>
+						</div>
+					</div>
+					<div class="mdui-typo">
+						<h3>
+							相关资源
+							<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(1)">{{editButtonText}}</button>
+							<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(0)"
+							 v-bind:style="{display:giveUpButtonDisplay}">{{giveUpButtonText}}</button>
+						</h3>
+					</div>
+					<div class="mdui-divider"></div>
+					<div class="mdui-row-xs-3 mdui-row-sm-3 mdui-row-md-3 mdui-row-lg-3 mdui-row-xl-3 mdui-grid-list">
+						<div v-if="entity.resource!=null">
+							<div class="mdui-col admin-layout-box" v-for="res in entity.resource.resources">
+								<div class="mdui-card">
+									<div class="mdui-card-header">
+										<img class="mdui-card-header-avatar" src="../../resource/img/machineLogo.png" />
+										<div class="mdui-card-header-title">
+											{{res.name}}
+										</div>
+										<div class="mdui-card-header-subtitle">
+											{{res.type}} {{res.size}}KB
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="../../resource/js/admin/machineList.js"></script>
+	</body>
+</html>
