@@ -4,6 +4,6 @@ var NAV_DATA_TRA = [];
 var NAV_OPENED = [];
 //窗口vue实例
 var driverQueryVue;
-var driverInfoVue;
+//var driverInfoVue;
 //实体数据
 

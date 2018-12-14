@@ -74,6 +74,7 @@ function makeInfoTab(tabMsg){
 		var element = layui.element;
 		if (NAV_OPENED.indexOf(tabMsg.id) == -1) {
 			$.get(tabMsg.url,function(data){
+				console.log(data);
 				element.tabAdd('model', {
 					title: tabMsg.name,
 					content: data,

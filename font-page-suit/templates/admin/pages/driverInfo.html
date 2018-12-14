@@ -1,2 +1,126 @@
-<h3>标准测试数据</h3>
-<script src="../../../webapp/js/admin/page/driverInfo.js"></script>
+<div class="admin-child-page mdui-container mdui-center" id="driverInfoAera">
+	<div class="mdui-row">
+		<div class="mdui-typo">
+			<h3>
+				{{title}}
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(1)" v-bind:style="{display:viewPanelModel}">编辑</button>
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(0)" v-bind:style="{display:editPanelModel}">放弃</button>
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(2)" v-bind:style="{display:editPanelModel}">保存</button>
+			</h3>
+		</div>
+		<div class="mdui-divider"></div>
+		<div class="mdui-row">
+			<div class="mdui-col-xs-10">
+				<div class="mdui-textfield mdui-col-xs-4">
+					<label class="mdui-textfield-label">姓名</label>
+					<input v-bind:disabled="inputDisabled" v-model="entity.name" class="mdui-textfield-input" type="text" placeholder="姓名" />
+
+				</div>
+				<div class="mdui-textfield mdui-col-xs-4">
+					<label class="mdui-textfield-label">电话</label>
+					<input v-bind:disabled="inputDisabled" v-model="entity.tel" class="mdui-textfield-input" type="text" placeholder="电话" />
+
+				</div>
+				<div class="mdui-textfield mdui-col-xs-4">
+					<label class="mdui-textfield-label">身份证号</label>
+					<input v-bind:disabled="inputDisabled" v-model="entity.personId" class="mdui-textfield-input" type="text"
+					 placeholder="身份证号" />
+
+				</div>
+				<div class="mdui-textfield mdui-col-xs-4">
+					<label class="mdui-textfield-label">驾驶证号</label>
+					<input v-bind:disabled="inputDisabled" v-model="entity.paperId" class="mdui-textfield-input" type="text"
+					 placeholder="驾驶证号" />
+				</div>
+				<div class="mdui-textfield mdui-col-xs-4">
+					<label class="mdui-textfield-label">状态</label>
+					<select v-bind:disabled="inputDisabled" v-model="entity.status" class="mdui-select" style="width:100%">
+						<option value="空闲">空闲</option>
+						<option value="工作">工作</option>
+						<option value="休假">休假</option>
+						<option value="离职">离职</option>
+					</select>
+				</div>
+				<div class="mdui-textfield mdui-col-xs-4">
+					<label class="mdui-textfield-label">类型</label>
+					<select v-bind:disabled="inputDisabled" v-model="entity.type" class="mdui-select" style="width:100%">
+						<option value="普通">普通</option>
+						<option value="临时">临时</option>
+					</select>
+				</div>
+			</div>
+			<div class="mdui-col-xs-2">
+				<div>
+					<img class="mdui-img-fluid" src="../../../webapp/img/DSC_4407.JPG" />
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<script>
+	$(function() {
+		new Vue({
+			el: '#driverInfoAera',
+			data: {
+				title: "",
+				entity: {},
+				editPanelModel: "none",
+				viewPanelModel: "inline",
+				inputDisabled: true,
+				requestModel: {
+					start: 0,
+					example: {
+						id: 0,
+					}
+				}
+			},
+			mounted: function() {
+				driverInfoVue = this;
+			},
+			methods: {
+				init: function(tabMsg) {
+					var self = this;
+					self.entity = tabMsg.initData.entity;
+					this.title = '详细信息';
+				},
+				switchMode: function(mode) {
+					var self = this;
+					if (mode == 1) {
+						self.editPanelModel = "inline";
+						self.viewPanelModel = "none";
+						self.inputDisabled = false;
+					} else if (mode == 2) {
+						self.editPanelModel = "none";
+						self.viewPanelModel = "inline";
+						self.inputDisabled = true;
+						
+						self.requestModel.example = self.entity;
+						axios.post(PAGE_DRIVER_UPDATE, self.requestModel).then(function(response) {
+							self.entity = response.data.content[0];
+						});
+					} else {
+						self.editPanelModel = "none";
+						self.viewPanelModel = "inline";
+						self.inputDisabled = true;
+						
+						self.requestModel.example = {};
+						self.requestModel.example.id = self.entity.id;
+						self.requestModel.start = 0;
+						axios.post(PAGE_DRIVER_QUERY, self.requestModel).then(function(response) {
+							self.entity = response.data.content[0];
+						});
+					}
+					mdui.mutation();
+				}
+			}
+		})
+	})
+	
+	
+	
+	
+	function initDriverInfo(tabMsg) {
+		driverInfoVue.init(tabMsg);
+	}
+</script>

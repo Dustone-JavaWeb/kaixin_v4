@@ -46,7 +46,10 @@ $(function() {
 					id:"driverInfo"+tr.id,
 					name:'机手信息_'+tr.name,
 					url:ROUTE_DRIVER_INFO,
-					target:'DriverInfo'
+					target:'DriverInfo',
+					initData:{
+						entity:tr
+					}
 				}
 				makeInfoTab(tabMsg);
 			},
