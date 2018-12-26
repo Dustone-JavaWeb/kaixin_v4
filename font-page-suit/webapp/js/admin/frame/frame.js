@@ -74,7 +74,11 @@ function makeInfoTab(tabMsg){
 		var element = layui.element;
 		if (NAV_OPENED.indexOf(tabMsg.id) == -1) {
 			$.get(tabMsg.url,function(data){
-				console.log(data);
+				//处理导航逻辑
+				var reg="/"+tabMsg.eId+"/g";
+				data=data.replace(eval(reg),tabMsg.eId+tabMsg.eNum);
+				
+				//console.log(data);
 				element.tabAdd('model', {
 					title: tabMsg.name,
 					content: data,

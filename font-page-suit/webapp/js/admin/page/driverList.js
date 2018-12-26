@@ -44,6 +44,8 @@ $(function() {
 			showInfo: function(tr) {
 				var tabMsg={
 					id:"driverInfo"+tr.id,
+					eId:"driverInfoAera",
+					eNum:tr.id,
 					name:'机手信息_'+tr.name,
 					url:ROUTE_DRIVER_INFO,
 					target:'DriverInfo',

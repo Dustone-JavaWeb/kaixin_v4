@@ -1,15 +1,6 @@
-var tableInfo = [];
-var tableVue;
-var infoVue;
-var infoWindow;
-var baseURL = "http://localhost:8080/kaixin";
-var ajaxQueryURL = baseURL + "/machines_query";
-var ajaxUpdateURL = baseURL + "/drivers_update";
-var exchange;
-
 $(function() {
 	new Vue({
-		el: '#queryTable',
+		el: '#machineQueryTable',
 		data: {
 			trs: [],
 			pagination: {},
@@ -23,7 +14,7 @@ $(function() {
 			pageNow:0
 		},
 		mounted: function() {
-			tableVue = this;
+			machineQueryVue = this;
 			this.list(0);
 		},
 		methods: {
@@ -31,7 +22,7 @@ $(function() {
 				var self = this;
 				self.requestModel.start = start;
 				self.requestModel.example = checkEmpty(self.requestModel.example);
-				axios.post(ajaxQueryURL, self.requestModel).then(function(response) {
+				axios.post(PAGE_MACHINE_QUERY, self.requestModel).then(function(response) {
 					self.pagination = response.data;
 					self.trs = response.data.content;
 					self.pageNow = response.data.number+1;
@@ -50,8 +41,19 @@ $(function() {
 				var self = this;
 				tableQuery(0, self);
 			},
-			showInfo: function(id) {
-				showEditWindow(id);
+			showInfo: function(tr) {
+				var tabMsg={
+					id:"machineInfo"+tr.id,
+					eId:"machineInfoAera",
+					eNum:tr.id,
+					name:'机器信息_'+tr.nameplate,
+					url:ROURE_MACHINE_INFO,
+					target:'MachineInfo',
+					initData:{
+						entity:tr
+					}
+				}
+				makeInfoTab(tabMsg);
 			},
 			addEntity: function(){
 				showAddWindow(0);
@@ -94,93 +96,7 @@ $(function() {
 			}
 		},
 	});
-	new Vue({
-		el: '#detailDialog',
-		data: {
-			entity: {
-				//特殊字段 用于resource列表的初始化
-				resource:{
-					resources:[{}]
-				},
-				machineType:{}
-			},
-			inputDisabled: false,
-			editButtonText: '编辑',
-			giveUpButtonText: '放弃',
-			giveUpButtonDisplay: 'none',
-			title: "机器信息",
-			requestModel: {
-				start: 0,
-				example: {
-					id: 0
-				}
-			}
-		},
-		mounted: function() {
-			infoVue = this;
-		},
-		methods: {
-			query: function(dId) {
-				var self = this;
-				self.inputDisabled = true;
-				self.requestModel.example = {};
-				self.requestModel.example.id = dId;
-				self.requestModel.start = 0;
-				console.log(self.requestModel.example);
-				axios.post(ajaxQueryURL, self.requestModel).then(function(response) {
-					self.entity = response.data.content[0];
-					mdui.mutation();
-				});
-			},
-			prepareToAdd:function(parent){
-				this.entity={};
-				this.inputDisabled=false;
-				this.editButtonText = '保存';
-				this.giveUpButtonDisplay = 'inline';
-			},
-			switchMode: function(option) {
-				var self = this;
-				if (self.inputDisabled) {
-					self.inputDisabled = false;
-					self.editButtonText = '保存';
-					self.giveUpButtonDisplay = 'inline';
-				} else {
-					self.inputDisabled = true;
-					self.editButtonText = '编辑';
-					self.giveUpButtonDisplay = 'none';
-				}
-				if (option == 0) {
-// 					axios.post(ajaxQueryURL, self.requestModel).then(function(response) {
-// 						self.entity = response.data.content[0];
-// 					});
-					infoWindow.close();
-				} else { 
-					if (self.inputDisabled) {
-						self.requestModel.example = self.entity;
-						axios.post(ajaxUpdateURL, self.requestModel).then(function(response) {
-							self.entity = response.data.content[0];
-							tableQuery(0, tableVue);
-						});
-					}else{
-						//infoWindow.close();
-					}
-				}
-				mdui.mutation();
-			}
-		}
-	});
 });
-
-function showEditWindow(dId) {
-	infoWindow = new mdui.Dialog("#editWindow");
-	infoVue.query(dId);
-	infoWindow.open();
-}
-function showAddWindow(parent){
-	infoWindow = new mdui.Dialog("#editWindow");
-	infoVue.prepareToAdd(parent);
-	infoWindow.open();
-}
 
 function jump(page, vue) {
 	if ('first' == page && !vue.pagination.first)
