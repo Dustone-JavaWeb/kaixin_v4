@@ -1,10 +1,6 @@
-var baseURL = "http://localhost:8080/kaixin";
-var ajaxQueryURL = baseURL + "/machineType_query";
-var ajaxQueryURL2= baseURL+"/machineBrand_query";
-var ajaxUpdateURL = baseURL + "/machineType_update";
 $(function() {
 	new Vue({
-		el: '#queryList',
+		el: '#machineTypeQueryList',
 		data: {
 			parentCards: [],
 			childCards: [],
@@ -14,18 +10,18 @@ $(function() {
 			brandSelected: null
 		},
 		mounted: function() {
-			tableVue = this;
+			machineTypeVue = this;
 			this.list();
 		},
 		methods: {
 			list: function() {
 				var self = this;
 				self.requestModel.example = checkEmpty(self.requestModel.example);
-				axios.post(ajaxQueryURL2,{}).then(function(response) {
+				axios.post(PAGE_MACHINE_BRAND_QUERY,{}).then(function(response) {
 					self.parentCards = response.data.content;
 					mdui.mutation();
 				});
-				axios.post(ajaxQueryURL, self.requestModel).then(function(response) {
+				axios.post(PAGE_MACHINE_TYPE_QUERY, self.requestModel).then(function(response) {
 					self.childCards = response.data.content;
 					mdui.mutation();
 				});

@@ -5,7 +5,8 @@ var appCore;
 
 $(function() {
 	leftDrawer = new mdui.Drawer('#left-drawer');
-
+	changeTabContentHeight();
+	
 	layui.use('element', function() {
 		var element = layui.element;
 		//监听tab页面关闭
@@ -54,7 +55,7 @@ function makeTab(tabId) {
 		var element = layui.element;
 		if (NAV_OPENED.indexOf(tabId) == -1) {
 			var navTab = findTabInfoById(tabId);
-			$.get(navTab.url,function(data){
+			$.get(navTab.url, function(data) {
 				element.tabAdd('model', {
 					title: navTab.name,
 					content: data,
@@ -66,33 +67,35 @@ function makeTab(tabId) {
 		} else {
 			element.tabChange('model', tabId);
 		}
+		mdui.mutation();
 	});
 }
 //处理详细信息引起的TAB
-function makeInfoTab(tabMsg){
+function makeInfoTab(tabMsg) {
 	layui.use('element', function() {
 		var element = layui.element;
 		if (NAV_OPENED.indexOf(tabMsg.id) == -1) {
-			$.get(tabMsg.url,function(data){
+			$.get(tabMsg.url, function(data) {
 				//处理导航逻辑
-				var reg="/"+tabMsg.eId+"/g";
-				data=data.replace(eval(reg),tabMsg.eId+tabMsg.eNum);
-				
+				var reg = "/" + tabMsg.eId + "/g";
+				data = data.replace(eval(reg), tabMsg.eId + tabMsg.eNum);
+
 				//console.log(data);
 				element.tabAdd('model', {
 					title: tabMsg.name,
 					content: data,
 					id: tabMsg.id
 				});
-				var invokeTarget=eval("init"+tabMsg.target);
+				var invokeTarget = eval("init" + tabMsg.target);
 				invokeTarget(tabMsg);
-				
+
 				NAV_OPENED.push(tabMsg.id);
 				element.tabChange('model', tabMsg.id);
 			});
 		} else {
 			element.tabChange('model', tabMsg.id);
 		}
+		mdui.mutation();
 	});
 }
 
@@ -113,4 +116,12 @@ function transformNavData() {
 			NAV_DATA_TRA.push(each[j]);
 		}
 	}
+}
+
+function changeTabContentHeight() {
+	var content = document.getElementById("adminTabContent");
+	content.style.height= (document.documentElement.clientHeight - 118)+"px";
+}
+window.onresize = function() {
+	changeTabContentHeight();
 }

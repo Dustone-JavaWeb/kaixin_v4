@@ -5,6 +5,8 @@ var NAV_OPENED = [];
 //窗口vue实例
 var driverQueryVue;
 var machineQueryVue;
+var supportQueryVue;
+var machineTypeVue;
 //var driverInfoVue;
 //实体数据
 

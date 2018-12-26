@@ -9,23 +9,25 @@ a {
 
 body {
 	height: 100%;
+	overflow: scroll;
 }
 
 html {
 	width: 100%;
 	height: 100%;
-	overflow-x: hidden;
-	overflow-y: auto;
+	/* overflow-x: hidden;
+	overflow-y: auto; */
 }
 
 .admin-tab-bar {
 	margin: 0px;
-	border-width: 0px;
+	border-width: 0px;	
 	height: 100%;
 }
 
 .admin-tab-content {
 	margin: 0px;
+	overflow-y:auto;
 }
 
 .admin-child-page {

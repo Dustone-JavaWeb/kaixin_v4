@@ -22,6 +22,7 @@ public class MachineTypeController {
     @PostMapping("/machineType_query")
     public Page4Navigator<MachineType> list(@RequestBody RequestModel<MachineType> requestModel){
         Page4Navigator<MachineType> page=machineTypeService.listByExample(requestModel.getExample());
+        System.out.println(page);
         return page;
     }
     @PostMapping("/machineBrand_query")
