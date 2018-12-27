@@ -20,8 +20,9 @@ public class Driver {
     private String status;
     private String type;
     @OneToOne
+    @Cascade(value = {CascadeType.ALL})
     private Resource resource;
-    @ManyToOne
+    @OneToOne
     @Cascade(value = {CascadeType.ALL})
     private BankAccount bankAccount;
     @Column(name = "create_time")

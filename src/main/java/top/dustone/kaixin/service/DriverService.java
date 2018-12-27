@@ -36,7 +36,6 @@ public class DriverService {
         return new Page4Navigator<Driver>(pageJPA,page);
     }
     public Page4Navigator<Driver> update(Driver driver){
-        System.out.println(driver);
         driverDAO.save(driver);
         Page4Navigator<Driver> result=new Page4Navigator<Driver>();
         List<Driver> content=new ArrayList<Driver>(1);
