@@ -14,7 +14,12 @@ public class Contact {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch =FetchType.EAGER,targetEntity = Customer.class)
+    @Cascade(value = CascadeType.ALL)
+    @JoinTable(name="com_customer_contact",
+                joinColumns = @JoinColumn(name="contact_id",referencedColumnName = "id",unique = true),
+                inverseJoinColumns = @JoinColumn(name="customer_id",referencedColumnName = "id")
+    )
     private Customer customer;
     private String name;
     private String role;

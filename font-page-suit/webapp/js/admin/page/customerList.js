@@ -1,6 +1,7 @@
 $(function() {
+	//var swithModeTab = new mdui.Tab('#tab');
 	new Vue({
-		el: '#driverQueryTable',
+		el: '#customerQueryTable',
 		data: {
 			trs: [],
 			pagination: {},
@@ -11,10 +12,15 @@ $(function() {
 					status: ""
 				}
 			},
+			contactRequestModel:{
+				example: {
+					role:""
+				}
+			},
 			pageNow:0
 		},
 		mounted: function() {
-			driverQueryVue = this;
+			customerQueryVue = this;
 			this.list(0);
 		},
 		methods: {
@@ -23,10 +29,19 @@ $(function() {
 				self.requestModel.start = start;
 				var ajaxRequestModel=DEEP_COPY(self.requestModel);
 				ajaxRequestModel.example=checkEmpty(ajaxRequestModel.example);
-				axios.post(PAGE_DRIVER_QUERY, ajaxRequestModel).then(function(response) {
+				axios.post(PAGE_CUSTOMER_QUERY, ajaxRequestModel).then(function(response) {
 					self.pagination = response.data;
 					self.trs = response.data.content;
 					self.pageNow = response.data.number+1;
+					mdui.mutation();
+				});
+			},
+			listByContact: function() {
+				var self = this;
+				var ajaxRequestModel=DEEP_COPY(self.contactRequestModel);
+				ajaxRequestModel.example=checkEmpty(ajaxRequestModel.example);
+				axios.post(PAGE_CUSTOMER_CONTACT_QUERY,ajaxRequestModel).then(function(response) {
+					self.trs = response.data.content;
 					mdui.mutation();
 				});
 			},

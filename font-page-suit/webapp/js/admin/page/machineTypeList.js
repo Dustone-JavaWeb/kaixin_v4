@@ -16,12 +16,13 @@ $(function() {
 		methods: {
 			list: function() {
 				var self = this;
-				self.requestModel.example = checkEmpty(self.requestModel.example);
+				var ajaxRequestModel=DEEP_COPY(self.requestModel);
+				ajaxRequestModel.example=checkEmpty(ajaxRequestModel.example);
 				axios.post(PAGE_MACHINE_BRAND_QUERY,{}).then(function(response) {
 					self.parentCards = response.data.content;
 					mdui.mutation();
 				});
-				axios.post(PAGE_MACHINE_TYPE_QUERY, self.requestModel).then(function(response) {
+				axios.post(PAGE_MACHINE_TYPE_QUERY, ajaxRequestModel).then(function(response) {
 					self.childCards = response.data.content;
 					mdui.mutation();
 				});

@@ -8,9 +8,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import top.dustone.kaixin.entity.Contact;
 import top.dustone.kaixin.entity.Customer;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CustomerServiceTest {
@@ -34,15 +31,17 @@ public class CustomerServiceTest {
         contact.setName("陈岩");
         contact.setPersonId("674462865");
         contact.setRole("老板");
-        Set<Contact> contacts=new HashSet<Contact>();
-        contacts.add(contact);
-        customer.setContacts(contacts);
+        customer.getContacts().add(contact);
         customerService.update(customer);
         System.out.println(customer);
     }
 
     @Test
     public void listByContact() {
-
+        Contact contact=new Contact();
+        contact.setName("陈岩");
+        contact.setPersonId("674462865");
+        contact.setRole("老板");
+        System.out.println(customerService.listByContact(contact).getContent());
     }
 }

@@ -18,3 +18,6 @@ var PAGE_SUPPORT_UPDATE=BASE_URL+"/support_update";
 var PAGE_MACHINE_TYPE_QUERY = BASE_URL + "/machineType_query";
 var PAGE_MACHINE_TYPE_UPDATE = BASE_URL + "/machineType_update";
 var PAGE_MACHINE_BRAND_QUERY= BASE_URL+"/machineBrand_query";
+var PAGE_CUSTOMER_QUERY=BASE_URL+"/customer_query";
+var PAGE_CUSTOMER_UPDATE=BASE_URL+"/customer_update";
+var PAGE_CUSTOMER_CONTACT_QUERY=BASE_URL+"/customer_query_by_contact";

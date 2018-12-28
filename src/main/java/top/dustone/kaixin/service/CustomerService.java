@@ -48,9 +48,8 @@ public class CustomerService {
         Example<Contact> example=Example.of(contact,exampleMatcher);
         List<Contact> contacts=contactDAO.findAll(example);
         List<Customer> customers=new ArrayList<Customer>(5);
-
-        for(Contact contact1:contacts){
-            customers.add(contact.getCustomer());
+        for(Contact c:contacts){
+            customers.add(c.getCustomer());
         }
         result.setContent(customers);
         return result;

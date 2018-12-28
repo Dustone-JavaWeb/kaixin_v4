@@ -21,8 +21,9 @@ $(function() {
 			list: function(start) {
 				var self = this;
 				self.requestModel.start = start;
-				self.requestModel.example = checkEmpty(self.requestModel.example);
-				axios.post(PAGE_SUPPORT_QUERY, self.requestModel).then(function(response) {
+				var ajaxRequestModel=DEEP_COPY(self.requestModel);
+				ajaxRequestModel.example=checkEmpty(ajaxRequestModel.example);
+				axios.post(PAGE_SUPPORT_QUERY, ajaxRequestModel).then(function(response) {
 					self.pagination = response.data;
 					self.trs = response.data.content;
 					self.pageNow = response.data.number+1;

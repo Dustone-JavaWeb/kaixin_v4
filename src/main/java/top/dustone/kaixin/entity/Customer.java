@@ -29,8 +29,11 @@ public class Customer {
     private Timestamp editTime;
     @OneToMany(fetch =FetchType.EAGER)
     @Cascade(value = {CascadeType.ALL})
+    @JoinTable(name="com_customer_contact",
+            joinColumns = @JoinColumn(name="customer_id",referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name="contact_id",referencedColumnName = "id",unique = true)
+    )
     private Set<Contact> contacts=new HashSet<Contact>();
-
     public Integer getId() {
         return id;
     }
