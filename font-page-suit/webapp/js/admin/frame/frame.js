@@ -5,6 +5,7 @@ var appCore;
 
 $(function() {
 	leftDrawer = new mdui.Drawer('#left-drawer');
+	
 	changeTabContentHeight();
 	
 	layui.use('element', function() {
@@ -46,6 +47,7 @@ $(function() {
 			}
 		}
 	});
+	
 	mdui.mutation();
 });
 
@@ -79,8 +81,6 @@ function makeInfoTab(tabMsg) {
 				//处理导航逻辑
 				var reg = "/" + tabMsg.eId + "/g";
 				data = data.replace(eval(reg), tabMsg.eId + tabMsg.eNum);
-
-				//console.log(data);
 				element.tabAdd('model', {
 					title: tabMsg.name,
 					content: data,

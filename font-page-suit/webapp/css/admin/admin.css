@@ -9,7 +9,7 @@ a {
 
 body {
 	height: 100%;
-	overflow: scroll;
+	overflow: hidden;
 }
 
 html {
@@ -21,13 +21,13 @@ html {
 
 .admin-tab-bar {
 	margin: 0px;
-	border-width: 0px;	
+	border-width: 0px;
 	height: 100%;
 }
 
 .admin-tab-content {
 	margin: 0px;
-	overflow-y:auto;
+	overflow-y: auto;
 }
 
 .admin-child-page {
@@ -66,11 +66,13 @@ html {
 	margin-left: 30px;
 	margin-right: 30px;
 }
-.mdui-textfield-input[disabled]{
-	border-bottom:none;
+
+.mdui-textfield-input[disabled] {
+	border-bottom: none;
 }
-.mdui-select[disabled]{
-	border-bottom:none;
+
+.mdui-select[disabled] {
+	border-bottom: none;
 }
 
 .admin-table-control {
@@ -91,3 +93,21 @@ html {
 .admin-dialog {
 	overflow-y: auto;
 }
+
+.admin-file-dialog {
+	overflow-y: auto;
+	height: 400px;
+}
+
+.admin-table-nobr td {
+	white-space: nowrap;
+}
+
+.admin-delete-button:hover {
+	color: red;
+}
+
+.admin-edit-button:hover {
+	color: blue;
+}
+

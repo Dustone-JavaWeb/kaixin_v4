@@ -57,11 +57,19 @@ $(function() {
 				makeInfoTab(tabMsg);
 			},
 			addEntity: function(){
-				showAddWindow(0);
+				var tabMsg={
+					id:"machineInfo",
+					eId:"machineInfoAera",
+					eNum:"ADD",
+					name:'新增机器',
+					url:ROURE_MACHINE_INFO,
+					target:'MachineAdd',
+					initData:{}
+				}
+				makeInfoTab(tabMsg);
 			},
 			pageSelected: function(num) {
 				var self = this;
-				console.log(self.pageNow);
 				if (num == self.pageNow) {
 					return {
 						'mdui-color-theme-accent': true

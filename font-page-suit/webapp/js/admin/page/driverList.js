@@ -57,7 +57,16 @@ $(function() {
 				makeInfoTab(tabMsg);
 			},
 			addEntity: function(){
-				showAddWindow(0);
+				var tabMsg={
+					id:"driverInfo",
+					eId:"driverInfoAera",
+					eNum:"ADD",
+					name:'新增机手',
+					url:ROUTE_DRIVER_INFO,
+					target:'DriverAdd',
+					initData:{}
+				}
+				makeInfoTab(tabMsg);
 			},
 			pageSelected: function(num) {
 				var self = this;

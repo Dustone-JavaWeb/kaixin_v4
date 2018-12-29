@@ -7,6 +7,9 @@ import top.dustone.kaixin.dao.MachineDAO;
 import top.dustone.kaixin.entity.Machine;
 import top.dustone.kaixin.util.Page4Navigator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class MachineService {
     @Autowired
@@ -23,5 +26,13 @@ public class MachineService {
         Example<Machine> example = Example.of(machine, exampleMatcher);
         Page pageJPA = machineDAO.findAll(example, pageable);
         return new Page4Navigator<Machine>(pageJPA, page);
+    }
+    public Page4Navigator<Machine> update(Machine machine){
+        machineDAO.save(machine);
+        Page4Navigator<Machine> result=new Page4Navigator<Machine>();
+        List<Machine> content=new ArrayList<Machine>(1);
+        content.add(machine);
+        result.setContent(content);
+        return result;
     }
 }

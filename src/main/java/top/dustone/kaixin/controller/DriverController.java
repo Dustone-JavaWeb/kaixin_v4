@@ -29,6 +29,7 @@ public class DriverController {
     @PostMapping("/drivers_update")
     public Page4Navigator<Driver> update(@RequestBody RequestModel<Driver> requestModel){
         Page4Navigator<Driver> page=driverService.update(requestModel.getExample());
+        page.setResponseMessage("保存成功！");
         return page;
     }
 }

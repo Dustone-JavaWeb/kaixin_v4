@@ -22,4 +22,10 @@ public class MachineController {
         page.setExample(requestModel);
         return page;
     }
+    @PostMapping("/machines_update")
+    public Page4Navigator<Machine> update(@RequestBody RequestModel<Machine> requestModel){
+        Page4Navigator<Machine> page=machineService.update(requestModel.getExample());
+        page.setResponseMessage("保存成功！");
+        return page;
+    }
 }
