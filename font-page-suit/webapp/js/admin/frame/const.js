@@ -24,3 +24,5 @@ var PAGE_CUSTOMER_UPDATE=BASE_URL+"/customer_update";
 var PAGE_CUSTOMER_CONTACT_QUERY=BASE_URL+"/customer_query_by_contact";
 
 var RESOURCE_UPLOAD=BASE_URL+"/resource_upload";
+var RESOURCE_UPDATE=BASE_URL+"/resource_update";
+var RESOURCE_DELETE=BASE_URL+"/resource_delete";

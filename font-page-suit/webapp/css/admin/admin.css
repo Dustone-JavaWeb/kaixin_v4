@@ -110,4 +110,6 @@ html {
 .admin-edit-button:hover {
 	color: blue;
 }
-
+.admin-file-dialog-container{
+	margin-bottom: 20px;
+}

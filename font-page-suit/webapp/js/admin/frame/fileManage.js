@@ -24,7 +24,7 @@ $(function() {
 				mdui.mutation();
 			},
 			upLoadFile: function(event) {
-				var self=this;
+				var self = this;
 				this.file = event.target.files[0];
 
 				var formData = new FormData();
@@ -38,19 +38,65 @@ $(function() {
 						timeout: 2000,
 						position: "right-bottom",
 					});
-					if(response.data.t!=null){
+					if (response.data.t != null) {
 						self.entity.resource.resources.push(response.data.t);
 					}
 					mdui.mutation();
 				});
 				mdui.mutation();
+			},
+			editFileName: function(resource) {
+				var self = this;
+				fileManageDialog.close();
+				mdui.prompt("文件别名", "修改别名", function(value) {
+					resource.name = value;
+					console.log(resource);
+					axios.post(RESOURCE_UPDATE, resource).then(function(response) {
+						mdui.snackbar({
+							message: response.data.code + response.data.msg,
+							timeout: 2000,
+							position: "right-bottom",
+						});
+					});
+					fileManageDialog.open();
+				}, function() {
+					fileManageDialog.open();
+				}, {
+					confirmText: "确认",
+					cancelText: "取消",
+					defaultValue: resource.name
+				});
+			},
+			deleteFile: function(resource) {
+				var self = this;
+				fileManageDialog.close();
+				mdui.confirm("删除文件", "被删除的文件不可恢复", function(value) {
+					console.log(resource);
+					axios.post(RESOURCE_DELETE, resource).then(function(response) {
+						mdui.snackbar({
+							message: response.data.code + response.data.msg,
+							timeout: 2000,
+							position: "right-bottom",
+						});
+						var index = self.entity.resource.resources.indexOf(resource);
+						if (index > -1) {
+							self.entity.resource.resources.splice(index, 1);
+						}
+					});
+					fileManageDialog.open();
+				}, function() {
+					fileManageDialog.open();
+				}, {
+					confirmText: "确认",
+					cancelText: "取消"
+				});
 			}
 		},
 		filters: {
 			date: function(value) {
-				if(value!=null){
+				if (value != null) {
 					return value.substr(0, 10);
-				}else{
+				} else {
 					return "";
 				}
 			}

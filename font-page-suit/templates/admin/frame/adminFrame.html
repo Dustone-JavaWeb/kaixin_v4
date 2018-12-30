@@ -66,7 +66,7 @@
 		</div>
 		<!--文件上传工具-->
 		<div class="admin-file-dialog mdui-dialog" id="fileManageDialog">
-			<div class="mdui-container" id="fileManageTable">
+			<div class="admin-file-dialog-container  mdui-container" id="fileManageTable">
 				<div class="mdui-typo">
 					<h3>
 						{{entity.name}}的相关资源
@@ -74,6 +74,7 @@
 						<input style="display: none;"  accept="*" type="file" name="image" @change="upLoadFile($event)" id="resourceUploadButton"/>
 					</h3>
 				</div>
+				<div class="mdui-divider"></div>
 				<div class="mdui-row">
 					<div class="mdui-table-fluid">
 						<table class="admin-table-nobr mdui-table mdui-table-hoverable">
@@ -81,7 +82,7 @@
 								<tr>
 									<td>编号</td>
 									<td>操作</td>
-									<td>文件名</td>
+									<td>文件别名</td>
 									<td>文件类型</td>
 									<td>服务器存储路径</td>
 									<td>文件大小</td>
@@ -92,8 +93,8 @@
 								<tr v-for="res in resources">
 									<td>{{res.id}}</td>
 									<td>
-										<a title="编辑名称"><i class="admin-edit-button mdui-icon material-icons">edit</i></a>
-										<a title="删除文件"><i class="admin-delete-button mdui-icon material-icons">clear</i></a>
+										<a title="编辑名称" @click="editFileName(res)"><i class="admin-edit-button mdui-icon material-icons">edit</i></a>
+										<a title="删除文件" @click="deleteFile(res)"><i class="admin-delete-button mdui-icon material-icons">clear</i></a>
 									</td>
 									<td>{{res.name}}</td>
 									<td>{{res.type}}</td>

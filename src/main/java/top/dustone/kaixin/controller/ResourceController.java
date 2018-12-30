@@ -3,6 +3,7 @@ package top.dustone.kaixin.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import top.dustone.kaixin.entity.Resource;
@@ -18,6 +19,32 @@ import java.io.IOException;
 public class ResourceController {
     @Autowired
     ResourceService resourceService;
+    @PostMapping("/resource_update")
+    public CommonResponseModel<Resource> update(@RequestBody Resource resource){
+        System.out.println(resource);
+        CommonResponseModel<Resource> result=new CommonResponseModel<Resource>();
+        resourceService.update(resource);
+        result.setMsg("保存成功");
+        result.setCode("200");
+        result.setT(resource);
+        return result;
+    }
+    @PostMapping("/resource_delete")
+    public CommonResponseModel<Resource> delete(@RequestBody Resource resource,HttpServletRequest request){
+        CommonResponseModel<Resource> result=new CommonResponseModel<Resource>();
+        resourceService.delete(resource);
+        String targetHost=request.getServletContext().getRealPath(resource.getUrl());
+        File targetFile=new File(targetHost);
+        if(targetFile.exists()){
+            targetFile.delete();
+            result.setMsg("删除成功");
+            result.setCode("200");
+        }else {
+            result.setMsg("记录删除成功 文件不存在！");
+            result.setCode("201");
+        }
+        return result;
+    }
     @PostMapping("/resource_upload")
     public CommonResponseModel<Resource> uploadFile(int pId, String saveDir, String originName,MultipartFile fileUpload,HttpServletRequest request){
         CommonResponseModel<Resource> result=new CommonResponseModel<Resource>();
