@@ -135,7 +135,8 @@
 		<div class="mdui-typo">
 			<h3>
 				相关资源
-				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="openFileManager()" v-bind:style="{display:editPanelModel}">管理</button>
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="openFileManager()"
+				 v-bind:style="{display:editPanelModel}">管理</button>
 			</h3>
 		</div>
 		<div class="mdui-divider"></div>
@@ -149,7 +150,7 @@
 								{{res.name}}
 							</div>
 							<div class="mdui-card-header-subtitle">
-								{{res.type}} {{res.size}}KB
+								{{res.type}} {{res.size|renderSize}}
 							</div>
 						</div>
 					</div>
@@ -195,9 +196,26 @@
 					self.viewPanelModel = "none";
 					self.inputDisabled = false;
 				},
-				openFileManager:function(){
+				openFileManager: function() {
 					var self = this;
-					openFileManageDialog(self.entity,"机手信息");
+					if (self.entity.resource == null) {
+						var newResource = {
+							name: self.entity.name,
+							type: "trunk",
+						}
+						axios.post(RESOURCE_UPDATE, newResource).then(function(resp) {
+							self.entity.resource = resp.data.t;
+							self.requestModel.example = self.entity;
+							axios.post(PAGE_DRIVER_UPDATE, self.requestModel).then(function(response) {
+								self.entity = response.data.content[0];
+								console.log(self.entity);
+								openFileManageDialog(self.entity, "机手信息");
+							});
+						});
+						
+					}else{
+						openFileManageDialog(self.entity, "机手信息");
+					}
 				},
 				switchMode: function(mode) {
 					var self = this;
@@ -242,7 +260,28 @@
 					}
 					mdui.mutation();
 				}
-			}
+			},
+			filters: {
+				date: function(value) {
+					if (value != null) {
+						return value.substr(0, 10);
+					} else {
+						return "";
+					}
+				},
+				renderSize: function(value) {
+					if (null == value || value == '') {
+						return "0 Bytes";
+					}
+					var unitArr = new Array("Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB");
+					var index = 0;
+					var srcsize = parseFloat(value);
+					index = Math.floor(Math.log(srcsize) / Math.log(1024));
+					var size = srcsize / Math.pow(1024, index);
+					size = size.toFixed(2); //保留的小数位数
+					return size + unitArr[index];
+				}
+			},
 		})
 	})
 
