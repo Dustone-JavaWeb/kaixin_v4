@@ -1,5 +1,4 @@
 $(function() {
-	//var swithModeTab = new mdui.Tab('#tab');
 	new Vue({
 		el: '#customerQueryTable',
 		data: {
@@ -59,12 +58,12 @@ $(function() {
 			},
 			showInfo: function(tr) {
 				var tabMsg={
-					id:"driverInfo"+tr.id,
-					eId:"driverInfoAera",
+					id:"customerInfo"+tr.id,
+					eId:"customerInfoAera",
 					eNum:tr.id,
-					name:'机手信息_'+tr.name,
-					url:ROUTE_DRIVER_INFO,
-					target:'DriverInfo',
+					name:'客户信息_'+tr.name,
+					url:ROUTE_CUSTOMER_INFO,
+					target:'CustomerInfo',
 					initData:{
 						entity:tr
 					}
@@ -72,7 +71,16 @@ $(function() {
 				makeInfoTab(tabMsg);
 			},
 			addEntity: function(){
-				showAddWindow(0);
+				var tabMsg={
+					id:"customerInfo",
+					eId:"customerInfoAera",
+					eNum:"ADD",
+					name:'新增客户',
+					url:ROUTE_CUSTOMER_INFO,
+					target:'CustomerAdd',
+					initData:{}
+				}
+				makeInfoTab(tabMsg);
 			},
 			pageSelected: function(num) {
 				var self = this;

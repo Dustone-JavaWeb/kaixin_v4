@@ -108,6 +108,11 @@
 				</div>
 			</div>
 		</div>
+		<!--头像上传工具-->
+		<div class="mdui-hidden" id="headPictureTool">
+			<input style="display: none;"  accept="*" type="file" name="image" @change="upLoadPicture($event)" id="headPictureButton"/>
+		</div>
+		<script src="../../../webapp/js/admin/frame/headPictureTool.js"></script>
 		<script src="../../../webapp/js/admin/frame/fileManage.js"></script>
 		<script src="../../../webapp/js/admin/frame/frame.js"></script>
 	</body>

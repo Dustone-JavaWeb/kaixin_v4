@@ -124,6 +124,8 @@
 		<div class="mdui-typo">
 			<h3>
 				相关资源
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="openFileManager()"
+				v-bind:style="{display:editPanelModel}">管理</button>
 			</h3>
 		</div>
 		<div class="mdui-divider"></div>
@@ -176,6 +178,32 @@
 						self.entity.bankAccount={};
 					}
 					this.title = '详细信息';
+				},
+				initAdd: function(tabMsg) {
+					var self = this;
+					self.editPanelModel = "inline";
+					self.viewPanelModel = "none";
+					self.inputDisabled = false;
+				},
+				openFileManager: function() {
+					var self = this;
+					if (self.entity.resource == null) {
+						var newResource = {
+							name: self.entity.name,
+							type: "trunk",
+						}
+						axios.post(RESOURCE_UPDATE, newResource).then(function(resp) {
+							self.entity.resource = resp.data.t;
+							self.requestModel.example = self.entity;
+							axios.post(PAGE_SUPPORT_UPDATE, self.requestModel).then(function(response) {
+								self.entity = response.data.content[0];
+								openFileManageDialog(self.entity, "后勤信息");
+							});
+						});
+						
+					}else{
+						openFileManageDialog(self.entity, "后勤信息");
+					}
 				},
 				switchMode: function(mode) {
 					var self = this;
@@ -235,10 +263,13 @@
 				}
 			},
 		})
-	})
+	});
 
 	function initSupportInfo(tabMsg) {
 		console.log(tabMsg);
 		supportInfoVue.init(tabMsg);
+	};
+	function initDriverAdd(tabMsg) {
+		driverInfoVue.initAdd(tabMsg);
 	}
 </script>

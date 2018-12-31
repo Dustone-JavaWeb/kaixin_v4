@@ -208,7 +208,6 @@
 							self.requestModel.example = self.entity;
 							axios.post(PAGE_DRIVER_UPDATE, self.requestModel).then(function(response) {
 								self.entity = response.data.content[0];
-								console.log(self.entity);
 								openFileManageDialog(self.entity, "机手信息");
 							});
 						});

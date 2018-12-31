@@ -57,7 +57,16 @@ $(function() {
 				makeInfoTab(tabMsg);
 			},
 			addEntity: function(){
-				showAddWindow(0);
+				var tabMsg={
+					id:"supportInfo",
+					eId:"supportInfoAera",
+					eNum:"ADD",
+					name:'新增后勤',
+					url:ROUTE_SUPPORT_INFO,
+					target:'SupportAdd',
+					initData:{}
+				}
+				makeInfoTab(tabMsg);
 			},
 			pageSelected: function(num) {
 				var self = this;
