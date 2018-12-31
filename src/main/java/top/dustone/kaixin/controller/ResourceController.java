@@ -82,4 +82,24 @@ public class ResourceController {
         result.setT(cResource);
         return result;
     }
+    @PostMapping("/resource_head_pic_upload")
+    public CommonResponseModel<Resource> uploadHeadPic(String picName,MultipartFile picUpload,HttpServletRequest request){
+        CommonResponseModel<Resource> result=new CommonResponseModel<Resource>();
+        String targetUrl="resource/headPicture/"+picName;
+        String taegetHost=request.getServletContext().getRealPath(targetUrl);
+        File targetFile=new File(taegetHost);
+        if(!targetFile.getParentFile().exists()){
+            targetFile.getParentFile().mkdirs();
+        }
+        try {
+            picUpload.transferTo(targetFile);
+        } catch (IOException e) {
+            result.setCode("500");
+            result.setMsg("头像文件保存失败。请重试！");
+            return result;
+        }
+        result.setCode("200");
+        result.setMsg(targetUrl);
+        return result;
+    }
 }

@@ -25,6 +25,7 @@ public class Driver {
     @OneToOne
     @Cascade(value = {CascadeType.ALL})
     private BankAccount bankAccount;
+    private String headPic;
     @Column(name = "create_time")
     private Timestamp createTime;
     @Column(name = "edit_time")
@@ -135,5 +136,13 @@ public class Driver {
                 ", createTime=" + createTime +
                 ", editTime=" + editTime +
                 '}';
+    }
+
+    public String getHeadPic() {
+        return headPic;
+    }
+
+    public void setHeadPic(String headPic) {
+        this.headPic = headPic;
     }
 }

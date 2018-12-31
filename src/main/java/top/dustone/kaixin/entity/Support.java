@@ -21,6 +21,7 @@ public class Support {
     private BankAccount bankAccount;
     @OneToOne
     private Resource resource;
+    private String headPic;
     @Column(name="create_time")
     private Timestamp createTime;
     @Column(name="edit_time")
@@ -111,5 +112,13 @@ public class Support {
                 ", createTime=" + createTime +
                 ", editTime=" + editTime +
                 '}';
+    }
+
+    public String getHeadPic() {
+        return headPic;
+    }
+
+    public void setHeadPic(String headPic) {
+        this.headPic = headPic;
     }
 }

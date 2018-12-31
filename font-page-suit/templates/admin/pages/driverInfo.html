@@ -51,7 +51,8 @@
 			</div>
 			<div class="mdui-col-xs-2">
 				<div>
-					<img class="mdui-img-fluid" src="../../../webapp/img/DSC_4407.JPG" />
+					<img class="mdui-img-fluid" v-bind:src="BASE_URL+'/'+entity.headPic"/>
+					<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="updateHeadPic()" v-bind:style="{display:editPanelModel}">更改头像</button>
 				</div>
 			</div>
 		</div>
@@ -215,6 +216,10 @@
 					}else{
 						openFileManageDialog(self.entity, "机手信息");
 					}
+				},
+				updateHeadPic:function(){
+					var self=this;
+					chooseHeadPircture(self.entity,"机手_"+self.entity.id+"_"+self.entity.name,PAGE_DRIVER_UPDATE);
 				},
 				switchMode: function(mode) {
 					var self = this;

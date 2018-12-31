@@ -6,7 +6,10 @@ $(function() {
 			entity: {},
 			file: "",
 			picName: "",
-			targetUrl: ""
+			targetUrl: "",
+			requestModel: {
+				start: 0,
+			}
 		},
 		mounted: function() {
 			var self = this
@@ -19,26 +22,32 @@ $(function() {
 				self.picName = pName;
 				self.targetUrl = tUrl;
 			},
-			upLoadFile: function(event) {
+			upLoadPicture: function(event) {
 				var self = this;
 				this.file = event.target.files[0];
-
+				
+				var fileType=this.file.name.substring(this.file.name.lastIndexOf(".")+1);
 				var formData = new FormData();
-				formData.append("fileUpload", this.file);
-				formData.append("pId", this.entity.resource.id);
-				formData.append("originName", this.file.name);
-				formData.append("saveDir", this.saveDir);
-				axios.post(RESOURCE_UPLOAD, formData).then(function(response) {
-					mdui.snackbar({
-						message: response.data.code + response.data.msg,
-						timeout: 2000,
-						position: "right-bottom",
-					});
-					if (response.data.t != null) {
-						if (self.entity.resource.resources == null) {
-							self.entity.resource.resources = [];
-						}
-						self.entity.resource.resources.push(response.data.t);
+				formData.append("picUpload", this.file);
+				formData.append("picName", this.picName+fileType);
+				axios.post(RESOURCE_UPLOAD_HEAD_PIC, formData).then(function(response) {
+					if(response.data.code=="500"){
+						mdui.snackbar({
+							message: response.data.code + response.data.msg,
+							timeout: 2000,
+							position: "right-bottom",
+						});
+					}else{
+						//增加随机数让浏览器自动刷新
+						self.entity.headPic=response.data.msg+'?t='+Math.random();
+						self.requestModel.example=self.entity;
+						axios.post(self.targetUrl, self.requestModel).then(function(response){
+							mdui.snackbar({
+								message: "头像保存成功！",
+								timeout: 2000,
+								position: "right-bottom",
+							});
+						});
 					}
 					mdui.mutation();
 				});
