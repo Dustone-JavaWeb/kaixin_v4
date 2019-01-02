@@ -30,6 +30,7 @@ public class Driver {
     private Timestamp createTime;
     @Column(name = "edit_time")
     private Timestamp editTime;
+
     public Integer getId() {
         return id;
     }

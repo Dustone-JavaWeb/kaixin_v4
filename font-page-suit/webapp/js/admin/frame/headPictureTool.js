@@ -39,7 +39,7 @@ $(function() {
 						});
 					}else{
 						//增加随机数让浏览器自动刷新
-						self.entity.headPic=response.data.msg+'?t='+Math.random();
+						self.entity.headPic=response.data.msg;
 						self.requestModel.example=self.entity;
 						axios.post(self.targetUrl, self.requestModel).then(function(response){
 							mdui.snackbar({
@@ -47,7 +47,10 @@ $(function() {
 								timeout: 2000,
 								position: "right-bottom",
 							});
+							
 						});
+						self.entity.headPic=response.data.msg+'?t='+Math.random();
+						console.log(self.entity.headPic);
 					}
 					mdui.mutation();
 				});

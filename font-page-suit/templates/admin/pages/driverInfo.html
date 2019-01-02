@@ -51,9 +51,9 @@
 			</div>
 			<div class="mdui-col-xs-2">
 				<div>
-					<img class="mdui-img-fluid" v-bind:src="BASE_URL+'/'+entity.headPic"/>
-					<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="updateHeadPic()" v-bind:style="{display:editPanelModel}">更改头像</button>
+					<img class="mdui-valign mdui-img-fluid" v-bind:src="BASE_URL+'/'+entity.headPic"/>
 				</div>
+				<button class="mdui-btn mdui-ripple mdui-color-theme-accent" @click="updateHeadPic()" v-bind:style="{display:editPanelModel}">更改头像</button>
 			</div>
 		</div>
 		<div class="mdui-typo">

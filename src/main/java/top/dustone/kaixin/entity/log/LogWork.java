@@ -2,38 +2,41 @@ package top.dustone.kaixin.entity.log;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
+import top.dustone.kaixin.entity.Driver;
 import top.dustone.kaixin.entity.Machine;
 import top.dustone.kaixin.entity.Resource;
-import top.dustone.kaixin.entity.Support;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "log_oil")
+@Table(name = "log_transport")
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
-public class LogOil {
+public class LogWork {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @ManyToOne(targetEntity = Support.class)
-    @JoinColumn(name = "support_id", referencedColumnName = "id", nullable = false)
-    private Support support;
     @ManyToOne(targetEntity = Machine.class)
     @JoinColumn(name = "machine_id", referencedColumnName = "id", nullable = false)
     private Machine machine;
-    private Double litre;
-    private Double money;
+    @ManyToOne(targetEntity = Driver.class)
+    @JoinColumn(name = "driver_id", referencedColumnName = "id", nullable = false)
+    private Driver driver;
+    private String type;
+    private double money;
     private String details;
     @OneToOne
-    @Cascade(value = {CascadeType.ALL})
+    @Cascade(value = {org.hibernate.annotations.CascadeType.ALL})
     private Resource resource;
     private int logMode;
     @Column(name = "create_time")
     private Timestamp createTime;
     @Column(name = "edit_time")
     private Timestamp editTime;
+    @Column(name = "start_time")
+    private Timestamp startTime;
+    @Column(name = "end_time")
+    private Timestamp endTime;
 
     public Integer getId() {
         return id;
@@ -41,14 +44,6 @@ public class LogOil {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Support getSupport() {
-        return support;
-    }
-
-    public void setSupport(Support support) {
-        this.support = support;
     }
 
     public Machine getMachine() {
@@ -59,19 +54,27 @@ public class LogOil {
         this.machine = machine;
     }
 
-    public Double getLitre() {
-        return litre;
+    public Driver getDriver() {
+        return driver;
     }
 
-    public void setLitre(Double litre) {
-        this.litre = litre;
+    public void setDriver(Driver driver) {
+        this.driver = driver;
     }
 
-    public Double getMoney() {
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public double getMoney() {
         return money;
     }
 
-    public void setMoney(Double money) {
+    public void setMoney(double money) {
         this.money = money;
     }
 
@@ -115,19 +118,37 @@ public class LogOil {
         this.editTime = editTime;
     }
 
+    public Timestamp getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Timestamp startTime) {
+        this.startTime = startTime;
+    }
+
+    public Timestamp getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Timestamp endTime) {
+        this.endTime = endTime;
+    }
+
     @Override
     public String toString() {
-        return "LogOil{" +
+        return "LogWork{" +
                 "id=" + id +
-                ", support=" + support +
                 ", machine=" + machine +
-                ", litre=" + litre +
+                ", driver=" + driver +
+                ", type='" + type + '\'' +
                 ", money=" + money +
                 ", details='" + details + '\'' +
                 ", resource=" + resource +
                 ", logMode=" + logMode +
                 ", createTime=" + createTime +
                 ", editTime=" + editTime +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
                 '}';
     }
 }
