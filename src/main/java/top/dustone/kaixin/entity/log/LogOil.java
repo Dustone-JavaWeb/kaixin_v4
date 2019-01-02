@@ -29,11 +29,15 @@ public class LogOil {
     @OneToOne
     @Cascade(value = {CascadeType.ALL})
     private Resource resource;
-    private int logMode;
+    private String logMode;
     @Column(name = "create_time")
     private Timestamp createTime;
     @Column(name = "edit_time")
     private Timestamp editTime;
+    @Transient
+    private Timestamp fromTime;
+    @Transient
+    private Timestamp toTime;
 
     public Integer getId() {
         return id;
@@ -91,11 +95,11 @@ public class LogOil {
         this.resource = resource;
     }
 
-    public int getLogMode() {
+    public String getLogMode() {
         return logMode;
     }
 
-    public void setLogMode(int logMode) {
+    public void setLogMode(String logMode) {
         this.logMode = logMode;
     }
 
@@ -129,5 +133,21 @@ public class LogOil {
                 ", createTime=" + createTime +
                 ", editTime=" + editTime +
                 '}';
+    }
+
+    public Timestamp getFromTime() {
+        return fromTime;
+    }
+
+    public void setFromTime(Timestamp fromTime) {
+        this.fromTime = fromTime;
+    }
+
+    public Timestamp getToTime() {
+        return toTime;
+    }
+
+    public void setToTime(Timestamp toTime) {
+        this.toTime = toTime;
     }
 }
