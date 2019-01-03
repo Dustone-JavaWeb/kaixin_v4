@@ -7,6 +7,7 @@ var ROUTE_DRIVER_INFO=BASE_ROUTE_URL+"/pages/driverInfo"+BASE_ROUTE_LAST_TOKEN;
 var ROURE_MACHINE_INFO=BASE_ROUTE_URL+"/pages/machineInfo"+BASE_ROUTE_LAST_TOKEN;
 var ROUTE_SUPPORT_INFO=BASE_ROUTE_URL+"/pages/supportInfo"+BASE_ROUTE_LAST_TOKEN;
 var ROUTE_CUSTOMER_INFO=BASE_ROUTE_URL+"/pages/customerInfo"+BASE_ROUTE_LAST_TOKEN;
+var ROUTE_LOG_OIL_INFO=BASE_ROUTE_URL+"/pages/logOilInfo"+BASE_ROUTE_LAST_TOKEN;
 
 //后端API
 var FRAME_NAV_DATA_URL=BASE_URL+"/sys_makeDrawer";
@@ -23,6 +24,9 @@ var PAGE_MACHINE_BRAND_QUERY= BASE_URL+"/machineBrand_query";
 var PAGE_CUSTOMER_QUERY=BASE_URL+"/customer_query";
 var PAGE_CUSTOMER_UPDATE=BASE_URL+"/customer_update";
 var PAGE_CUSTOMER_CONTACT_QUERY=BASE_URL+"/customer_query_by_contact";
+
+var PAGE_LOG_OIL_QUERY=BASE_URL+"/logoil_query";
+var PAGE_LOG_OIL_UPDATE=BASE_URL+"/logoil_update";
 
 var RESOURCE_UPLOAD=BASE_URL+"/resource_upload";
 var RESOURCE_UPDATE=BASE_URL+"/resource_update";

@@ -7,6 +7,7 @@ var driverQueryVue;
 var machineQueryVue;
 var supportQueryVue;
 var machineTypeVue;
+var logOilQueryVue;
 //var driverInfoVue;
 //实体数据
 

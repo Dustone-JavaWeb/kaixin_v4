@@ -1,17 +1,17 @@
 package top.dustone.kaixin.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import top.dustone.kaixin.dao.LogOilDAO;
-import top.dustone.kaixin.entity.Machine;
-import top.dustone.kaixin.entity.Support;
 import top.dustone.kaixin.entity.log.LogOil;
 import top.dustone.kaixin.util.Page4Navigator;
 
 import javax.persistence.criteria.*;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,17 +25,26 @@ public class LogOilService {
         Specification<LogOil> specification=new Specification<LogOil>() {
             @Override
             public Predicate toPredicate(Root<LogOil> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder cb) {
-                Join<LogOil,Support> join1=root.join("support",JoinType.INNER);
-                Path<String> exp1=join1.get("name");
-                Join<LogOil,Machine> join2=root.join("machine",JoinType.INNER);
-                Path<String> exp2=join2.get("nameplate");
-                Path<Timestamp> exp3=root.get("createTime");
-                Predicate predicate=cb.and(
-                        cb.like(exp1,"%name%"),
-                        cb.like(exp2,"%nameplate%"),
-                        cb.lessThanOrEqualTo(exp3,new Timestamp(1546499794000L))
-                );
-                return predicate;
+                List<Predicate> ps = new ArrayList<Predicate>();
+                if(logOil.getSupport()!=null){
+                    if(logOil.getSupport().getName()!=null&&logOil.getSupport().getName().trim().length()>0){
+                        ps.add(cb.like(root.join("support",JoinType.INNER).get("name"),"%"+logOil.getSupport().getName()+"%"));
+                    }
+                }
+                if(logOil.getMachine()!=null){
+                    if(logOil.getMachine().getNameplate()!=null&&logOil.getMachine().getNameplate().trim().length()>0){
+                        ps.add(cb.like(root.join("support",JoinType.INNER).get("name"),"%"+logOil.getMachine().getNameplate()+"%"));
+                    }
+                }
+                if(logOil.getFromTime()!=null&&logOil.getToTime()!=null){
+                    ps.add(cb.between(root.get("createTime"),logOil.getFromTime(),logOil.getToTime()));
+                }
+                if(logOil.getLogMode()!=null&&logOil.getLogMode().trim().length()>0){
+                    ps.add(cb.equal(root.get("logMode"),logOil.getLogMode()));
+                }
+                Predicate p[]=new Predicate[ps.size()];
+                criteriaQuery.where(cb.and(ps.toArray(p)));
+                return criteriaQuery.getRestriction();
             }
         };
         Page pageJPA=logOilDAO.findAll(specification,pageable);
@@ -48,21 +57,5 @@ public class LogOilService {
         content.add(logOil);
         result.setContent(content);
         return result;
-    }
-    private class MySpec implements Specification<LogOil>{
-        @Override
-        public Predicate toPredicate(Root<LogOil> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder cb) {
-            Join<LogOil,Support> join1=root.join("support",JoinType.INNER);
-            Path<String> exp1=join1.get("name");
-            Join<LogOil,Machine> join2=root.join("machine",JoinType.INNER);
-            Path<String> exp2=join2.get("nameplate");
-            Path<Timestamp> exp3=root.get("createTime");
-            Predicate predicate=cb.and(
-                    cb.like(exp1,"%name%"),
-                    cb.like(exp2,"%nameplate%"),
-                    cb.lessThanOrEqualTo(exp3,new Timestamp(1546499794000L))
-                    );
-            return predicate;
-        }
     }
 }
