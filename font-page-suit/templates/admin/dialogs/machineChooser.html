@@ -1,0 +1,144 @@
+<div class="admin-file-dialog mdui-dialog" id="machineChooserDialog">
+	<div class="admin-file-dialog-container  mdui-container" id="machineChooserVue">
+		<div class="mdui-typo">
+			<h3>
+				机器列表
+			</h3>
+		</div>
+		<div class="admin-layout-box mdui-col-xs-6">
+			<input v-model="requestModel.example.nameplate" class="mdui-textfield-input" type="text" placeholder="铭牌" />
+		</div>
+		<div class="admin-layout-box mdui-col-xs-6">
+			<input v-model="requestModel.example.code" class="mdui-textfield-input" type="text" placeholder="自编号" />
+		</div>
+		<div class="mdui-divider"></div>
+		<div class="mdui-row">
+			<div class="mdui-table-fluid">
+				<table class="admin-table-nobr mdui-table mdui-table-hoverable">
+					<thead>
+						<tr>
+							<td>编号</td>
+							<td>挖掘机类型</td>
+							<td>自编号</td>
+							<td>挖掘机铭牌</td>
+							<td>挖掘机状态</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="tr in trs" @click="chooseOne(tr)">
+							<td>{{tr.id}}</td>
+							<td>{{tr.machineType.name}}</td>
+							<td>{{tr.code}}</td>
+							<td>{{tr.nameplate}}</td>
+							<td>
+								<div class="mdui-text-color-white mdui-chip-title mdui-color-light-green" v-if="tr.status=='空闲'">{{tr.status}}</div>
+								<div class="mdui-text-color-white mdui-chip-title mdui-color-pink" v-else-if="tr.status=='工作'">{{tr.status}}</div>
+								<div class="mdui-text-color-white mdui-chip-title mdui-color-yellow-800" v-else-if="tr.status=='维修'">{{tr.status}}</div>
+								<div class="mdui-text-color-white mdui-chip-title mdui-color-black" v-else-if="tr.status=='报废'">{{tr.status}}</div>
+								<div class="mdui-text-color-white mdui-chip-title mdui-color-grey" v-else-if="tr.status=='已出售'">{{tr.status}}</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	var machineChooserVue;
+	var machineChooserDialog;
+
+	$(function() {
+		machineChooserDialog = new mdui.Dialog('#machineChooserDialog');
+		new Vue({
+			el: '#machineChooserVue',
+			data: {
+				trs: [],
+				pagination: {},
+				requestModel: {
+					start: 0,
+					pageSize: 10000,
+					example: {
+						nameplate: "",
+						code: "",
+						status: "",
+					}
+				},
+				target:{}
+			},
+			mounted: function() {
+				machineChooserVue = this;
+			},
+			methods: {
+				list: function(start) {
+					var self = this;
+					self.requestModel.start = start;
+					var ajaxRequestModel = DEEP_COPY(self.requestModel);
+					ajaxRequestModel.example = checkEmpty(ajaxRequestModel.example);
+					axios.post(PAGE_MACHINE_QUERY, ajaxRequestModel).then(function(response) {
+						self.pagination = response.data;
+						self.trs = response.data.content;
+						mdui.mutation();
+					});
+				},
+				chooseOne:function(tr){
+					this.target.machine=tr;
+					
+					machineChooserDialog.close();
+				},
+				setChooseTarget:function(tar){
+					this.list(0);
+					this.target=tar;
+				}
+			},
+			watch: {
+				"requestModel.example.nameplate": function(val) {
+					this.list(0);
+				},
+				"requestModel.example.code": function(val) {
+					this.list(0);
+				},
+			},
+			filters: {
+				status: function(value) {
+					if (value == 0) {
+						return '空闲';
+					} else if (value == 1) {
+						return '工作';
+					} else if (value == 2) {
+						return '休假';
+					} else {
+						return '离职';
+					}
+				},
+				type: function(value) {
+					if (value == 0) {
+						return "正式";
+					} else {
+						return "临时";
+					}
+				},
+				date: function(value) {
+					return value.substr(0, 10);
+				}
+			},
+		});
+	});
+
+	function openMachineChooserDialog(target) {
+		machineChooserVue.setChooseTarget(target);
+		machineChooserDialog.open();
+		mdui.mutation();
+	}
+
+	function checkEmpty(jsonObject) {
+		var result = {};
+		for (var key in jsonObject) {
+			if (jsonObject[key] == "") {
+				continue;
+			}
+			result[key] = jsonObject[key];
+		}
+		return result;
+	}
+</script>

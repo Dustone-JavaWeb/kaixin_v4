@@ -5,7 +5,7 @@ var appCore;
 
 $(function() {
 	leftDrawer = new mdui.Drawer('#left-drawer');
-	
+	loadDialogs();
 	changeTabContentHeight();
 	
 	layui.use('element', function() {
@@ -121,6 +121,10 @@ function transformNavData() {
 function changeTabContentHeight() {
 	var content = document.getElementById("adminTabContent");
 	content.style.height= (document.documentElement.clientHeight - 118)+"px";
+}
+
+function loadDialogs(){
+	$("#adminFrameDialogs").load(FRAME_DIALOG_REGISTER);
 }
 window.onresize = function() {
 	changeTabContentHeight();

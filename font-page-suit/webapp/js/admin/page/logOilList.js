@@ -52,7 +52,7 @@ $(function() {
 					eNum: tr.id,
 					name: '加油日志_' + tr.id,
 					url: ROUTE_LOG_OIL_INFO,
-					target: 'OilLogInfo',
+					target: 'LogOilInfo',
 					initData: {
 						entity: tr
 					}
@@ -66,7 +66,7 @@ $(function() {
 					eNum: "ADD",
 					name: '新建加油日志',
 					url: ROUTE_LOG_OIL_INFO,
-					target: 'OilLogAdd',
+					target: 'LogOilAdd',
 					initData: {}
 				}
 				makeInfoTab(tabMsg);

@@ -18,7 +18,7 @@ public class MachineController {
     @PostMapping("/machines_query")
     public Page4Navigator<Machine> list(@RequestBody RequestModel<Machine> requestModel){
         System.out.println(requestModel);
-        Page4Navigator<Machine> page=machineService.listByExample(requestModel.getExample(),requestModel.getStart(),5,5);
+        Page4Navigator<Machine> page=machineService.listByExample(requestModel.getExample(),requestModel.getStart(),requestModel.getPageSize(),5);
         page.setExample(requestModel);
         return page;
     }
