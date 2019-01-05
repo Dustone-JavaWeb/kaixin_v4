@@ -1,4 +1,4 @@
-package top.dustone.kaixin.service;
+package top.dustone.kaixin.service.log;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -33,7 +33,7 @@ public class LogOilService {
                 }
                 if(logOil.getMachine()!=null){
                     if(logOil.getMachine().getNameplate()!=null&&logOil.getMachine().getNameplate().trim().length()>0){
-                        ps.add(cb.like(root.join("support",JoinType.INNER).get("name"),"%"+logOil.getMachine().getNameplate()+"%"));
+                        ps.add(cb.like(root.join("machine",JoinType.INNER).get("nameplate"),"%"+logOil.getMachine().getNameplate()+"%"));
                     }
                 }
                 if(logOil.getFromTime()!=null&&logOil.getToTime()!=null){

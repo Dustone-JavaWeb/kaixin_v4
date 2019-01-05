@@ -27,7 +27,7 @@ public class LogError {
     @JoinColumn(name = "driver_id", referencedColumnName = "id", nullable = false)
     private Driver driver;
     private String type;
-    private Integer logMode;
+    private String logMode;
     private String title;
     private String details;
     @OneToOne
@@ -37,6 +37,26 @@ public class LogError {
     private Timestamp createTime;
     @Column(name = "edit_time")
     private Timestamp editTime;
+    @Transient
+    private Timestamp fromTime;
+    @Transient
+    private Timestamp toTime;
+
+    public Timestamp getFromTime() {
+        return fromTime;
+    }
+
+    public void setFromTime(Timestamp fromTime) {
+        this.fromTime = fromTime;
+    }
+
+    public Timestamp getToTime() {
+        return toTime;
+    }
+
+    public void setToTime(Timestamp toTime) {
+        this.toTime = toTime;
+    }
 
     public Integer getId() {
         return id;
@@ -78,11 +98,11 @@ public class LogError {
         this.type = type;
     }
 
-    public Integer getLogMode() {
+    public String getLogMode() {
         return logMode;
     }
 
-    public void setLogMode(Integer logMode) {
+    public void setLogMode(String logMode) {
         this.logMode = logMode;
     }
 

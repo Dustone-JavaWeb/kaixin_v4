@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import top.dustone.kaixin.entity.Support;
 import top.dustone.kaixin.entity.log.LogOil;
+import top.dustone.kaixin.service.log.LogOilService;
 
 import java.sql.Timestamp;
 

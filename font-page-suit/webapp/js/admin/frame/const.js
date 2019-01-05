@@ -30,8 +30,8 @@ var PAGE_CUSTOMER_QUERY=BASE_URL+"/customer_query";
 var PAGE_CUSTOMER_UPDATE=BASE_URL+"/customer_update";
 var PAGE_CUSTOMER_CONTACT_QUERY=BASE_URL+"/customer_query_by_contact";
 
-var PAGE_LOG_OIL_QUERY=BASE_URL+"/logoil_query";
-var PAGE_LOG_OIL_UPDATE=BASE_URL+"/logoil_update";
+var PAGE_LOG_OIL_QUERY=BASE_URL+"/logOil_query";
+var PAGE_LOG_OIL_UPDATE=BASE_URL+"/logOil_update";
 
 var RESOURCE_UPLOAD=BASE_URL+"/resource_upload";
 var RESOURCE_UPDATE=BASE_URL+"/resource_update";

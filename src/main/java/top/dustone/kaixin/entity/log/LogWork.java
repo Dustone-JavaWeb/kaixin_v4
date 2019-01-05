@@ -28,7 +28,7 @@ public class LogWork {
     @OneToOne
     @Cascade(value = {org.hibernate.annotations.CascadeType.ALL})
     private Resource resource;
-    private int logMode;
+    private String logMode;
     @Column(name = "create_time")
     private Timestamp createTime;
     @Column(name = "edit_time")
@@ -37,6 +37,10 @@ public class LogWork {
     private Timestamp startTime;
     @Column(name = "end_time")
     private Timestamp endTime;
+    @Transient
+    private Timestamp fromTime;
+    @Transient
+    private Timestamp toTime;
 
     public Integer getId() {
         return id;
@@ -94,11 +98,11 @@ public class LogWork {
         this.resource = resource;
     }
 
-    public int getLogMode() {
+    public String getLogMode() {
         return logMode;
     }
 
-    public void setLogMode(int logMode) {
+    public void setLogMode(String logMode) {
         this.logMode = logMode;
     }
 
@@ -150,5 +154,21 @@ public class LogWork {
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
                 '}';
+    }
+
+    public Timestamp getFromTime() {
+        return fromTime;
+    }
+
+    public void setFromTime(Timestamp fromTime) {
+        this.fromTime = fromTime;
+    }
+
+    public Timestamp getToTime() {
+        return toTime;
+    }
+
+    public void setToTime(Timestamp toTime) {
+        this.toTime = toTime;
     }
 }
