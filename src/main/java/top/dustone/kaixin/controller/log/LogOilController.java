@@ -17,7 +17,7 @@ public class LogOilController {
     private LogOilService logOilService;
     @PostMapping("/logOil_query")
     public Page4Navigator<LogOil> list(@RequestBody RequestModel<LogOil> requestModel){
-        Page4Navigator<LogOil> page=logOilService.listByExapmle(requestModel.getExample(),requestModel.getStart(),10,5);
+        Page4Navigator<LogOil> page=logOilService.listByExapmle(requestModel.getExample(),requestModel.getStart(),requestModel.getPageSize(),5);
         page.setExample(requestModel);
         //System.out.println(page);
         return page;

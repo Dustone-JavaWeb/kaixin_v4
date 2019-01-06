@@ -15,7 +15,7 @@ public class CustomerController {
     CustomerService customerService;
     @PostMapping("/customer_query")
     public Page4Navigator<Customer> list(@RequestBody RequestModel<Customer> requestModel){
-        Page4Navigator<Customer> page=customerService.listByExample(requestModel.getExample(),requestModel.getStart(),10,5);
+        Page4Navigator<Customer> page=customerService.listByExample(requestModel.getExample(),requestModel.getStart(),requestModel.getPageSize(),5);
         page.setExample(requestModel);
         //System.out.println(page);
         return page;

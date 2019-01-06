@@ -42,6 +42,9 @@ public class LogMaintainService {
                 if(logMaintain.getLogMode()!=null&&logMaintain.getLogMode().trim().length()>0){
                     ps.add(cb.equal(root.get("logMode"),logMaintain.getLogMode()));
                 }
+                if(logMaintain.getType()!=null&&logMaintain.getType().trim().length()>0){
+                    ps.add(cb.equal(root.get("type"),logMaintain.getType()));
+                }
                 Predicate p[]=new Predicate[ps.size()];
                 criteriaQuery.where(cb.and(ps.toArray(p)));
                 return criteriaQuery.getRestriction();

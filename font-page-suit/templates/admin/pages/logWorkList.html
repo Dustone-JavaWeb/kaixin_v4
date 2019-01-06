@@ -1,4 +1,4 @@
-<div class="admin-child-page mdui-container-fluid mdui-center" id="logOilQueryTable">
+<div class="admin-child-page mdui-container-fluid mdui-center" id="logWorkQueryTable">
 	<div class="admin-select-area mdui-row">
 		<div class="mdui-typo">
 			<h3>筛选条件</h3>
@@ -6,8 +6,8 @@
 		<div class="mdui-divider"></div>
 		<form id="select-form" class="admin-select-form">
 			<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
-				<label class="mdui-textfield-label">后勤姓名</label>
-				<input v-model="requestModel.example.support.name" class="mdui-textfield-input" type="text" placeholder="后勤姓名" />
+				<label class="mdui-textfield-label">机手姓名</label>
+				<input v-model="requestModel.example.driver.name" class="mdui-textfield-input" type="text" placeholder="机手姓名" />
 			</div>
 			<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
 				<label class="mdui-textfield-label">机器铭牌</label>
@@ -23,12 +23,20 @@
 				</select>
 			</div>
 			<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
+				<label class="mdui-textfield-label">工单类型</label>
+				<select v-model="requestModel.example.type" class="mdui-select" style="width: 100%">
+					<option value="">所有工单类型</option>
+					<option value="合约工单">合约工单</option>
+					<option value="临时工单">临时工单</option>
+				</select>
+			</div>
+			<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
 				<label class="mdui-textfield-label">开始时间</label>
-				<input class="mdui-textfield-input" type="text" placeholder="开始时间" id="logOilListSTime" readonly>
+				<input class="mdui-textfield-input" type="text" placeholder="开始时间" id="logWorkListSTime" readonly>
 			</div>
 			<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
 				<label class="mdui-textfield-label">结束时间</label>
-				<input class="mdui-textfield-input" type="text" placeholder="结束时间" id="logOilListETime" readonly>
+				<input class="mdui-textfield-input" type="text" placeholder="结束时间" id="logWorkListETime" readonly>
 			</div>
 		</form>
 		<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
@@ -46,10 +54,10 @@
 				<thead>
 					<tr>
 						<td>编号</td>
-						<td>后勤人员姓名</td>
+						<td>机手姓名</td>
 						<td>机器铭牌</td>
-						<td>加油量</td>
-						<td>加油金额</td>
+						<td>工单金额</td>
+						<td>工单类型</td>
 						<td>日志状态</td>
 						<td>创建时间</td>
 						<td>操作</td>
@@ -58,10 +66,13 @@
 				<tbody>
 					<tr v-for="tr in trs">
 						<td>{{tr.id}}</td>
-						<td class="mdui-typo"><a @click="showChildInfo(tr.support,'support')">{{tr.support.name}}</a></td>
+						<td class="mdui-typo"><a @click="showChildInfo(tr.driver,'driver')">{{tr.driver.name}}</a></td>
 						<td class="mdui-typo"><a @click="showChildInfo(tr.machine,'machine')">{{tr.machine.nameplate}}</a></td>
-						<td>{{tr.litre}}</td>
 						<td>{{tr.money}}</td>
+						<td>
+							<div class="mdui-text-color-white mdui-chip-title mdui-color-light-green" v-if="tr.type=='合约工单'">{{tr.type}}</div>
+							<div class="mdui-text-color-white mdui-chip-title mdui-color-pink" v-else-if="tr.type=='临时工单'">{{tr.type}}</div>
+						</td>
 						<td>
 							<div class="mdui-text-color-white mdui-chip-title mdui-color-light-green" v-if="tr.logMode=='已审核'">{{tr.logMode}}</div>
 							<div class="mdui-text-color-white mdui-chip-title mdui-color-pink" v-else-if="tr.logMode=='已作废'">{{tr.logMode}}</div>
@@ -90,4 +101,4 @@
 	</div>
 </div>
 
-<script src="../../../webapp/js/admin/page/logOilList.js"></script>
+<script src="../../../webapp/js/admin/page/logWorkList.js"></script>

@@ -17,7 +17,7 @@ public class SupportController {
     SupportService supportService;
     @PostMapping("/support_query")
     public Page4Navigator<Support> list(@RequestBody RequestModel<Support> requestModel){
-        Page4Navigator<Support> page=supportService.listByExapmle(requestModel.getExample(),requestModel.getStart(),5,5);
+        Page4Navigator<Support> page=supportService.listByExapmle(requestModel.getExample(),requestModel.getStart(),requestModel.getPageSize(),5);
         page.setExample(requestModel);
         //System.out.println(page);
         return page;

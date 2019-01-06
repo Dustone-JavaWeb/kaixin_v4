@@ -48,7 +48,7 @@ $(function() {
 					eId:"machineInfoAera",
 					eNum:tr.id,
 					name:'机器信息_'+tr.nameplate,
-					url:ROURE_MACHINE_INFO,
+					url:ROUTE_MACHINE_INFO,
 					target:'MachineInfo',
 					initData:{
 						entity:tr

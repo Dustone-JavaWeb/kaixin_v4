@@ -1,4 +1,4 @@
-<div class="admin-child-page mdui-container-fluid mdui-center" id="logOilQueryTable">
+<div class="admin-child-page mdui-container-fluid mdui-center" id="logTransportQueryTable">
 	<div class="admin-select-area mdui-row">
 		<div class="mdui-typo">
 			<h3>筛选条件</h3>
@@ -23,12 +23,21 @@
 				</select>
 			</div>
 			<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
+				<label class="mdui-textfield-label">转场类型</label>
+				<select v-model="requestModel.example.type" class="mdui-select" style="width: 100%">
+					<option value="">所有转场类型</option>
+					<option value="公司转场">公司转场</option>
+					<option value="第三方转场">第三方转场</option>
+					<option value="客户转场">客户转场</option>
+				</select>
+			</div>
+			<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
 				<label class="mdui-textfield-label">开始时间</label>
-				<input class="mdui-textfield-input" type="text" placeholder="开始时间" id="logOilListSTime" readonly>
+				<input class="mdui-textfield-input" type="text" placeholder="开始时间" id="logTransportListSTime" readonly>
 			</div>
 			<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
 				<label class="mdui-textfield-label">结束时间</label>
-				<input class="mdui-textfield-input" type="text" placeholder="结束时间" id="logOilListETime" readonly>
+				<input class="mdui-textfield-input" type="text" placeholder="结束时间" id="logTransportListETime" readonly>
 			</div>
 		</form>
 		<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
@@ -48,8 +57,8 @@
 						<td>编号</td>
 						<td>后勤人员姓名</td>
 						<td>机器铭牌</td>
-						<td>加油量</td>
-						<td>加油金额</td>
+						<td>转场金额</td>
+						<td>转场类型</td>
 						<td>日志状态</td>
 						<td>创建时间</td>
 						<td>操作</td>
@@ -60,8 +69,12 @@
 						<td>{{tr.id}}</td>
 						<td class="mdui-typo"><a @click="showChildInfo(tr.support,'support')">{{tr.support.name}}</a></td>
 						<td class="mdui-typo"><a @click="showChildInfo(tr.machine,'machine')">{{tr.machine.nameplate}}</a></td>
-						<td>{{tr.litre}}</td>
 						<td>{{tr.money}}</td>
+						<td>
+							<div class="mdui-text-color-white mdui-chip-title mdui-color-light-green" v-if="tr.type=='公司转场'">{{tr.type}}</div>
+							<div class="mdui-text-color-white mdui-chip-title mdui-color-pink" v-else-if="tr.type=='第三方转场'">{{tr.type}}</div>
+							<div class="mdui-text-color-white mdui-chip-title mdui-color-grey" v-else-if="tr.type=='客户转场'">{{tr.type}}</div>
+						</td>
 						<td>
 							<div class="mdui-text-color-white mdui-chip-title mdui-color-light-green" v-if="tr.logMode=='已审核'">{{tr.logMode}}</div>
 							<div class="mdui-text-color-white mdui-chip-title mdui-color-pink" v-else-if="tr.logMode=='已作废'">{{tr.logMode}}</div>
@@ -90,4 +103,4 @@
 	</div>
 </div>
 
-<script src="../../../webapp/js/admin/page/logOilList.js"></script>
+<script src="../../../webapp/js/admin/page/logTransportList.js"></script>

@@ -42,6 +42,9 @@ public class LogTransportService {
                 if(logTransport.getLogMode()!=null&&logTransport.getLogMode().trim().length()>0){
                     ps.add(cb.equal(root.get("logMode"),logTransport.getLogMode()));
                 }
+                if(logTransport.getType()!=null&&logTransport.getType().trim().length()>0){
+                    ps.add(cb.equal(root.get("type"),logTransport.getType()));
+                }
                 Predicate p[]=new Predicate[ps.size()];
                 criteriaQuery.where(cb.and(ps.toArray(p)));
                 return criteriaQuery.getRestriction();

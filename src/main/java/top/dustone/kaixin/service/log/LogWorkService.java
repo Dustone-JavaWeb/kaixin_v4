@@ -42,6 +42,9 @@ public class LogWorkService {
                 if(logWork.getLogMode()!=null&&logWork.getLogMode().trim().length()>0){
                     ps.add(cb.equal(root.get("logMode"),logWork.getLogMode()));
                 }
+                if(logWork.getType()!=null&&logWork.getType().trim().length()>0){
+                    ps.add(cb.equal(root.get("type"),logWork.getType()));
+                }
                 Predicate p[]=new Predicate[ps.size()];
                 criteriaQuery.where(cb.and(ps.toArray(p)));
                 return criteriaQuery.getRestriction();

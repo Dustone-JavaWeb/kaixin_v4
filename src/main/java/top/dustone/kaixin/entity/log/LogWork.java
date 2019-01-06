@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "log_transport")
+@Table(name = "log_work")
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 public class LogWork {
     @Id

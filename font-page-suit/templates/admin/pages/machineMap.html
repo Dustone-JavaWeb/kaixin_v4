@@ -1,0 +1,25 @@
+<div class="admin-child-page mdui-container-fluid mdui-center" style="padding: 0px;">
+	<div class="mdui-col-xs-9" style="padding-left: 0px;padding-right: 0px;">
+		<div id="mapContainer" class="admin-machine-map-container"></div>
+	</div>
+	<div class="mdui-col-xs-3" style="padding-left: 0px;padding-right: 0px;" id="mapInfoList">
+		<ul class="mdui-list">
+			<li class="mdui-list-item mdui-ripple" v-for="tr in trs">
+				<i class="mdui-list-item-avatar mdui-icon material-icons">folder</i>
+				<div class="mdui-list-item-content">
+					<div class="mdui-list-item-title">{{tr.nameplate}}</div>
+					<div class="mdui-list-item-text">{{tr.status}}</div>
+				</div>
+				<i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-grey-400">info</i>
+			</li>
+		</ul>
+	</div>
+</div>
+<script>
+	var url = 'https://webapi.amap.com/maps?v=1.4.12&key=98ce2ba6af5d1bf29cc0091e7b90b295&callback=onApiLoaded';
+	var jsapi = document.createElement('script');
+	jsapi.charset = 'utf-8';
+	jsapi.src = url;
+	document.head.appendChild(jsapi);
+</script>
+<script src="../../../webapp/js/admin/page/machineMap.js"></script>

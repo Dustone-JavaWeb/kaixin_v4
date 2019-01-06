@@ -7,7 +7,7 @@ $(function() {
 	leftDrawer = new mdui.Drawer('#left-drawer');
 	loadDialogs();
 	changeTabContentHeight();
-	
+
 	layui.use('element', function() {
 		var element = layui.element;
 		//监听tab页面关闭
@@ -47,7 +47,7 @@ $(function() {
 			}
 		}
 	});
-	
+
 	mdui.mutation();
 });
 
@@ -120,10 +120,14 @@ function transformNavData() {
 
 function changeTabContentHeight() {
 	var content = document.getElementById("adminTabContent");
-	content.style.height= (document.documentElement.clientHeight - 118)+"px";
+	var content2;
+	content.style.height = (document.documentElement.clientHeight - 99) + "px";
+	if (content2=document.getElementById("mapContainer")) {
+		content2.style.height = (document.documentElement.clientHeight - 99) + "px";
+	}
 }
 
-function loadDialogs(){
+function loadDialogs() {
 	$("#adminFrameDialogs").load(FRAME_DIALOG_REGISTER);
 }
 window.onresize = function() {

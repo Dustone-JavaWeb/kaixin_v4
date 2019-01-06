@@ -17,7 +17,7 @@ public class LogErrorController {
     private LogErrorService logErrorService;
     @PostMapping("/logError_query")
     public Page4Navigator<LogError> list(@RequestBody RequestModel<LogError> requestModel){
-        Page4Navigator<LogError> page=logErrorService.listByExapmle(requestModel.getExample(),requestModel.getStart(),10,5);
+        Page4Navigator<LogError> page=logErrorService.listByExapmle(requestModel.getExample(),requestModel.getStart(),requestModel.getPageSize(),5);
         page.setExample(requestModel);
         //System.out.println(page);
         return page;

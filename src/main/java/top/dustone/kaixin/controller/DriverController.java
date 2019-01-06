@@ -21,7 +21,7 @@ public class DriverController {
     }
     @PostMapping("/drivers_query")
     public Page4Navigator<Driver> list(@RequestBody RequestModel<Driver> requestModel){
-        Page4Navigator<Driver> page=driverService.listByExapmle(requestModel.getExample(),requestModel.getStart(),10,5);
+        Page4Navigator<Driver> page=driverService.listByExapmle(requestModel.getExample(),requestModel.getStart(),requestModel.getPageSize(),5);
         page.setExample(requestModel);
         //System.out.println(page);
         return page;

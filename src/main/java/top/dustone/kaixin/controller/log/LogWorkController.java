@@ -17,7 +17,7 @@ public class LogWorkController {
     private LogWorkService logWorkService;
     @PostMapping("/logWork_query")
     public Page4Navigator<LogWork> list(@RequestBody RequestModel<LogWork> requestModel){
-        Page4Navigator<LogWork> page=logWorkService.listByExapmle(requestModel.getExample(),requestModel.getStart(),10,5);
+        Page4Navigator<LogWork> page=logWorkService.listByExapmle(requestModel.getExample(),requestModel.getStart(),requestModel.getPageSize(),5);
         page.setExample(requestModel);
         //System.out.println(page);
         return page;

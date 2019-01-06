@@ -1,6 +1,6 @@
 $(function() {
 	new Vue({
-		el: '#logOilQueryTable',
+		el: '#logErrorQueryTable',
 		data: {
 			trs: [],
 			pagination: {},
@@ -11,6 +11,7 @@ $(function() {
 					logMode: "",
 					support: {},
 					machine: {},
+					driver: {},
 					fromTime: "",
 					toTime: ""
 				}
@@ -18,7 +19,7 @@ $(function() {
 			pageNow: 0
 		},
 		mounted: function() {
-			logOilQueryVue = this;
+			logErrorQueryVue = this;
 			this.list(0);
 		},
 		methods: {
@@ -27,7 +28,7 @@ $(function() {
 				self.requestModel.start = start;
 				var ajaxRequestModel = DEEP_COPY(self.requestModel);
 				ajaxRequestModel.example = checkEmpty(ajaxRequestModel.example);
-				axios.post(PAGE_LOG_OIL_QUERY, ajaxRequestModel).then(function(response) {
+				axios.post(PAGE_LOG_ERROR_QUERY, ajaxRequestModel).then(function(response) {
 					self.pagination = response.data;
 					self.trs = response.data.content;
 					self.pageNow = response.data.number + 1;
@@ -48,12 +49,12 @@ $(function() {
 			},
 			showInfo: function(tr) {
 				var tabMsg = {
-					id: "logOilInfo" + tr.id,
-					eId: "logOilInfoAera",
+					id: "logErrorInfo" + tr.id,
+					eId: "logErrorInfoAera",
 					eNum: tr.id,
-					name: '加油日志_' + tr.id,
-					url: ROUTE_LOG_OIL_INFO,
-					target: 'LogOilInfo',
+					name: '异常日志_' + tr.id,
+					url: ROUTE_LOG_ERROR_INFO,
+					target: 'LogErrorInfo',
 					initData: {
 						entity: tr
 					}
@@ -103,12 +104,12 @@ $(function() {
 			},
 			addEntity: function() {
 				var tabMsg = {
-					id: "logOilInfo",
-					eId: "logOilInfoAera",
+					id: "logErrorInfo",
+					eId: "logErrorInfoAera",
 					eNum: "ADD",
-					name: '新建加油日志',
-					url: ROUTE_LOG_OIL_INFO,
-					target: 'LogOilAdd',
+					name: '新建异常日志',
+					url: ROUTE_LOG_ERROR_INFO,
+					target: 'LogErrorAdd',
 					initData: {}
 				}
 				makeInfoTab(tabMsg);
@@ -161,26 +162,26 @@ $(function() {
 	});
 
 	function vueChooseDate(type, value) {
-		logOilQueryVue.chooseDate(type, value);
+		logErrorQueryVue.chooseDate(type, value);
 	}
 
 	layui.use('laydate', function() {
 		var laydate = layui.laydate;
 
 		laydate.render({
-			elem: '#logOilListSTime',
+			elem: '#logErrorListSTime',
 			type: 'datetime',
 			value: new Date(946174560000),
 			done: function(date) {
-				vueChooseDate(1,Date.parse(date));
+				vueChooseDate(1, Date.parse(date));
 			}
 		});
 		laydate.render({
-			elem: '#logOilListETime',
+			elem: '#logErrorListETime',
 			type: 'datetime',
 			value: new Date(),
 			done: function(date) {
-				vueChooseDate(2,Date.parse(date));
+				vueChooseDate(2, Date.parse(date));
 			}
 		});
 	});

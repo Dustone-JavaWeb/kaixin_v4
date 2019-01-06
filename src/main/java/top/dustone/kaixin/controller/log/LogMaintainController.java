@@ -17,7 +17,7 @@ public class LogMaintainController {
     private LogMaintainService logMaintainService;
     @PostMapping("/logMaintain_query")
     public Page4Navigator<LogMaintain> list(@RequestBody RequestModel<LogMaintain> requestModel){
-        Page4Navigator<LogMaintain> page=logMaintainService.listByExapmle(requestModel.getExample(),requestModel.getStart(),10,5);
+        Page4Navigator<LogMaintain> page=logMaintainService.listByExapmle(requestModel.getExample(),requestModel.getStart(),requestModel.getPageSize(),5);
         page.setExample(requestModel);
         //System.out.println(page);
         return page;

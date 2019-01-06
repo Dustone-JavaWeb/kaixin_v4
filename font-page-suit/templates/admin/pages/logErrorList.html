@@ -1,4 +1,4 @@
-<div class="admin-child-page mdui-container-fluid mdui-center" id="logOilQueryTable">
+<div class="admin-child-page mdui-container-fluid mdui-center" id="logErrorQueryTable">
 	<div class="admin-select-area mdui-row">
 		<div class="mdui-typo">
 			<h3>筛选条件</h3>
@@ -14,6 +14,10 @@
 				<input v-model="requestModel.example.machine.nameplate" class="mdui-textfield-input" type="text" placeholder="机器铭牌" />
 			</div>
 			<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
+				<label class="mdui-textfield-label">机手姓名</label>
+				<input v-model="requestModel.example.driver.name" class="mdui-textfield-input" type="text" placeholder="机手姓名" />
+			</div>
+			<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
 				<label class="mdui-textfield-label">日志状态</label>
 				<select v-model="requestModel.example.logMode" class="mdui-select" style="width: 100%">
 					<option value="">所有日志状态</option>
@@ -23,12 +27,20 @@
 				</select>
 			</div>
 			<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
+				<label class="mdui-textfield-label">异常类型</label>
+				<select v-model="requestModel.example.type" class="mdui-select" style="width: 100%">
+					<option value="">所有异常类型</option>
+					<option value="机械故障">机械故障</option>
+					<option value="其他故障">其他故障</option>
+				</select>
+			</div>
+			<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
 				<label class="mdui-textfield-label">开始时间</label>
-				<input class="mdui-textfield-input" type="text" placeholder="开始时间" id="logOilListSTime" readonly>
+				<input class="mdui-textfield-input" type="text" placeholder="开始时间" id="logErrorListSTime" readonly>
 			</div>
 			<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
 				<label class="mdui-textfield-label">结束时间</label>
-				<input class="mdui-textfield-input" type="text" placeholder="结束时间" id="logOilListETime" readonly>
+				<input class="mdui-textfield-input" type="text" placeholder="结束时间" id="logErrorListETime" readonly>
 			</div>
 		</form>
 		<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
@@ -48,8 +60,8 @@
 						<td>编号</td>
 						<td>后勤人员姓名</td>
 						<td>机器铭牌</td>
-						<td>加油量</td>
-						<td>加油金额</td>
+						<td>机手姓名</td>
+						<td>异常类型</td>
 						<td>日志状态</td>
 						<td>创建时间</td>
 						<td>操作</td>
@@ -60,8 +72,11 @@
 						<td>{{tr.id}}</td>
 						<td class="mdui-typo"><a @click="showChildInfo(tr.support,'support')">{{tr.support.name}}</a></td>
 						<td class="mdui-typo"><a @click="showChildInfo(tr.machine,'machine')">{{tr.machine.nameplate}}</a></td>
-						<td>{{tr.litre}}</td>
-						<td>{{tr.money}}</td>
+						<td class="mdui-typo"><a @click="showChildInfo(tr.driver,'driver')">{{tr.driver.name}}</a></td>
+						<td>
+							<div class="mdui-text-color-white mdui-chip-title mdui-color-pink" v-if="tr.type=='机械故障'">{{tr.type}}</div>
+							<div class="mdui-text-color-white mdui-chip-title mdui-color-grey" v-else-if="tr.type=='其他异常'">{{tr.type}}</div>
+						</td>
 						<td>
 							<div class="mdui-text-color-white mdui-chip-title mdui-color-light-green" v-if="tr.logMode=='已审核'">{{tr.logMode}}</div>
 							<div class="mdui-text-color-white mdui-chip-title mdui-color-pink" v-else-if="tr.logMode=='已作废'">{{tr.logMode}}</div>
@@ -90,4 +105,4 @@
 	</div>
 </div>
 
-<script src="../../../webapp/js/admin/page/logOilList.js"></script>
+<script src="../../../webapp/js/admin/page/logErrorList.js"></script>

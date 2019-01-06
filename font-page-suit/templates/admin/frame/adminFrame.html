@@ -13,13 +13,15 @@
 		<script src="../../../webapp/js/admin/frame/const.js"></script>
 		<script src="../../../webapp/js/admin/frame/environment.js"></script>
 		<script src="../../../webapp/js/admin/frame/util.js"></script>
+		<!--百度地图API-->
+		<!-- <script src="http://api.map.baidu.com/api?v=2.0&ak=W27pZ6qidCrVexeVaHriYXYgoXUxKhqN" type="text/javascript"></script> -->
 
 		<link href="../../../webapp/lib/layui/css/layui.css" rel="stylesheet" />
 		<link href="../../../webapp/lib/mdui/css/mdui.css" rel="stylesheet" />
 		<link href="../../../webapp/css/admin/admin.css" rel="stylesheet" />
 		<title>广州铠信</title>
 	</head>
-	<body class="admin_frame_body mdui-theme-primary-blue-grey mdui-theme-accent-pink mdui-loaded mdui-drawer-body-left mdui-locked">
+	<body class="admin_frame_body mdui-theme-primary-indigo mdui-theme-accent-pink mdui-loaded mdui-drawer-body-left mdui-locked">
 		<!--toolbar-->
 		<!-- <header class="mdui-appbar mdui-appbar-fixed mdui-shadow-0"> -->
 		<div class="mdui-toolbar mdui-color-theme">
@@ -30,21 +32,26 @@
 
 		<!--抽屉-->
 		<div class="mdui-drawer mdui-color-theme" id="left-drawer">
-			<ul class="mdui-list" mdui-collapse="{accordion: true}" id="left-drawer-list">
-				<li class="mdui-collapse-item mdui-color-theme" v-for="item in drawerItems">
-					<div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-						<i class="mdui-list-item-icon mdui-icon material-icons">{{item.icon}}</i>
-						<div class="mdui-list-item-content">{{item.name}}</div>
-						<i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
-					</div>
-					<ul class="mdui-collapse-item-body mdui-list mdui-list-dense" style="">
-						<li class="mdui-list-item mdui-ripple" v-for="child in item.sysDrawers">
-							<i class="mdui-list-item-icon mdui-icon material-icons">{{child.icon}}</i>
-							<div class="mdui-list-item-content" v-on:click="chooseTab" v-bind:tabId="child.id">{{child.name}}</div>
-						</li>
-					</ul>
-				</li>
-			</ul>
+			<div id="left-drawer-list">
+<!-- 				<div class="admin-user-info">
+					<img class="mdui-img-fluid mdui-img-circle" src="../../../webapp/img/timg%20(2).jpg"></img>
+				</div> -->
+				<ul class="mdui-list" mdui-collapse="{accordion: true}">
+					<li class="mdui-collapse-item mdui-color-theme" v-for="item in drawerItems">
+						<div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+							<i class="mdui-list-item-icon mdui-icon material-icons">{{item.icon}}</i>
+							<div class="mdui-list-item-content">{{item.name}}</div>
+							<i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+						</div>
+						<ul class="mdui-collapse-item-body mdui-list mdui-list-dense" style="">
+							<li class="mdui-list-item mdui-ripple" v-for="child in item.sysDrawers">
+								<i class="mdui-list-item-icon mdui-icon material-icons">{{child.icon}}</i>
+								<div class="mdui-list-item-content" v-on:click="chooseTab" v-bind:tabId="child.id">{{child.name}}</div>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
 		</div>
 		<!--tab-->
 		<div style="height: 100%;">
@@ -71,12 +78,12 @@
 					<h3>
 						{{entity.name}}的相关资源
 						<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" id="resourceUploadButtonDisplay">上传文件</button>
-						<input style="display: none;"  accept="*" type="file" name="image" @change="upLoadFile($event)" id="resourceUploadButton"/>
+						<input style="display: none;" accept="*" type="file" name="image" @change="upLoadFile($event)" id="resourceUploadButton" />
 					</h3>
 				</div>
 				<div class="mdui-divider"></div>
 				<div class="mdui-row">
-					<div class="mdui-table-fluid">
+					<div class="mdui-table-fluid admin-dialog-table-container">
 						<table class="admin-table-nobr mdui-table mdui-table-hoverable">
 							<thead>
 								<tr>
@@ -110,7 +117,7 @@
 		</div>
 		<!--头像上传工具-->
 		<div class="mdui-hidden" id="headPictureTool">
-			<input style="display: none;"  accept="*" type="file" name="image" @change="upLoadPicture($event)" id="headPictureButton"/>
+			<input style="display: none;" accept="*" type="file" name="image" @change="upLoadPicture($event)" id="headPictureButton" />
 		</div>
 		<!--加载对话框注册器-->
 		<div id="adminFrameDialogs">

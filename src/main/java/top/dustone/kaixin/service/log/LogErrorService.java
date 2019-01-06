@@ -47,6 +47,9 @@ public class LogErrorService {
                 if(logError.getLogMode()!=null&&logError.getLogMode().trim().length()>0){
                     ps.add(cb.equal(root.get("logMode"),logError.getLogMode()));
                 }
+                if(logError.getType()!=null&&logError.getType().trim().length()>0){
+                    ps.add(cb.equal(root.get("type"),logError.getType()));
+                }
                 Predicate p[]=new Predicate[ps.size()];
                 criteriaQuery.where(cb.and(ps.toArray(p)));
                 return criteriaQuery.getRestriction();

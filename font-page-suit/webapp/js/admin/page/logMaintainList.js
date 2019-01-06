@@ -1,6 +1,6 @@
 $(function() {
 	new Vue({
-		el: '#logOilQueryTable',
+		el: '#logMaintainQueryTable',
 		data: {
 			trs: [],
 			pagination: {},
@@ -18,7 +18,7 @@ $(function() {
 			pageNow: 0
 		},
 		mounted: function() {
-			logOilQueryVue = this;
+			logMaintainQueryVue = this;
 			this.list(0);
 		},
 		methods: {
@@ -27,7 +27,7 @@ $(function() {
 				self.requestModel.start = start;
 				var ajaxRequestModel = DEEP_COPY(self.requestModel);
 				ajaxRequestModel.example = checkEmpty(ajaxRequestModel.example);
-				axios.post(PAGE_LOG_OIL_QUERY, ajaxRequestModel).then(function(response) {
+				axios.post(PAGE_LOG_MAINTAIN_QUERY, ajaxRequestModel).then(function(response) {
 					self.pagination = response.data;
 					self.trs = response.data.content;
 					self.pageNow = response.data.number + 1;
@@ -48,12 +48,12 @@ $(function() {
 			},
 			showInfo: function(tr) {
 				var tabMsg = {
-					id: "logOilInfo" + tr.id,
-					eId: "logOilInfoAera",
+					id: "logMaintainInfo" + tr.id,
+					eId: "logMaintainInfoAera",
 					eNum: tr.id,
-					name: '加油日志_' + tr.id,
-					url: ROUTE_LOG_OIL_INFO,
-					target: 'LogOilInfo',
+					name: '维修日志_' + tr.id,
+					url: ROUTE_LOG_MAINTAIN_INFO,
+					target: 'LogMaintainInfo',
 					initData: {
 						entity: tr
 					}
@@ -103,12 +103,12 @@ $(function() {
 			},
 			addEntity: function() {
 				var tabMsg = {
-					id: "logOilInfo",
-					eId: "logOilInfoAera",
+					id: "logMaintainInfo",
+					eId: "logMaintainInfoAera",
 					eNum: "ADD",
-					name: '新建加油日志',
-					url: ROUTE_LOG_OIL_INFO,
-					target: 'LogOilAdd',
+					name: '新建维修日志',
+					url: ROUTE_LOG_MAINTAIN_INFO,
+					target: 'LogMaintainAdd',
 					initData: {}
 				}
 				makeInfoTab(tabMsg);
@@ -120,7 +120,6 @@ $(function() {
 				} else {
 					self.requestModel.example.toTime = value;
 				}
-				console.log(self.requestModel);
 			},
 			pageSelected: function(num) {
 				var self = this;
@@ -161,14 +160,14 @@ $(function() {
 	});
 
 	function vueChooseDate(type, value) {
-		logOilQueryVue.chooseDate(type, value);
+		logMaintainQueryVue.chooseDate(type, value);
 	}
 
 	layui.use('laydate', function() {
 		var laydate = layui.laydate;
 
 		laydate.render({
-			elem: '#logOilListSTime',
+			elem: '#logMaintainListSTime',
 			type: 'datetime',
 			value: new Date(946174560000),
 			done: function(date) {
@@ -176,7 +175,7 @@ $(function() {
 			}
 		});
 		laydate.render({
-			elem: '#logOilListETime',
+			elem: '#logMaintainListETime',
 			type: 'datetime',
 			value: new Date(),
 			done: function(date) {

@@ -17,7 +17,7 @@ public class LogTransportController {
     private LogTransportService logTransportService;
     @PostMapping("/logTransport_query")
     public Page4Navigator<LogTransport> list(@RequestBody RequestModel<LogTransport> requestModel){
-        Page4Navigator<LogTransport> page=logTransportService.listByExapmle(requestModel.getExample(),requestModel.getStart(),10,5);
+        Page4Navigator<LogTransport> page=logTransportService.listByExapmle(requestModel.getExample(),requestModel.getStart(),requestModel.getPageSize(),5);
         page.setExample(requestModel);
         //System.out.println(page);
         return page;

@@ -8,6 +8,12 @@ var machineQueryVue;
 var supportQueryVue;
 var machineTypeVue;
 var logOilQueryVue;
+var logErrorQueryVue;
+var logMaintainQueryVue;
+var logWorkQueryVue;
+var logTransportVue;
+
+var mapInfoVue;
 //var driverInfoVue;
 //实体数据
 
