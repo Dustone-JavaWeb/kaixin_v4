@@ -62,7 +62,7 @@ $(function() {
 					eId:"machineInfoAera",
 					eNum:"ADD",
 					name:'新增机器',
-					url:ROURE_MACHINE_INFO,
+					url:ROUTE_MACHINE_INFO,
 					target:'MachineAdd',
 					initData:{}
 				}

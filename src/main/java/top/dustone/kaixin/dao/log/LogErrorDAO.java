@@ -1,4 +1,4 @@
-package top.dustone.kaixin.dao;
+package top.dustone.kaixin.dao.log;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;

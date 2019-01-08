@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
-import top.dustone.kaixin.dao.LogOilDAO;
+import top.dustone.kaixin.dao.log.LogOilDAO;
 import top.dustone.kaixin.entity.log.LogOil;
 import top.dustone.kaixin.util.Page4Navigator;
 

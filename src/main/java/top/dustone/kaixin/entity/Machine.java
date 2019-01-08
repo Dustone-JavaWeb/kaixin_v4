@@ -1,6 +1,7 @@
 package top.dustone.kaixin.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -25,6 +26,7 @@ public class Machine {
     private Float worktime;
     private String xyz;
     @OneToOne
+    @Cascade(value = {org.hibernate.annotations.CascadeType.ALL})
     private Resource resource;
     private String detail;
     @Column(name = "create_time")

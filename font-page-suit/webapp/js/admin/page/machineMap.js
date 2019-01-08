@@ -6,7 +6,9 @@ $(function() {
 			requestModel: {
 				start: 0,
 				pageSize:10000,
-				example: {}
+				example: {
+					status:""
+				}
 			},
 			pageNow: 0
 		},
@@ -25,6 +27,11 @@ $(function() {
 					mdui.mutation();
 				});
 			},
+		},
+		watch: {
+			"requestModel.example.status": function(val) {
+				this.list(0);
+			}
 		}
 	});
 });
