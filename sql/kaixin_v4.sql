@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version: 5.5.15)
-# Date: 2019-01-09 12:21:34
+# Date: 2019-01-09 21:06:26
 # Generator: MySQL-Front 5.3  (Build 4.269)
 
 /*!40101 SET NAMES utf8 */;
@@ -194,6 +194,54 @@ CREATE TABLE `bean_support` (
 INSERT INTO `bean_support` VALUES (1,'黄俊强','21121211212撒','空闲','普通',3,NULL,'resource/headPicture/后勤_1_黄俊强png?t=0.5678082652072778','2018-12-26 10:16:07','2018-12-26 10:24:33'),(2,'谢晓航','234234124阿萨大','空闲','普通',2,4,'resource/headPicture/后勤_2_谢晓航png?t=0.6656672483139767','2018-12-26 10:16:35','2018-12-26 10:24:06');
 
 #
+# Structure for table "com_compact_machine"
+#
+
+CREATE TABLE `com_compact_machine` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `compact_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `machine_id` int(11) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='合同-机器连接表';
+
+#
+# Data for table "com_compact_machine"
+#
+
+
+#
+# Structure for table "com_compact_transport"
+#
+
+CREATE TABLE `com_compact_transport` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `compact_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `transport_id` int(11) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='合同-转场连接表';
+
+#
+# Data for table "com_compact_transport"
+#
+
+
+#
+# Structure for table "com_compact_work"
+#
+
+CREATE TABLE `com_compact_work` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `compact_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `work_id` int(11) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='合同-工单连接表';
+
+#
+# Data for table "com_compact_work"
+#
+
+
+#
 # Structure for table "com_customer_contact"
 #
 
@@ -202,7 +250,7 @@ CREATE TABLE `com_customer_contact` (
   `customer_id` int(11) unsigned DEFAULT NULL,
   `contact_id` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='bean_customer_contacts';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='客户-联系人连接表';
 
 #
 # Data for table "com_customer_contact"
@@ -233,7 +281,7 @@ CREATE TABLE `com_machine_map` (
 # Data for table "com_machine_map"
 #
 
-INSERT INTO `com_machine_map` VALUES (1,1,30,NULL,NULL,NULL,113.280637,23.125178,'2019-01-08 11:15:25'),(2,2,31,NULL,NULL,NULL,113.049752,23.109706,'2019-01-08 11:16:10'),(3,3,29,NULL,NULL,NULL,113.036198,24.63638,'2019-01-08 20:06:01');
+INSERT INTO `com_machine_map` VALUES (1,1,30,NULL,NULL,NULL,113.280637,23.125178,'2019-01-08 11:15:25'),(2,2,31,NULL,NULL,NULL,113.049752,23.109706,'2019-01-08 11:16:10'),(3,3,29,NULL,NULL,NULL,113.036199,24.63638,'2019-01-09 16:40:00');
 
 #
 # Structure for table "com_resource"
@@ -324,7 +372,7 @@ CREATE TABLE `log_oil` (
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `edit_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='加油单';
 
 #
 # Data for table "log_oil"
@@ -352,7 +400,7 @@ CREATE TABLE `log_transport` (
   `start_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `end_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='转场单';
 
 #
 # Data for table "log_transport"
@@ -378,7 +426,7 @@ CREATE TABLE `log_work` (
   `start_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `end_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='工单';
 
 #
 # Data for table "log_work"
@@ -396,18 +444,26 @@ CREATE TABLE `service_compact` (
   `customer_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '关联客户信息',
   `contact_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '客户联系人信息',
   `type` varchar(11) DEFAULT NULL COMMENT '合同种类',
-  `limit_time` int(11) NOT NULL,
-  `title` varchar(128) DEFAULT NULL,
-  `details` varchar(256) DEFAULT NULL,
-  `resource_id` int(11) DEFAULT NULL,
-  `service_mode` int(11) DEFAULT NULL,
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `edit_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `start_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `end_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `bucket` int(11) unsigned DEFAULT '0' COMMENT '挖斗数量',
+  `hammer` int(11) unsigned DEFAULT '0' COMMENT '破碎锤数量',
+  `limit_hour` double(11,2) unsigned DEFAULT '440.00' COMMENT '每月限制使用时间（合同内）',
+  `total_hour` double(11,2) unsigned DEFAULT NULL COMMENT '实际使用时间',
+  `extra_hour` double(11,2) unsigned DEFAULT NULL COMMENT '总计超出时间',
+  `money_promise` double(11,2) unsigned DEFAULT NULL COMMENT '保证金',
+  `money_rent` double(11,2) unsigned DEFAULT NULL COMMENT '每月租金',
+  `money_total` double(11,2) unsigned DEFAULT NULL COMMENT '总金额',
+  `money_delay` double(11,2) unsigned DEFAULT NULL COMMENT '违约金',
+  `money_fact` double(11,2) unsigned DEFAULT NULL COMMENT '实收金额',
+  `money_free` double(11,2) unsigned DEFAULT NULL COMMENT '优惠金额',
+  `dest` varchar(256) DEFAULT NULL COMMENT '租用地点',
+  `resource_id` int(11) unsigned DEFAULT NULL COMMENT '资源ID',
+  `status` varchar(11) DEFAULT '未审核' COMMENT '合同状态',
+  `edit_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `enter_time` timestamp NULL DEFAULT '0000-00-00 00:00:00' COMMENT '进场时间',
+  `start_time` timestamp NULL DEFAULT '0000-00-00 00:00:00' COMMENT '开工时间',
   PRIMARY KEY (`id`),
   KEY `COMPACT_CUSTOMER` (`customer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='合同';
 
 #
 # Data for table "service_compact"
@@ -431,7 +487,7 @@ CREATE TABLE `service_intention` (
   `end_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `INTENT_CUSTOMER` (`customer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='意愿';
 
 #
 # Data for table "service_intention"
@@ -449,7 +505,7 @@ CREATE TABLE `sys_drawer` (
   `url` varchar(128) DEFAULT NULL,
   `parent_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='系统导航表';
 
 #
 # Data for table "sys_drawer"
