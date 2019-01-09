@@ -17,10 +17,15 @@ public class MachineMapView {
     private Integer machineId;
     private String machineNameplate;
     private String machineCode;
-    private double wgsX;
-    private double wgsY;
-    private double gcjX;
-    private double gcjY;
+    private String machineStatus;
+    @Column(name = "wgs_x")
+    private Double wgsX;
+    @Column(name = "wgs_y")
+    private Double wgsY;
+    @Column(name = "gcj_x")
+    private Double gcjX;
+    @Column(name = "gcj_y")
+    private Double gcjY;
     @Column(name = "update_time")
     private Timestamp updateTime;
 
@@ -72,35 +77,35 @@ public class MachineMapView {
         this.machineCode = machineCode;
     }
 
-    public double getWgsX() {
+    public Double getWgsX() {
         return wgsX;
     }
 
-    public void setWgsX(double wgsX) {
+    public void setWgsX(Double wgsX) {
         this.wgsX = wgsX;
     }
 
-    public double getWgsY() {
+    public Double getWgsY() {
         return wgsY;
     }
 
-    public void setWgsY(double wgsY) {
+    public void setWgsY(Double wgsY) {
         this.wgsY = wgsY;
     }
 
-    public double getGcjX() {
+    public Double getGcjX() {
         return gcjX;
     }
 
-    public void setGcjX(double gcjX) {
+    public void setGcjX(Double gcjX) {
         this.gcjX = gcjX;
     }
 
-    public double getGcjY() {
+    public Double getGcjY() {
         return gcjY;
     }
 
-    public void setGcjY(double gcjY) {
+    public void setGcjY(Double gcjY) {
         this.gcjY = gcjY;
     }
 
@@ -127,5 +132,13 @@ public class MachineMapView {
                 ", gcjY=" + gcjY +
                 ", updateTime=" + updateTime +
                 '}';
+    }
+
+    public String getMachineStatus() {
+        return machineStatus;
+    }
+
+    public void setMachineStatus(String machineStatus) {
+        this.machineStatus = machineStatus;
     }
 }

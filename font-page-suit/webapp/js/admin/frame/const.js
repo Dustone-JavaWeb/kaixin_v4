@@ -45,6 +45,8 @@ var PAGE_LOG_MAINTAIN_UPDATE=BASE_URL+"/logMaintain_update";
 var PAGE_LOG_ERROR_QUERY=BASE_URL+"/logError_query";
 var PAGE_LOG_ERROR_UPDATE=BASE_URL+"/logError_update";
 
+var PAGE_MACHINE_MAP_VIEW_QUERY=BASE_URL+"/machine_map_view_query";
+
 var RESOURCE_UPLOAD=BASE_URL+"/resource_upload";
 var RESOURCE_UPDATE=BASE_URL+"/resource_update";
 var RESOURCE_DELETE=BASE_URL+"/resource_delete";

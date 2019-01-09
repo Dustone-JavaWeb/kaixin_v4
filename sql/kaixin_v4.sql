@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version: 5.5.15)
-# Date: 2019-01-05 20:30:10
+# Date: 2019-01-09 12:21:34
 # Generator: MySQL-Front 5.3  (Build 4.269)
 
 /*!40101 SET NAMES utf8 */;
@@ -95,7 +95,7 @@ CREATE TABLE `bean_driver` (
 # Data for table "bean_driver"
 #
 
-INSERT INTO `bean_driver` VALUES (1,'测试数据1','123123123','21321312','312312321','空闲','普通',NULL,14,NULL,'2018-11-14 22:55:49','2018-12-30 16:07:09'),(2,'测试数据12','123123123','21321312','312312321','空闲','普通',6,16,NULL,'2018-11-14 22:57:50','2018-12-30 20:38:04'),(3,'测试数据1213','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(4,'测试数据1213','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(5,'测试数据133425','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(6,'测试数据321','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(7,'测试数234532据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(8,'测试数2543据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(9,'测试23523数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(10,'测试43424523数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(11,'测试数3452据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(12,'测试2452数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(13,'测52435试数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(14,'测试2534数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(15,'测5435试数据1','123123123','21321312','312312321','空闲','普通',NULL,11,NULL,'2018-11-14 22:57:50','2018-12-30 16:03:00'),(16,'测试数据12','123123123','21321312','312312321','空闲','普通',NULL,12,NULL,'2018-11-14 22:58:06','2018-12-30 16:05:01'),(17,'测试数据1213','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:58:06','0000-00-00 00:00:00'),(18,'测试数据1213','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:58:06','0000-00-00 00:00:00'),(19,'测试数据133425','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:58:06','0000-00-00 00:00:00'),(20,'测试数据321','123123123','21321312','312312321','空闲','普通',NULL,10,NULL,'2018-11-14 22:58:06','2018-12-30 16:00:23'),(21,'测试数234532据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:58:06','0000-00-00 00:00:00'),(22,'测试数2543据1','123123123','21321312','312312321','空闲','普通',NULL,13,NULL,'2018-11-14 22:58:06','2018-12-30 16:05:42'),(23,'测试23523数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:58:06','0000-00-00 00:00:00'),(24,'测试43424523数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:58:06','0000-00-00 00:00:00'),(25,'测试数3452据1','123123123','21321312','312312321','空闲','普通',NULL,8,NULL,'2018-11-14 22:58:06','2018-12-30 15:36:46'),(26,'测试2452数据1','123123123','21321312','312312321','空闲','普通',NULL,9,NULL,'2018-11-14 22:58:06','2018-12-30 15:42:11'),(27,'李延喜','123123123','21321312','312312321','离职','普通',NULL,NULL,NULL,'2018-11-14 22:58:06','2018-11-25 10:35:33'),(28,'陈岩测试','123123123','21321312','312312321','休假','普通',NULL,NULL,NULL,'2018-11-14 22:58:06','2018-11-25 09:54:17'),(29,'陈三十','123123123','213213122121','312312321','工作','临时',NULL,6,NULL,'2018-11-14 22:58:06','2018-11-25 10:32:40'),(30,'陈岩','130480','21321312','66666666','工作','普通',NULL,1,NULL,'2018-11-14 23:04:26','0000-00-00 00:00:00'),(31,'陈岩是个大帅哥','213123123','9999999999','312313123','休假','临时',NULL,1,NULL,'2018-11-25 13:16:03','2018-11-25 13:16:03'),(32,'韩红','12345678','12345678','12345678','空闲','普通',15,7,'resource/headPicture/机手_32_韩红png?t=0.4481363903666604','2018-12-28 10:12:03','2018-12-28 10:12:03'),(33,'陈岩','13048062053','674462865','77787777','空闲','普通',NULL,15,NULL,'2018-12-30 16:27:07','2018-12-30 16:27:07');
+INSERT INTO `bean_driver` VALUES (1,'测试数据1','123123123','21321312','312312321','空闲','普通',NULL,14,NULL,'2018-11-14 22:55:49','2018-12-30 16:07:09'),(2,'测试数据12','123123123','21321312','312312321','空闲','普通',6,16,NULL,'2018-11-14 22:57:50','2018-12-30 20:38:04'),(3,'测试数据1213','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(4,'测试数据1213','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(5,'测试数据133425','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(6,'测试数据321','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(7,'测试数234532据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(8,'测试数2543据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(9,'测试23523数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(10,'测试43424523数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(11,'测试数3452据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(12,'测试2452数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(13,'测52435试数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(14,'测试2534数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:57:50','0000-00-00 00:00:00'),(15,'测5435试数据1','123123123','21321312','312312321','空闲','普通',NULL,11,NULL,'2018-11-14 22:57:50','2018-12-30 16:03:00'),(16,'测试数据12','123123123','21321312','312312321','空闲','普通',NULL,12,NULL,'2018-11-14 22:58:06','2018-12-30 16:05:01'),(17,'测试数据1213','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:58:06','0000-00-00 00:00:00'),(18,'测试数据1213','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:58:06','0000-00-00 00:00:00'),(19,'测试数据133425','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:58:06','0000-00-00 00:00:00'),(20,'测试数据321','123123123','21321312','312312321','空闲','普通',NULL,10,NULL,'2018-11-14 22:58:06','2018-12-30 16:00:23'),(21,'测试数234532据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:58:06','0000-00-00 00:00:00'),(22,'测试数2543据1','123123123','21321312','312312321','空闲','普通',NULL,13,NULL,'2018-11-14 22:58:06','2018-12-30 16:05:42'),(23,'测试23523数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:58:06','0000-00-00 00:00:00'),(24,'测试43424523数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,NULL,'2018-11-14 22:58:06','0000-00-00 00:00:00'),(25,'测试数3452据1','123123123','21321312','312312321','空闲','普通',NULL,8,NULL,'2018-11-14 22:58:06','2018-12-30 15:36:46'),(26,'测试2452数据1','123123123','21321312','312312321','空闲','普通',NULL,9,NULL,'2018-11-14 22:58:06','2018-12-30 15:42:11'),(27,'李延喜','123123123','21321312','312312321','离职','普通',NULL,NULL,NULL,'2018-11-14 22:58:06','2018-11-25 10:35:33'),(28,'陈岩测试','123123123','21321312','312312321','休假','普通',NULL,NULL,NULL,'2018-11-14 22:58:06','2018-11-25 09:54:17'),(29,'陈三十','123123123','213213122121','312312321','工作','临时',18,6,NULL,'2018-11-14 22:58:06','2018-11-25 10:32:40'),(30,'陈岩','130480','21321312','66666666','工作','普通',NULL,1,NULL,'2018-11-14 23:04:26','0000-00-00 00:00:00'),(31,'陈岩是个大帅哥','213123123','9999999999','312313123','休假','临时',NULL,1,NULL,'2018-11-25 13:16:03','2018-11-25 13:16:03'),(32,'韩红','12345678','12345678','12345678','空闲','普通',15,7,'resource/headPicture/机手_32_韩红png?t=0.4481363903666604','2018-12-28 10:12:03','2018-12-28 10:12:03'),(33,'陈岩','13048062053','674462865','77787777','空闲','普通',NULL,15,NULL,'2018-12-30 16:27:07','2018-12-30 16:27:07');
 
 #
 # Structure for table "bean_machine"
@@ -121,13 +121,13 @@ CREATE TABLE `bean_machine` (
   `dead_line` timestamp NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `MACHINE_TYPE` (`tid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='机器信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='机器信息表';
 
 #
 # Data for table "bean_machine"
 #
 
-INSERT INTO `bean_machine` VALUES (1,1,'AC9001','09 30','陈岩','分歧',1321,32231,'报废',32232.00,'23421',NULL,NULL,'2018-12-01 08:59:04','0000-00-00 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,1,'ASD','3011','WFQEW','一次性',2342,1234123,'空闲',21313.00,'123',1,NULL,'2018-12-01 09:27:50',NULL,NULL,NULL);
+INSERT INTO `bean_machine` VALUES (1,1,'AC9001','0922','陈岩','分歧',1321,32231,'转场',32232.00,'23421',NULL,NULL,'2018-12-01 08:59:04',NULL,NULL,NULL),(2,1,'ASD','3011','WFQEW','一次性',2342,1234123,'空闲',21313.00,'123',1,NULL,'2018-12-01 09:27:50',NULL,NULL,NULL),(3,3,'WW3939','0930','陈岩','130231231312',999,1024,'工作',2020.00,NULL,NULL,NULL,'2019-01-07 13:18:32',NULL,NULL,NULL);
 
 #
 # Structure for table "bean_machine_brand"
@@ -211,6 +211,31 @@ CREATE TABLE `com_customer_contact` (
 INSERT INTO `com_customer_contact` VALUES (2,26,18),(4,34,26);
 
 #
+# Structure for table "com_machine_map"
+#
+
+CREATE TABLE `com_machine_map` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `machine_id` int(11) unsigned DEFAULT NULL,
+  `driver_id` int(11) unsigned DEFAULT NULL,
+  `compact_id` int(11) unsigned DEFAULT NULL,
+  `wgs_x` double DEFAULT NULL COMMENT 'wgs_84 X坐标',
+  `wgs_y` double DEFAULT NULL COMMENT 'wgs_84  Y坐标',
+  `gcj_x` double DEFAULT NULL COMMENT 'gcj_02 x坐标',
+  `gcj_y` double DEFAULT NULL COMMENT 'gcj_02 y坐标',
+  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`Id`),
+  KEY `FK_MACHINE_MAP_MACHINE` (`machine_id`),
+  CONSTRAINT `FK_MACHINE_MAP_MACHINE` FOREIGN KEY (`machine_id`) REFERENCES `bean_machine` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='挖机定位信息表';
+
+#
+# Data for table "com_machine_map"
+#
+
+INSERT INTO `com_machine_map` VALUES (1,1,30,NULL,NULL,NULL,113.280637,23.125178,'2019-01-08 11:15:25'),(2,2,31,NULL,NULL,NULL,113.049752,23.109706,'2019-01-08 11:16:10'),(3,3,29,NULL,NULL,NULL,113.036198,24.63638,'2019-01-08 20:06:01');
+
+#
 # Structure for table "com_resource"
 #
 
@@ -224,13 +249,13 @@ CREATE TABLE `com_resource` (
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `edit_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='公共资源表';
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COMMENT='公共资源表';
 
 #
 # Data for table "com_resource"
 #
 
-INSERT INTO `com_resource` VALUES (1,'ASD','trunk',NULL,0,NULL,'2018-12-30 20:16:34','2018-12-30 20:16:34'),(2,'MINI.jpg','jpg','resource/uploadFiles/机器信息/null_1/MINI.jpg',22250,1,'2018-12-30 20:16:40','2018-12-30 20:16:40'),(3,'陈岩_v3.docx','docx','resource/uploadFiles/机器信息/null_1/陈岩_v3.docx',19413,1,'2018-12-30 20:16:47','2018-12-30 20:16:47'),(4,'谢晓航','trunk',NULL,0,NULL,'2018-12-30 20:36:54','2018-12-30 20:36:54'),(5,'MINI.jpg','jpg','resource/uploadFiles/后勤信息/谢晓航_4/MINI.jpg',22250,4,'2018-12-30 20:36:58','2018-12-30 20:36:58'),(6,'测试数据12','trunk',NULL,0,NULL,'2018-12-30 20:38:04','2018-12-30 20:38:04'),(7,'陈岩_v1.docx','docx','resource/uploadFiles/机手信息/测试数据12_6/陈岩_v1.docx',17811,6,'2018-12-30 20:38:11','2018-12-30 20:38:11'),(8,'Dustone科技有限公司','trunk',NULL,0,NULL,'2018-12-30 21:30:44','2018-12-30 21:30:44'),(9,'DSC_4407.JPG','JPG','resource/uploadFiles/客户信息/Dustone科技有限公司_8/DSC_4407.JPG',78665,8,'2018-12-30 21:30:48','2018-12-30 21:30:48'),(10,'中铁十三局','trunk',NULL,0,NULL,'2018-12-30 21:31:28','2018-12-30 21:31:28'),(11,'陈岩_v3.docx','docx','resource/uploadFiles/客户信息/中铁十三局_10/陈岩_v3.docx',19413,10,'2018-12-30 21:31:20','2018-12-30 21:31:20'),(12,'陈岩_v4.docx','docx','resource/uploadFiles/客户信息/中铁十三局_10/陈岩_v4.docx',20558,10,'2018-12-30 21:31:23','2018-12-30 21:31:23'),(13,NULL,'trunk',NULL,0,NULL,'2019-01-04 10:44:19','2019-01-04 10:44:19'),(14,'36013011_0322_20181115-231407.png','png','resource/uploadFiles/加油日志信息/null_13/36013011_0322_20181115-231407.png',1881304,13,'2019-01-04 10:44:30','2019-01-04 10:44:30'),(15,'韩红','trunk',NULL,0,NULL,'2019-01-05 13:52:21','2019-01-05 13:52:21'),(17,NULL,'trunk',NULL,0,NULL,'2019-01-05 14:09:14','2019-01-05 14:09:14');
+INSERT INTO `com_resource` VALUES (1,'ASD','trunk',NULL,0,NULL,'2018-12-30 20:16:34','2018-12-30 20:16:34'),(2,'MINI.jpg','jpg','resource/uploadFiles/机器信息/null_1/MINI.jpg',22250,1,'2018-12-30 20:16:40','2018-12-30 20:16:40'),(3,'陈岩_v3.docx','docx','resource/uploadFiles/机器信息/null_1/陈岩_v3.docx',19413,1,'2018-12-30 20:16:47','2018-12-30 20:16:47'),(4,'谢晓航','trunk',NULL,0,NULL,'2018-12-30 20:36:54','2018-12-30 20:36:54'),(5,'MINI.jpg','jpg','resource/uploadFiles/后勤信息/谢晓航_4/MINI.jpg',22250,4,'2018-12-30 20:36:58','2018-12-30 20:36:58'),(6,'测试数据12','trunk',NULL,0,NULL,'2018-12-30 20:38:04','2018-12-30 20:38:04'),(7,'陈岩_v1.docx','docx','resource/uploadFiles/机手信息/测试数据12_6/陈岩_v1.docx',17811,6,'2018-12-30 20:38:11','2018-12-30 20:38:11'),(8,'Dustone科技有限公司','trunk',NULL,0,NULL,'2018-12-30 21:30:44','2018-12-30 21:30:44'),(9,'DSC_4407.JPG','JPG','resource/uploadFiles/客户信息/Dustone科技有限公司_8/DSC_4407.JPG',78665,8,'2018-12-30 21:30:48','2018-12-30 21:30:48'),(10,'中铁十三局','trunk',NULL,0,NULL,'2018-12-30 21:31:28','2018-12-30 21:31:28'),(11,'陈岩_v3.docx','docx','resource/uploadFiles/客户信息/中铁十三局_10/陈岩_v3.docx',19413,10,'2018-12-30 21:31:20','2018-12-30 21:31:20'),(12,'陈岩_v4.docx','docx','resource/uploadFiles/客户信息/中铁十三局_10/陈岩_v4.docx',20558,10,'2018-12-30 21:31:23','2018-12-30 21:31:23'),(13,NULL,'trunk',NULL,0,NULL,'2019-01-04 10:44:19','2019-01-04 10:44:19'),(14,'36013011_0322_20181115-231407.png','png','resource/uploadFiles/加油日志信息/null_13/36013011_0322_20181115-231407.png',1881304,13,'2019-01-04 10:44:30','2019-01-04 10:44:30'),(15,'韩红','trunk',NULL,0,NULL,'2019-01-05 13:52:21','2019-01-05 13:52:21'),(17,NULL,'trunk',NULL,0,NULL,'2019-01-05 14:09:14','2019-01-05 14:09:14'),(18,'陈三十','trunk',NULL,0,NULL,'2019-01-08 10:38:11','2019-01-08 10:38:11'),(19,'新建文本文档.txt','txt','resource/uploadFiles/机手信息/陈三十_18/新建文本文档.txt',0,18,'2019-01-08 10:38:15','2019-01-08 10:38:15');
 
 #
 # Structure for table "log_error"
@@ -275,13 +300,13 @@ CREATE TABLE `log_maintain` (
   `start_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `end_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='维修表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='维修表';
 
 #
 # Data for table "log_maintain"
 #
 
-INSERT INTO `log_maintain` VALUES (1,1,1,'返厂维修',4396.00,NULL,NULL,'未审核','2019-01-05 15:40:17','0000-00-00 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `log_maintain` VALUES (1,1,1,'返厂维修',4396.00,NULL,NULL,'未审核','2019-01-05 15:40:17','0000-00-00 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,1,2,'返厂维修',999.00,NULL,NULL,'未审核','2019-01-05 23:43:18','2019-01-05 23:43:18','2019-01-23 23:43:18','2019-01-25 23:43:18');
 
 #
 # Structure for table "log_oil"
@@ -327,12 +352,13 @@ CREATE TABLE `log_transport` (
   `start_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `end_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "log_transport"
 #
 
+INSERT INTO `log_transport` VALUES (1,2,1,NULL,NULL,'客户转场',3333.00,NULL,NULL,'未审核','2019-01-06 10:26:15','2019-01-06 10:26:15','2019-01-06 07:00:00','2019-01-06 10:26:13');
 
 #
 # Structure for table "log_work"
@@ -352,24 +378,24 @@ CREATE TABLE `log_work` (
   `start_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `end_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "log_work"
 #
 
+INSERT INTO `log_work` VALUES (1,32,1,'合约工单',1212,NULL,NULL,'未审核','2019-01-06 11:50:05','2019-01-06 11:50:05','2019-01-06 11:50:05','2019-01-06 11:50:04');
 
 #
 # Structure for table "service_compact"
 #
 
 CREATE TABLE `service_compact` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `parent_id` int(11) DEFAULT NULL,
-  `customer_id` int(11) NOT NULL,
-  `type` int(11) NOT NULL DEFAULT '0',
-  `deposit` double NOT NULL,
-  `full_amount` double NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '合同ID',
+  `number` varchar(11) NOT NULL DEFAULT '0' COMMENT '合同编号',
+  `customer_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '关联客户信息',
+  `contact_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '客户联系人信息',
+  `type` varchar(11) DEFAULT NULL COMMENT '合同种类',
   `limit_time` int(11) NOT NULL,
   `title` varchar(128) DEFAULT NULL,
   `details` varchar(256) DEFAULT NULL,
@@ -385,26 +411,6 @@ CREATE TABLE `service_compact` (
 
 #
 # Data for table "service_compact"
-#
-
-
-#
-# Structure for table "com_work_compact"
-#
-
-CREATE TABLE `com_work_compact` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `compact_id` int(11) NOT NULL,
-  `work_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `COM_COMPACT` (`compact_id`),
-  KEY `COM_WORK` (`work_id`),
-  CONSTRAINT `COM_COMPACT` FOREIGN KEY (`compact_id`) REFERENCES `service_compact` (`id`),
-  CONSTRAINT `COM_WORK` FOREIGN KEY (`work_id`) REFERENCES `log_work` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='工单-合约链接表';
-
-#
-# Data for table "com_work_compact"
 #
 
 
@@ -443,10 +449,17 @@ CREATE TABLE `sys_drawer` (
   `url` varchar(128) DEFAULT NULL,
   `parent_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "sys_drawer"
 #
 
-INSERT INTO `sys_drawer` VALUES (1,'基础','folder_shared',NULL,NULL),(2,'机手管理','account_box','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/driverList.html',1),(3,'客户管理','people','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/customerList.html',1),(4,'机器管理','android','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/machineList.html',1),(5,'机器型号管理','style','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/machineTypeList.html',1),(6,'后勤管理','assignment','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/supportList.html',1),(7,'日志','event_note',NULL,NULL),(8,'异常','error','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/logErrorList.html',7),(9,'维修单','loop','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/logMaintainList.html',7),(10,'加油单','local_drink','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/logOilList.html',7),(11,'转场单','airport_shuttle',NULL,7),(12,'工单','work',NULL,7),(13,'业务','info',NULL,NULL),(14,'合同','hourglass_full',NULL,13),(15,'客户意向','assistant_photo',NULL,13);
+INSERT INTO `sys_drawer` VALUES (1,'基础','folder_shared',NULL,NULL),(2,'机手管理','account_box','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/driverList.html',1),(3,'客户管理','people','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/customerList.html',1),(4,'机器管理','android','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/machineList.html',1),(5,'机器型号管理','style','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/machineTypeList.html',1),(6,'后勤管理','assignment','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/supportList.html',1),(7,'日志','event_note',NULL,NULL),(8,'异常','error','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/logErrorList.html',7),(9,'维修单','loop','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/logMaintainList.html',7),(10,'加油单','local_drink','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/logOilList.html',7),(11,'转场单','airport_shuttle','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/logTransportList.html',7),(12,'工单','work','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/logWorkList.html',7),(13,'业务','info',NULL,NULL),(14,'合同','hourglass_full',NULL,13),(15,'客户意向','assistant_photo',NULL,13),(16,'挖机地图','gps_fixed','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/machineMap.html',13);
+
+#
+# Structure for table "view_machine_map"
+#
+
+CREATE VIEW `view_machine_map` AS 
+  select `com_machine_map`.`Id` AS `id`,`bean_driver`.`id` AS `driver_id`,`bean_driver`.`name` AS `driver_name`,`bean_machine`.`id` AS `machine_id`,`bean_machine`.`nameplate` AS `machine_nameplate`,`bean_machine`.`code` AS `machine_code`,`bean_machine`.`status` AS `machine_status`,`com_machine_map`.`gcj_x` AS `gcj_x`,`com_machine_map`.`gcj_y` AS `gcj_y`,`com_machine_map`.`wgs_x` AS `wgs_x`,`com_machine_map`.`wgs_y` AS `wgs_y`,`com_machine_map`.`update_time` AS `update_time` from ((`com_machine_map` left join `bean_machine` on((`com_machine_map`.`machine_id` = `bean_machine`.`id`))) left join `bean_driver` on((`com_machine_map`.`driver_id` = `bean_driver`.`id`)));

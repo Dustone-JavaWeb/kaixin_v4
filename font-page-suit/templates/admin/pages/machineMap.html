@@ -6,11 +6,12 @@
 		<div class="mdui-typo">
 			<h3>
 				机器信息
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="updateMachineInfo()">刷新</button>
 			</h3>
 		</div>
 		<div class="mdui-textfield mdui-col-xs-12">
 			<label class="mdui-textfield-label">挖机状态</label>
-			<select v-model="requestModel.example.status" class="mdui-select" style="width:100%" >
+			<select v-model="requestModel.example.machineStatus" class="mdui-select" style="width:100%">
 				<option value="">所有状态</option>
 				<option value="空闲">空闲</option>
 				<option value="工作">工作</option>
@@ -21,10 +22,10 @@
 		</div>
 		<ul class="mdui-list mdui-list-dense">
 			<li class="mdui-list-item mdui-ripple" v-for="tr in trs">
-				<i class="mdui-list-item-avatar mdui-icon material-icons">folder</i>
+				<i v-bind:style="{'background-color':chooseColor(tr)}" class="mdui-list-item-avatar mdui-icon material-icons">folder</i>
 				<div class="mdui-list-item-content">
-					<div class="mdui-list-item-title">{{tr.nameplate}}</div>
-					<div class="mdui-list-item-text">{{tr.status}}</div>
+					<div class="mdui-list-item-title">{{tr.machineCode}}</div>
+					<div class="mdui-list-item-text">{{tr.machineStatus}}</div>
 				</div>
 				<i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-grey-400">info</i>
 			</li>
@@ -33,9 +34,17 @@
 </div>
 <script>
 	var url = 'https://webapi.amap.com/maps?v=1.4.12&key=98ce2ba6af5d1bf29cc0091e7b90b295&callback=onApiLoaded';
+	var url2 = 'https:webapi.amap.com/ui/1.0/main.js?v=1.0.11&callback=onAMapUIloaded';
+	
 	var jsapi = document.createElement('script');
+	var jsapi2 = document.createElement('script');
+	
 	jsapi.charset = 'utf-8';
 	jsapi.src = url;
+	jsapi2.charset = 'utf-8';
+	jsapi2.src = url2;
+	
 	document.head.appendChild(jsapi);
+	document.head.appendChild(jsapi2);
 </script>
 <script src="../../../webapp/js/admin/page/machineMap.js"></script>

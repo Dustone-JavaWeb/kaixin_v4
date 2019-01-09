@@ -12,8 +12,11 @@ var logErrorQueryVue;
 var logMaintainQueryVue;
 var logWorkQueryVue;
 var logTransportVue;
-
 var mapInfoVue;
+
+//地图控件实例
+var gMap;
+var gMapMachines = new Map();
+var machineInfoWindow;
 //var driverInfoVue;
 //实体数据
-

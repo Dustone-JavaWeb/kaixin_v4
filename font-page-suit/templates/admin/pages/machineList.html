@@ -68,6 +68,7 @@
 							<div class="mdui-text-color-white mdui-chip-title mdui-color-yellow-800" v-else-if="tr.status=='维修'">{{tr.status}}</div>
 							<div class="mdui-text-color-white mdui-chip-title mdui-color-black" v-else-if="tr.status=='报废'">{{tr.status}}</div>
 							<div class="mdui-text-color-white mdui-chip-title mdui-color-grey" v-else-if="tr.status=='已出售'">{{tr.status}}</div>
+							<div class="mdui-text-color-white mdui-chip-title mdui-color-grey" v-else-if="tr.status=='转场'">{{tr.status}}</div>
 						</td>
 						<td>{{tr.createTime|date}}</td>
 					</tr>
