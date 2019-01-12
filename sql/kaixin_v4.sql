@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version: 5.5.15)
-# Date: 2019-01-09 21:06:26
+# Date: 2019-01-12 11:11:55
 # Generator: MySQL-Front 5.3  (Build 4.269)
 
 /*!40101 SET NAMES utf8 */;
@@ -202,12 +202,13 @@ CREATE TABLE `com_compact_machine` (
   `compact_id` int(11) unsigned NOT NULL DEFAULT '0',
   `machine_id` int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='合同-机器连接表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='合同-机器连接表';
 
 #
 # Data for table "com_compact_machine"
 #
 
+INSERT INTO `com_compact_machine` VALUES (1,1,1),(2,1,2),(3,1,3);
 
 #
 # Structure for table "com_compact_transport"
@@ -256,7 +257,7 @@ CREATE TABLE `com_customer_contact` (
 # Data for table "com_customer_contact"
 #
 
-INSERT INTO `com_customer_contact` VALUES (2,26,18),(4,34,26);
+INSERT INTO `com_customer_contact` VALUES (2,2,25),(4,34,26);
 
 #
 # Structure for table "com_machine_map"
@@ -266,7 +267,6 @@ CREATE TABLE `com_machine_map` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `machine_id` int(11) unsigned DEFAULT NULL,
   `driver_id` int(11) unsigned DEFAULT NULL,
-  `compact_id` int(11) unsigned DEFAULT NULL,
   `wgs_x` double DEFAULT NULL COMMENT 'wgs_84 X坐标',
   `wgs_y` double DEFAULT NULL COMMENT 'wgs_84  Y坐标',
   `gcj_x` double DEFAULT NULL COMMENT 'gcj_02 x坐标',
@@ -281,7 +281,7 @@ CREATE TABLE `com_machine_map` (
 # Data for table "com_machine_map"
 #
 
-INSERT INTO `com_machine_map` VALUES (1,1,30,NULL,NULL,NULL,113.280637,23.125178,'2019-01-08 11:15:25'),(2,2,31,NULL,NULL,NULL,113.049752,23.109706,'2019-01-08 11:16:10'),(3,3,29,NULL,NULL,NULL,113.036199,24.63638,'2019-01-09 16:40:00');
+INSERT INTO `com_machine_map` VALUES (1,1,30,NULL,NULL,113.280637,23.125178,'2019-01-08 11:15:25'),(2,2,31,NULL,NULL,113.049752,23.109706,'2019-01-08 11:16:10'),(3,3,29,NULL,NULL,113.036199,24.63638,'2019-01-09 16:40:00');
 
 #
 # Structure for table "com_resource"
@@ -297,13 +297,13 @@ CREATE TABLE `com_resource` (
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `edit_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COMMENT='公共资源表';
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COMMENT='公共资源表';
 
 #
 # Data for table "com_resource"
 #
 
-INSERT INTO `com_resource` VALUES (1,'ASD','trunk',NULL,0,NULL,'2018-12-30 20:16:34','2018-12-30 20:16:34'),(2,'MINI.jpg','jpg','resource/uploadFiles/机器信息/null_1/MINI.jpg',22250,1,'2018-12-30 20:16:40','2018-12-30 20:16:40'),(3,'陈岩_v3.docx','docx','resource/uploadFiles/机器信息/null_1/陈岩_v3.docx',19413,1,'2018-12-30 20:16:47','2018-12-30 20:16:47'),(4,'谢晓航','trunk',NULL,0,NULL,'2018-12-30 20:36:54','2018-12-30 20:36:54'),(5,'MINI.jpg','jpg','resource/uploadFiles/后勤信息/谢晓航_4/MINI.jpg',22250,4,'2018-12-30 20:36:58','2018-12-30 20:36:58'),(6,'测试数据12','trunk',NULL,0,NULL,'2018-12-30 20:38:04','2018-12-30 20:38:04'),(7,'陈岩_v1.docx','docx','resource/uploadFiles/机手信息/测试数据12_6/陈岩_v1.docx',17811,6,'2018-12-30 20:38:11','2018-12-30 20:38:11'),(8,'Dustone科技有限公司','trunk',NULL,0,NULL,'2018-12-30 21:30:44','2018-12-30 21:30:44'),(9,'DSC_4407.JPG','JPG','resource/uploadFiles/客户信息/Dustone科技有限公司_8/DSC_4407.JPG',78665,8,'2018-12-30 21:30:48','2018-12-30 21:30:48'),(10,'中铁十三局','trunk',NULL,0,NULL,'2018-12-30 21:31:28','2018-12-30 21:31:28'),(11,'陈岩_v3.docx','docx','resource/uploadFiles/客户信息/中铁十三局_10/陈岩_v3.docx',19413,10,'2018-12-30 21:31:20','2018-12-30 21:31:20'),(12,'陈岩_v4.docx','docx','resource/uploadFiles/客户信息/中铁十三局_10/陈岩_v4.docx',20558,10,'2018-12-30 21:31:23','2018-12-30 21:31:23'),(13,NULL,'trunk',NULL,0,NULL,'2019-01-04 10:44:19','2019-01-04 10:44:19'),(14,'36013011_0322_20181115-231407.png','png','resource/uploadFiles/加油日志信息/null_13/36013011_0322_20181115-231407.png',1881304,13,'2019-01-04 10:44:30','2019-01-04 10:44:30'),(15,'韩红','trunk',NULL,0,NULL,'2019-01-05 13:52:21','2019-01-05 13:52:21'),(17,NULL,'trunk',NULL,0,NULL,'2019-01-05 14:09:14','2019-01-05 14:09:14'),(18,'陈三十','trunk',NULL,0,NULL,'2019-01-08 10:38:11','2019-01-08 10:38:11'),(19,'新建文本文档.txt','txt','resource/uploadFiles/机手信息/陈三十_18/新建文本文档.txt',0,18,'2019-01-08 10:38:15','2019-01-08 10:38:15');
+INSERT INTO `com_resource` VALUES (1,'ASD','trunk',NULL,0,NULL,'2018-12-30 20:16:34','2018-12-30 20:16:34'),(2,'MINI.jpg','jpg','resource/uploadFiles/机器信息/null_1/MINI.jpg',22250,1,'2018-12-30 20:16:40','2018-12-30 20:16:40'),(3,'陈岩_v3.docx','docx','resource/uploadFiles/机器信息/null_1/陈岩_v3.docx',19413,1,'2018-12-30 20:16:47','2018-12-30 20:16:47'),(4,'谢晓航','trunk',NULL,0,NULL,'2018-12-30 20:36:54','2018-12-30 20:36:54'),(5,'MINI.jpg','jpg','resource/uploadFiles/后勤信息/谢晓航_4/MINI.jpg',22250,4,'2018-12-30 20:36:58','2018-12-30 20:36:58'),(6,'测试数据12','trunk',NULL,0,NULL,'2018-12-30 20:38:04','2018-12-30 20:38:04'),(7,'陈岩_v1.docx','docx','resource/uploadFiles/机手信息/测试数据12_6/陈岩_v1.docx',17811,6,'2018-12-30 20:38:11','2018-12-30 20:38:11'),(8,'Dustone科技有限公司','trunk',NULL,0,NULL,'2018-12-30 21:30:44','2018-12-30 21:30:44'),(9,'DSC_4407.JPG','JPG','resource/uploadFiles/客户信息/Dustone科技有限公司_8/DSC_4407.JPG',78665,8,'2018-12-30 21:30:48','2018-12-30 21:30:48'),(10,'中铁十三局','trunk',NULL,0,NULL,'2018-12-30 21:31:28','2018-12-30 21:31:28'),(11,'陈岩_v3.docx','docx','resource/uploadFiles/客户信息/中铁十三局_10/陈岩_v3.docx',19413,10,'2018-12-30 21:31:20','2018-12-30 21:31:20'),(12,'陈岩_v4.docx','docx','resource/uploadFiles/客户信息/中铁十三局_10/陈岩_v4.docx',20558,10,'2018-12-30 21:31:23','2018-12-30 21:31:23'),(13,NULL,'trunk',NULL,0,NULL,'2019-01-04 10:44:19','2019-01-04 10:44:19'),(14,'36013011_0322_20181115-231407.png','png','resource/uploadFiles/加油日志信息/null_13/36013011_0322_20181115-231407.png',1881304,13,'2019-01-04 10:44:30','2019-01-04 10:44:30'),(15,'韩红','trunk',NULL,0,NULL,'2019-01-05 13:52:21','2019-01-05 13:52:21'),(17,NULL,'trunk',NULL,0,NULL,'2019-01-05 14:09:14','2019-01-05 14:09:14'),(18,'陈三十','trunk',NULL,0,NULL,'2019-01-08 10:38:11','2019-01-08 10:38:11'),(19,'新建文本文档.txt','txt','resource/uploadFiles/机手信息/陈三十_18/新建文本文档.txt',0,18,'2019-01-08 10:38:15','2019-01-08 10:38:15'),(20,NULL,'trunk',NULL,0,NULL,'2019-01-11 11:30:42','2019-01-11 11:30:42');
 
 #
 # Structure for table "log_error"
@@ -458,17 +458,19 @@ CREATE TABLE `service_compact` (
   `dest` varchar(256) DEFAULT NULL COMMENT '租用地点',
   `resource_id` int(11) unsigned DEFAULT NULL COMMENT '资源ID',
   `status` varchar(11) DEFAULT '未审核' COMMENT '合同状态',
-  `edit_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `edit_time` timestamp NULL DEFAULT '0000-00-00 00:00:00' COMMENT '更新时间',
   `enter_time` timestamp NULL DEFAULT '0000-00-00 00:00:00' COMMENT '进场时间',
   `start_time` timestamp NULL DEFAULT '0000-00-00 00:00:00' COMMENT '开工时间',
   PRIMARY KEY (`id`),
   KEY `COMPACT_CUSTOMER` (`customer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='合同';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='合同';
 
 #
 # Data for table "service_compact"
 #
 
+INSERT INTO `service_compact` VALUES (1,'201901101',34,26,'月租合同',1,1,440.00,550.00,110.00,20000.00,40000.00,100000.00,1000.00,50000.00,40000.00,'广州南沙',20,'未审核','2019-01-10 10:22:49',NULL,NULL,NULL);
 
 #
 # Structure for table "service_intention"
@@ -495,6 +497,26 @@ CREATE TABLE `service_intention` (
 
 
 #
+# Structure for table "service_machine_status"
+#
+
+CREATE TABLE `service_machine_status` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `machine_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '机器ID',
+  `compact_id` int(11) unsigned DEFAULT NULL,
+  `work_id` int(11) unsigned DEFAULT NULL,
+  `transport_id` int(11) unsigned DEFAULT NULL,
+  `maintain_id` int(11) unsigned DEFAULT NULL,
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='机器状态表';
+
+#
+# Data for table "service_machine_status"
+#
+
+
+#
 # Structure for table "sys_drawer"
 #
 
@@ -505,17 +527,17 @@ CREATE TABLE `sys_drawer` (
   `url` varchar(128) DEFAULT NULL,
   `parent_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='系统导航表';
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='系统导航表';
 
 #
 # Data for table "sys_drawer"
 #
 
-INSERT INTO `sys_drawer` VALUES (1,'基础','folder_shared',NULL,NULL),(2,'机手管理','account_box','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/driverList.html',1),(3,'客户管理','people','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/customerList.html',1),(4,'机器管理','android','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/machineList.html',1),(5,'机器型号管理','style','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/machineTypeList.html',1),(6,'后勤管理','assignment','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/supportList.html',1),(7,'日志','event_note',NULL,NULL),(8,'异常','error','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/logErrorList.html',7),(9,'维修单','loop','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/logMaintainList.html',7),(10,'加油单','local_drink','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/logOilList.html',7),(11,'转场单','airport_shuttle','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/logTransportList.html',7),(12,'工单','work','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/logWorkList.html',7),(13,'业务','info',NULL,NULL),(14,'合同','hourglass_full',NULL,13),(15,'客户意向','assistant_photo',NULL,13),(16,'挖机地图','gps_fixed','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/machineMap.html',13);
+INSERT INTO `sys_drawer` VALUES (1,'基础','folder_shared',NULL,NULL),(2,'机手管理','account_box','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/driverList.html',1),(3,'客户管理','people','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/customerList.html',1),(4,'机器管理','android','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/machineList.html',1),(5,'机器型号管理','style','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/machineTypeList.html',1),(6,'后勤管理','assignment','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/supportList.html',1),(7,'日志','event_note',NULL,NULL),(8,'异常','error','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/logErrorList.html',7),(9,'维修单','loop','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/logMaintainList.html',7),(10,'加油单','local_drink','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/logOilList.html',7),(11,'转场单','airport_shuttle','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/logTransportList.html',7),(12,'工单','work','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/logWorkList.html',7),(13,'业务','info',NULL,NULL),(14,'合同','hourglass_full','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/compactList.html',13),(15,'客户意向','assistant_photo',NULL,13),(16,'挖机地图','gps_fixed','http://127.0.0.1:8848/font-page-suit/templates/admin/pages/machineMap.html',13),(17,'统计','show_chart',NULL,NULL);
 
 #
 # Structure for table "view_machine_map"
 #
 
 CREATE VIEW `view_machine_map` AS 
-  select `com_machine_map`.`Id` AS `id`,`bean_driver`.`id` AS `driver_id`,`bean_driver`.`name` AS `driver_name`,`bean_machine`.`id` AS `machine_id`,`bean_machine`.`nameplate` AS `machine_nameplate`,`bean_machine`.`code` AS `machine_code`,`bean_machine`.`status` AS `machine_status`,`com_machine_map`.`gcj_x` AS `gcj_x`,`com_machine_map`.`gcj_y` AS `gcj_y`,`com_machine_map`.`wgs_x` AS `wgs_x`,`com_machine_map`.`wgs_y` AS `wgs_y`,`com_machine_map`.`update_time` AS `update_time` from ((`com_machine_map` left join `bean_machine` on((`com_machine_map`.`machine_id` = `bean_machine`.`id`))) left join `bean_driver` on((`com_machine_map`.`driver_id` = `bean_driver`.`id`)));
+  select `com_machine_map`.`Id` AS `id`,`bean_driver`.`id` AS `driver_id`,`bean_driver`.`name` AS `driver_name`,`bean_machine`.`id` AS `machine_id`,`com_compact_machine`.`compact_id` AS `compact_id`,`bean_machine`.`nameplate` AS `machine_nameplate`,`bean_machine`.`code` AS `machine_code`,`bean_machine`.`status` AS `machine_status`,`com_machine_map`.`gcj_x` AS `gcj_x`,`com_machine_map`.`gcj_y` AS `gcj_y`,`com_machine_map`.`wgs_x` AS `wgs_x`,`com_machine_map`.`wgs_y` AS `wgs_y`,`com_machine_map`.`update_time` AS `update_time` from (((`com_machine_map` left join `bean_machine` on((`com_machine_map`.`machine_id` = `bean_machine`.`id`))) left join `bean_driver` on((`com_machine_map`.`driver_id` = `bean_driver`.`id`))) left join `com_compact_machine` on((`com_machine_map`.`machine_id` = `com_compact_machine`.`machine_id`)));
