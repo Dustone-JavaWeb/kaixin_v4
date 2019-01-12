@@ -35,4 +35,7 @@ public class MachineService {
         result.setContent(content);
         return result;
     }
+    public Machine findById(Integer id){
+        return machineDAO.findFirstByIdEquals(id);
+    }
 }

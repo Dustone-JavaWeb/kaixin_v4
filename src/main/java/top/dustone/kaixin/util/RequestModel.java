@@ -3,7 +3,7 @@ package top.dustone.kaixin.util;
 public class RequestModel<T>{
     private T example;
     private int start;
-    private int pageSize=5;
+    private int pageSize=10;
     private int navigatorSize;
 
     public T getExample() {

@@ -1,0 +1,110 @@
+<div class="admin-child-page mdui-container-fluid mdui-center" id="compactQueryTable">
+	<div class="admin-select-area mdui-row">
+		<div class="mdui-typo">
+			<h3>筛选条件</h3>
+		</div>
+		<div class="mdui-divider"></div>
+		<form id="select-form" class="admin-select-form">
+			<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
+				<label class="mdui-textfield-label">客户名称</label>
+				<input v-model="requestModel.example.customer.name" class="mdui-textfield-input" type="text" placeholder="客户名称" />
+			</div>
+			<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
+				<label class="mdui-textfield-label">甲方联系人姓名</label>
+				<input v-model="requestModel.example.contact.name" class="mdui-textfield-input" type="text" placeholder="甲方联系人姓名" />
+			</div>
+			<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
+				<label class="mdui-textfield-label">租用地点</label>
+				<input v-model="requestModel.example.dest" class="mdui-textfield-input" type="text" placeholder="甲方联系人姓名" />
+			</div>
+			<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
+				<label class="mdui-textfield-label">合同状态</label>
+				<select v-model="requestModel.example.status" class="mdui-select" style="width: 100%">
+					<option value="">所有合同状态</option>
+					<option value="未审核">未审核</option>
+					<option value="已审核">已审核</option>
+					<option value="已作废">已作废</option>
+				</select>
+			</div>
+			<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
+				<label class="mdui-textfield-label">合同类型</label>
+				<select v-model="requestModel.example.type" class="mdui-select" style="width: 100%">
+					<option value="">所有合同类型</option>
+					<option value="月租合同">月租合同</option>
+					<option value="临租合同">临租合同</option>
+					<option value="其他合同">其他合同</option>
+				</select>
+			</div>
+			<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
+				<label class="mdui-textfield-label">开始时间</label>
+				<input class="mdui-textfield-input" type="text" placeholder="开始时间" id="compactListSTime" readonly>
+			</div>
+			<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
+				<label class="mdui-textfield-label">结束时间</label>
+				<input class="mdui-textfield-input" type="text" placeholder="结束时间" id="compactListETime" readonly>
+			</div>
+		</form>
+		<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
+			<label class="mdui-textfield-label">&nbsp;</label>
+			<input v-on:click="query()" class="mdui-btn mdui-color-theme-accent mdui-ripple" style="width: 100%" value="查询"/>
+		</div>
+	</div>
+	<div class="admin-select-area mdui-row">
+		<div class="mdui-divider"></div>
+	</div>
+
+	<div class="admin-table-area mdui-row">
+		<div class="mdui-table-fluid">
+			<table class="mdui-table">
+				<thead>
+					<tr>
+						<td>ID</td>
+						<td>合同编号</td>
+						<td>客户名称</td>
+						<td>客户联系人姓名</td>
+						<td>合同种类</td>
+						<td>合同状态</td>
+						<td>创建时间</td>
+						<td>操作</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="tr in trs">
+						<td>{{tr.id}}</td>
+						<td>{{tr.number}}</td>
+						<td class="mdui-typo"><a @click="showChildInfo(tr.support,'support')">{{tr.customer.name}}</a></td>
+						<td class="mdui-typo"><a @click="showChildInfo(tr.machine,'machine')">{{tr.contact.name}}</a></td>
+						<td>
+							<div class="mdui-text-color-white mdui-chip-title mdui-color-light-green" v-if="tr.type=='月租合同'">{{tr.type}}</div>
+							<div class="mdui-text-color-white mdui-chip-title mdui-color-pink" v-else-if="tr.type=='临租合同'">{{tr.type}}</div>
+							<div class="mdui-text-color-white mdui-chip-title mdui-color-grey" v-else-if="tr.type=='其他合同'">{{tr.type}}</div>
+						</td>
+						<td>
+							<div class="mdui-text-color-white mdui-chip-title mdui-color-light-green" v-if="tr.status=='已审核'">{{tr.status}}</div>
+							<div class="mdui-text-color-white mdui-chip-title mdui-color-pink" v-else-if="tr.status=='已作废'">{{tr.status}}</div>
+							<div class="mdui-text-color-white mdui-chip-title mdui-color-grey" v-else-if="tr.status=='未审核'">{{tr.status}}</div>
+						</td>
+						<td>{{tr.createTime|date}}</td>
+						<td><button class="mdui-btn mdui-color-theme-accent mdui-ripple" @click="showInfo(tr)">详情</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="admin-table-control mdui-row">
+		<div class="mdui-col-xs-4" style="background: white;">
+			<button type="button" class="mdui-btn mdui-color-theme-accent" @click="addEntity()">新增</button>
+			<button type="button" class="mdui-btn mdui-color-theme-accent" @click="jump('first')">导出</button>
+		</div>
+		<div class="mdui-btn-group <mdui-col-xs-5x></mdui-col-xs-5x>">
+			<button type="button" class="mdui-btn" @click="jump('first')"><i class="mdui-icon material-icons">first_page</i></button>
+			<button type="button" class="mdui-btn" @click="jump('pre')"><i class="mdui-icon material-icons">navigate_before</i></button>
+			<button v-for="i in pagination.navigatepageNums" v-bind:class="pageSelected(i)" type="button" class="mdui-btn"
+			 @click="jumpByNumber(i-1)">{{i}}</button>
+			<button type="button" class="mdui-btn" @click="jump('next')"><i class="mdui-icon material-icons">navigate_next</i></button>
+			<button type="button" class="mdui-btn" @click="jump('last')"><i class="mdui-icon material-icons">last_page</i></button>
+		</div>
+	</div>
+</div>
+
+<script src="../../../webapp/js/admin/page/compactList.js"></script>

@@ -32,4 +32,8 @@ public class DriverController {
         page.setResponseMessage("保存成功！");
         return page;
     }
+    @GetMapping("/driver_info")
+    public Driver findById(@RequestParam(value = "id") int id){
+        return driverService.findById(id);
+    }
 }

@@ -13,6 +13,7 @@ var logMaintainQueryVue;
 var logWorkQueryVue;
 var logTransportVue;
 var mapInfoVue;
+var compactQueryVue;
 
 //地图控件实例
 var gMap;

@@ -143,16 +143,18 @@ function createInfoWindow(machineInfo) {
 	var info = document.createElement("div");
 	info.style.width = "200px";
 	info.className = "mdui-typo custom-info input-card content-window-card";
-	
 	var content=[];
 	if(machineInfo.driverId!=null){
-		content.push('机手：'+'<a>#'+machineInfo.driverId+'&nbsp;'+machineInfo.driverName+'</a>');
+		content.push('机手：'+'<a onclick="showDriverInfo('+machineInfo.driverId+')">#'+machineInfo.driverId+'&nbsp;'+machineInfo.driverName+'</a>');
 	}
 	if(machineInfo.supportId!=null){
-		content.push('后勤：'+'<a>#'+machineInfo.supportId+'&nbsp;'+machineInfo.supportName+'</a>');
+		content.push('后勤：'+'<a onclick="showSupportInfo('+machineInfo.supportId+')">#'+machineInfo.supportId+'&nbsp;'+machineInfo.supportName+'</a>');
 	}
 	if(machineInfo.machineNameplate!=null){
 		content.push('机器铭牌：'+machineInfo.machineNameplate+'&nbsp;');
+	}
+	if(machineInfo.compactId!=null){
+		content.push('合同编号：'+machineInfo.compactId+'&nbsp;');
 	}
 	content=content.join("<br/>");
 	
@@ -160,7 +162,7 @@ function createInfoWindow(machineInfo) {
 	var titleD = document.createElement("div");
 	var closeX = document.createElement("img");
 	top.className = "info-top";
-	titleD.innerHTML = '机器编号：<a>#'+machineInfo.machineCode+'</a>&nbsp;'+'<span style="color:'+chooseMachineColor(machineInfo.machineStatus)+'">'+machineInfo.machineStatus+'中</span>';
+	titleD.innerHTML = '机器编号：<a onclick="showMachineInfo('+machineInfo.machineId+')">#'+machineInfo.machineCode+'</a>&nbsp;'+'<span style="color:'+chooseMachineColor(machineInfo.machineStatus)+'">'+machineInfo.machineStatus+'中</span>';
 	closeX.src = "https://webapi.amap.com/images/close2.gif";
 	closeX.onclick = closeInfoWindow;
 
@@ -188,7 +190,61 @@ function createInfoWindow(machineInfo) {
 	return info;
 }
 
+
 //关闭信息窗体
 function closeInfoWindow() {
 	gMap.clearInfoWindow();
+}
+
+//创建info窗体
+function showDriverInfo(id){
+	axios.get(PAGE_DRIVER_INFO,{params:{"id":id}}).then(function(response) {
+		var tr=response.data;
+		tabMsg = {
+			id: "driverInfo" + tr.id,
+			eId: "driverInfoAera",
+			eNum: tr.id,
+			name: '机手信息_' + tr.name,
+			url: ROUTE_DRIVER_INFO,
+			target: 'DriverInfo',
+			initData: {
+				entity: tr
+			}
+		}
+		makeInfoTab(tabMsg);
+	});
+}
+function showMachineInfo(id){
+	axios.get(PAGE_MACHINE_INFO,{params:{"id":id}}).then(function(response) {
+		var tr=response.data;
+		tabMsg = {
+			id: "machineInfo" + tr.id,
+			eId: "machineInfoAera",
+			eNum: tr.id,
+			name: '机器信息_' + tr.id,
+			url: ROUTE_MACHINE_INFO,
+			target: 'MachineInfo',
+			initData: {
+				entity: tr
+			}
+		};
+		makeInfoTab(tabMsg);
+	});
+}
+function showSupportInfo(id){
+	axios.get(PAGE_SUPPORT_INFO,{params:{"id":id}}).then(function(response) {
+		var tr=response.data;
+		tabMsg = {
+			id: "supportInfo" + tr.id,
+			eId: "supportInfoAera",
+			eNum: tr.id,
+			name: '后勤信息_' + tr.id,
+			url: ROUTE_SUPPORT_INFO,
+			target: 'SupportInfo',
+			initData: {
+				entity: tr
+			}
+		};
+		makeInfoTab(tabMsg);
+	});
 }

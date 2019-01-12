@@ -1,10 +1,7 @@
 package top.dustone.kaixin.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import top.dustone.kaixin.entity.Support;
 import top.dustone.kaixin.service.SupportService;
 import top.dustone.kaixin.util.Page4Navigator;
@@ -26,5 +23,9 @@ public class SupportController {
     public Page4Navigator<Support> update(@RequestBody RequestModel<Support> requestModel){
         Page4Navigator<Support> page=supportService.update(requestModel.getExample());
         return page;
+    }
+    @GetMapping("/support_info")
+    public Support findById(@RequestParam(value = "id") int id){
+        return supportService.findById(id);
     }
 }

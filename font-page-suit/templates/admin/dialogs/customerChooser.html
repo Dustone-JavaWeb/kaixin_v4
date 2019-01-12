@@ -1,0 +1,121 @@
+<div class="admin-file-dialog mdui-dialog" id="customerChooserDialog">
+	<div class="admin-file-dialog-container  mdui-container" id="customerChooserVue">
+		<div class="mdui-typo">
+			<h3>
+				客户列表
+			</h3>
+		</div>
+		<div class="admin-layout-box mdui-col-xs-6">
+			<input v-model="requestModel.example.name" class="mdui-textfield-input" type="text" placeholder="客户名称" />
+		</div>
+		<div class="mdui-divider"></div>
+		<div class="mdui-row">
+			<div class="mdui-table-fluid admin-dialog-table-container">
+				<table class="admin-table-nobr mdui-table mdui-table-hoverable">
+					<thead>
+						<tr>
+							<td>编号</td>
+							<td>名称</td>
+							<td>状态</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="tr in trs" @click="chooseOne(tr)">
+							<td>{{tr.id}}</td>
+							<td>{{tr.name}}</td>
+							<td>
+								<div class="mdui-text-color-white mdui-chip-title mdui-color-light-green" v-if="tr.status=='正常'">{{tr.status}}</div>
+								<div class="mdui-text-color-white mdui-chip-title mdui-color-pink" v-else-if="tr.status=='异常'">{{tr.status}}</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	var customerChooserVue;
+	var customerChooserDialog;
+
+	$(function() {
+		customerChooserDialog = new mdui.Dialog('#customerChooserDialog');
+		new Vue({
+			el: '#customerChooserVue',
+			data: {
+				trs: [],
+				pagination: {},
+				requestModel: {
+					start: 0,
+					pageSize: 10000,
+					example: {
+						name: "",
+					}
+				},
+				target:{}
+			},
+			mounted: function() {
+				customerChooserVue = this;
+			},
+			methods: {
+				list: function(start) {
+					var self = this;
+					self.requestModel.start = start;
+					var ajaxRequestModel = DEEP_COPY(self.requestModel);
+					ajaxRequestModel.example = checkEmpty(ajaxRequestModel.example);
+					axios.post(PAGE_CUSTOMER_QUERY, ajaxRequestModel).then(function(response) {
+						self.pagination = response.data;
+						self.trs = response.data.content;
+						mdui.mutation();
+					});
+				},
+				chooseOne:function(tr){
+					this.target.customer=tr;
+					
+					customerChooserDialog.close();
+				},
+				setChooseTarget:function(tar){
+					this.list(0);
+					this.target=tar;
+				}
+			},
+			watch: {
+				"requestModel.example.tel": function(val) {
+					this.list(0);
+				},
+				"requestModel.example.name": function(val) {
+					this.list(0);
+				},
+			},
+			filters: {
+				status: function(value) {
+					if (value == 0) {
+						return '空闲';
+					} else if (value == 1) {
+						return '工作';
+					} else if (value == 2) {
+						return '休假';
+					} else {
+						return '离职';
+					}
+				},
+				type: function(value) {
+					if (value == 0) {
+						return "正式";
+					} else {
+						return "临时";
+					}
+				},
+				date: function(value) {
+					return value.substr(0, 10);
+				}
+			},
+		});
+	});
+
+	function openCustomerChooserDialog(target) {
+		customerChooserVue.setChooseTarget(target);
+		customerChooserDialog.open();
+		mdui.mutation();
+	}
+</script>

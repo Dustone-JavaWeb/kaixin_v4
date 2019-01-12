@@ -43,4 +43,7 @@ public class DriverService {
         result.setContent(content);
         return result;
     }
+    public Driver findById(Integer id){
+        return driverDAO.findFirstByIdEquals(id);
+    }
 }

@@ -33,4 +33,7 @@ public class SupportService {
         result.setContent(content);
         return result;
     }
+    public Support findById(Integer id){
+        return supportDAO.findFirstByIdEquals(id);
+    }
 }

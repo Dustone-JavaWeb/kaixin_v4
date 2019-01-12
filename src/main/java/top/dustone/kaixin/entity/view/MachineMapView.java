@@ -15,6 +15,7 @@ public class MachineMapView {
     private Integer driverId;
     private String driverName;
     private Integer machineId;
+    private Integer compactId;
     private String machineNameplate;
     private String machineCode;
     private String machineStatus;
@@ -140,5 +141,13 @@ public class MachineMapView {
 
     public void setMachineStatus(String machineStatus) {
         this.machineStatus = machineStatus;
+    }
+
+    public Integer getCompactId() {
+        return compactId;
+    }
+
+    public void setCompactId(Integer compactId) {
+        this.compactId = compactId;
     }
 }
