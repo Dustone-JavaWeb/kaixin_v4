@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version: 5.5.15)
-# Date: 2019-01-14 10:45:51
+# Date: 2019-01-14 23:55:53
 # Generator: MySQL-Front 5.3  (Build 4.269)
 
 /*!40101 SET NAMES utf8 */;
@@ -121,7 +121,7 @@ CREATE TABLE `bean_machine` (
   `dead_line` timestamp NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `MACHINE_TYPE` (`tid`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='机器信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='机器信息表';
 
 #
 # Data for table "bean_machine"
@@ -336,6 +336,8 @@ INSERT INTO `log_error` VALUES (1,29,2,1,'其他异常','标准故障','测试�
 CREATE TABLE `log_maintain` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '维修单ID',
   `support_id` int(11) NOT NULL DEFAULT '0' COMMENT '后勤人员ID',
+  `support_name` varchar(16) DEFAULT NULL COMMENT '后勤人员姓名',
+  `support_tel` varchar(16) DEFAULT NULL COMMENT '后勤人员电话',
   `machine_id` int(11) NOT NULL DEFAULT '0' COMMENT '机器ID',
   `type` varchar(16) DEFAULT NULL COMMENT '维修类型',
   `money` double(11,2) DEFAULT NULL COMMENT '维修金额',
@@ -347,13 +349,13 @@ CREATE TABLE `log_maintain` (
   `start_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `end_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='维修表';
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='维修表';
 
 #
 # Data for table "log_maintain"
 #
 
-INSERT INTO `log_maintain` VALUES (1,1,1,'返厂维修',4396.00,NULL,NULL,'未审核','2019-01-05 15:40:17','0000-00-00 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,1,2,'返厂维修',999.00,NULL,NULL,'未审核','2019-01-05 23:43:18','2019-01-05 23:43:18','2019-01-23 23:43:18','2019-01-25 23:43:18');
+INSERT INTO `log_maintain` VALUES (1,1,NULL,NULL,1,'返厂维修',4396.00,NULL,NULL,'未审核','2019-01-05 15:40:17','0000-00-00 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,1,NULL,NULL,2,'返厂维修',999.00,NULL,NULL,'未审核','2019-01-05 23:43:18','2019-01-05 23:43:18','2019-01-23 23:43:18','2019-01-25 23:43:18'),(10,1,'黄俊强','21121211212撒',3,'临时维修',2121.00,NULL,NULL,'未审核','2019-01-14 23:44:05','2019-01-14 23:44:05','2019-01-14 23:44:05','2019-01-14 23:44:05');
 
 #
 # Structure for table "log_oil"
@@ -386,6 +388,8 @@ INSERT INTO `log_oil` VALUES (1,2,1,4396.00,9999.00,'专用测试数据',13,'未
 CREATE TABLE `log_transport` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '转场单',
   `support_id` int(11) NOT NULL DEFAULT '0' COMMENT '后勤人员ID',
+  `support_name` varchar(16) DEFAULT NULL COMMENT '后勤人员姓名',
+  `support_tel` varchar(16) DEFAULT NULL COMMENT '后勤人员电话',
   `machine_id` int(11) NOT NULL DEFAULT '0' COMMENT '机器ID',
   `departure` varchar(256) DEFAULT NULL COMMENT '起点',
   `destination` varchar(256) DEFAULT NULL COMMENT '终点',
@@ -399,13 +403,13 @@ CREATE TABLE `log_transport` (
   `start_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `end_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='转场单';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='转场单';
 
 #
 # Data for table "log_transport"
 #
 
-INSERT INTO `log_transport` VALUES (1,2,1,NULL,NULL,'客户转场',3333.00,NULL,NULL,'未审核','2019-01-06 10:26:15','2019-01-06 10:26:15','2019-01-06 07:00:00','2019-01-06 10:26:13');
+INSERT INTO `log_transport` VALUES (1,2,NULL,NULL,1,NULL,NULL,'客户转场',3333.00,NULL,NULL,'未审核','2019-01-06 10:26:15','2019-01-06 10:26:15','2019-01-06 07:00:00','2019-01-06 10:26:13'),(2,2,'谢晓航','234234124阿萨大',3,NULL,NULL,'第三方转场',2121.00,NULL,NULL,'未审核','2019-01-14 23:45:09','2019-01-14 23:45:09','2019-01-14 23:45:09','2019-01-14 23:45:09');
 
 #
 # Structure for table "log_work"
@@ -414,6 +418,8 @@ INSERT INTO `log_transport` VALUES (1,2,1,NULL,NULL,'客户转场',3333.00,NULL,
 CREATE TABLE `log_work` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '工单ID',
   `driver_id` int(11) NOT NULL DEFAULT '0' COMMENT '司机ID',
+  `driver_name` varchar(16) DEFAULT NULL COMMENT '机手姓名',
+  `driver_tel` varchar(16) DEFAULT NULL COMMENT '机手电话',
   `machine_id` int(11) NOT NULL DEFAULT '0' COMMENT '机器ID',
   `type` varchar(16) DEFAULT NULL COMMENT '类型',
   `money` double DEFAULT NULL COMMENT '金额',
@@ -425,13 +431,13 @@ CREATE TABLE `log_work` (
   `start_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `end_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='工单';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='工单';
 
 #
 # Data for table "log_work"
 #
 
-INSERT INTO `log_work` VALUES (1,32,1,'合约工单',1212,NULL,NULL,'未审核','2019-01-06 11:50:05','2019-01-06 11:50:05','2019-01-06 11:50:05','2019-01-06 11:50:04');
+INSERT INTO `log_work` VALUES (1,32,NULL,NULL,1,'合约工单',1212,NULL,NULL,'未审核','2019-01-06 11:50:05','2019-01-06 11:50:05','2019-01-06 11:50:05','2019-01-06 11:50:04'),(2,33,'陈岩','13048062053',3,'合约工单',123112,NULL,NULL,'未审核','2019-01-14 23:46:25','2019-01-14 23:46:25','2019-01-14 23:46:25','2019-01-14 23:46:25');
 
 #
 # Structure for table "service_compact"
@@ -441,6 +447,7 @@ CREATE TABLE `service_compact` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '合同ID',
   `number` varchar(11) NOT NULL DEFAULT '0' COMMENT '合同编号',
   `customer_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '关联客户信息',
+  `customer_name` varchar(64) DEFAULT NULL,
   `contact_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '客户联系人信息',
   `type` varchar(11) DEFAULT NULL COMMENT '合同种类',
   `bucket` int(11) unsigned DEFAULT '0' COMMENT '挖斗数量',
@@ -463,13 +470,13 @@ CREATE TABLE `service_compact` (
   `start_time` timestamp NULL DEFAULT '0000-00-00 00:00:00' COMMENT '开工时间',
   PRIMARY KEY (`id`),
   KEY `COMPACT_CUSTOMER` (`customer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='合同';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='合同';
 
 #
 # Data for table "service_compact"
 #
 
-INSERT INTO `service_compact` VALUES (1,'201901101',34,26,'月租合同',1,1,440.00,550.00,110.00,20000.00,40000.00,100000.00,1000.00,50000.00,40000.00,'广州南沙',20,'未审核','2019-01-10 10:22:49',NULL,NULL,NULL);
+INSERT INTO `service_compact` VALUES (1,'201901101',34,NULL,26,'月租合同',1,1,440.00,550.00,110.00,20000.00,40000.00,100000.00,1000.00,50000.00,40000.00,'广州南沙',20,'未审核','2019-01-10 10:22:49',NULL,NULL,NULL),(2,'2019011401',34,'Dustone科技有限公司',26,NULL,0,0,440.00,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'未审核','2019-01-14 23:49:21','0000-00-00 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00');
 
 #
 # Structure for table "service_driver_status"
@@ -517,7 +524,6 @@ CREATE TABLE `service_intention` (
 CREATE TABLE `service_machine_status` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `machine_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '机器ID',
-  `driver_id` int(11) unsigned DEFAULT NULL,
   `compact_id` int(11) unsigned DEFAULT NULL,
   `work_id` int(11) unsigned DEFAULT NULL,
   `transport_id` int(11) unsigned DEFAULT NULL,
@@ -528,12 +534,13 @@ CREATE TABLE `service_machine_status` (
   `gcj_y` double DEFAULT NULL COMMENT 'gcj_02 y坐标',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='机器状态表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='机器状态表';
 
 #
 # Data for table "service_machine_status"
 #
 
+INSERT INTO `service_machine_status` VALUES (1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-01-14 23:02:00'),(2,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-01-14 12:32:57'),(3,3,2,2,NULL,NULL,NULL,NULL,NULL,NULL,'2019-01-14 23:51:05'),(4,4,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-01-14 12:33:06');
 
 #
 # Structure for table "sys_drawer"
@@ -560,3 +567,70 @@ INSERT INTO `sys_drawer` VALUES (1,'基础','folder_shared',NULL,NULL),(2,'机�
 
 CREATE VIEW `view_machine_map` AS 
   select `com_machine_map`.`Id` AS `id`,`bean_driver`.`id` AS `driver_id`,`bean_driver`.`name` AS `driver_name`,`bean_machine`.`id` AS `machine_id`,`com_compact_machine`.`compact_id` AS `compact_id`,`bean_machine`.`nameplate` AS `machine_nameplate`,`bean_machine`.`code` AS `machine_code`,`bean_machine`.`status` AS `machine_status`,`com_machine_map`.`gcj_x` AS `gcj_x`,`com_machine_map`.`gcj_y` AS `gcj_y`,`com_machine_map`.`wgs_x` AS `wgs_x`,`com_machine_map`.`wgs_y` AS `wgs_y`,`com_machine_map`.`update_time` AS `update_time` from (((`com_machine_map` left join `bean_machine` on((`com_machine_map`.`machine_id` = `bean_machine`.`id`))) left join `bean_driver` on((`com_machine_map`.`driver_id` = `bean_driver`.`id`))) left join `com_compact_machine` on((`com_machine_map`.`machine_id` = `com_compact_machine`.`machine_id`)));
+
+#
+# Structure for table "view_machine_status"
+#
+
+CREATE VIEW `view_machine_status` AS 
+  select `service_machine_status`.`Id` AS `id`,`service_machine_status`.`machine_id` AS `machine_id`,`bean_machine`.`nameplate` AS `machine_nameplate`,`bean_machine`.`code` AS `machine_code`,`service_machine_status`.`compact_id` AS `compact_id`,`service_compact`.`type` AS `compact_type`,`service_compact`.`number` AS `compact_number`,`service_compact`.`customer_id` AS `customer_id`,`service_compact`.`customer_name` AS `customer_name`,`service_machine_status`.`work_id` AS `work_id`,`log_work`.`driver_id` AS `driver_id`,`log_work`.`driver_name` AS `driver_name`,`log_work`.`driver_tel` AS `driver_tel`,`service_machine_status`.`transport_id` AS `transport_id`,`log_transport`.`support_id` AS `transport_support_id`,`log_transport`.`support_name` AS `transport_support_name`,`log_transport`.`support_tel` AS `transport_support_tel`,`service_machine_status`.`maintain_id` AS `maintain_id`,`log_maintain`.`support_id` AS `maintain_support_id`,`log_maintain`.`support_name` AS `maintain_support_name`,`log_maintain`.`support_tel` AS `maintain_support_tel` from (((((`service_machine_status` left join `bean_machine` on((`service_machine_status`.`machine_id` = `bean_machine`.`id`))) left join `service_compact` on((`service_machine_status`.`compact_id` = `service_compact`.`id`))) left join `log_work` on((`service_machine_status`.`work_id` = `log_work`.`id`))) left join `log_transport` on((`service_machine_status`.`transport_id` = `log_transport`.`id`))) left join `log_maintain` on((`service_machine_status`.`maintain_id` = `log_maintain`.`id`)));
+
+#
+# Trigger "compact_customer_trigger"
+#
+
+CREATE DEFINER='kaixin'@'%' TRIGGER `compact_customer_trigger` BEFORE INSERT ON `service_compact`
+  FOR EACH ROW BEGIN
+     set 
+         NEW.customer_name=
+             (select name from bean_customer where bean_customer.id=NEW.customer_id);
+END;
+
+#
+# Trigger "machine_status_trigger"
+#
+
+CREATE DEFINER='kaixin'@'%' TRIGGER `machine_status_trigger` AFTER INSERT ON `bean_machine`
+  FOR EACH ROW insert into service_machine_status (machine_id) values(NEW.id);
+
+#
+# Trigger "maintain_support_trigger"
+#
+
+CREATE DEFINER='kaixin'@'%' TRIGGER `maintain_support_trigger` BEFORE INSERT ON `log_maintain`
+  FOR EACH ROW BEGIN
+     set 
+         NEW.support_name=
+             (select name from bean_support where bean_support.id=NEW.support_id);
+     set 
+         NEW.support_tel=
+             (select tel from bean_support where bean_support.id=NEW.support_id);
+END;
+
+#
+# Trigger "transport_support_trigger"
+#
+
+CREATE DEFINER='kaixin'@'%' TRIGGER `transport_support_trigger` BEFORE INSERT ON `log_transport`
+  FOR EACH ROW BEGIN
+     set 
+         NEW.support_name=
+             (select name from bean_support where bean_support.id=NEW.support_id);
+     set 
+         NEW.support_tel=
+             (select tel from bean_support where bean_support.id=NEW.support_id);
+END;
+
+#
+# Trigger "work_driver_trigger"
+#
+
+CREATE DEFINER='kaixin'@'%' TRIGGER `work_driver_trigger` BEFORE INSERT ON `log_work`
+  FOR EACH ROW BEGIN
+     set 
+         NEW.driver_name=
+             (select name from bean_driver where bean_driver.id=NEW.driver_id);
+     set 
+         NEW.driver_tel=
+             (select tel from bean_driver where bean_driver.id=NEW.driver_id);
+END;
