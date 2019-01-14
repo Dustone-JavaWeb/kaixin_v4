@@ -62,5 +62,6 @@ $(function() {
 
 function chooseHeadPircture(targetEntity, picName, targetUrl) {
 	headPirctureVue.prepareInfo(targetEntity, picName, targetUrl);
+	console.log(targetEntity);
 	$("#headPictureButton").click();
 }

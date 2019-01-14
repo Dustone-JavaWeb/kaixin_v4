@@ -24,6 +24,7 @@ $(function() {
 				var ajaxRequestModel=DEEP_COPY(self.requestModel);
 				ajaxRequestModel.example=checkEmpty(ajaxRequestModel.example);
 				axios.post(PAGE_DRIVER_QUERY, ajaxRequestModel).then(function(response) {
+					console.log(response.data)
 					self.pagination = response.data;
 					self.trs = response.data.content;
 					self.pageNow = response.data.number+1;

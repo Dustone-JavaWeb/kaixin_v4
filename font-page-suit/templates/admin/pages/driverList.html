@@ -76,11 +76,12 @@
 		</div>
 	</div>
 	<div class="admin-table-control mdui-row">
-		<div class="mdui-col-xs-4" style="background: white;">
+		<div class="mdui-col-xs-5" style="background: white;">
 			<button type="button" class="mdui-btn mdui-color-theme-accent" @click="addEntity()">新增</button>
 			<button type="button" class="mdui-btn mdui-color-theme-accent" @click="jump('first')">导出</button>
+			<button type="button" class="mdui-btn mdui-color-theme-accent">共计{{pagination.totalElements}}项</button>
 		</div>
-		<div class="mdui-btn-group <mdui-col-xs-5x></mdui-col-xs-5x>">
+		<div class="mdui-btn-group mdui-col-xs-5">
 			<button type="button" class="mdui-btn" @click="jump('first')"><i class="mdui-icon material-icons">first_page</i></button>
 			<button type="button" class="mdui-btn" @click="jump('pre')"><i class="mdui-icon material-icons">navigate_before</i></button>
 			<button v-for="i in pagination.navigatepageNums" v-bind:class="pageSelected(i)" type="button" class="mdui-btn"

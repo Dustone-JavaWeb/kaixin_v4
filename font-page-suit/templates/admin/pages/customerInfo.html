@@ -10,10 +10,11 @@
 		</div>
 		<div class="mdui-divider"></div>
 		<div class="mdui-row">
-			<div class="mdui-col-xs-10">
+			<div class="mdui-col-xs-12">
 				<div class="mdui-textfield mdui-col-xs-4">
-					<label class="mdui-textfield-label">姓名</label>
-					<input v-bind:disabled="inputDisabled" v-model="entity.name" class="mdui-textfield-input" type="text" placeholder="公司名称" />
+					<label class="mdui-textfield-label">公司名称</label>
+					<input v-bind:disabled="inputDisabled" v-model="entity.name" class="mdui-textfield-input" type="text" placeholder="公司名称"
+					 maxlength="64" />
 
 				</div>
 				<div class="mdui-textfield mdui-col-xs-4">
@@ -32,12 +33,22 @@
 						<option value="高级">高级</option>
 					</select>
 				</div>
-			</div>
-			<div class="mdui-col-xs-2">
-				<div>
-					<img class="mdui-img-fluid" src="../../../webapp/img/DSC_4407.JPG" />
+				<div class="mdui-textfield mdui-col-xs-12">
+					<label class="mdui-textfield-label">备注</label>
+					<textarea class="mdui-textfield-input" v-bind:disabled="inputDisabled" type="text" v-model="entity.detail"
+					 maxlength="255" placeholder="备注信息"></textarea>
 				</div>
 			</div>
+		</div>
+		<div class="mdui-typo">
+			<h3>
+				联系人
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="" v-bind:style="{display:editPanelModel}">新增</button>
+			</h3>
+		</div>
+		<div class="mdui-divider"></div>
+		<div class="mdui-table-fluid">
+			
 		</div>
 		<div class="mdui-typo">
 			<h3>
@@ -129,9 +140,9 @@
 				<div class="mdui-col admin-layout-box" v-for="res in entity.resource.resources">
 					<div class="mdui-card">
 						<div class="mdui-card-header">
-							<img class="mdui-card-header-avatar" src="../../../webapp/img/machineLogo.png" />
+							<img class="mdui-card-header-avatar" v-bind:src="BASE_URL+chooseFileType(res.type)" />
 							<div class="mdui-card-header-title">
-								{{res.name}}
+								<a target="view_blank" v-bind:href="BASE_URL+'/'+res.url" v-bind:download="res.name">{{res.name}}</a>
 							</div>
 							<div class="mdui-card-header-subtitle">
 								{{res.type}} {{res.size|renderSize}}
@@ -195,8 +206,8 @@
 								openFileManageDialog(self.entity, "客户信息");
 							});
 						});
-						
-					}else{
+
+					} else {
 						openFileManageDialog(self.entity, "客户信息");
 					}
 				},
@@ -242,6 +253,9 @@
 						});
 					}
 					mdui.mutation();
+				},
+				chooseFileType(type) {
+					return chooseFileIcon(type);
 				}
 			},
 			filters: {

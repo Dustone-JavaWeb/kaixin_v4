@@ -23,6 +23,7 @@ public class CustomerController {
     @PostMapping("/customer_update")
     public Page4Navigator<Customer> update(@RequestBody RequestModel<Customer> requestModel){
         Page4Navigator<Customer> page=customerService.update(requestModel.getExample());
+        page.setResponseMessage("保存成功！");
         return page;
     }
     @PostMapping("/customer_query_by_contact")

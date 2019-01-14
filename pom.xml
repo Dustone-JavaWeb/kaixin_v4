@@ -125,6 +125,13 @@
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.xuxueli/xxl-excel -->
+		<dependency>
+			<groupId>com.xuxueli</groupId>
+			<artifactId>xxl-excel</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>

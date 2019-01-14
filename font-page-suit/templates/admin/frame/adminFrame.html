@@ -76,7 +76,7 @@
 			<div class="admin-file-dialog-container  mdui-container" id="fileManageTable">
 				<div class="mdui-typo">
 					<h3>
-						{{entity.name}}的相关资源
+						{{entity.name}}的相关资源 (单个文件大小限制:50MB)
 						<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" id="resourceUploadButtonDisplay">上传文件</button>
 						<input style="display: none;" accept="*" type="file" name="image" @change="upLoadFile($event)" id="resourceUploadButton" />
 					</h3>

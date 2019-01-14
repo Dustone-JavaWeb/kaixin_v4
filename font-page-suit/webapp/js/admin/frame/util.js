@@ -1,7 +1,8 @@
-function DEEP_COPY(obj){
+function DEEP_COPY(obj) {
 	var result = JSON.parse(JSON.stringify(obj));
 	return result;
 }
+
 function checkEmpty(jsonObject) {
 	var result = {};
 	for (var key in jsonObject) {
@@ -12,13 +13,15 @@ function checkEmpty(jsonObject) {
 	}
 	return result;
 }
-function checkStringEmpty(obj){
-    if(typeof obj == "undefined" || obj == null || obj == ""){
-        return true;
-    }else{
-        return false;
-    }
+
+function checkStringEmpty(obj) {
+	if (typeof obj == "undefined" || obj == null || obj == "") {
+		return true;
+	} else {
+		return false;
+	}
 }
+
 function chooseMachineColor(status) {
 	switch (status) {
 		case '空闲':
@@ -35,5 +38,52 @@ function chooseMachineColor(status) {
 			break;
 		default:
 			return 'black';
+	}
+}
+
+function chooseFileIcon(type) {
+	var startToken = "/resource/staticPicResource/";
+	switch (type) {
+		case 'doc':
+			return startToken + "doc.png";
+			break;
+		case 'docx':
+			return startToken + "doc.png";
+			break;
+		case 'xls':
+			return startToken + "xls.png";
+			break;
+		case 'xlsx':
+			return startToken + "xls.png";
+			break;
+		case 'ppt':
+			return startToken + "ppt.png";
+			break;
+		case 'pptx':
+			return startToken + "ppt.png";
+			break;
+		case 'zip':
+			return startToken + "zip.png";
+			break;
+		case 'rar':
+			return startToken + "zip.png";
+			break;
+		case 'png':
+			return startToken + "pic.png";
+			break;
+		case 'jpg':
+			return startToken + "pic.png";
+			break;
+		case 'jpeg':
+			return startToken + "pic.png";
+			break;
+		case 'gif':
+			return startToken + "pic.png";
+			break;
+		case 'icon':
+			return startToken + "pic.png";
+			break;
+		default:
+			return startToken + "file.png";
 	}
 }

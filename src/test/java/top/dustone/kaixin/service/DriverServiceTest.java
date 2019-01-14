@@ -1,5 +1,6 @@
 package top.dustone.kaixin.service;
 
+import com.xuxueli.poi.excel.ExcelExportUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import top.dustone.kaixin.entity.Driver;
 import top.dustone.kaixin.util.Page4Navigator;
+import top.dustone.kaixin.util.export.DrvierExcel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -24,9 +29,12 @@ public class DriverServiceTest {
     @Test
     public void listByExapmle(){
         Driver driver=new Driver();
-        driver.setName("陈岩");
-        System.out.println("hello");
-        Page4Navigator<Driver> result=driverService.listByExapmle(driver,0,5,1);
-        System.out.println(result.getContent());
+        Page4Navigator<Driver> result=driverService.listByExapmle(driver,0,100,1);
+        List<DrvierExcel> list=new ArrayList<DrvierExcel>(5);
+        for(Driver driver1:result.getContent()){
+            DrvierExcel drvierExcel=new DrvierExcel(driver1);
+            list.add(drvierExcel);
+        }
+        ExcelExportUtil.exportToFile("D:\\test.xls",list);
     }
 }

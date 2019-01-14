@@ -89,6 +89,9 @@ html {
 	margin-left: 30px;
 	margin-right: 30px;
 }
+.admin-headpic{
+	height: 150px;
+}
 
 .admin-info-resource-image {
 	height: 100px;
