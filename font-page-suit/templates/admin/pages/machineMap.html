@@ -11,7 +11,7 @@
 		</div>
 		<div class="mdui-textfield mdui-col-xs-12">
 			<label class="mdui-textfield-label">挖机状态</label>
-			<select v-model="requestModel.example.machineStatus" class="mdui-select" style="width:100%">
+			<select v-model="requestModel.example.status" class="mdui-select" style="width:100%">
 				<option value="">所有状态</option>
 				<option value="空闲">空闲</option>
 				<option value="工作">工作</option>
@@ -25,7 +25,7 @@
 				<i v-bind:style="{'background-color':chooseColor(tr)}" class="mdui-list-item-avatar mdui-icon material-icons">folder</i>
 				<div class="mdui-list-item-content">
 					<div class="mdui-list-item-title">{{tr.machineCode}}</div>
-					<div class="mdui-list-item-text">{{tr.machineStatus}}</div>
+					<div class="mdui-list-item-text">{{tr.status}}</div>
 				</div>
 				<i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-grey-400">info</i>
 			</li>

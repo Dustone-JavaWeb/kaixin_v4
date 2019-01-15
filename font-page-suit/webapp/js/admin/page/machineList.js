@@ -8,7 +8,6 @@ $(function() {
 				start: 0,
 				example: {
 					machineType:{},
-					status: ""
 				}
 			},
 			pageNow:0

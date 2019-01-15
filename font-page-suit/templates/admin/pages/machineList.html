@@ -14,16 +14,6 @@
 			<div class="admin-layout-box mdui-col-xs-4">
 				<input v-model="requestModel.example.code" class="mdui-textfield-input" type="text" placeholder="自编号" />
 			</div>
-			<div class="admin-layout-box mdui-col-xs-4">
-				<select v-model="requestModel.example.status" class="mdui-select" style="width: 100%">
-					<option value="">所有状态</option>
-					<option value="空闲">空闲</option>
-					<option value="工作">工作</option>
-					<option value="维修">维修</option>
-					<option value="报废">报废</option>
-					<option value="已出售">已出售</option>
-				</select>
-			</div>
 		</form>
 		<div class="admin-layout-box mdui-col-xs-4">
 			<button v-on:click="query()" class="mdui-btn mdui-color-theme-accent mdui-ripple" style="width: 100%">查询</button>
@@ -47,7 +37,6 @@
 						<td>购买价格</td>
 						<td>月供</td>
 						<td>工作时间</td>
-						<td>状态</td>
 						<td>创建时间</td>
 					</tr>
 				</thead>
@@ -62,14 +51,6 @@
 						<td>{{tr.price}}</td>
 						<td>{{tr.mPay}}</td>
 						<td>{{tr.worktime}}</td>
-						<td>
-							<div class="mdui-text-color-white mdui-chip-title mdui-color-light-green" v-if="tr.status=='空闲'">{{tr.status}}</div>
-							<div class="mdui-text-color-white mdui-chip-title mdui-color-pink" v-else-if="tr.status=='工作'">{{tr.status}}</div>
-							<div class="mdui-text-color-white mdui-chip-title mdui-color-yellow-800" v-else-if="tr.status=='维修'">{{tr.status}}</div>
-							<div class="mdui-text-color-white mdui-chip-title mdui-color-black" v-else-if="tr.status=='报废'">{{tr.status}}</div>
-							<div class="mdui-text-color-white mdui-chip-title mdui-color-grey" v-else-if="tr.status=='已出售'">{{tr.status}}</div>
-							<div class="mdui-text-color-white mdui-chip-title mdui-color-grey" v-else-if="tr.status=='转场'">{{tr.status}}</div>
-						</td>
 						<td>{{tr.createTime|date}}</td>
 					</tr>
 				</tbody>

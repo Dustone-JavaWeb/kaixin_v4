@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version: 5.5.15)
-# Date: 2019-01-14 23:55:53
+# Date: 2019-01-15 21:42:33
 # Generator: MySQL-Front 5.3  (Build 4.269)
 
 /*!40101 SET NAMES utf8 */;
@@ -121,13 +121,13 @@ CREATE TABLE `bean_machine` (
   `dead_line` timestamp NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`),
   KEY `MACHINE_TYPE` (`tid`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='机器信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='机器信息表';
 
 #
 # Data for table "bean_machine"
 #
 
-INSERT INTO `bean_machine` VALUES (1,1,'AC9001','0922','陈岩','分歧',1321,32231,'转场',32232.00,'23421',NULL,NULL,'2018-12-01 08:59:04',NULL,NULL,NULL),(2,1,'ASD','3011','WFQEW','一次性',2342,1234123,'空闲',21313.00,'123',1,NULL,'2018-12-01 09:27:50',NULL,NULL,NULL),(3,3,'WW3939','0930','陈岩','130231231312',999,1024,'工作',2020.00,NULL,NULL,NULL,'2019-01-07 13:18:32',NULL,NULL,NULL),(4,8,'KA0244','02 22','陈岩','分期付款',21212,1212,'空闲',12.00,NULL,NULL,NULL,'2019-01-14 10:35:55',NULL,NULL,NULL);
+INSERT INTO `bean_machine` VALUES (1,1,'AC9001','0922','陈岩','分歧',1321,32231,'转场',32232.00,'23421',NULL,NULL,'2018-12-01 08:59:04',NULL,NULL,NULL),(2,1,'ASD','3011','WFQEW','一次性',2342,1234123,'空闲',21313.00,'123',1,NULL,'2018-12-01 09:27:50',NULL,NULL,NULL),(3,3,'WW3939','0930','陈岩','130231231312',999,1024,'工作',2020.00,NULL,NULL,NULL,'2019-01-07 13:18:32',NULL,NULL,NULL),(4,8,'KA0244','02 22','陈岩','分期付款',21212,1212,'空闲',12.00,NULL,NULL,NULL,'2019-01-14 10:35:55',NULL,NULL,NULL),(9,3,'AA2020',NULL,NULL,NULL,0,0,'空闲',NULL,NULL,NULL,NULL,'2019-01-15 21:41:52','0000-00-00 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00');
 
 #
 # Structure for table "bean_machine_brand"
@@ -251,12 +251,13 @@ CREATE TABLE `com_customer_contact` (
   `customer_id` int(11) unsigned DEFAULT NULL,
   `contact_id` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户-联系人连接表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='客户-联系人连接表';
 
 #
 # Data for table "com_customer_contact"
 #
 
+INSERT INTO `com_customer_contact` VALUES (1,34,26);
 
 #
 # Structure for table "com_machine_map"
@@ -344,18 +345,19 @@ CREATE TABLE `log_maintain` (
   `details` varchar(256) DEFAULT NULL COMMENT '维修详情',
   `resource_id` int(11) DEFAULT NULL COMMENT '资源ID',
   `log_mode` varchar(11) DEFAULT NULL COMMENT '日志状态',
+  `working` varchar(11) DEFAULT NULL COMMENT '执行状态',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `edit_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `start_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `end_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='维修表';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='维修表';
 
 #
 # Data for table "log_maintain"
 #
 
-INSERT INTO `log_maintain` VALUES (1,1,NULL,NULL,1,'返厂维修',4396.00,NULL,NULL,'未审核','2019-01-05 15:40:17','0000-00-00 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,1,NULL,NULL,2,'返厂维修',999.00,NULL,NULL,'未审核','2019-01-05 23:43:18','2019-01-05 23:43:18','2019-01-23 23:43:18','2019-01-25 23:43:18'),(10,1,'黄俊强','21121211212撒',3,'临时维修',2121.00,NULL,NULL,'未审核','2019-01-14 23:44:05','2019-01-14 23:44:05','2019-01-14 23:44:05','2019-01-14 23:44:05');
+INSERT INTO `log_maintain` VALUES (1,1,NULL,NULL,1,'普通维修',4396.00,NULL,NULL,'已作废',NULL,'2019-01-05 15:40:17','2019-01-15 16:42:14','2019-01-15 16:42:14','2019-01-15 16:42:14'),(2,1,NULL,NULL,2,'返厂维修',999.00,NULL,NULL,'已作废',NULL,'2019-01-05 23:43:18','2019-01-05 23:43:18','2019-01-23 23:43:18','2019-01-25 23:43:18'),(10,1,'黄俊强','21121211212撒',3,'临时维修',2121.00,NULL,NULL,'已作废',NULL,'2019-01-14 23:44:05','2019-01-14 23:44:05','2019-01-14 23:44:05','2019-01-14 23:44:05'),(11,2,'谢晓航','234234124阿萨大',4,'普通维修',212121.00,NULL,NULL,'已作废',NULL,'2019-01-15 17:15:19','2019-01-15 17:15:19','2019-01-15 17:15:19','2019-01-15 17:15:19');
 
 #
 # Structure for table "log_oil"
@@ -398,18 +400,19 @@ CREATE TABLE `log_transport` (
   `details` varchar(256) DEFAULT NULL COMMENT '描述',
   `resource_id` int(11) DEFAULT NULL COMMENT '资源ID',
   `log_mode` varchar(11) DEFAULT NULL COMMENT '状态',
+  `working` varchar(11) DEFAULT NULL COMMENT '执行状态',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `edit_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `start_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `end_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='转场单';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='转场单';
 
 #
 # Data for table "log_transport"
 #
 
-INSERT INTO `log_transport` VALUES (1,2,NULL,NULL,1,NULL,NULL,'客户转场',3333.00,NULL,NULL,'未审核','2019-01-06 10:26:15','2019-01-06 10:26:15','2019-01-06 07:00:00','2019-01-06 10:26:13'),(2,2,'谢晓航','234234124阿萨大',3,NULL,NULL,'第三方转场',2121.00,NULL,NULL,'未审核','2019-01-14 23:45:09','2019-01-14 23:45:09','2019-01-14 23:45:09','2019-01-14 23:45:09');
+INSERT INTO `log_transport` VALUES (1,2,NULL,NULL,1,NULL,NULL,'客户转场',3333.00,NULL,NULL,'未审核',NULL,'2019-01-06 10:26:15','2019-01-06 10:26:15','2019-01-06 07:00:00','2019-01-06 10:26:13'),(2,2,'谢晓航','234234124阿萨大',3,NULL,NULL,'第三方转场',2121.00,NULL,NULL,'已审核',NULL,'2019-01-14 23:45:09','2019-01-14 23:45:09','2019-01-14 23:45:09','2019-01-14 23:45:09'),(3,1,'黄俊强','21121211212撒',1,NULL,NULL,'公司转场',1212.00,NULL,NULL,'已作废',NULL,'2019-01-15 20:55:23','2019-01-15 20:55:23','2019-01-15 20:55:23','2019-01-15 20:55:23');
 
 #
 # Structure for table "log_work"
@@ -426,6 +429,7 @@ CREATE TABLE `log_work` (
   `details` varchar(256) DEFAULT NULL COMMENT '描述',
   `resource_id` int(11) DEFAULT NULL COMMENT '资源ID',
   `log_mode` varchar(11) DEFAULT NULL COMMENT '状态',
+  `working` varchar(11) DEFAULT NULL COMMENT '执行状态',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `edit_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `start_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -437,7 +441,7 @@ CREATE TABLE `log_work` (
 # Data for table "log_work"
 #
 
-INSERT INTO `log_work` VALUES (1,32,NULL,NULL,1,'合约工单',1212,NULL,NULL,'未审核','2019-01-06 11:50:05','2019-01-06 11:50:05','2019-01-06 11:50:05','2019-01-06 11:50:04'),(2,33,'陈岩','13048062053',3,'合约工单',123112,NULL,NULL,'未审核','2019-01-14 23:46:25','2019-01-14 23:46:25','2019-01-14 23:46:25','2019-01-14 23:46:25');
+INSERT INTO `log_work` VALUES (1,32,NULL,NULL,1,'合约工单',1212,NULL,NULL,'已审核',NULL,'2019-01-06 11:50:05','2019-01-06 11:50:05','2019-01-06 11:50:05','2019-01-06 11:50:04'),(2,33,'陈岩','13048062053',3,'合约工单',123112,NULL,NULL,'已审核',NULL,'2019-01-14 23:46:25','2019-01-14 23:46:25','2019-01-14 23:46:25','2019-01-14 23:46:25');
 
 #
 # Structure for table "service_compact"
@@ -524,6 +528,7 @@ CREATE TABLE `service_intention` (
 CREATE TABLE `service_machine_status` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `machine_id` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '机器ID',
+  `status` varchar(11) DEFAULT '空闲' COMMENT '机器状态',
   `compact_id` int(11) unsigned DEFAULT NULL,
   `work_id` int(11) unsigned DEFAULT NULL,
   `transport_id` int(11) unsigned DEFAULT NULL,
@@ -534,13 +539,13 @@ CREATE TABLE `service_machine_status` (
   `gcj_y` double DEFAULT NULL COMMENT 'gcj_02 y坐标',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='机器状态表';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='机器状态表';
 
 #
 # Data for table "service_machine_status"
 #
 
-INSERT INTO `service_machine_status` VALUES (1,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-01-14 23:02:00'),(2,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-01-14 12:32:57'),(3,3,2,2,NULL,NULL,NULL,NULL,NULL,NULL,'2019-01-14 23:51:05'),(4,4,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-01-14 12:33:06');
+INSERT INTO `service_machine_status` VALUES (1,1,'空闲',NULL,NULL,NULL,NULL,NULL,NULL,113.280637,23.125178,'2019-01-14 23:58:29'),(2,2,'空闲',NULL,NULL,NULL,NULL,NULL,NULL,113.049752,23.109706,'2019-01-14 23:58:38'),(3,3,'空闲',2,NULL,NULL,NULL,NULL,NULL,113.036199,24.63638,'2019-01-15 17:14:16'),(4,4,'空闲',NULL,NULL,NULL,NULL,NULL,NULL,113.036111,22.636442,'2019-01-15 21:16:49'),(5,9,'空闲',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-01-15 21:41:52');
 
 #
 # Structure for table "sys_drawer"
@@ -573,7 +578,7 @@ CREATE VIEW `view_machine_map` AS
 #
 
 CREATE VIEW `view_machine_status` AS 
-  select `service_machine_status`.`Id` AS `id`,`service_machine_status`.`machine_id` AS `machine_id`,`bean_machine`.`nameplate` AS `machine_nameplate`,`bean_machine`.`code` AS `machine_code`,`service_machine_status`.`compact_id` AS `compact_id`,`service_compact`.`type` AS `compact_type`,`service_compact`.`number` AS `compact_number`,`service_compact`.`customer_id` AS `customer_id`,`service_compact`.`customer_name` AS `customer_name`,`service_machine_status`.`work_id` AS `work_id`,`log_work`.`driver_id` AS `driver_id`,`log_work`.`driver_name` AS `driver_name`,`log_work`.`driver_tel` AS `driver_tel`,`service_machine_status`.`transport_id` AS `transport_id`,`log_transport`.`support_id` AS `transport_support_id`,`log_transport`.`support_name` AS `transport_support_name`,`log_transport`.`support_tel` AS `transport_support_tel`,`service_machine_status`.`maintain_id` AS `maintain_id`,`log_maintain`.`support_id` AS `maintain_support_id`,`log_maintain`.`support_name` AS `maintain_support_name`,`log_maintain`.`support_tel` AS `maintain_support_tel` from (((((`service_machine_status` left join `bean_machine` on((`service_machine_status`.`machine_id` = `bean_machine`.`id`))) left join `service_compact` on((`service_machine_status`.`compact_id` = `service_compact`.`id`))) left join `log_work` on((`service_machine_status`.`work_id` = `log_work`.`id`))) left join `log_transport` on((`service_machine_status`.`transport_id` = `log_transport`.`id`))) left join `log_maintain` on((`service_machine_status`.`maintain_id` = `log_maintain`.`id`)));
+  select `service_machine_status`.`Id` AS `id`,`service_machine_status`.`machine_id` AS `machine_id`,`service_machine_status`.`status` AS `status`,`bean_machine`.`nameplate` AS `machine_nameplate`,`bean_machine`.`code` AS `machine_code`,`service_machine_status`.`compact_id` AS `compact_id`,`service_compact`.`type` AS `compact_type`,`service_compact`.`number` AS `compact_number`,`service_compact`.`customer_id` AS `customer_id`,`service_compact`.`customer_name` AS `customer_name`,`service_machine_status`.`work_id` AS `work_id`,`log_work`.`driver_id` AS `driver_id`,`log_work`.`driver_name` AS `driver_name`,`log_work`.`driver_tel` AS `driver_tel`,`service_machine_status`.`transport_id` AS `transport_id`,`log_transport`.`support_id` AS `transport_support_id`,`log_transport`.`support_name` AS `transport_support_name`,`log_transport`.`support_tel` AS `transport_support_tel`,`service_machine_status`.`maintain_id` AS `maintain_id`,`log_maintain`.`support_id` AS `maintain_support_id`,`log_maintain`.`support_name` AS `maintain_support_name`,`log_maintain`.`support_tel` AS `maintain_support_tel`,`service_machine_status`.`wgs_x` AS `wgs_x`,`service_machine_status`.`wgs_y` AS `wgs_y`,`service_machine_status`.`gcj_x` AS `gcj_x`,`service_machine_status`.`gcj_y` AS `gcj_y`,`service_machine_status`.`update_time` AS `update_time` from (((((`service_machine_status` left join `bean_machine` on((`service_machine_status`.`machine_id` = `bean_machine`.`id`))) left join `service_compact` on((`service_machine_status`.`compact_id` = `service_compact`.`id`))) left join `log_work` on((`service_machine_status`.`work_id` = `log_work`.`id`))) left join `log_transport` on((`service_machine_status`.`transport_id` = `log_transport`.`id`))) left join `log_maintain` on((`service_machine_status`.`maintain_id` = `log_maintain`.`id`)));
 
 #
 # Trigger "compact_customer_trigger"
@@ -605,6 +610,16 @@ CREATE DEFINER='kaixin'@'%' TRIGGER `maintain_support_trigger` BEFORE INSERT ON 
      set 
          NEW.support_tel=
              (select tel from bean_support where bean_support.id=NEW.support_id);
+END;
+
+#
+# Trigger "status_machine_trigger"
+#
+
+CREATE DEFINER='kaixin'@'%' TRIGGER `status_machine_trigger` AFTER UPDATE ON `service_machine_status`
+  FOR EACH ROW BEGIN
+     UPDATE bean_machine set 
+            bean_machine.status=NEW.status where bean_machine.id=NEW.machine_id;
 END;
 
 #

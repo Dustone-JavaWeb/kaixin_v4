@@ -13,6 +13,7 @@ public class MachineStatus {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer machineId;
+    private String status;
     private Integer compactId;
     private Integer workId;
     private Integer transportId;
@@ -131,5 +132,13 @@ public class MachineStatus {
                 ", gcjY=" + gcjY +
                 ", updateTime=" + updateTime +
                 '}';
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

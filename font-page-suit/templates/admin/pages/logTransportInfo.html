@@ -6,7 +6,10 @@
 				<div class="mdui-text-color-white mdui-chip-title mdui-color-light-green" v-if="entity.logMode=='已审核'">{{entity.logMode}}</div>
 				<div class="mdui-text-color-white mdui-chip-title mdui-color-pink" v-else-if="entity.logMode=='已作废'">{{entity.logMode}}</div>
 				<div class="mdui-text-color-white mdui-chip-title mdui-color-grey" v-else-if="entity.logMode=='未审核'">{{entity.logMode}}</div>
+				<div class="mdui-text-color-white mdui-chip-title mdui-color-light-green" v-if="entity.working=='进行中'">{{entity.working}}</div>
 				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(1)" v-bind:style="{display:viewPanelModel}">编辑</button>
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(4)" v-bind:style="{display:delPanelModel}">作废</button>
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(3)" v-bind:style="{display:checkPanelModel}">审核</button>
 				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(0)" v-bind:style="{display:editPanelModel}">放弃</button>
 				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(2)" v-bind:style="{display:editPanelModel}">保存</button>
 			</h3>
@@ -40,11 +43,13 @@
 				</div>
 				<div class="mdui-textfield mdui-col-xs-4">
 					<label class="mdui-textfield-label">转场开始时间</label>
-					<input v-bind:disabled="inputDisabled" class="mdui-textfield-input" type="text" placeholder="转场开始时间" id="logTransportStartTime" readonly>
+					<input v-bind:disabled="inputDisabled" class="mdui-textfield-input" type="text" placeholder="转场开始时间" id="logTransportStartTime"
+					 readonly>
 				</div>
 				<div class="mdui-textfield mdui-col-xs-4">
 					<label class="mdui-textfield-label">转场结束时间</label>
-					<input v-bind:disabled="inputDisabled" class="mdui-textfield-input" type="text" placeholder="转场结束时间" id="logTransportEndTime" readonly>
+					<input v-bind:disabled="inputDisabled" class="mdui-textfield-input" type="text" placeholder="转场结束时间" id="logTransportEndTime"
+					 readonly>
 				</div>
 			</div>
 		</div>
@@ -84,10 +89,13 @@
 				entity: {
 					logMode: "未审核",
 					support: {},
-					machine: {}
+					machine: {},
+					working: ""
 				},
 				editPanelModel: "none",
 				viewPanelModel: "inline",
+				checkPanelModel: "none",
+				delPanelModel: "none",
 				inputDisabled: true,
 				requestModel: {
 					start: 0,
@@ -103,7 +111,19 @@
 				init: function(tabMsg) {
 					var self = this;
 					self.entity = tabMsg.initData.entity;
-					initDateChooser(self.entity.id,self.entity.startTime,self.entity.endTime);
+					if (self.entity.logMode == "未审核") {
+						self.checkPanelModel = "inline";
+						self.delPanelModel = "inline";
+					} else if (self.entity.logMode == "已作废") {
+						self.viewPanelModel = "none";
+						self.checkPanelModel = "none";
+						self.delPanelModel = "none";
+					} else {
+						self.viewPanelModel = "none";
+						self.checkPanelModel = "none";
+						self.delPanelModel = "inline";
+					}
+					initDateChooser(self.entity.id, self.entity.startTime, self.entity.endTime);
 					self.title = '转场单_' + self.entity.id;
 				},
 				initAdd: function(tabMsg) {
@@ -139,10 +159,14 @@
 					if (mode == 1) {
 						self.editPanelModel = "inline";
 						self.viewPanelModel = "none";
+						self.checkPanelModel = "none";
+						self.delPanelModel = "none";
 						self.inputDisabled = false;
 					} else if (mode == 2) {
 						self.editPanelModel = "none";
 						self.viewPanelModel = "inline";
+						self.checkPanelModel = "inline";
+						self.delPanelModel = "inline";
 						self.inputDisabled = true;
 
 						self.requestModel.example = self.entity;
@@ -154,17 +178,66 @@
 								position: "right-bottom",
 							});
 						});
-					} else {
+					} else if (mode == 0) {
 						mdui.confirm("所有的更改无效！", "提示", function() {
+							if (self.entity.id == 0 || self.entity.id == null) {
+								self.entity = {
+									logMode: "未审核",
+									working: "",
+									support: {},
+									machine: {}
+								}
+							} else {
+								self.editPanelModel = "none";
+								self.viewPanelModel = "inline";
+								self.checkPanelModel = "inline";
+								self.delPanelModel = "inline";
+								self.inputDisabled = true;
+								self.requestModel.example = {};
+								self.requestModel.example.id = self.entity.id;
+								console.log(self.entity);
+								self.requestModel.start = 0;
+								axios.post(PAGE_LOG_TRANSPORT_QUERY, self.requestModel).then(function(response) {
+									self.entity = response.data.content[0];
+								});
+							}
+						});
+					} else if (mode == 3) {
+						mdui.confirm("审核后单据内容将无法修改！ 只允许作废。", "提示", function() {
 							self.editPanelModel = "none";
-							self.viewPanelModel = "inline";
+							self.viewPanelModel = "none";
+							self.delPanelModel = "inline";
+							self.checkPanelModel = "none";
 							self.inputDisabled = true;
 
-							self.requestModel.example = {};
-							self.requestModel.example.id = self.entity.id;
-							self.requestModel.start = 0;
-							axios.post(PAGE_LOG_TRANSPORT_QUERY, self.requestModel).then(function(response) {
+							self.entity.logMode = "已审核";
+							self.requestModel.example = self.entity;
+							axios.post(PAGE_LOG_TRANSPORT_UPDATE, self.requestModel).then(function(response) {
 								self.entity = response.data.content[0];
+								mdui.snackbar({
+									message: response.data.responseMessage,
+									timeout: 2000,
+									position: "right-bottom",
+								});
+							});
+						});
+					} else if (mode == 4) {
+						mdui.confirm("作废后将无法进行任何操作！", "提示", function() {
+							self.editPanelModel = "none";
+							self.viewPanelModel = "none";
+							self.delPanelModel = "none";
+							self.checkPanelModel = "none";
+							self.inputDisabled = true;
+
+							self.entity.logMode = "已作废";
+							self.requestModel.example = self.entity;
+							axios.post(PAGE_LOG_TRANSPORT_UPDATE, self.requestModel).then(function(response) {
+								self.entity = response.data.content[0];
+								mdui.snackbar({
+									message: response.data.responseMessage,
+									timeout: 2000,
+									position: "right-bottom",
+								});
 							});
 						});
 					}
@@ -203,7 +276,7 @@
 		})
 	});
 
-	function initDateChooser(eId,sTime,eTime) {
+	function initDateChooser(eId, sTime, eTime) {
 		$('#logTransportStartTime').attr('id', 'logTransportStartTime' + eId);
 		$('#logTransportEndTime').attr('id', 'logTransportEndTime' + eId);
 		layui.use('laydate', function() {
@@ -226,10 +299,11 @@
 			});
 		});
 	}
+
 	function vueChooseDate(type, value) {
 		logTransportInfoVue.chooseDate(type, value);
 	}
-	
+
 	function initLogTransportInfo(tabMsg) {
 		logTransportInfoVue.init(tabMsg);
 	}

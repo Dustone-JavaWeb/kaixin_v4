@@ -25,7 +25,6 @@ public class LogWorkController {
     @PostMapping("/logWork_update")
     public Page4Navigator<LogWork> update(@RequestBody RequestModel<LogWork> requestModel){
         Page4Navigator<LogWork> page=logWorkService.update(requestModel.getExample());
-        page.setResponseMessage("保存成功！");
         return page;
     }
 }

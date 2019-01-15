@@ -25,7 +25,6 @@ public class LogTransportController {
     @PostMapping("/logTransport_update")
     public Page4Navigator<LogTransport> update(@RequestBody RequestModel<LogTransport> requestModel){
         Page4Navigator<LogTransport> page=logTransportService.update(requestModel.getExample());
-        page.setResponseMessage("保存成功！");
         return page;
     }
 }

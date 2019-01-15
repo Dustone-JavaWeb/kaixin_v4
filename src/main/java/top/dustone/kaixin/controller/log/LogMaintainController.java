@@ -25,7 +25,7 @@ public class LogMaintainController {
     @PostMapping("/logMaintain_update")
     public Page4Navigator<LogMaintain> update(@RequestBody RequestModel<LogMaintain> requestModel){
         Page4Navigator<LogMaintain> page=logMaintainService.update(requestModel.getExample());
-        page.setResponseMessage("保存成功！");
         return page;
     }
+
 }

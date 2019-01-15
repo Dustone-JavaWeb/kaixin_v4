@@ -24,7 +24,7 @@ function onApiLoaded() {
 				start: 0,
 				pageSize: 10000,
 				example: {
-					machineStatus: ""
+					status: ""
 				}
 			},
 			pageNow: 0
@@ -39,7 +39,7 @@ function onApiLoaded() {
 				self.requestModel.start = start;
 				var ajaxRequestModel = DEEP_COPY(self.requestModel);
 				ajaxRequestModel.example = checkEmpty(ajaxRequestModel.example);
-				axios.post(PAGE_MACHINE_MAP_VIEW_QUERY, ajaxRequestModel).then(function(response) {
+				axios.post(PAGE_MACHINE_STATUS_VIEW_QUERY, ajaxRequestModel).then(function(response) {
 					self.trs = response.data.content;
 					self.initMap();
 					mdui.mutation();
@@ -55,18 +55,18 @@ function onApiLoaded() {
 				self.requestModel.start = 0;
 				var ajaxRequestModel = DEEP_COPY(self.requestModel);
 				ajaxRequestModel.example = checkEmpty(ajaxRequestModel.example);
-				axios.post(PAGE_MACHINE_MAP_VIEW_QUERY, ajaxRequestModel).then(function(response) {
+				axios.post(PAGE_MACHINE_STATUS_VIEW_QUERY, ajaxRequestModel).then(function(response) {
 					self.trs = response.data.content;
 					updateAllMachineMarker(self.trs);
 					mdui.mutation();
 				});
 			},
 			chooseColor: function(tr) {
-				return chooseMachineColor(tr.machineStatus);
+				return chooseMachineColor(tr.status);
 			}
 		},
 		watch: {
-			"requestModel.example.machineStatus": function(val) {
+			"requestModel.example.status": function(val) {
 				this.list(0);
 			}
 		}
@@ -92,7 +92,7 @@ function addOneMachineMarker(machineInfo) {
 			style: {
 				'font-size': '20px',
 				'color': 'white',
-				'background-color': chooseMachineColor(machineInfo.machineStatus),
+				'background-color': chooseMachineColor(machineInfo.status),
 				'border': '1px solid #ffffff',
 			},
 			position: [machineInfo.gcjX, machineInfo.gcjY],
@@ -131,7 +131,7 @@ function updateOneMachineMarker(machineInfo, machineNode) {
 			machineNode.setStyle({
 				'font-size': '20px',
 				'color': 'white',
-				'background-color': chooseMachineColor(machineInfo.machineStatus),
+				'background-color': chooseMachineColor(machineInfo.status),
 				'border': '1px solid #ffffff',
 			});
 		}
@@ -162,7 +162,7 @@ function createInfoWindow(machineInfo) {
 	var titleD = document.createElement("div");
 	var closeX = document.createElement("img");
 	top.className = "info-top";
-	titleD.innerHTML = '机器编号：<a onclick="showMachineInfo('+machineInfo.machineId+')">#'+machineInfo.machineCode+'</a>&nbsp;'+'<span style="color:'+chooseMachineColor(machineInfo.machineStatus)+'">'+machineInfo.machineStatus+'中</span>';
+	titleD.innerHTML = '机器编号：<a onclick="showMachineInfo('+machineInfo.machineId+')">#'+machineInfo.machineCode+'</a>&nbsp;'+'<span style="color:'+chooseMachineColor(machineInfo.status)+'">'+machineInfo.status+'中</span>';
 	closeX.src = "https://webapi.amap.com/images/close2.gif";
 	closeX.onclick = closeInfoWindow;
 

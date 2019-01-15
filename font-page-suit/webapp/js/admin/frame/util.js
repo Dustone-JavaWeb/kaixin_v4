@@ -87,3 +87,12 @@ function chooseFileIcon(type) {
 			return startToken + "file.png";
 	}
 }
+// function globalCheckDisplay(code,mode){
+// 	switch (mode) {
+// 		case 'doc':
+// 			return startToken + "doc.png";
+// 			break;
+// 		default:
+// 			return startToken + "file.png";
+// 	}
+// }

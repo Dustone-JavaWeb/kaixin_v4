@@ -31,6 +31,7 @@ public class LogTransport {
     @Cascade(value = {org.hibernate.annotations.CascadeType.ALL})
     private Resource resource;
     private String logMode;
+    private String working;
     @Column(name = "create_time")
     private Timestamp createTime;
     @Column(name = "edit_time")
@@ -190,5 +191,13 @@ public class LogTransport {
 
     public void setToTime(Timestamp toTime) {
         this.toTime = toTime;
+    }
+
+    public String getWorking() {
+        return working;
+    }
+
+    public void setWorking(String working) {
+        this.working = working;
     }
 }

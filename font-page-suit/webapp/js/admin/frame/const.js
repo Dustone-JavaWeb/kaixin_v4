@@ -48,6 +48,8 @@ var PAGE_LOG_ERROR_QUERY=BASE_URL+"/logError_query";
 var PAGE_LOG_ERROR_UPDATE=BASE_URL+"/logError_update";
 
 var PAGE_MACHINE_MAP_VIEW_QUERY=BASE_URL+"/machine_map_view_query";
+var PAGE_MACHINE_STATUS_VIEW_QUERY=BASE_URL+"/machine_status_view_query";
+
 var PAGE_COMPACT_QUERY=BASE_URL+"/compact_query";
 var PAGE_COMPACT_UPDATE=BASE_URL+"/compact_update";
 var PAGE_MACHINE_INFO=BASE_URL+"/machine_info";
