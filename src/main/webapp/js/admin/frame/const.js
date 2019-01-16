@@ -1,6 +1,6 @@
 var BASE_URL="http://localhost:8080/kaixin";
-var BASE_ROUTE_URL="http://127.0.0.1:8848/font-page-suit/templates/";
-var BASE_ROUTE_LAST_TOKEN=".html";
+var BASE_ROUTE_URL="http://localhost:8080/kaixin/";
+var BASE_ROUTE_LAST_TOKEN="";
 
 //前端页面路由
 var FRAME_DIALOG_REGISTER=BASE_ROUTE_URL+"admin/dialogs/dialogRegister"+BASE_ROUTE_LAST_TOKEN;
