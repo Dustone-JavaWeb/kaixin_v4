@@ -1,0 +1,107 @@
+<div class="admin-child-page mdui-container-fluid mdui-center" id="customerQueryTable">
+	<div class="admin-select-area mdui-row">
+		<div class="mdui-typo">
+			<h3>筛选条件</h3>
+		</div>
+		<div class="mdui-divider"></div>
+		<div class="mdui-tab" mdui-tab>
+			<a href="#example1-tab1" class="mdui-ripple">客户信息查询</a>
+			<a href="#example1-tab2" class="mdui-ripple">联系方式查询</a>
+		</div>
+		<div id="example1-tab1" class="mdui-p-a-2">
+			<form id="select-form" class="admin-select-form" onsubmit="return false;">
+				<div class="admin-layout-box mdui-col-xs-4">
+					<input v-model="requestModel.example.name" class="mdui-textfield-input" type="text" placeholder="客户名称" />
+				</div>
+				<div class="admin-layout-box mdui-col-xs-4">
+					<select v-model="requestModel.example.status" class="mdui-select" style="width: 100%">
+						<option value="">所有状态</option>
+						<option value="正常">正常</option>
+						<option value="异常">异常</option>
+					</select>
+				</div>
+				<div class="admin-layout-box mdui-col-xs-4">
+					<select v-model="requestModel.example.type" class="mdui-select" style="width: 100%">
+						<option value="">所有等级</option>
+						<option value="普通">普通</option>
+						<option value="高级">高级</option>
+					</select>
+				</div>
+			</form>
+			<div class="admin-layout-box mdui-col-xs-4">
+				<button v-on:click="query()" class="mdui-btn mdui-color-theme-accent mdui-ripple" style="width: 100%">查询</button>
+			</div>
+		</div>
+		<div id="example1-tab2" class="mdui-p-a-2">
+			<form id="select-form" class="admin-select-form">
+				<div class="admin-layout-box mdui-col-xs-4">
+					<input v-model="contactRequestModel.example.name" class="mdui-textfield-input" type="text" placeholder="联系人名称" />
+				</div>
+				<div class="admin-layout-box mdui-col-xs-4">
+					<input v-model="contactRequestModel.example.tel" class="mdui-textfield-input" type="text" placeholder="联系人电话" />
+				</div>
+				<div class="admin-layout-box mdui-col-xs-4">
+					<select v-model="contactRequestModel.example.role" class="mdui-select" style="width: 100%">
+						<option value="">全部角色</option>
+						<option value="负责人">负责人</option>
+						<option value="施工员">施工员</option>
+					</select>
+				</div>
+			</form>
+			<div class="admin-layout-box mdui-col-xs-4">
+				<button v-on:click="listByContact()" class="mdui-btn mdui-color-theme-accent mdui-ripple" style="width: 100%">查询</button>
+			</div>
+		</div>
+	</div>
+	<div class="admin-select-area mdui-row">
+		<div class="mdui-divider"></div>
+	</div>
+
+	<div class="admin-table-area mdui-row">
+		<div class="mdui-table-fluid">
+			<table class="mdui-table mdui-table-hoverable">
+				<thead>
+					<tr>
+						<td>编号</td>
+						<td>客户名称</td>
+						<td>类型</td>
+						<td>状态</td>
+						<td>登记时间</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="tr in trs" @click="showInfo(tr)">
+						<td>{{tr.id}}</td>
+						<td>{{tr.name}}</td>
+						<td>
+							<div class="mdui-text-color-white mdui-chip-title mdui-color-light-green" v-if="tr.type=='普通'">{{tr.type}}</div>
+							<div class="mdui-text-color-white mdui-chip-title mdui-color-blue-800" v-else-if="tr.type=='高级'">{{tr.type}}</div>
+						</td>
+						<td>
+							<div class="mdui-text-color-white mdui-chip-title mdui-color-light-green" v-if="tr.status=='正常'">{{tr.status}}</div>
+							<div class="mdui-text-color-white mdui-chip-title mdui-color-pink" v-else-if="tr.status=='异常'">{{tr.status}}</div>
+						</td>
+						<td>{{tr.createTime|date}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="admin-table-control mdui-row">
+		<div class="mdui-col-xs-5" style="background: white;">
+			<button type="button" class="mdui-btn mdui-color-theme-accent" @click="addEntity()">新增</button>
+			<button type="button" class="mdui-btn mdui-color-theme-accent" @click="jump('first')">导出</button>
+			<button type="button" class="mdui-btn mdui-color-theme-accent">共计{{pagination.totalElements}}项</button>
+		</div>
+		<div class="mdui-btn-group mdui-col-xs-5">
+			<button type="button" class="mdui-btn" @click="jump('first')"><i class="mdui-icon material-icons">first_page</i></button>
+			<button type="button" class="mdui-btn" @click="jump('pre')"><i class="mdui-icon material-icons">navigate_before</i></button>
+			<button v-for="i in pagination.navigatepageNums" v-bind:class="pageSelected(i)" type="button" class="mdui-btn"
+			@click="jumpByNumber(i-1)">{{i}}</button>
+			<button type="button" class="mdui-btn" @click="jump('next')"><i class="mdui-icon material-icons">navigate_next</i></button>
+			<button type="button" class="mdui-btn" @click="jump('last')"><i class="mdui-icon material-icons">last_page</i></button>
+		</div>
+	</div>
+</div>
+
+<script src="../../../webapp/js/admin/page/customerList.js"></script>

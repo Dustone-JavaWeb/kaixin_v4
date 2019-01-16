@@ -1,0 +1,312 @@
+<div class="admin-child-page mdui-container mdui-center" id="logWorkInfoAera">
+	<div class="mdui-row">
+		<div class="mdui-typo">
+			<h3>
+				{{title}}
+				<div class="mdui-text-color-white mdui-chip-title mdui-color-light-green" v-if="entity.logMode=='已审核'">{{entity.logMode}}</div>
+				<div class="mdui-text-color-white mdui-chip-title mdui-color-pink" v-else-if="entity.logMode=='已作废'">{{entity.logMode}}</div>
+				<div class="mdui-text-color-white mdui-chip-title mdui-color-grey" v-else-if="entity.logMode=='未审核'">{{entity.logMode}}</div>
+				<div class="mdui-text-color-white mdui-chip-title mdui-color-light-green" v-if="entity.working=='进行中'">{{entity.working}}</div>
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(1)" v-bind:style="{display:viewPanelModel}">编辑</button>
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(4)" v-bind:style="{display:delPanelModel}">作废</button>
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(3)" v-bind:style="{display:checkPanelModel}">审核</button>
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(0)" v-bind:style="{display:editPanelModel}">放弃</button>
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(2)" v-bind:style="{display:editPanelModel}">保存</button>
+			</h3>
+		</div>
+		<div class="mdui-divider"></div>
+		<div class="mdui-row">
+			<div class="mdui-col-xs-12">
+				<div class="mdui-textfield mdui-col-xs-4">
+					<label class="mdui-textfield-label">机手姓名</label>
+					<input v-bind:disabled="inputDisabled" v-model="entity.driver.name" @click="openDriverChooserDialog(entity)" class="mdui-textfield-input"
+					 type="text" readonly placeholder="机手姓名" />
+				</div>
+				<div class="mdui-textfield mdui-col-xs-4">
+					<label class="mdui-textfield-label">机器自编号</label>
+					<input v-bind:disabled="inputDisabled" v-model="entity.machine.code" @click="openMachineChooserDialog(entity)"
+					 class="mdui-textfield-input" type="text" readonly placeholder="机器自编号" />
+				</div>
+				<div class="mdui-textfield mdui-col-xs-4">
+					<label class="mdui-textfield-label">工单金额</label>
+					<input type="number" v-bind:disabled="inputDisabled" v-model="entity.money" class="mdui-textfield-input"
+					 placeholder="工单金额" />
+				</div>
+				<div class="mdui-textfield mdui-col-xs-4">
+					<label class="mdui-textfield-label">工单种类</label>
+					<select v-bind:disabled="inputDisabled" v-model="entity.type" class="mdui-select" style="width:100%">
+						<option value="合约工单">合约工单</option>
+						<option value="临时工单">临时工单</option>
+					</select>
+				</div>
+				<div class="mdui-textfield mdui-col-xs-4">
+					<label class="mdui-textfield-label">工单开始时间</label>
+					<input v-bind:disabled="inputDisabled" class="mdui-textfield-input" type="text" placeholder="工单开始时间" id="logWorkStartTime"
+					 readonly>
+				</div>
+				<div class="mdui-textfield mdui-col-xs-4">
+					<label class="mdui-textfield-label">工单结束时间</label>
+					<input v-bind:disabled="inputDisabled" class="mdui-textfield-input" type="text" placeholder="工单结束时间" id="logWorkEndTime"
+					 readonly>
+				</div>
+			</div>
+		</div>
+		<div class="mdui-typo">
+			<h3>
+				相关资源
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="openFileManager()"
+				 v-bind:style="{display:editPanelModel}">管理</button>
+			</h3>
+		</div>
+		<div class="mdui-divider"></div>
+		<div class="mdui-row-xs-3 mdui-row-sm-3 mdui-row-md-3 mdui-row-lg-3 mdui-row-xl-3 mdui-grid-list">
+			<div v-if="entity.resource!=null">
+				<div class="mdui-col admin-layout-box" v-for="res in entity.resource.resources">
+					<div class="mdui-card">
+						<div class="mdui-card-header">
+							<img class="mdui-card-header-avatar" src="../../../webapp/img/machineLogo.png" />
+							<div class="mdui-card-header-title">
+								{{res.name}}
+							</div>
+							<div class="mdui-card-header-subtitle">
+								{{res.type}} {{res.size|renderSize}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	$(function() {
+		new Vue({
+			el: '#logWorkInfoAera',
+			data: {
+				title: "",
+				entity: {
+					logMode: "未审核",
+					driver: {},
+					working: "",
+					machine: {}
+				},
+				editPanelModel: "none",
+				viewPanelModel: "inline",
+				checkPanelModel: "none",
+				delPanelModel: "none",
+				inputDisabled: true,
+				requestModel: {
+					start: 0,
+					example: {
+						id: 0,
+					}
+				},
+			},
+			mounted: function() {
+				logWorkInfoVue = this;
+			},
+			methods: {
+				init: function(tabMsg) {
+					var self = this;
+					self.entity = tabMsg.initData.entity;
+					if (self.entity.logMode == "未审核") {
+						self.checkPanelModel = "inline";
+						self.delPanelModel = "inline";
+					} else if (self.entity.logMode == "已作废") {
+						self.viewPanelModel = "none";
+						self.checkPanelModel = "none";
+						self.delPanelModel = "none";
+					} else {
+						self.viewPanelModel = "none";
+						self.checkPanelModel = "none";
+						self.delPanelModel = "inline";
+					}
+					initDateChooser(self.entity.id, self.entity.startTime, self.entity.endTime);
+					self.title = '工单_' + self.entity.id;
+				},
+				initAdd: function(tabMsg) {
+					var self = this;
+					initDateChooser("new");
+					self.title = "新建工单";
+					self.editPanelModel = "inline";
+					self.viewPanelModel = "none";
+					self.inputDisabled = false;
+				},
+				openFileManager: function() {
+					var self = this;
+					if (self.entity.resource == null) {
+						var newResource = {
+							name: self.entity.nameplate,
+							type: "trunk",
+						}
+						axios.post(RESOURCE_UPDATE, newResource).then(function(resp) {
+							self.entity.resource = resp.data.t;
+							self.requestModel.example = self.entity;
+							axios.post(PAGE_LOG_WORK_UPDATE, self.requestModel).then(function(response) {
+								self.entity = response.data.content[0];
+								openFileManageDialog(self.entity, "工单信息");
+							});
+						});
+
+					} else {
+						openFileManageDialog(self.entity, "工单信息");
+					}
+				},
+				switchMode: function(mode) {
+					var self = this;
+					if (mode == 1) {
+						self.editPanelModel = "inline";
+						self.viewPanelModel = "none";
+						self.checkPanelModel = "none";
+						self.delPanelModel = "none";
+						self.inputDisabled = false;
+					} else if (mode == 2) {
+						self.editPanelModel = "none";
+						self.viewPanelModel = "inline";
+						self.checkPanelModel = "inline";
+						self.delPanelModel = "inline";
+						self.inputDisabled = true;
+
+						self.requestModel.example = self.entity;
+						axios.post(PAGE_LOG_WORK_UPDATE, self.requestModel).then(function(response) {
+							self.entity = response.data.content[0];
+							mdui.snackbar({
+								message: response.data.responseMessage,
+								timeout: 2000,
+								position: "right-bottom",
+							});
+						});
+					} else if (mode == 0) {
+						mdui.confirm("所有的更改无效！", "提示", function() {
+							if (self.entity.id == 0 || self.entity.id == null) {
+								self.entity = {
+									logMode: "未审核",
+									working: "",
+									support: {},
+									machine: {}
+								}
+							} else {
+								self.editPanelModel = "none";
+								self.viewPanelModel = "inline";
+								self.checkPanelModel = "inline";
+								self.delPanelModel = "inline";
+								self.inputDisabled = true;
+								self.requestModel.example = {};
+								self.requestModel.example.id = self.entity.id;
+								console.log(self.entity);
+								self.requestModel.start = 0;
+								axios.post(PAGE_LOG_WORK_QUERY, self.requestModel).then(function(response) {
+									self.entity = response.data.content[0];
+								});
+							}
+						});
+					} else if (mode == 3) {
+						mdui.confirm("审核后单据内容将无法修改！ 只允许作废。", "提示", function() {
+							self.editPanelModel = "none";
+							self.viewPanelModel = "none";
+							self.delPanelModel = "inline";
+							self.checkPanelModel = "none";
+							self.inputDisabled = true;
+
+							self.entity.logMode = "已审核";
+							self.requestModel.example = self.entity;
+							axios.post(PAGE_LOG_WORK_UPDATE, self.requestModel).then(function(response) {
+								self.entity = response.data.content[0];
+								mdui.snackbar({
+									message: response.data.responseMessage,
+									timeout: 2000,
+									position: "right-bottom",
+								});
+							});
+						});
+					} else if (mode == 4) {
+						mdui.confirm("作废后将无法进行任何操作！", "提示", function() {
+							self.editPanelModel = "none";
+							self.viewPanelModel = "none";
+							self.delPanelModel = "none";
+							self.checkPanelModel = "none";
+							self.inputDisabled = true;
+
+							self.entity.logMode = "已作废";
+							self.requestModel.example = self.entity;
+							axios.post(PAGE_LOG_WORK_UPDATE, self.requestModel).then(function(response) {
+								self.entity = response.data.content[0];
+								mdui.snackbar({
+									message: response.data.responseMessage,
+									timeout: 2000,
+									position: "right-bottom",
+								});
+							});
+						});
+					}
+					mdui.mutation();
+				},
+				chooseDate: function(type, value) {
+					var self = this;
+					if (type == 1) {
+						self.entity.startTime = value;
+					} else {
+						self.entity.endTime = value;
+					}
+				},
+			},
+			filters: {
+				date: function(value) {
+					if (value != null) {
+						return value.substr(0, 10);
+					} else {
+						return "";
+					}
+				},
+				renderSize: function(value) {
+					if (null == value || value == '') {
+						return "0 Bytes";
+					}
+					var unitArr = new Array("Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB");
+					var index = 0;
+					var srcsize = parseFloat(value);
+					index = Math.floor(Math.log(srcsize) / Math.log(1024));
+					var size = srcsize / Math.pow(1024, index);
+					size = size.toFixed(2); //保留的小数位数
+					return size + unitArr[index];
+				}
+			},
+		})
+	});
+
+	function initDateChooser(eId, sTime, eTime) {
+		$('#logWorkStartTime').attr('id', 'logWorkStartTime' + eId);
+		$('#logWorkEndTime').attr('id', 'logWorkEndTime' + eId);
+		layui.use('laydate', function() {
+			var laydate = layui.laydate;
+			laydate.render({
+				elem: '#logWorkStartTime' + eId,
+				type: 'datetime',
+				value: new Date(sTime),
+				done: function(date) {
+					vueChooseDate(1, Date.parse(date));
+				}
+			});
+			laydate.render({
+				elem: '#logWorkEndTime' + eId,
+				type: 'datetime',
+				value: new Date(eTime),
+				done: function(date) {
+					vueChooseDate(2, Date.parse(date));
+				}
+			});
+		});
+	}
+
+	function vueChooseDate(type, value) {
+		logWorkInfoVue.chooseDate(type, value);
+	}
+
+	function initLogWorkInfo(tabMsg) {
+		logWorkInfoVue.init(tabMsg);
+	}
+
+	function initLogWorkAdd(tabMsg) {
+		logWorkInfoVue.initAdd(tabMsg);
+	}
+</script>

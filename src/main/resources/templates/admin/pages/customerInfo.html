@@ -1,0 +1,292 @@
+<div class="admin-child-page mdui-container mdui-center" id="customerInfoAera">
+	<div class="mdui-row">
+		<div class="mdui-typo">
+			<h3>
+				详细信息
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(1)" v-bind:style="{display:viewPanelModel}">编辑</button>
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(0)" v-bind:style="{display:editPanelModel}">放弃</button>
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(2)" v-bind:style="{display:editPanelModel}">保存</button>
+			</h3>
+		</div>
+		<div class="mdui-divider"></div>
+		<div class="mdui-row">
+			<div class="mdui-col-xs-12">
+				<div class="mdui-textfield mdui-col-xs-4">
+					<label class="mdui-textfield-label">公司名称</label>
+					<input v-bind:disabled="inputDisabled" v-model="entity.name" class="mdui-textfield-input" type="text" placeholder="公司名称"
+					 maxlength="64" />
+
+				</div>
+				<div class="mdui-textfield mdui-col-xs-4">
+					<label class="mdui-textfield-label">状态</label>
+					<select v-bind:disabled="inputDisabled" v-model="entity.status" class="mdui-select" style="width:100%">
+						<option value="">所有状态</option>
+						<option value="正常">正常</option>
+						<option value="异常">异常</option>
+					</select>
+				</div>
+				<div class="mdui-textfield mdui-col-xs-4">
+					<label class="mdui-textfield-label">类型</label>
+					<select v-bind:disabled="inputDisabled" v-model="entity.type" class="mdui-select" style="width:100%">
+						<option value="">所有等级</option>
+						<option value="普通">普通</option>
+						<option value="高级">高级</option>
+					</select>
+				</div>
+				<div class="mdui-textfield mdui-col-xs-12">
+					<label class="mdui-textfield-label">备注</label>
+					<textarea class="mdui-textfield-input" v-bind:disabled="inputDisabled" type="text" v-model="entity.detail"
+					 maxlength="255" placeholder="备注信息"></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="mdui-typo">
+			<h3>
+				联系人
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="" v-bind:style="{display:editPanelModel}">新增</button>
+			</h3>
+		</div>
+		<div class="mdui-divider"></div>
+		<div class="mdui-table-fluid">
+			
+		</div>
+		<div class="mdui-typo">
+			<h3>
+				财务信息
+			</h3>
+		</div>
+		<div class="mdui-divider"></div>
+		<div class="mdui-table-fluid">
+			<div v-if="JSON.stringify(entity.bankAccount) != '{}'">
+				<table class="mdui-table">
+					<thead>
+						<tr>
+							<td>账户类型</td>
+							<td>开户名</td>
+							<td>账号</td>
+							<td>开户银行</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<span v-bind:style="{display:viewPanelModel}">{{entity.bankAccount.type}}</span>
+								<input v-bind:style="{display:editPanelModel}" v-model="entity.bankAccount.type" class="mdui-textfield-input"
+								 type="text" placeholder="账户类型" />
+							</td>
+							<td>
+								<span v-bind:style="{display:viewPanelModel}">{{entity.bankAccount.name}}</span>
+								<input v-bind:style="{display:editPanelModel}" v-model="entity.bankAccount.name" class="mdui-textfield-input"
+								 type="text" placeholder="开户名" />
+							</td>
+							<td>
+								<span v-bind:style="{display:viewPanelModel}">{{entity.bankAccount.number}}</span>
+								<input v-bind:style="{display:editPanelModel}" v-model="entity.bankAccount.number" class="mdui-textfield-input"
+								 type="text" placeholder="账号" />
+							</td>
+							<td>
+								<span v-bind:style="{display:viewPanelModel}">{{entity.bankAccount.bank}}</span>
+								<input v-bind:style="{display:editPanelModel}" v-model="entity.bankAccount.bank" class="mdui-textfield-input"
+								 type="text" placeholder="开户银行" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div style="width:100%" v-else>
+				<!-- <div style="width: 200px" v-bind:style="{display:viewPanelModel}" class="mdui-center">暂无信息</div> -->
+				<table v-bind:style="{display:editPanelModel}" class="mdui-table">
+					<thead>
+						<tr>
+							<td>账户类型</td>
+							<td>开户名</td>
+							<td>账号</td>
+							<td>开户银行</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<input v-bind:style="{display:editPanelModel}" v-model="entity.bankAccount.type" class="mdui-textfield-input"
+								 type="text" placeholder="账户类型" />
+							</td>
+							<td>
+								<input v-bind:style="{display:editPanelModel}" v-model="entity.bankAccount.name" class="mdui-textfield-input"
+								 type="text" placeholder="开户名" />
+							</td>
+							<td>
+								<input v-bind:style="{display:editPanelModel}" v-model="entity.bankAccount.number" class="mdui-textfield-input"
+								 type="text" placeholder="账号" />
+							</td>
+							<td>
+								<input v-bind:style="{display:editPanelModel}" v-model="entity.bankAccount.bank" class="mdui-textfield-input"
+								 type="text" placeholder="开户银行" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="mdui-typo">
+			<h3>
+				相关资源
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="openFileManager()"
+				 v-bind:style="{display:editPanelModel}">管理</button>
+			</h3>
+		</div>
+		<div class="mdui-divider"></div>
+		<div class="mdui-row-xs-3 mdui-row-sm-3 mdui-row-md-3 mdui-row-lg-3 mdui-row-xl-3 mdui-grid-list">
+			<div v-if="entity.resource!=null">
+				<div class="mdui-col admin-layout-box" v-for="res in entity.resource.resources">
+					<div class="mdui-card">
+						<div class="mdui-card-header">
+							<img class="mdui-card-header-avatar" v-bind:src="BASE_URL+chooseFileType(res.type)" />
+							<div class="mdui-card-header-title">
+								<a target="view_blank" v-bind:href="BASE_URL+'/'+res.url" v-bind:download="res.name">{{res.name}}</a>
+							</div>
+							<div class="mdui-card-header-subtitle">
+								{{res.type}} {{res.size|renderSize}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	$(function() {
+		new Vue({
+			el: '#customerInfoAera',
+			data: {
+				title: "",
+				entity: {
+					bankAccount: {}
+				},
+				editPanelModel: "none",
+				viewPanelModel: "inline",
+				inputDisabled: true,
+				requestModel: {
+					start: 0,
+					example: {
+						id: 0,
+					}
+				}
+			},
+			mounted: function() {
+				customerInfoVue = this;
+			},
+			methods: {
+				init: function(tabMsg) {
+					var self = this;
+					self.entity = tabMsg.initData.entity;
+					if (self.entity.bankAccount == null) {
+						self.entity.bankAccount = {};
+					}
+					this.title = '详细信息';
+				},
+				initAdd: function(tabMsg) {
+					var self = this;
+					self.editPanelModel = "inline";
+					self.viewPanelModel = "none";
+					self.inputDisabled = false;
+				},
+				openFileManager: function() {
+					var self = this;
+					if (self.entity.resource == null) {
+						var newResource = {
+							name: self.entity.name,
+							type: "trunk",
+						}
+						axios.post(RESOURCE_UPDATE, newResource).then(function(resp) {
+							self.entity.resource = resp.data.t;
+							self.requestModel.example = self.entity;
+							axios.post(PAGE_CUSTOMER_UPDATE, self.requestModel).then(function(response) {
+								self.entity = response.data.content[0];
+								openFileManageDialog(self.entity, "客户信息");
+							});
+						});
+
+					} else {
+						openFileManageDialog(self.entity, "客户信息");
+					}
+				},
+				switchMode: function(mode) {
+					var self = this;
+					if (mode == 1) {
+						self.editPanelModel = "inline";
+						self.viewPanelModel = "none";
+						self.inputDisabled = false;
+					} else if (mode == 2) {
+						self.editPanelModel = "none";
+						self.viewPanelModel = "inline";
+						self.inputDisabled = true;
+
+						self.requestModel.example = self.entity;
+						axios.post(PAGE_CUSTOMER_UPDATE, self.requestModel).then(function(response) {
+							self.entity = response.data.content[0];
+							if (self.entity.bankAccount == null) {
+								self.entity.bankAccount = {};
+							}
+							mdui.snackbar({
+								message: response.data.responseMessage,
+								timeout: 2000,
+								position: "right-bottom",
+							});
+						});
+					} else {
+						mdui.confirm("所有的更改无效！", "提示", function() {
+							self.editPanelModel = "none";
+							self.viewPanelModel = "inline";
+							self.inputDisabled = true;
+
+							self.requestModel.example = {};
+							self.requestModel.example.id = self.entity.id;
+							self.requestModel.start = 0;
+							axios.post(PAGE_CUSTOMER_QUERY, self.requestModel).then(function(response) {
+								self.entity = response.data.content[0];
+								if (self.entity.bankAccount == null) {
+									self.entity.bankAccount = {};
+								}
+
+							});
+						});
+					}
+					mdui.mutation();
+				},
+				chooseFileType:function(type) {
+					return chooseFileIcon(type);
+				}
+			},
+			filters: {
+				date: function(value) {
+					if (value != null) {
+						return value.substr(0, 10);
+					} else {
+						return "";
+					}
+				},
+				renderSize: function(value) {
+					if (null == value || value == '') {
+						return "0 Bytes";
+					}
+					var unitArr = new Array("Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB");
+					var index = 0;
+					var srcsize = parseFloat(value);
+					index = Math.floor(Math.log(srcsize) / Math.log(1024));
+					var size = srcsize / Math.pow(1024, index);
+					size = size.toFixed(2); //保留的小数位数
+					return size + unitArr[index];
+				}
+			},
+		})
+	})
+
+	function initCustomerInfo(tabMsg) {
+		customerInfoVue.init(tabMsg);
+	}
+
+	function initCustomerAdd(tabMsg) {
+		customerInfoVue.initAdd(tabMsg);
+	}
+</script>

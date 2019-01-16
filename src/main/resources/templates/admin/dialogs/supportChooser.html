@@ -1,0 +1,140 @@
+<div class="admin-file-dialog mdui-dialog" id="supportChooserDialog">
+	<div class="admin-file-dialog-container  mdui-container" id="supportChooserVue">
+		<div class="mdui-typo">
+			<h3>
+				后勤人员列表
+			</h3>
+		</div>
+		<div class="admin-layout-box mdui-col-xs-6">
+			<input v-model="requestModel.example.name" class="mdui-textfield-input" type="text" placeholder="姓名" />
+		</div>
+		<div class="admin-layout-box mdui-col-xs-6">
+			<input v-model="requestModel.example.tel" class="mdui-textfield-input" type="text" placeholder="电话" />
+		</div>
+		<div class="mdui-divider"></div>
+		<div class="mdui-row">
+			<div class="mdui-table-fluid admin-dialog-table-container">
+				<table class="admin-table-nobr mdui-table mdui-table-hoverable">
+					<thead>
+						<tr>
+							<td>编号</td>
+							<td>姓名</td>
+							<td>电话</td>
+							<td>状态</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="tr in trs" @click="chooseOne(tr)">
+							<td>{{tr.id}}</td>
+							<td>{{tr.name}}</td>
+							<td>{{tr.tel}}</td>
+							<td>
+								<div class="mdui-text-color-white mdui-chip-title mdui-color-light-green" v-if="tr.status=='空闲'">{{tr.status}}</div>
+								<div class="mdui-text-color-white mdui-chip-title mdui-color-pink" v-else-if="tr.status=='工作'">{{tr.status}}</div>
+								<div class="mdui-text-color-white mdui-chip-title mdui-color-yellow-800" v-else-if="tr.status=='休假'">{{tr.status}}</div>
+								<div class="mdui-text-color-white mdui-chip-title mdui-color-grey" v-else-if="tr.status=='离职'">{{tr.status}}</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	var supportChooserVue;
+	var supportChooserDialog;
+
+	$(function() {
+		supportChooserDialog = new mdui.Dialog('#supportChooserDialog');
+		new Vue({
+			el: '#supportChooserVue',
+			data: {
+				trs: [],
+				pagination: {},
+				requestModel: {
+					start: 0,
+					pageSize: 10000,
+					example: {
+						name: "",
+						tel: "",
+					}
+				},
+				target:{}
+			},
+			mounted: function() {
+				supportChooserVue = this;
+			},
+			methods: {
+				list: function(start) {
+					var self = this;
+					self.requestModel.start = start;
+					var ajaxRequestModel = DEEP_COPY(self.requestModel);
+					ajaxRequestModel.example = checkEmpty(ajaxRequestModel.example);
+					axios.post(PAGE_SUPPORT_QUERY, ajaxRequestModel).then(function(response) {
+						self.pagination = response.data;
+						self.trs = response.data.content;
+						mdui.mutation();
+					});
+				},
+				chooseOne:function(tr){
+					this.target.support=tr;
+					
+					supportChooserDialog.close();
+				},
+				setChooseTarget:function(tar){
+					this.list(0);
+					this.target=tar;
+				}
+			},
+			watch: {
+				"requestModel.example.tel": function(val) {
+					this.list(0);
+				},
+				"requestModel.example.name": function(val) {
+					this.list(0);
+				},
+			},
+			filters: {
+				status: function(value) {
+					if (value == 0) {
+						return '空闲';
+					} else if (value == 1) {
+						return '工作';
+					} else if (value == 2) {
+						return '休假';
+					} else {
+						return '离职';
+					}
+				},
+				type: function(value) {
+					if (value == 0) {
+						return "正式";
+					} else {
+						return "临时";
+					}
+				},
+				date: function(value) {
+					return value.substr(0, 10);
+				}
+			},
+		});
+	});
+
+	function openSupportChooserDialog(target) {
+		supportChooserVue.setChooseTarget(target);
+		supportChooserDialog.open();
+		mdui.mutation();
+	}
+
+	function checkEmpty(jsonObject) {
+		var result = {};
+		for (var key in jsonObject) {
+			if (jsonObject[key] == "") {
+				continue;
+			}
+			result[key] = jsonObject[key];
+		}
+		return result;
+	}
+</script>

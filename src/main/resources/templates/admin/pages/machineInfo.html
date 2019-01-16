@@ -1,0 +1,222 @@
+<div class="admin-child-page mdui-container mdui-center" id="machineInfoAera">
+	<div class="mdui-row">
+		<div class="mdui-typo">
+			<h3>
+				详细信息
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(1)" v-bind:style="{display:viewPanelModel}">编辑</button>
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(0)" v-bind:style="{display:editPanelModel}">放弃</button>
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(2)" v-bind:style="{display:editPanelModel}">保存</button>
+			</h3>
+		</div>
+		<div class="mdui-divider"></div>
+		<div class="mdui-row">
+			<div class="mdui-col-xs-10">
+				<div class="mdui-textfield mdui-col-xs-4">
+					<label class="mdui-textfield-label">机器型号</label>
+					<select v-bind:disabled="inputDisabled" v-model="entity.machineType" class="mdui-select" style="width:100%">
+						<option v-for="mt in machineTypes" v-bind:value="mt">{{mt.model}}--{{mt.name}}</option>
+					</select>
+				</div>
+				<div class="mdui-textfield mdui-col-xs-4">
+					<label class="mdui-textfield-label">铭牌</label>
+					<input v-bind:disabled="inputDisabled" v-model="entity.nameplate" class="mdui-textfield-input" type="text"
+					 placeholder="铭牌" />
+				</div>
+				<div class="mdui-textfield mdui-col-xs-4">
+					<label class="mdui-textfield-label">机器自编号</label>
+					<input v-bind:disabled="inputDisabled" v-model="entity.code" class="mdui-textfield-input" type="text" placeholder="机器自编号" />
+				</div>
+				<div class="mdui-textfield mdui-col-xs-4">
+					<label class="mdui-textfield-label">机主</label>
+					<input v-bind:disabled="inputDisabled" v-model="entity.owner" class="mdui-textfield-input" type="text" placeholder="机主" />
+				</div>
+				<div class="mdui-textfield mdui-col-xs-4">
+					<label class="mdui-textfield-label">购买方式</label>
+					<input v-bind:disabled="inputDisabled" v-model="entity.payway" class="mdui-textfield-input" type="text"
+					 placeholder="购买方式" />
+				</div>
+				<div class="mdui-textfield mdui-col-xs-4">
+					<label class="mdui-textfield-label">购买价格</label>
+					<input v-bind:disabled="inputDisabled" v-model="entity.price" class="mdui-textfield-input" type="text" placeholder="购买价格" />
+				</div>
+				<div class="mdui-textfield mdui-col-xs-4">
+					<label class="mdui-textfield-label">月供</label>
+					<input v-bind:disabled="inputDisabled" v-model="entity.mPay" class="mdui-textfield-input" type="text" placeholder="月供" />
+				</div>
+				<div class="mdui-textfield mdui-col-xs-4">
+					<label class="mdui-textfield-label">工作时间</label>
+					<input v-bind:disabled="inputDisabled" v-model="entity.worktime" class="mdui-textfield-input" type="text"
+					 placeholder="工作时间" />
+				</div>
+			</div>
+			<div class="mdui-col-xs-2">
+				<div>
+					<img class="mdui-img-fluid" src="../../../webapp/img/DSC_4407.JPG" />
+				</div>
+			</div>
+		</div>
+		<div class="mdui-typo">
+			<h3>
+				相关资源
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="openFileManager()"
+				v-bind:style="{display:editPanelModel}">管理</button>
+			</h3>
+		</div>
+		<div class="mdui-divider"></div>
+		<div class="mdui-row-xs-3 mdui-row-sm-3 mdui-row-md-3 mdui-row-lg-3 mdui-row-xl-3 mdui-grid-list">
+			<div v-if="entity.resource!=null">
+				<div class="mdui-col admin-layout-box" v-for="res in entity.resource.resources">
+					<div class="mdui-card">
+						<div class="mdui-card-header">
+							<img class="mdui-card-header-avatar" src="../../../webapp/img/machineLogo.png" />
+							<div class="mdui-card-header-title">
+								{{res.name}}
+							</div>
+							<div class="mdui-card-header-subtitle">
+								{{res.type}} {{res.size|renderSize}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	$(function() {
+		new Vue({
+			el: '#machineInfoAera',
+			data: {
+				title: "",
+				entity: {
+					//特殊字段 用于resource列表的初始化
+					// 					resource: {
+					// 						resources: [{}]
+					// 					},
+					machineType: {}
+				},
+				editPanelModel: "none",
+				viewPanelModel: "inline",
+				inputDisabled: true,
+				requestModel: {
+					start: 0,
+					example: {
+						id: 0,
+					}
+				},
+				machineTypes: []
+			},
+			mounted: function() {
+				machineInfoVue = this;
+			},
+			methods: {
+				init: function(tabMsg) {
+					var self = this;
+					self.machineTypes.push(tabMsg.initData.entity.machineType);
+					self.entity = tabMsg.initData.entity;
+					this.title = '详细信息';
+				},
+				initAdd: function(tabMsg) {
+					var self = this;
+					self.initTypeList();
+					self.editPanelModel = "inline";
+					self.viewPanelModel = "none";
+					self.inputDisabled = false;
+				},
+				initTypeList: function() {
+					var self = this;
+					axios.get(PAGE_MACHINE_TYPE_LIST).then(function(response) {
+						self.machineTypes = response.data;
+					});
+					mdui.mutation();
+				},
+				openFileManager: function() {
+					var self = this;
+					if (self.entity.resource == null) {
+						var newResource = {
+							name: self.entity.nameplate,
+							type: "trunk",
+						}
+						axios.post(RESOURCE_UPDATE, newResource).then(function(resp) {
+							self.entity.resource = resp.data.t;
+							self.requestModel.example = self.entity;
+							axios.post(PAGE_MACHINE_UPDATE, self.requestModel).then(function(response) {
+								self.entity = response.data.content[0];
+								openFileManageDialog(self.entity, "机器信息");
+							});
+						});
+						
+					}else{
+						openFileManageDialog(self.entity, "机器信息");
+					}
+				},
+				switchMode: function(mode) {
+					var self = this;
+					if (mode == 1) {
+						self.editPanelModel = "inline";
+						self.viewPanelModel = "none";
+						self.inputDisabled = false;
+						self.initTypeList();
+					} else if (mode == 2) {
+						self.editPanelModel = "none";
+						self.viewPanelModel = "inline";
+						self.inputDisabled = true;
+
+						self.requestModel.example = self.entity;
+						axios.post(PAGE_MACHINE_UPDATE, self.requestModel).then(function(response) {
+							self.entity = response.data.content[0];
+							mdui.snackbar({
+								message: response.data.responseMessage,
+								timeout: 2000,
+								position: "right-bottom",
+							});
+						});
+					} else {
+						mdui.confirm("所有的更改无效！", "提示", function() {
+							self.editPanelModel = "none";
+							self.viewPanelModel = "inline";
+							self.inputDisabled = true;
+
+							self.requestModel.example = {};
+							self.requestModel.example.id = self.entity.id;
+							self.requestModel.start = 0;
+							axios.post(PAGE_MACHINE_QUERY, self.requestModel).then(function(response) {
+								self.entity = response.data.content[0];
+							});
+						});
+					}
+					mdui.mutation();
+				}
+			},
+			filters: {
+				date: function(value) {
+					if (value != null) {
+						return value.substr(0, 10);
+					} else {
+						return "";
+					}
+				},
+				renderSize: function(value) {
+					if (null == value || value == '') {
+						return "0 Bytes";
+					}
+					var unitArr = new Array("Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB");
+					var index = 0;
+					var srcsize = parseFloat(value);
+					index = Math.floor(Math.log(srcsize) / Math.log(1024));
+					var size = srcsize / Math.pow(1024, index);
+					size = size.toFixed(2); //保留的小数位数
+					return size + unitArr[index];
+				}
+			},
+		})
+	})
+
+	function initMachineInfo(tabMsg) {
+		machineInfoVue.init(tabMsg);
+	}
+
+	function initMachineAdd(tabMsg) {
+		machineInfoVue.initAdd(tabMsg);
+	}
+</script>
