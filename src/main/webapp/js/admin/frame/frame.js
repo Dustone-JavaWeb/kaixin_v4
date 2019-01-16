@@ -57,7 +57,7 @@ function makeTab(tabId) {
 		var element = layui.element;
 		if (NAV_OPENED.indexOf(tabId) == -1) {
 			var navTab = findTabInfoById(tabId);
-			$.get(navTab.url, function(data) {
+			$.get(BASE_ROUTE_URL+navTab.url, function(data) {
 				element.tabAdd('model', {
 					title: navTab.name,
 					content: data,
