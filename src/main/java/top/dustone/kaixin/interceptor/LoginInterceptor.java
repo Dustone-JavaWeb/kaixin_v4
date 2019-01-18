@@ -9,6 +9,7 @@ import top.dustone.kaixin.entity.sys.SysUser;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.PrintWriter;
 
 public class LoginInterceptor implements HandlerInterceptor{
     @Override
@@ -25,9 +26,24 @@ public class LoginInterceptor implements HandlerInterceptor{
         String page = uri;
 
         if(begingWith(page, requireLogins)){
-            SysUser sysUser = (SysUser) session.getAttribute("user");
+            SysUser sysUser = (SysUser) session.getAttribute("sysUser");
             if(sysUser==null) {
-                response.sendRedirect("login");
+                //request.getRequestDispatcher("login").forward(request,response);
+//                response.sendRedirect("login");
+                String responseText="<div style=\"text-align:center;width:100%;height:100%\">\n" +
+                        "\t<h1>认证信息失效！ 将在三秒后返回登陆界面</h1>\n" +
+                        "</div>\n" +
+                        "<script>\n" +
+                        "\tfunction skipToLogin(){\n" +
+                        "\t\twindow.location.href = 'login';\n" +
+                        "\t}\n" +
+                        "\tvar t=window.setTimeout(skipToLogin,3000); \n" +
+                        "</script>";
+                response.setCharacterEncoding("utf-8");
+                response.setContentType("text/html; charset=utf-8");
+                PrintWriter out = response.getWriter();
+                //String chset = response.getCharacterEncoding();
+                out.print(responseText);
                 return false;
             }
         }

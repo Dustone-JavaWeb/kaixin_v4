@@ -1,4 +1,4 @@
-package top.dustone.kaixin.controller;
+package top.dustone.kaixin.controller.sys;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
