@@ -5,6 +5,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class PageRouteController {
+
+    @GetMapping(value = "/")
+    public String login(){
+        return "admin/frame/login";
+    }
+
     @GetMapping(value = "/admin")
     public String adminHome(){
         return "admin/frame/adminFrame";

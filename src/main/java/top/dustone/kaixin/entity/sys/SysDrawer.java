@@ -1,4 +1,4 @@
-package top.dustone.kaixin.entity;
+package top.dustone.kaixin.entity.sys;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
