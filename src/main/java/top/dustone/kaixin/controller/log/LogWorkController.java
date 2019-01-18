@@ -15,14 +15,14 @@ import top.dustone.kaixin.util.RequestModel;
 public class LogWorkController {
     @Autowired
     private LogWorkService logWorkService;
-    @PostMapping("/logWork_query")
+    @PostMapping("/admin_logWork_query")
     public Page4Navigator<LogWork> list(@RequestBody RequestModel<LogWork> requestModel){
         Page4Navigator<LogWork> page=logWorkService.listByExapmle(requestModel.getExample(),requestModel.getStart(),requestModel.getPageSize(),5);
         page.setExample(requestModel);
         //System.out.println(page);
         return page;
     }
-    @PostMapping("/logWork_update")
+    @PostMapping("/admin_logWork_update")
     public Page4Navigator<LogWork> update(@RequestBody RequestModel<LogWork> requestModel){
         Page4Navigator<LogWork> page=logWorkService.update(requestModel.getExample());
         return page;

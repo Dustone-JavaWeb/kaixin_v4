@@ -15,7 +15,7 @@ import top.dustone.kaixin.util.RequestModel;
 public class MachineStatusViewController {
     @Autowired
     MachineStatusViewService machineStatusViewService;
-    @PostMapping("/machine_status_view_query")
+    @PostMapping("/admin_machine_status_view_query")
     public Page4Navigator<MachineStatusView> list(@RequestBody RequestModel<MachineStatusView> requestModel){
         Page4Navigator<MachineStatusView> page=machineStatusViewService.listByExample(requestModel.getExample(),requestModel.getStart(),requestModel.getPageSize(),5);
         page.setExample(requestModel);

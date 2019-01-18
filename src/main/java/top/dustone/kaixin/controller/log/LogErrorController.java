@@ -15,14 +15,14 @@ import top.dustone.kaixin.util.RequestModel;
 public class LogErrorController {
     @Autowired
     private LogErrorService logErrorService;
-    @PostMapping("/logError_query")
+    @PostMapping("/admin_logError_query")
     public Page4Navigator<LogError> list(@RequestBody RequestModel<LogError> requestModel){
         Page4Navigator<LogError> page=logErrorService.listByExapmle(requestModel.getExample(),requestModel.getStart(),requestModel.getPageSize(),5);
         page.setExample(requestModel);
         //System.out.println(page);
         return page;
     }
-    @PostMapping("/logError_update")
+    @PostMapping("/admin_logError_update")
     public Page4Navigator<LogError> update(@RequestBody RequestModel<LogError> requestModel){
         Page4Navigator<LogError> page=logErrorService.update(requestModel.getExample());
         page.setResponseMessage("保存成功！");

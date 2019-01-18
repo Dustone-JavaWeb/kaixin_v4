@@ -15,7 +15,7 @@ import top.dustone.kaixin.util.RequestModel;
 public class MachineMapViewController {
     @Autowired
     MachineMapViewService machineMapViewService;
-    @PostMapping("/machine_map_view_query")
+    @PostMapping("/admin_machine_map_view_query")
     public Page4Navigator<MachineMapView> list(@RequestBody RequestModel<MachineMapView> requestModel){
         Page4Navigator<MachineMapView> page=machineMapViewService.listByExample(requestModel.getExample(),requestModel.getStart(),requestModel.getPageSize(),5);
         page.setExample(requestModel);

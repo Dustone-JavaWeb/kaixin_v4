@@ -1,4 +1,4 @@
-package top.dustone.kaixin.dao;
+package top.dustone.kaixin.dao.sys;
 
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;

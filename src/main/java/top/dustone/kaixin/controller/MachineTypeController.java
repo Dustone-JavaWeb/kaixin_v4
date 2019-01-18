@@ -18,18 +18,18 @@ public class MachineTypeController {
     MachineTypeService machineTypeService;
     @Autowired
     MachineBrandService machineBrandService;
-    @PostMapping("/machineType_query")
+    @PostMapping("/admin_machineType_query")
     public Page4Navigator<MachineType> list(@RequestBody RequestModel<MachineType> requestModel){
         Page4Navigator<MachineType> page=machineTypeService.listByExample(requestModel.getExample());
         System.out.println(page);
         return page;
     }
-    @PostMapping("/machineBrand_query")
+    @PostMapping("/admin_machineBrand_query")
     public Page4Navigator<MachineBrand> listBrand(@RequestBody RequestModel<MachineBrand> requestModel){
         Page4Navigator<MachineBrand> page=machineBrandService.list();
         return page;
     }
-    @GetMapping("/machineType_list")
+    @GetMapping("/admin_machineType_list")
     public List<MachineType> listTypes(){
         return machineTypeService.listAll();
     }

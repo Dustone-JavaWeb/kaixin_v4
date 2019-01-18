@@ -15,14 +15,14 @@ import top.dustone.kaixin.util.RequestModel;
 public class LogOilController {
     @Autowired
     private LogOilService logOilService;
-    @PostMapping("/logOil_query")
+    @PostMapping("/admin_logOil_query")
     public Page4Navigator<LogOil> list(@RequestBody RequestModel<LogOil> requestModel){
         Page4Navigator<LogOil> page=logOilService.listByExapmle(requestModel.getExample(),requestModel.getStart(),requestModel.getPageSize(),5);
         page.setExample(requestModel);
         //System.out.println(page);
         return page;
     }
-    @PostMapping("/logOil_update")
+    @PostMapping("/admin_logOil_update")
     public Page4Navigator<LogOil> update(@RequestBody RequestModel<LogOil> requestModel){
         Page4Navigator<LogOil> page=logOilService.update(requestModel.getExample());
         page.setResponseMessage("保存成功！");

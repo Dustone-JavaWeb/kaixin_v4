@@ -19,7 +19,7 @@ import java.io.IOException;
 public class ResourceController {
     @Autowired
     ResourceService resourceService;
-    @PostMapping("/resource_update")
+    @PostMapping("/admin_resource_update")
     public CommonResponseModel<Resource> update(@RequestBody Resource resource){
         System.out.println(resource);
         CommonResponseModel<Resource> result=new CommonResponseModel<Resource>();
@@ -29,7 +29,7 @@ public class ResourceController {
         result.setT(resource);
         return result;
     }
-    @PostMapping("/resource_delete")
+    @PostMapping("/admin_resource_delete")
     public CommonResponseModel<Resource> delete(@RequestBody Resource resource,HttpServletRequest request){
         CommonResponseModel<Resource> result=new CommonResponseModel<Resource>();
         resourceService.delete(resource);
@@ -45,7 +45,7 @@ public class ResourceController {
         }
         return result;
     }
-    @PostMapping("/resource_upload")
+    @PostMapping("/admin_resource_upload")
     public CommonResponseModel<Resource> uploadFile(int pId, String saveDir, String originName,MultipartFile fileUpload,HttpServletRequest request){
         CommonResponseModel<Resource> result=new CommonResponseModel<Resource>();
         Resource pResource=resourceService.findById(pId);
@@ -82,7 +82,7 @@ public class ResourceController {
         result.setT(cResource);
         return result;
     }
-    @PostMapping("/resource_head_pic_upload")
+    @PostMapping("/admin_resource_head_pic_upload")
     public CommonResponseModel<Resource> uploadHeadPic(String picName,MultipartFile picUpload,HttpServletRequest request){
         CommonResponseModel<Resource> result=new CommonResponseModel<Resource>();
         String targetUrl="resource/headPicture/"+picName;

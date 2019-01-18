@@ -12,7 +12,7 @@ import java.util.List;
 public class PageInfoController {
     @Autowired
     PageInfoService pageInfoService;
-    @GetMapping("/sys_makeDrawer")
+    @GetMapping("/admin_sys_makeDrawer")
     public List<SysDrawer> makeDrawerList(){
         return pageInfoService.list();
     }

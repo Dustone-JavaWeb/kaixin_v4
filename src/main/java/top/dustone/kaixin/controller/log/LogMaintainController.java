@@ -15,14 +15,14 @@ import top.dustone.kaixin.util.RequestModel;
 public class LogMaintainController {
     @Autowired
     private LogMaintainService logMaintainService;
-    @PostMapping("/logMaintain_query")
+    @PostMapping("/admin_logMaintain_query")
     public Page4Navigator<LogMaintain> list(@RequestBody RequestModel<LogMaintain> requestModel){
         Page4Navigator<LogMaintain> page=logMaintainService.listByExapmle(requestModel.getExample(),requestModel.getStart(),requestModel.getPageSize(),5);
         page.setExample(requestModel);
         //System.out.println(page);
         return page;
     }
-    @PostMapping("/logMaintain_update")
+    @PostMapping("/admin_logMaintain_update")
     public Page4Navigator<LogMaintain> update(@RequestBody RequestModel<LogMaintain> requestModel){
         Page4Navigator<LogMaintain> page=logMaintainService.update(requestModel.getExample());
         return page;

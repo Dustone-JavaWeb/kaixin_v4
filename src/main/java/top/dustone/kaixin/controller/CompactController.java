@@ -12,19 +12,19 @@ import top.dustone.kaixin.util.RequestModel;
 public class CompactController {
     @Autowired
     CompactService compactService;
-    @PostMapping("/compact_query")
+    @PostMapping("/admin_compact_query")
     public Page4Navigator<Compact> list(@RequestBody RequestModel<Compact> requestModel){
         System.out.println(requestModel);
         Page4Navigator<Compact> page=compactService.listByExample(requestModel.getExample(),requestModel.getStart(),requestModel.getPageSize(),5);
         page.setExample(requestModel);
         return page;
     }
-    @GetMapping("/compact_info")
+    @GetMapping("/admin_compact_info")
     public Compact findById(@RequestParam(value = "id") int id){
         return compactService.findById(id);
     }
 
-    @PostMapping("/compact_update")
+    @PostMapping("/admin_compact_update")
     public Page4Navigator<Compact> update(@RequestBody RequestModel<Compact> requestModel){
         Page4Navigator<Compact> page=compactService.update(requestModel.getExample());
         page.setResponseMessage("保存成功！");

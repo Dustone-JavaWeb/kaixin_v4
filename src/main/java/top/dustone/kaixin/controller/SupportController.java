@@ -12,19 +12,19 @@ import top.dustone.kaixin.util.RequestModel;
 public class SupportController {
     @Autowired
     SupportService supportService;
-    @PostMapping("/support_query")
+    @PostMapping("/admin_support_query")
     public Page4Navigator<Support> list(@RequestBody RequestModel<Support> requestModel){
         Page4Navigator<Support> page=supportService.listByExapmle(requestModel.getExample(),requestModel.getStart(),requestModel.getPageSize(),5);
         page.setExample(requestModel);
         //System.out.println(page);
         return page;
     }
-    @PostMapping("/support_update")
+    @PostMapping("/admin_support_update")
     public Page4Navigator<Support> update(@RequestBody RequestModel<Support> requestModel){
         Page4Navigator<Support> page=supportService.update(requestModel.getExample());
         return page;
     }
-    @GetMapping("/support_info")
+    @GetMapping("/admin_support_info")
     public Support findById(@RequestParam(value = "id") int id){
         return supportService.findById(id);
     }

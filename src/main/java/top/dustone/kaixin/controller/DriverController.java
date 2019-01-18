@@ -11,7 +11,7 @@ import top.dustone.kaixin.util.RequestModel;
 public class DriverController {
     @Autowired
     DriverService driverService;
-    @GetMapping("/drivers")
+    @GetMapping("/admin_drivers")
     public Page4Navigator<Driver> list(
             @RequestParam(value = "start", defaultValue = "0") int start,
             @RequestParam(value = "size", defaultValue = "9") int size){
@@ -19,20 +19,20 @@ public class DriverController {
         Page4Navigator<Driver> page =driverService.list(start, size, 5);
         return page;
     }
-    @PostMapping("/drivers_query")
+    @PostMapping("/admin_drivers_query")
     public Page4Navigator<Driver> list(@RequestBody RequestModel<Driver> requestModel){
         Page4Navigator<Driver> page=driverService.listByExapmle(requestModel.getExample(),requestModel.getStart(),requestModel.getPageSize(),5);
         page.setExample(requestModel);
         //System.out.println(page);
         return page;
     }
-    @PostMapping("/drivers_update")
+    @PostMapping("/admin_drivers_update")
     public Page4Navigator<Driver> update(@RequestBody RequestModel<Driver> requestModel){
         Page4Navigator<Driver> page=driverService.update(requestModel.getExample());
         page.setResponseMessage("保存成功！");
         return page;
     }
-    @GetMapping("/driver_info")
+    @GetMapping("/admin_driver_info")
     public Driver findById(@RequestParam(value = "id") int id){
         return driverService.findById(id);
     }
