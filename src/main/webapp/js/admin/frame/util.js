@@ -42,7 +42,7 @@ function chooseMachineColor(status) {
 }
 
 function chooseFileIcon(type) {
-	var startToken = "/resource/staticPicResource/";
+	var startToken = "resource/staticPicResource/";
 	switch (type) {
 		case 'doc':
 			return startToken + "doc.png";

@@ -40,7 +40,7 @@
 			</div>
 			<div class="mdui-col-xs-2">
 				<div>
-					<img class="mdui-valign mdui-img-fluid" v-bind:src="BASE_URL+'/'+entity.headPic"/>
+					<img class="mdui-valign mdui-img-fluid" v-bind:src="entity.headPic"/>
 				</div>
 				<button class="mdui-btn mdui-ripple mdui-color-theme-accent" @click="updateHeadPic()" v-bind:style="{display:editPanelModel}">更改头像</button>
 			</div>
@@ -137,7 +137,7 @@
 						<div class="mdui-card-header">
 							<img class="mdui-card-header-avatar" v-bind:src="BASE_URL+chooseFileType(res.type)" />
 							<div class="mdui-card-header-title">
-								<a target="view_blank" v-bind:href="BASE_URL+'/'+res.url" v-bind:download="res.name">{{res.name}}</a>
+								<a target="view_blank" v-bind:href="res.url" v-bind:download="res.name">{{res.name}}</a>
 							</div>
 							<div class="mdui-card-header-subtitle">
 								{{res.type}} {{res.size|renderSize}}
