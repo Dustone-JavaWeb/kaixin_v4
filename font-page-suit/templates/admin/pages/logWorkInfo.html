@@ -64,9 +64,9 @@
 				<div class="mdui-col admin-layout-box" v-for="res in entity.resource.resources">
 					<div class="mdui-card">
 						<div class="mdui-card-header">
-							<img class="mdui-card-header-avatar" src="../../../webapp/img/machineLogo.png" />
+							<img class="mdui-card-header-avatar" v-bind:src="BASE_URL+chooseFileType(res.type)" />
 							<div class="mdui-card-header-title">
-								{{res.name}}
+								<a target="view_blank" v-bind:href="res.url" v-bind:download="res.name">{{res.name}}</a>
 							</div>
 							<div class="mdui-card-header-subtitle">
 								{{res.type}} {{res.size|renderSize}}
@@ -249,6 +249,9 @@
 						self.entity.endTime = value;
 					}
 				},
+                chooseFileType:function(type) {
+                    return chooseFileIcon(type);
+                }
 			},
 			filters: {
 				date: function(value) {

@@ -8,7 +8,7 @@
 			<div class="admin-card-list-cell mdui-col" v-for="parentCard in parentCards" @click="chooseBrand(parentCard)">
 				<div class="mdui-card">
 					<div class="mdui-card-header">
-						<img class="mdui-card-header-avatar" src="../../../webapp/img/machineLogo.png" />
+						<img class="mdui-card-header-avatar" src="img/machineLogo.png" />
 						<div class="mdui-card-header-title">
 							{{parentCard.name}}
 						</div>
@@ -30,7 +30,7 @@
 		<div class="admin-card-list-cell mdui-col" v-bind:class="cardSelected(childCard.machineBrand.id)" v-for="childCard in childCards">
 			<div class="mdui-card">
 				<div class="mdui-card-header">
-					<img class="mdui-card-header-avatar" src="../../../webapp/img/machineLogo.png" />
+					<img class="mdui-card-header-avatar" src="img/machineLogo.png" />
 					<div class="mdui-card-header-title">
 						{{childCard.model}}
 					</div>
@@ -39,10 +39,10 @@
 					</div>
 				</div>
 				<div class="mdui-card-media">
-					<img src="../../../webapp/img/machineLogo.png" />
+					<img src="img/machineLogo.png" />
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<script src="../../../webapp/js/admin/page/machineTypeList.js"></script>
+<script src="js/admin/page/machineTypeList.js"></script>

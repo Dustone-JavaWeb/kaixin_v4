@@ -5,6 +5,7 @@ var appCore;
 
 $(function() {
 	leftDrawer = new mdui.Drawer('#left-drawer');
+	configAxiosInterceptors();
 	loadDialogs();
 	changeTabContentHeight();
 
@@ -125,6 +126,27 @@ function changeTabContentHeight() {
 	if (content2=document.getElementById("mapContainer")) {
 		content2.style.height = (document.documentElement.clientHeight - 99) + "px";
 	}
+}
+function configAxiosInterceptors(){
+    axios.interceptors.response.use(function (response) {
+        // if(response.headers["content-length"]==253){
+        	// if(response.headers["content-type"]=="text/html;charset=utf-8"){
+         //        mdui.snackbar({
+         //            message: "验证信息失效！ 三秒后返回登陆界面！",
+         //            timeout: 3000,
+         //            position: "right-bottom",
+         //        });
+         //        function skipToLogin(){
+         //            window.location.href = 'login';
+         //        }
+         //        var t=window.setTimeout(skipToLogin,3000);
+         //    }
+		// }
+        return response;
+    }, function (error) {
+        // Do something with response error
+        return Promise.reject(error)
+    })
 }
 
 function loadDialogs() {
