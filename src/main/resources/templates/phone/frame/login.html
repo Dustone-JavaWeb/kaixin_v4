@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="lib/mdui/js/mdui.js"></script>
+		<script src="lib/jquery/2.0.0/jquery.min.js"></script>
+		<script src="lib/vue/2.5.16/vue.min.js"></script>
+		<script src="lib/axios/0.17.1/axios.min.js"></script>
+		<script src="js/phone/frame/const.js"></script>
+		<script src="js/phone/frame/environment.js"></script>
+		<script src="js/phone/frame/util.js"></script>
+		<link href="lib/mdui/css/mdui.css" rel="stylesheet" />
+		<link href="css/phone/phone.css" rel="stylesheet" />
+		<title>广州铠信</title>
+	</head>
+	<body class="mdui-align mdui-theme-primary-indigo mdui-theme-accent-pink mdui-loaded mdui-locked mdui-typo">
+		<div class="phone-login-panel mdui-center mdui-container" id="systemLogin">
+		    <div class="mdui-row">
+		        <div class="mdui-col-xs-12">
+		            <img style="height: 40%;width: 40%" class="mdui-img-circle mdui-center" src="resource/staticPicResource/defaultHeadPic.jpg"/>
+		        </div>
+		        <div class="mdui-col-xs-12 mdui-textfield">
+		            <label class="mdui-textfield-label" style="font-size: 20px">登陆账号</label>
+		            <input class="mdui-textfield-input" type="text" v-model="sysUser.username" required/>
+		            <div class="mdui-textfield-error" style="font-size: 14px">账号不能为空</div>
+		        </div>
+		        <div class="mdui-col-xs-12 mdui-textfield">
+		            <label class="mdui-textfield-label" style="font-size: 20px">登陆密码</label>
+		            <input class="mdui-textfield-input" type="password" v-model="sysUser.password" required/>
+		            <div class="mdui-textfield-error" style="font-size: 14px">密码不能为空</div>
+		        </div>
+		        <div class="mdui-col-xs-12" style="margin-top: 20px">
+		            <button @click="login()" class="mdui-btn mdui-color-theme-accent mdui-ripple" style="width: 100%">登录</button>
+		        </div>
+		    </div>
+		</div>
+		<script src="js/phone/frame/login.js"></script>
+	</body>
+</html>

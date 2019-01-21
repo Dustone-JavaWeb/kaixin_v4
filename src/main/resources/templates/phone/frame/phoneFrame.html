@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <script src="lib/mdui/js/mdui.js"></script>
+    <script src="lib/jquery/2.0.0/jquery.min.js"></script>
+    <script src="lib/vue/2.5.16/vue.min.js"></script>
+    <script src="lib/axios/0.17.1/axios.min.js"></script>
+    <script src="js/phone/frame/const.js"></script>
+    <script src="js/phone/frame/environment.js"></script>
+    <script src="js/phone/frame/util.js"></script>
+    <link href="lib/mdui/css/mdui.css" rel="stylesheet"/>
+    <link href="css/phone/phone.css" rel="stylesheet"/>
+    <title>广州铠信</title>
+</head>
+<body class="mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-accent-pink mdui-loaded">
+<header class="mdui-appbar mdui-appbar-fixed">
+    <div class="mdui-toolbar mdui-color-theme">
+        <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
+        <a href="javascript:;" class="mdui-typo-title">广州铠信</a>
+        <div class="mdui-toolbar-spacer"></div>
+        <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>
+    </div>
+</header>
+<div class="mdui-drawer mdui-color-theme" id="left-drawer">
+    <div id="left-drawer-list">
+        <ul class="mdui-list" mdui-collapse="{accordion: true}">
+            <li class="mdui-collapse-item mdui-color-theme" v-for="item in drawerItems">
+                <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">{{item.icon}}</i>
+                    <div class="mdui-list-item-content">{{item.name}}</div>
+                    <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+                </div>
+                <ul class="mdui-collapse-item-body mdui-list mdui-list-dense" style="">
+                    <li class="mdui-list-item mdui-ripple" v-for="child in item.sysDrawers">
+                        <i class="mdui-list-item-icon mdui-icon material-icons">{{child.icon}}</i>
+                        <div class="mdui-list-item-content" @click="chooseTab" v-bind:tabId="child.id">{{child.name}}</div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="mdui-container" id="frameContainer">
+
+</div>
+<script src="js/phone/frame/frame.js"></script>
+</body>
+</html>

@@ -26,6 +26,7 @@ var ROUTE_COMPACT_INFO=BASE_ROUTE_URL+"admin/pages/compactInfo"+BASE_ROUTE_LAST_
 var FRAME_NAV_DATA_URL=BASE_URL+"admin_sys_makeDrawer";
 var PAGE_DRIVER_QUERY = BASE_URL + "admin_drivers_query";
 var PAGE_DRIVER_UPDATE = BASE_URL + "admin_drivers_update";
+var PAGE_DRIVER_EXPORT=BASE_URL+"admin_driver_export";
 var PAGE_MACHINE_QUERY=BASE_URL+"admin_machines_query";
 var PAGE_MACHINE_UPDATE=BASE_URL+"admin_machines_update";
 var PAGE_SUPPORT_QUERY=BASE_URL+"admin_support_query";

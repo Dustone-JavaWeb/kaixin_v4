@@ -10,7 +10,18 @@ public class PageRouteController {
     public String login(){
         return "admin/frame/login";
     }
+    @GetMapping(value = "/phoneLogin")
+    public String phoneLogin(){
+        return "phone/frame/login";
+    }
 
+    //前台路由
+    @GetMapping(value = "/phone")
+    public String phone(){
+        return "phone/frame/phoneFrame";
+    }
+
+    //后台路由
     @GetMapping(value = "/admin")
     public String adminHome(){
         return "admin/frame/adminFrame";

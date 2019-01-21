@@ -24,7 +24,6 @@ $(function() {
 				var ajaxRequestModel=DEEP_COPY(self.requestModel);
 				ajaxRequestModel.example=checkEmpty(ajaxRequestModel.example);
 				axios.post(PAGE_DRIVER_QUERY, ajaxRequestModel).then(function(response) {
-					console.log(response.data)
 					self.pagination = response.data;
 					self.trs = response.data.content;
 					self.pageNow = response.data.number+1;
@@ -80,7 +79,27 @@ $(function() {
 						'mdui-color-theme-accent': false
 					}
 				}
-			}
+			},
+			exportData:function () {
+				var self=this;
+                var ajaxRequestModel=DEEP_COPY(self.requestModel);
+                ajaxRequestModel.example=checkEmpty(ajaxRequestModel.example);
+                axios.post(PAGE_DRIVER_EXPORT, ajaxRequestModel).then(function(response) {
+                    if(response.data.code=="200"){
+                        var $form = $('<form method="GET"></form>');
+                        $form.attr('action', response.data.msg);
+                        $form.appendTo($('body'));
+                        $form.submit();
+                        $form.remove();
+					}else{
+                        mdui.snackbar({
+                            message: "文件导出失败！",
+                            timeout: 2000,
+                            position: "right-bottom",
+                        });
+					}
+                });
+            }
 		},
 		filters: {
 			status: function(value) {
