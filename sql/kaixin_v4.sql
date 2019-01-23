@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version: 5.5.15)
-# Date: 2019-01-16 13:58:24
+# Date: 2019-01-23 15:54:22
 # Generator: MySQL-Front 5.3  (Build 4.269)
 
 /*!40101 SET NAMES utf8 */;
@@ -127,7 +127,7 @@ CREATE TABLE `bean_machine` (
 # Data for table "bean_machine"
 #
 
-INSERT INTO `bean_machine` VALUES (1,1,'AC9001','0922','陈岩','分歧',1321,32231,'转场',32232.00,'23421',NULL,NULL,'2018-12-01 08:59:04',NULL,NULL,NULL),(2,1,'ASD','3011','WFQEW','一次性',2342,1234123,'空闲',21313.00,'123',1,NULL,'2018-12-01 09:27:50',NULL,NULL,NULL),(3,3,'WW3939','0930','陈岩','130231231312',999,1024,'工作',2020.00,NULL,NULL,NULL,'2019-01-07 13:18:32',NULL,NULL,NULL),(4,8,'KA0244','02 22','陈岩','分期付款',21212,1212,'转场',12.00,NULL,NULL,NULL,'2019-01-14 10:35:55',NULL,NULL,NULL),(9,3,'AA2020',NULL,NULL,NULL,0,0,'空闲',NULL,NULL,NULL,NULL,'2019-01-15 21:41:52','0000-00-00 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `bean_machine` VALUES (1,1,'AC9001','0922','陈岩','分歧',1321,32231,'工作',32232.00,'23421',NULL,NULL,'2018-12-01 08:59:04',NULL,NULL,NULL),(2,1,'ASD','3011','WFQEW','一次性',2342,1234123,'空闲',21313.00,'123',1,NULL,'2018-12-01 09:27:50',NULL,NULL,NULL),(3,3,'WW3939','0930','陈岩','130231231312',999,1024,'工作',2020.00,NULL,NULL,NULL,'2019-01-07 13:18:32',NULL,NULL,NULL),(4,8,'KA0244','02 22','陈岩','分期付款',21212,1212,'转场',12.00,NULL,NULL,NULL,'2019-01-14 10:35:55',NULL,NULL,NULL),(9,3,'AA2020',NULL,NULL,NULL,0,0,'空闲',NULL,NULL,NULL,NULL,'2019-01-15 21:41:52','0000-00-00 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00');
 
 #
 # Structure for table "bean_machine_brand"
@@ -435,13 +435,13 @@ CREATE TABLE `log_work` (
   `start_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `end_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='工单';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='工单';
 
 #
 # Data for table "log_work"
 #
 
-INSERT INTO `log_work` VALUES (1,32,NULL,NULL,1,'合约工单',1212,NULL,NULL,'已审核',NULL,'2019-01-06 11:50:05','2019-01-06 11:50:05','2019-01-06 11:50:05','2019-01-06 11:50:04'),(2,33,'陈岩','13048062053',3,'合约工单',123112,NULL,NULL,'已审核',NULL,'2019-01-14 23:46:25','2019-01-14 23:46:25','2019-01-14 23:46:25','2019-01-14 23:46:25');
+INSERT INTO `log_work` VALUES (1,32,NULL,NULL,1,'合约工单',1212,NULL,NULL,'已审核',NULL,'2019-01-06 11:50:05','2019-01-06 11:50:05','2019-01-06 11:50:05','2019-01-06 11:50:04'),(2,33,'陈岩','13048062053',3,'合约工单',123112,NULL,NULL,'已审核',NULL,'2019-01-14 23:46:25','2019-01-14 23:46:25','2019-01-14 23:46:25','2019-01-14 23:46:25'),(3,33,'陈岩','13048062053',1,'合约工单',600,NULL,NULL,'已审核','进行中','2019-01-18 22:56:30','2019-01-18 22:56:30','2019-01-18 22:56:30','2019-01-18 22:56:30');
 
 #
 # Structure for table "service_compact"
@@ -545,7 +545,7 @@ CREATE TABLE `service_machine_status` (
 # Data for table "service_machine_status"
 #
 
-INSERT INTO `service_machine_status` VALUES (1,1,'空闲',NULL,NULL,NULL,NULL,NULL,NULL,113.280637,23.125178,'2019-01-14 23:58:29'),(2,2,'空闲',NULL,NULL,NULL,NULL,NULL,NULL,113.049752,23.109706,'2019-01-14 23:58:38'),(3,3,'空闲',2,NULL,NULL,NULL,NULL,NULL,113.036199,24.63638,'2019-01-15 17:14:16'),(4,4,'转场',NULL,NULL,4,NULL,NULL,NULL,113.036111,22.636442,'2019-01-15 21:16:49'),(5,9,'空闲',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-01-15 21:41:52');
+INSERT INTO `service_machine_status` VALUES (1,1,'工作',NULL,3,NULL,NULL,NULL,NULL,113.280637,23.125178,'2019-01-14 23:58:29'),(2,2,'空闲',NULL,NULL,NULL,NULL,NULL,NULL,113.049752,23.109706,'2019-01-14 23:58:38'),(3,3,'空闲',2,NULL,NULL,NULL,NULL,NULL,113.036199,24.63638,'2019-01-15 17:14:16'),(4,4,'转场',NULL,NULL,4,NULL,NULL,NULL,113.036111,22.636442,'2019-01-15 21:16:49'),(5,9,'空闲',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-01-15 21:41:52');
 
 #
 # Structure for table "sys_drawer"
@@ -565,6 +565,69 @@ CREATE TABLE `sys_drawer` (
 #
 
 INSERT INTO `sys_drawer` VALUES (1,'基础','folder_shared',NULL,NULL),(2,'机手管理','account_box','admin/pages/driverList',1),(3,'客户管理','people','admin/pages/customerList',1),(4,'机器管理','android','admin/pages/machineList',1),(5,'机器型号管理','style','admin/pages/machineTypeList',1),(6,'后勤管理','assignment','admin/pages/supportList',1),(7,'日志','event_note',NULL,NULL),(8,'异常','error','admin/pages/logErrorList',7),(9,'维修单','loop','admin/pages/logMaintainList',7),(10,'加油单','local_drink','admin/pages/logOilList',7),(11,'转场单','airport_shuttle','admin/pages/logTransportList',7),(12,'工单','work','admin/pages/logWorkList',7),(13,'业务','info',NULL,NULL),(14,'合同','hourglass_full','admin/pages/compactList',13),(15,'客户意向','assistant_photo',NULL,13),(16,'挖机地图','gps_fixed','admin/pages/machineMap',13),(17,'统计','show_chart',NULL,NULL);
+
+#
+# Structure for table "sys_role"
+#
+
+CREATE TABLE `sys_role` (
+  `Id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `role_name` varchar(20) NOT NULL DEFAULT '' COMMENT '角色名称',
+  `detail` varchar(255) DEFAULT NULL,
+  `type` int(2) unsigned NOT NULL DEFAULT '1' COMMENT '角色种类  1 后台  2 微信小程序端',
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='系统角色表';
+
+#
+# Data for table "sys_role"
+#
+
+
+#
+# Structure for table "sys_role_drawer"
+#
+
+CREATE TABLE `sys_role_drawer` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `role_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `drawer_id` int(11) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色_导航连接表';
+
+#
+# Data for table "sys_role_drawer"
+#
+
+
+#
+# Structure for table "sys_user"
+#
+
+CREATE TABLE `sys_user` (
+  `Id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) NOT NULL DEFAULT '' COMMENT '用户名',
+  `password` varchar(100) NOT NULL DEFAULT '' COMMENT '密码（加密后）',
+  `salt` varchar(100) NOT NULL DEFAULT '' COMMENT '盐',
+  `nick_name` varchar(20) DEFAULT NULL COMMENT '昵称',
+  `is_enabled` bit(1) NOT NULL DEFAULT b'1' COMMENT '是否启用',
+  `is_locked` bit(1) NOT NULL DEFAULT b'0' COMMENT '是否锁定',
+  `login_failure_count` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '登录失败次数',
+  `locked_time` timestamp NULL DEFAULT NULL COMMENT '锁定时间',
+  `login_time` timestamp NULL DEFAULT NULL COMMENT '登录时间',
+  `login_ip` varchar(20) DEFAULT NULL COMMENT '登录ip',
+  `role_id` int(11) unsigned DEFAULT NULL COMMENT '角色',
+  `link_type` varchar(20) DEFAULT NULL COMMENT '链接角色类型',
+  `link_id` int(11) unsigned DEFAULT NULL COMMENT '链接角色ID',
+  `avatar` varchar(200) DEFAULT NULL COMMENT '头像',
+  `edit_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='系统用户表';
+
+#
+# Data for table "sys_user"
+#
+
+INSERT INTO `sys_user` VALUES (1,'admin','123456','',NULL,b'1',b'0',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-01-18 18:58:27');
 
 #
 # Structure for table "view_machine_map"
