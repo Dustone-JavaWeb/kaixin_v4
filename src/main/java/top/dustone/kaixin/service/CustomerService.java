@@ -7,6 +7,7 @@ import top.dustone.kaixin.dao.ContactDAO;
 import top.dustone.kaixin.dao.CustomerDAO;
 import top.dustone.kaixin.entity.Contact;
 import top.dustone.kaixin.entity.Customer;
+import top.dustone.kaixin.util.CommonResponseModel;
 import top.dustone.kaixin.util.Page4Navigator;
 
 import java.util.ArrayList;

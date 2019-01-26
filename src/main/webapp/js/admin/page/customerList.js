@@ -40,6 +40,7 @@ $(function() {
 				var ajaxRequestModel=DEEP_COPY(self.contactRequestModel);
 				ajaxRequestModel.example=checkEmpty(ajaxRequestModel.example);
 				axios.post(PAGE_CUSTOMER_CONTACT_QUERY,ajaxRequestModel).then(function(response) {
+					console.log(response.data.content);
 					self.trs = response.data.content;
 					mdui.mutation();
 				});

@@ -107,6 +107,10 @@ public class PageRouteController {
     public String customerInfo(){
         return "admin/pages/customerInfo";
     }
+    @GetMapping(value = "/admin/pages/contactInfo")
+    public String contactInfo(){
+        return "admin/pages/contactInfo";
+    }
     @GetMapping(value = "/admin/pages/supportInfo")
     public String supportInfo(){
         return "admin/pages/supportInfo";

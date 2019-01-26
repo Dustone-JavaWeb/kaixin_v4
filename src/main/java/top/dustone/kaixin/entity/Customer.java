@@ -31,7 +31,7 @@ public class Customer {
     @Cascade(value = {CascadeType.ALL})
     @JoinTable(name="com_customer_contact",
             joinColumns = @JoinColumn(name="customer_id",referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name="contact_id",referencedColumnName = "id",unique = true)
+            inverseJoinColumns = @JoinColumn(name="contact_id",referencedColumnName = "id")
     )
     private Set<Contact> contacts=new HashSet<Contact>();
     public Integer getId() {

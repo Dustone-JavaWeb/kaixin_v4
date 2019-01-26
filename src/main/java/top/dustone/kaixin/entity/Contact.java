@@ -1,5 +1,6 @@
 package top.dustone.kaixin.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -8,16 +9,16 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="bean_contact")
-@JsonIgnoreProperties({ "handler","hibernateLazyInitializer","customer"})
+@JsonIgnoreProperties({ "handler","hibernateLazyInitializer"})
 public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @ManyToOne(fetch =FetchType.EAGER,targetEntity = Customer.class)
-    @Cascade(value = CascadeType.ALL)
+//    @Cascade(value = CascadeType.SAVE_UPDATE)
     @JoinTable(name="com_customer_contact",
-                joinColumns = @JoinColumn(name="contact_id",referencedColumnName = "id",unique = true),
+                joinColumns = @JoinColumn(name="contact_id",referencedColumnName = "id"),
                 inverseJoinColumns = @JoinColumn(name="customer_id",referencedColumnName = "id")
     )
     private Customer customer;
@@ -48,6 +49,7 @@ public class Contact {
     public void setName(String name) {
         this.name = name;
     }
+    @JsonIgnore
     public Customer getCustomer() {
         return customer;
     }

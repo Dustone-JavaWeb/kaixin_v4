@@ -45,7 +45,7 @@ public class DriverController {
     }
     @PostMapping("/admin_driver_export")
     public CommonResponseModel<Driver> export(@RequestBody RequestModel<Driver> requestModel, HttpServletRequest request){
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy年MM月dd日HH时mm分ss秒");
         String fileName="机手信息导出_"+df.format(new Date())+".xls";
         String targetURL="resource/cacheFiles";
         String targetPath=request.getServletContext().getRealPath(targetURL);
