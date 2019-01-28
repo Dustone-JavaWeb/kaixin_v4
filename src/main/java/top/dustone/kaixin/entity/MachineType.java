@@ -12,9 +12,7 @@ public class MachineType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Integer id;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "brand_id")
-    private MachineBrand machineBrand;
+    private String brandName;
     private String model;
     private String name;
     private String picture;
@@ -45,13 +43,6 @@ public class MachineType {
         this.detail = detail;
     }
 
-    public MachineBrand getMachineBrand() {
-        return machineBrand;
-    }
-
-    public void setMachineBrand(MachineBrand machineBrand) {
-        this.machineBrand = machineBrand;
-    }
 
     public Resource getResource() {
         return resource;
@@ -77,11 +68,20 @@ public class MachineType {
         this.name = name;
     }
 
+
+    public String getBrandName() {
+        return brandName;
+    }
+
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
+    }
+
     @Override
     public String toString() {
         return "MachineType{" +
                 "id=" + id +
-                ", machineBrand=" + machineBrand +
+                ", brandName='" + brandName + '\'' +
                 ", model='" + model + '\'' +
                 ", name='" + name + '\'' +
                 ", picture='" + picture + '\'' +

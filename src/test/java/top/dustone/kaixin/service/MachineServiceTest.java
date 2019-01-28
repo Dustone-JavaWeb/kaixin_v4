@@ -18,7 +18,6 @@ public class MachineServiceTest {
         MachineBrand machineBrand=new MachineBrand();
         machineBrand.setId(2);
         MachineType machineType=new MachineType();
-        machineType.setMachineBrand(machineBrand);
         System.out.println(machineTypeService.listByExample(machineType));
     }
 }
