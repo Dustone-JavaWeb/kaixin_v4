@@ -61,12 +61,12 @@
         <div class="mdui-divider"></div>
         <div class="mdui-table-fluid">
             <table class="mdui-table admin-table-nobr mdui-table-hoverable">
-                <tr v-if="entity.contacts.length==0">
+                <tr v-if="contacts.length==0">
                     <td>
                         <div style="text-align: center">暂无联系人信息</div>
                     </td>
                 </tr>
-                <thead v-if="entity.contacts.length!=0">
+                <thead v-if="contacts.length!=0">
                 <tr>
                     <td>编号</td>
                     <td>姓名</td>
@@ -76,8 +76,8 @@
                     <td>备注</td>
                 </tr>
                 </thead>
-                <tbody v-if="entity.contacts.length!=0">
-                <tr v-for="contact in entity.contacts" @click="showContactInfo(contact)">
+                <tbody v-if="contacts.length!=0">
+                <tr v-for="contact in contacts" @click="showContactInfo(contact)">
                     <td>{{contact.id}}</td>
                     <td>{{contact.name}}</td>
                     <td>{{contact.role}}</td>
@@ -209,8 +209,8 @@
                 title: "",
                 entity: {
                     bankAccount: {},
-                    contacts:[]
                 },
+                contacts:[],
                 editPanelModel: "none",
                 viewPanelModel: "inline",
                 inputDisabled: true,
@@ -231,6 +231,7 @@
                     if (self.entity.bankAccount == null) {
                         self.entity.bankAccount = {};
                     }
+                    self.loadContactList();
                     this.title = '详细信息';
                 },
                 initAdd: function (tabMsg) {
@@ -323,7 +324,7 @@
                     var tabMsg={
                         id:"contactInfo",
                         eId:"contactInfoAera",
-                        eNum:"ADD"+Math.random(),
+                        eNum:"ADD"+self.entity.id,
                         name:'新增联系人',
                         url:ROUTE_CONTACT_INFO,
                         target:'ContactAdd',
@@ -332,6 +333,20 @@
                         }
                     }
                     makeInfoTab(tabMsg);
+                },
+                loadContactList:function () {
+                    var self=this;
+                    var initModel={
+                        start: 0,
+                        pageSize:1000,
+                            example: {
+                            id: self.entity.id,
+                        }
+                    }
+                    axios.post(PAGE_CONTACT_QUERY,initModel).then(function (response) {
+                        console.log(response);
+                        self.contacts=response.data.content;
+                    });
                 },
                 chooseFileType: function (type) {
                     return chooseFileIcon(type);

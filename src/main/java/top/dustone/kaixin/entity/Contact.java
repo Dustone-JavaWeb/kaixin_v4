@@ -1,6 +1,5 @@
 package top.dustone.kaixin.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -14,9 +13,7 @@ public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     @ManyToOne(fetch =FetchType.EAGER,targetEntity = Customer.class)
-//    @Cascade(value = CascadeType.SAVE_UPDATE)
     @JoinTable(name="com_customer_contact",
                 joinColumns = @JoinColumn(name="contact_id",referencedColumnName = "id"),
                 inverseJoinColumns = @JoinColumn(name="customer_id",referencedColumnName = "id")
@@ -49,7 +46,6 @@ public class Contact {
     public void setName(String name) {
         this.name = name;
     }
-    @JsonIgnore
     public Customer getCustomer() {
         return customer;
     }
@@ -108,6 +104,7 @@ public class Contact {
     public String toString() {
         return "Contact{" +
                 "id=" + id +
+                ", customer=" + customer +
                 ", name='" + name + '\'' +
                 ", role='" + role + '\'' +
                 ", tel='" + tel + '\'' +

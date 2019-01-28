@@ -6,8 +6,6 @@ import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.HashSet;
-import java.util.Set;
 @Entity
 @Table(name="bean_customer")
 @JsonIgnoreProperties({ "handler","hibernateLazyInitializer" })
@@ -27,13 +25,6 @@ public class Customer {
     private BankAccount bankAccount;
     private Timestamp createTime;
     private Timestamp editTime;
-    @OneToMany(fetch =FetchType.EAGER)
-    @Cascade(value = {CascadeType.ALL})
-    @JoinTable(name="com_customer_contact",
-            joinColumns = @JoinColumn(name="customer_id",referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name="contact_id",referencedColumnName = "id")
-    )
-    private Set<Contact> contacts=new HashSet<Contact>();
     public Integer getId() {
         return id;
     }
@@ -106,13 +97,6 @@ public class Customer {
         this.editTime = editTime;
     }
 
-    public Set<Contact> getContacts() {
-        return contacts;
-    }
-
-    public void setContacts(Set<Contact> contacts) {
-        this.contacts = contacts;
-    }
 
     @Override
     public String toString() {
@@ -126,7 +110,6 @@ public class Customer {
                 ", bankAccount=" + bankAccount +
                 ", createTime=" + createTime +
                 ", editTime=" + editTime +
-                ", contacts=" + contacts +
                 '}';
     }
 }

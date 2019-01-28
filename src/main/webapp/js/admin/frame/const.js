@@ -39,6 +39,9 @@ var PAGE_MACHINE_BRAND_QUERY= BASE_URL+"admin_machineBrand_query";
 var PAGE_CUSTOMER_QUERY=BASE_URL+"admin_customer_query";
 var PAGE_CUSTOMER_UPDATE=BASE_URL+"admin_customer_update";
 var PAGE_CUSTOMER_CONTACT_QUERY=BASE_URL+"admin_customer_query_by_contact";
+var PAGE_CONTACT_QUERY=BASE_URL+"admin_contact_query";
+var PAGE_CONTACT_UPDATE=BASE_URL+"admin_contact_update";
+var PAGE_CONTACT_GET=BASE_URL+"admin_contact_get";
 
 var PAGE_LOG_OIL_QUERY=BASE_URL+"admin_logOil_query";
 var PAGE_LOG_OIL_UPDATE=BASE_URL+"admin_logOil_update";

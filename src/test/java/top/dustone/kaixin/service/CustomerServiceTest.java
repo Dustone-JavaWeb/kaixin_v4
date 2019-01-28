@@ -31,7 +31,7 @@ public class CustomerServiceTest {
         contact.setName("陈岩");
         contact.setPersonId("674462865");
         contact.setRole("老板");
-        customer.getContacts().add(contact);
+        //customer.getContacts().add(contact);
         customerService.update(customer);
         System.out.println(customer);
     }
