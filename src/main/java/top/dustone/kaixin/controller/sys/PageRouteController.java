@@ -103,6 +103,10 @@ public class PageRouteController {
     public String machineInfo(){
         return "admin/pages/machineInfo";
     }
+    @GetMapping(value = "/admin/pages/machineTypeInfo")
+    public String machineTypeInfo(){
+        return "admin/pages/machineTypeInfo";
+    }
     @GetMapping(value = "/admin/pages/customerInfo")
     public String customerInfo(){
         return "admin/pages/customerInfo";

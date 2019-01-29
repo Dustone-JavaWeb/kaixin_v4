@@ -1,0 +1,199 @@
+<div class="admin-child-page mdui-container mdui-center" id="machineTypeInfoAera">
+	<div class="mdui-row">
+		<div class="mdui-typo">
+			<h3>
+				详细信息
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(1)" v-bind:style="{display:viewPanelModel}">编辑</button>
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(0)" v-bind:style="{display:editPanelModel}">放弃</button>
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="switchMode(2)" v-bind:style="{display:editPanelModel}">保存</button>
+			</h3>
+		</div>
+		<div class="mdui-divider"></div>
+		<div class="mdui-row">
+			<div class="mdui-col-xs-9">
+				<div class="mdui-textfield mdui-col-xs-4">
+					<label class="mdui-textfield-label">机器品牌</label>
+					<input v-bind:disabled="inputDisabled" v-model="entity.brandName" class="mdui-textfield-input" type="text" placeholder="机器品牌" />
+				</div>
+				<div class="mdui-textfield mdui-col-xs-4">
+					<label class="mdui-textfield-label">机器型号</label>
+					<input v-bind:disabled="inputDisabled" v-model="entity.model" class="mdui-textfield-input" type="text" placeholder="机器型号" />
+				</div>
+				<div class="mdui-textfield mdui-col-xs-4">
+					<label class="mdui-textfield-label">机器类型</label>
+					<input v-bind:disabled="inputDisabled" v-model="entity.name" class="mdui-textfield-input" type="text"
+					 placeholder="机器类型" />
+				</div>
+				<div class="mdui-textfield mdui-col-xs-12">
+					<label class="mdui-textfield-label">描述</label>
+					<textarea class="mdui-textfield-input" v-bind:disabled="inputDisabled" type="text"
+							  v-model="entity.detail"
+							  maxlength="255" placeholder="描述信息"></textarea>
+				</div>
+
+			</div>
+			<div class="mdui-col-xs-3">
+				<div>
+					<img class="admin-headpic mdui-valign mdui-img-fluid" v-bind:src="entity.picture" />
+				</div>
+				<button class="mdui-btn mdui-ripple mdui-color-theme-accent" @click="updatePicture()" v-bind:style="{display:editPanelModel}">更改照片</button>
+			</div>
+		</div>
+
+		<div class="mdui-typo">
+			<h3>
+				相关资源
+				<button class="mdui-float-right mdui-btn mdui-ripple mdui-color-theme-accent" @click="openFileManager()"
+				 v-bind:style="{display:editPanelModel}">管理</button>
+			</h3>
+		</div>
+		<div class="mdui-divider"></div>
+		<div class="mdui-row-xs-3 mdui-row-sm-3 mdui-row-md-3 mdui-row-lg-3 mdui-row-xl-3 mdui-grid-list">
+			<div v-if="entity.resource!=null">
+				<div class="mdui-col admin-layout-box" v-for="res in entity.resource.resources">
+					<div class="mdui-card">
+						<div class="mdui-card-header">
+							<img class="mdui-card-header-avatar" v-bind:src="BASE_URL+chooseFileType(res.type)" />
+							<div class="mdui-card-header-title">
+								<a target="view_blank" v-bind:href="res.url" v-bind:download="res.name">{{res.name}}</a>
+							</div>
+							<div class="mdui-card-header-subtitle">
+								{{res.type}} {{res.size|renderSize}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	$(function() {
+		new Vue({
+			el: '#machineTypeInfoAera',
+			data: {
+				title: "",
+				entity: {
+
+				},
+				editPanelModel: "none",
+				viewPanelModel: "inline",
+				inputDisabled: true,
+				requestModel: {
+					start: 0,
+					example: {
+						id: 0,
+					}
+				}
+			},
+			mounted: function() {
+				machineTypeInfoVue = this;
+			},
+			methods: {
+				init: function(tabMsg) {
+					var self = this;
+					self.entity = tabMsg.initData.entity;
+					this.title = '详细信息';
+				},
+				initAdd: function(tabMsg) {
+					var self = this;
+					self.editPanelModel = "inline";
+					self.viewPanelModel = "none";
+					self.inputDisabled = false;
+				},
+				openFileManager: function() {
+					var self = this;
+					if (self.entity.resource == null) {
+						var newResource = {
+							name: self.entity.name,
+							type: "trunk",
+						}
+						axios.post(RESOURCE_UPDATE, newResource).then(function(resp) {
+							self.entity.resource = resp.data.t;
+							self.requestModel.example = self.entity;
+							axios.post(PAGE_MACHINE_TYPE_UPDATE, self.requestModel).then(function(response) {
+								self.entity = response.data.t;
+								openFileManageDialog(self.entity, "机器类型信息");
+							});
+						});
+
+					} else {
+						openFileManageDialog(self.entity, "机器类型信息");
+					}
+				},
+				updateHeadPic: function() {
+					var self = this;
+					chooseHeadPircture(self.entity, "机器类型_" + self.entity.id + "_" + self.entity.name, PAGE_MACHINE_TYPE_UPDATE);
+				},
+				switchMode: function(mode) {
+					var self = this;
+					if (mode == 1) {
+						self.editPanelModel = "inline";
+						self.viewPanelModel = "none";
+						self.inputDisabled = false;
+					} else if (mode == 2) {
+						self.editPanelModel = "none";
+						self.viewPanelModel = "inline";
+						self.inputDisabled = true;
+
+						self.requestModel.example = self.entity;
+						axios.post(PAGE_MACHINE_TYPE_UPDATE, self.requestModel).then(function(response) {
+                            self.entity = response.data.t;
+							mdui.snackbar({
+								message: response.data.responseMessage,
+								timeout: 2000,
+								position: "right-bottom",
+							});
+						});
+					} else {
+						mdui.confirm("所有的更改无效！", "提示", function() {
+							self.editPanelModel = "none";
+							self.viewPanelModel = "inline";
+							self.inputDisabled = true;
+
+							self.requestModel.example = {};
+							self.requestModel.example.id = self.entity.id;
+							self.requestModel.start = 0;
+							axios.post(PAGE_MACHINE_TYPE_QUERY, self.requestModel).then(function(response) {
+								self.entity = response.data.content[0];
+							});
+						});
+					}
+					mdui.mutation();
+				},
+                chooseFileType:function(type) {
+                    return chooseFileIcon(type);
+                }
+			},
+			filters: {
+				date: function(value) {
+					if (value != null) {
+						return value.substr(0, 10);
+					} else {
+						return "";
+					}
+				},
+				renderSize: function(value) {
+					if (null == value || value == '') {
+						return "0 Bytes";
+					}
+					var unitArr = new Array("Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB");
+					var index = 0;
+					var srcsize = parseFloat(value);
+					index = Math.floor(Math.log(srcsize) / Math.log(1024));
+					var size = srcsize / Math.pow(1024, index);
+					size = size.toFixed(2); //保留的小数位数
+					return size + unitArr[index];
+				}
+			},
+		})
+	})
+
+	function initMachineTypeInfo(tabMsg) {
+		machineTypeInfoVue.init(tabMsg);
+	}
+
+	function initMachineTypeAdd(tabMsg) {
+		machineTypeInfoVue.initAdd(tabMsg);
+	}
+</script>

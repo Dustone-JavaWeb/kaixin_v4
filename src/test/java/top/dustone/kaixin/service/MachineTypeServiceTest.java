@@ -16,7 +16,7 @@ public class MachineTypeServiceTest {
     public void listByExample() {
         MachineType machineType=new MachineType();
         machineType.setModel("AAC");
-        System.out.println(machineTypeService.listByExample(machineType));;
+//        System.out.println(machineTypeService.listByExample(machineType));;
 
     }
 }
