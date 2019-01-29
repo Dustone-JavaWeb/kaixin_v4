@@ -1,8 +1,25 @@
 ﻿# Host: localhost  (Version: 5.5.15)
-# Date: 2019-01-23 15:54:22
+# Date: 2019-01-29 21:43:00
 # Generator: MySQL-Front 5.3  (Build 4.269)
 
 /*!40101 SET NAMES utf8 */;
+
+#
+# Structure for table "34"
+#
+
+CREATE TABLE `34` (
+  `Id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `customer_id` int(11) unsigned DEFAULT NULL,
+  `contact_id` int(11) unsigned DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='客户-联系人连接表';
+
+#
+# Data for table "34"
+#
+
+INSERT INTO `34` VALUES (11,34,26);
 
 #
 # Structure for table "bean_bank_account"
@@ -18,13 +35,13 @@ CREATE TABLE `bean_bank_account` (
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `edit_time` timestamp NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COMMENT='银行账号表';
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COMMENT='银行账号表';
 
 #
 # Data for table "bean_bank_account"
 #
 
-INSERT INTO `bean_bank_account` VALUES (1,'公共账号','CY','2222','中国工商银行',NULL,'2018-12-04 10:30:26',NULL),(2,'阿萨大','萨大  萨大','333333','中国建设银行',NULL,'2018-12-26 10:24:06',NULL),(3,NULL,NULL,NULL,NULL,NULL,'2018-12-26 10:24:33',NULL),(6,'测试账户','陈岩',NULL,NULL,NULL,'2018-12-27 10:00:08',NULL),(7,'个人账号','陈岩','12345678','中国工商银行',NULL,'2018-12-28 10:12:03',NULL),(8,NULL,NULL,NULL,NULL,NULL,'2018-12-30 15:36:46',NULL),(9,NULL,NULL,NULL,NULL,NULL,'2018-12-30 15:42:11',NULL),(10,NULL,NULL,NULL,NULL,NULL,'2018-12-30 16:00:23',NULL),(11,NULL,NULL,NULL,NULL,NULL,'2018-12-30 16:03:00',NULL),(12,NULL,NULL,NULL,NULL,NULL,'2018-12-30 16:05:01',NULL),(13,NULL,NULL,NULL,NULL,NULL,'2018-12-30 16:05:42',NULL),(14,NULL,NULL,NULL,NULL,NULL,'2018-12-30 16:07:09',NULL),(15,'个人账户','陈岩','2929292929292','中国工商银行',NULL,'2018-12-30 16:27:07',NULL),(16,NULL,NULL,NULL,NULL,NULL,'2018-12-30 20:38:04',NULL),(17,NULL,NULL,NULL,NULL,NULL,'2018-12-30 21:30:07',NULL),(18,NULL,NULL,NULL,NULL,NULL,'2018-12-30 21:30:44',NULL),(19,NULL,NULL,NULL,NULL,NULL,'2019-01-12 11:48:24',NULL);
+INSERT INTO `bean_bank_account` VALUES (1,'公共账号','CY','2222','中国工商银行',NULL,'2018-12-04 10:30:26',NULL),(2,'阿萨大','萨大  萨大','333333','中国建设银行',NULL,'2018-12-26 10:24:06',NULL),(3,NULL,NULL,NULL,NULL,NULL,'2018-12-26 10:24:33',NULL),(6,'测试账户','陈岩',NULL,NULL,NULL,'2018-12-27 10:00:08',NULL),(7,'个人账号','陈岩','12345678','中国工商银行',NULL,'2018-12-28 10:12:03',NULL),(8,NULL,NULL,NULL,NULL,NULL,'2018-12-30 15:36:46',NULL),(9,NULL,NULL,NULL,NULL,NULL,'2018-12-30 15:42:11',NULL),(10,NULL,NULL,NULL,NULL,NULL,'2018-12-30 16:00:23',NULL),(11,NULL,NULL,NULL,NULL,NULL,'2018-12-30 16:03:00',NULL),(12,NULL,NULL,NULL,NULL,NULL,'2018-12-30 16:05:01',NULL),(13,NULL,NULL,NULL,NULL,NULL,'2018-12-30 16:05:42',NULL),(14,NULL,NULL,NULL,NULL,NULL,'2018-12-30 16:07:09',NULL),(15,'个人账户','陈岩','2929292929292','中国工商银行',NULL,'2018-12-30 16:27:07',NULL),(16,NULL,NULL,NULL,NULL,NULL,'2018-12-30 20:38:04',NULL),(17,NULL,NULL,NULL,NULL,NULL,'2018-12-30 21:30:07',NULL),(18,NULL,NULL,NULL,NULL,NULL,'2018-12-30 21:30:44',NULL),(19,NULL,NULL,NULL,NULL,NULL,'2019-01-12 11:48:24',NULL),(20,NULL,NULL,NULL,NULL,NULL,'2019-01-23 20:58:32',NULL),(21,NULL,NULL,NULL,NULL,NULL,'2019-01-23 23:15:35',NULL),(22,NULL,NULL,NULL,NULL,NULL,'2019-01-28 11:25:01',NULL);
 
 #
 # Structure for table "bean_contact"
@@ -40,13 +57,13 @@ CREATE TABLE `bean_contact` (
   `resource_id` int(11) DEFAULT NULL COMMENT '资源ID',
   `bank_account_id` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COMMENT='联系人表';
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8 COMMENT='联系人表';
 
 #
 # Data for table "bean_contact"
 #
 
-INSERT INTO `bean_contact` VALUES (25,'陈岩','老板',NULL,'674462865',NULL,NULL,NULL),(26,'陈岩','老板',NULL,'674462865',NULL,NULL,NULL),(27,'陈岩','老板',NULL,'674462865',NULL,NULL,NULL);
+INSERT INTO `bean_contact` VALUES (26,'陈岩','老板娘','13048062053','674462865','测试用例',NULL,20),(28,'黄俊枪','测试工具','32141234','2314124','',NULL,21),(29,'陈岩','测试用例','12322292','12312312','十大彻底删除撒撒旦发送打法',NULL,22);
 
 #
 # Structure for table "bean_customer"
@@ -85,7 +102,7 @@ CREATE TABLE `bean_driver` (
   `type` varchar(11) NOT NULL DEFAULT '普通' COMMENT '机手类型',
   `resource_id` int(11) DEFAULT NULL COMMENT '资源ID',
   `bank_account_id` int(11) unsigned DEFAULT NULL COMMENT '银行账号信息',
-  `head_pic` varchar(200) DEFAULT 'resource/staticPicResource/defaultHeadPic.jpg' COMMENT '头像地址',
+  `head_pic` varchar(300) DEFAULT 'resource/staticPicResource/defaultHeadPic.jpg' COMMENT '头像地址',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `edit_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
@@ -154,10 +171,10 @@ INSERT INTO `bean_machine_brand` VALUES (1,'烈马','logo.jpg','烈马挖掘机'
 
 CREATE TABLE `bean_machine_type` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '机器型号ID',
-  `brand_id` int(11) unsigned DEFAULT NULL COMMENT '品牌',
+  `brand_name` varchar(32) DEFAULT NULL COMMENT '机器品牌',
   `model` varchar(32) NOT NULL DEFAULT '' COMMENT '型号',
-  `name` varchar(50) DEFAULT NULL,
-  `picture` varchar(100) DEFAULT NULL COMMENT '型号照片',
+  `name` varchar(50) DEFAULT NULL COMMENT '通俗名称',
+  `picture` varchar(300) DEFAULT NULL COMMENT '型号照片',
   `detail` varchar(256) DEFAULT NULL COMMENT '详细描述',
   `resource_id` int(11) DEFAULT NULL COMMENT '资源ID',
   PRIMARY KEY (`id`)
@@ -167,7 +184,7 @@ CREATE TABLE `bean_machine_type` (
 # Data for table "bean_machine_type"
 #
 
-INSERT INTO `bean_machine_type` VALUES (1,1,'ASD01','小型挖掘机',NULL,'大马力',NULL),(2,1,'AAC','大型挖掘机',NULL,'为全球',NULL),(3,1,'BUZZK','测试挖掘机','','qwerwqerwqerwe rcqwecgwegewrewrecqw',NULL),(4,2,'BUZZK','测试挖掘机','','qwerqwgeryuj',NULL),(5,1,'ADSFSADF','测试挖掘机','','ewgeytjtirmenrt',NULL),(6,2,'SDFAD','测试挖掘机','','wegwgwt',NULL),(7,1,'REHTY','测试挖掘机','','',NULL),(8,1,'WEQRQWR','测试挖掘机','','',NULL),(9,1,'JTYJU','测试挖掘机','','',NULL);
+INSERT INTO `bean_machine_type` VALUES (1,NULL,'ASD01','小型挖掘机',NULL,'大马力',NULL),(2,NULL,'AAC','大型挖掘机',NULL,'为全球',NULL),(3,NULL,'BUZZK','测试挖掘机','','qwerwqerwqerwe rcqwecgwegewrewrecqw',NULL),(4,NULL,'BUZZK','测试挖掘机','','qwerqwgeryuj',NULL),(5,NULL,'ADSFSADF','测试挖掘机','','ewgeytjtirmenrt',NULL),(6,NULL,'SDFAD','测试挖掘机','','wegwgwt',NULL),(7,NULL,'REHTY','测试挖掘机','','',NULL),(8,NULL,'WEQRQWR','测试挖掘机','','',NULL),(9,NULL,'JTYJU','测试挖掘机','','',NULL);
 
 #
 # Structure for table "bean_support"
@@ -251,13 +268,13 @@ CREATE TABLE `com_customer_contact` (
   `customer_id` int(11) unsigned DEFAULT NULL,
   `contact_id` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='客户-联系人连接表';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='客户-联系人连接表';
 
 #
 # Data for table "com_customer_contact"
 #
 
-INSERT INTO `com_customer_contact` VALUES (1,34,26);
+INSERT INTO `com_customer_contact` VALUES (7,34,26),(8,34,28),(9,34,29);
 
 #
 # Structure for table "com_machine_map"
