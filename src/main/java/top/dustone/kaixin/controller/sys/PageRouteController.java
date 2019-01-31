@@ -143,4 +143,9 @@ public class PageRouteController {
     public String compactInfo(){
         return "admin/pages/compactInfo";
     }
+
+    @GetMapping(value = "/phone/pages/home")
+    public String phoneHome(){
+        return "phone/pages/home";
+    }
 }

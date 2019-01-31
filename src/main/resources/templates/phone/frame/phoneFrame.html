@@ -18,7 +18,7 @@
 <body class="mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-accent-pink mdui-loaded">
 <header class="mdui-appbar mdui-appbar-fixed">
     <div class="mdui-toolbar mdui-color-theme">
-        <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">menu</i></a>
+        <a href="javascript:;" class="mdui-btn mdui-btn-icon" id="drawButton"><i class="mdui-icon material-icons">menu</i></a>
         <a href="javascript:;" class="mdui-typo-title">广州铠信</a>
         <div class="mdui-toolbar-spacer"></div>
         <a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>
@@ -26,19 +26,10 @@
 </header>
 <div class="mdui-drawer mdui-color-theme" id="left-drawer">
     <div id="left-drawer-list">
-        <ul class="mdui-list" mdui-collapse="{accordion: true}">
-            <li class="mdui-collapse-item mdui-color-theme" v-for="item in drawerItems">
-                <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-                    <i class="mdui-list-item-icon mdui-icon material-icons">{{item.icon}}</i>
-                    <div class="mdui-list-item-content">{{item.name}}</div>
-                    <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
-                </div>
-                <ul class="mdui-collapse-item-body mdui-list mdui-list-dense" style="">
-                    <li class="mdui-list-item mdui-ripple" v-for="child in item.sysDrawers">
-                        <i class="mdui-list-item-icon mdui-icon material-icons">{{child.icon}}</i>
-                        <div class="mdui-list-item-content" @click="chooseTab" v-bind:tabId="child.id">{{child.name}}</div>
-                    </li>
-                </ul>
+        <ul class="mdui-list">
+            <li class="mdui-list-item mdui-ripple" v-for="item in drawerItems">
+                <i class="mdui-list-item-icon mdui-icon material-icons">{{item.icon}}</i>
+                <div class="mdui-list-item-content">{{item.name}}</div>
             </li>
         </ul>
     </div>

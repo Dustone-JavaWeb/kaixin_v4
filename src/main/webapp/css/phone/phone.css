@@ -1,6 +1,23 @@
-.phone-login-panel{
-	padding-top: 10%;
-	padding-bottom: 10%;
-	padding-left: 5%;
-	padding-right: 5%;
+body {
+    background: #f2f2f2;
+}
+
+.phone-login-panel {
+    padding-top: 10%;
+    padding-bottom: 10%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+#frameContainer {
+    width: 100%;
+    padding: 2%;
+    border: 1px transparent solid;
+    overflow-x: none;
+    overflow-y: auto;
+}
+
+.phone-child-page {
+
+    width: 100%;
 }
