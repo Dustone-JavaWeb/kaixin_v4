@@ -1,25 +1,8 @@
 ﻿# Host: localhost  (Version: 5.5.15)
-# Date: 2019-01-29 21:43:00
+# Date: 2019-02-01 08:39:57
 # Generator: MySQL-Front 5.3  (Build 4.269)
 
 /*!40101 SET NAMES utf8 */;
-
-#
-# Structure for table "34"
-#
-
-CREATE TABLE `34` (
-  `Id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `customer_id` int(11) unsigned DEFAULT NULL,
-  `contact_id` int(11) unsigned DEFAULT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='客户-联系人连接表';
-
-#
-# Data for table "34"
-#
-
-INSERT INTO `34` VALUES (11,34,26);
 
 #
 # Structure for table "bean_bank_account"
