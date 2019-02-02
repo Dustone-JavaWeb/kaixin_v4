@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import top.dustone.kaixin.dao.view.DriverStatusCountDAO;
 import top.dustone.kaixin.entity.Driver;
 import top.dustone.kaixin.util.Page4Navigator;
 import top.dustone.kaixin.util.export.DrvierExcel;
@@ -18,6 +19,8 @@ import java.util.List;
 public class DriverServiceTest {
     @Autowired
     private DriverService driverService;
+    @Autowired
+    private DriverStatusCountDAO driverStatusCountDAO;
     @Test
     public void list() {
         //System.out.println(driverService.list());
@@ -36,5 +39,9 @@ public class DriverServiceTest {
             list.add(drvierExcel);
         }
         ExcelExportUtil.exportToFile("D:\\Project\\IDEA Project\\kaixin_v4\\src\\main\\webapp\\resource\\cacheFiles\\机手信息导出.xls",list);
+    }
+    @Test
+    public void testDAO(){
+        System.out.println(driverStatusCountDAO.findAll());
     }
 }

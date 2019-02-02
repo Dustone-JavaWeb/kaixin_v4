@@ -11,6 +11,8 @@ var DIALOG_SUPPORT_CHOOSER = BASE_ROUTE_URL + "admin/dialogs/supportChooser" + B
 var DIALOG_DRIVER_CHOOSER = BASE_ROUTE_URL + "admin/dialogs/driverChooser" + BASE_ROUTE_LAST_TOKEN;
 var DIALOG_CUSTOMER_CHOOSER = BASE_ROUTE_URL + "admin/dialogs/customerChooser" + BASE_ROUTE_LAST_TOKEN;
 
+var ROUTE_BASEBOARD_PAGE = BASE_ROUTE_URL + "admin/frame/baseboard" + BASE_ROUTE_LAST_TOKEN;
+
 var ROUTE_DRIVER_INFO = BASE_ROUTE_URL + "admin/pages/driverInfo" + BASE_ROUTE_LAST_TOKEN;
 var ROUTE_MACHINE_INFO = BASE_ROUTE_URL + "admin/pages/machineInfo" + BASE_ROUTE_LAST_TOKEN;
 var ROUTE_SUPPORT_INFO = BASE_ROUTE_URL + "admin/pages/supportInfo" + BASE_ROUTE_LAST_TOKEN;
@@ -26,6 +28,7 @@ var ROUTE_COMPACT_INFO = BASE_ROUTE_URL + "admin/pages/compactInfo" + BASE_ROUTE
 
 //后端API
 var FRAME_NAV_DATA_URL = BASE_URL + "admin_sys_makeDrawer";
+var FRAME_BASEBOARD_DATA = BASE_URL + "admin_baseboard_data";
 var PAGE_DRIVER_QUERY = BASE_URL + "admin_drivers_query";
 var PAGE_DRIVER_UPDATE = BASE_URL + "admin_drivers_update";
 var PAGE_DRIVER_EXPORT = BASE_URL + "admin_driver_export";

@@ -24,7 +24,7 @@ html {
     background-color: #f9f9f9;
 }
 
-.admin-login-title{
+.admin-login-title {
     width: 30%;
     text-align: center;
     margin-top: 50px;
@@ -58,6 +58,33 @@ html {
 
 }
 
+.admin-baseboard-page {
+
+}
+
+.admin-baseboard-card {
+    background: #f2f2f2;
+    border: 1px solid #d8dee2;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+}
+
+.admin-baseboard-card-title {
+    text-align: left;
+    font-size: 40px;
+    float: left;
+}
+
+.admin-baseboard-card-subtitle {
+    text-align: left;
+    font-size: 14px;
+}
+
+.admin-baseboard-card-icon {
+    font-size: 50px;
+    float: right;
+}
 .admin-child-page {
     margin: 0px;
 }

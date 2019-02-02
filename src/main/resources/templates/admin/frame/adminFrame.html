@@ -10,9 +10,12 @@
 		<script src="lib/vue/2.5.16/vue.min.js"></script>
 		<script src="lib/axios/0.17.1/axios.min.js"></script>
 		<script src="lib/layui/layui.js"></script>
+		<!--<script src="lib/chart/Chart.min.js"></script>-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 		<script src="js/admin/frame/const.js"></script>
 		<script src="js/admin/frame/environment.js"></script>
 		<script src="js/admin/frame/util.js"></script>
+
 		<!--百度地图API-->
 		<!-- <script src="http://api.map.baidu.com/api?v=2.0&ak=W27pZ6qidCrVexeVaHriYXYgoXUxKhqN" type="text/javascript"></script> -->
 
@@ -26,6 +29,7 @@
 		<!-- <header class="mdui-appbar mdui-appbar-fixed mdui-shadow-0"> -->
 		<div class="mdui-toolbar mdui-color-theme">
 			<a href="javascript:;" id="drawButton" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons mdui-color-theme">menu</i></a>
+			<a href="javascript:;" id="homeButton" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons mdui-color-theme">home</i></a>
 			<span class="mdui-typo-title mdui-color-theme">广州铠信</span>
 		</div>
 		<!-- </header> -->
@@ -57,17 +61,10 @@
 		<div style="height: 100%;">
 			<div class="admin-tab-bar layui-tab layui-tab-card" lay-filter="model" lay-allowClose="true">
 				<ul class="mdui-color-theme layui-tab-title">
-					<li lay-id="home/console.html" class="layui-this">
-						<span>控制台</span>
-						<i class="layui-icon layui-unselect layui-tab-close">ဆ</i>
-					</li>
+
 				</ul>
 				<div id="adminTabContent" class="admin-tab-content layui-tab-content">
-					<div class="layui-tab-item layui-show">
-						<div class="admin-child-page mdui-container-fluid mdui-center">
-							空白测试页面
-						</div>
-					</div>
+
 				</div>
 			</div>
 		</div>

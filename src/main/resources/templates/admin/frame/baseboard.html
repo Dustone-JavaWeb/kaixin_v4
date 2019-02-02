@@ -1,0 +1,162 @@
+<div class="admin-baseboard-page mdui-container-fluid mdui-center" id="baseboardPage">
+    <div class="mdui-row mdui-row-gapless admin-table-area">
+        <div class="mdui-col-xs-9">
+
+        </div>
+        <div class="mdui-col-xs-3">
+            <div class="mdui-typo">
+                <h2>
+                    基础元素
+                </h2>
+            </div>
+            <div class="mdui-row mdui-row-gapless">
+                <div class="mdui-col-xs-12">
+                    <div class="admin-baseboard-card  mdui-ripple">
+                        <div class="admin-baseboard-card-head">
+                            <div class="admin-baseboard-card-title">
+                                机手
+                                <div class="admin-baseboard-card-subtitle">
+                                    当前的机手
+                                </div>
+                            </div>
+                            <i class="admin-baseboard-card-icon mdui-icon material-icons">account_box</i>
+                        </div>
+                        <br><br><br><br>
+                        <div class="admin-baseboard-card-body">
+                            <canvas id="driverPie" width="600" height="400"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdui-col-xs-12">
+                    <div class="admin-baseboard-card  mdui-ripple">
+                        <div class="admin-baseboard-card-head">
+                            <div class="admin-baseboard-card-title">
+                                挖机
+                                <div class="admin-baseboard-card-subtitle">
+                                    当前的挖机
+                                </div>
+                            </div>
+                            <i class="admin-baseboard-card-icon mdui-icon material-icons">android</i>
+                        </div>
+                        <br><br><br><br>
+                        <div class="admin-baseboard-card-body">
+                            <canvas id="machinePie" width="600" height="400"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="mdui-row mdui-row-gapless">
+    </div>
+</div>
+
+<script>
+    var driverPieChart;
+    var machinePieChart;
+
+    $(function () {
+        new Vue({
+            el: '#baseboardPage',
+            data: {
+                baseboardData: {
+                    machineStatusCounts: [],
+                    driverStatusCounts: []
+                },
+                requestModel: {}
+            },
+            mounted: function () {
+                var self = this;
+                self.initData();
+            },
+            methods: {
+                initData: function () {
+                    var self = this;
+                    axios.post(FRAME_BASEBOARD_DATA, self.requestModel).then(function (response) {
+                        self.baseboardData = response.data.t;
+                        makeDriverPie(self.baseboardData.driverStatusCounts);
+                        makeMachinePie(self.baseboardData.machineStatusCounts);
+                    });
+                }
+            }
+        });
+    });
+
+    function makeDriverPie(data) {
+        var types = [];
+        var numbers = [];
+        for (var j = 0, len = data.length; j < len; j++) {
+            types.push(data[j].status);
+            numbers.push(data[j].number);
+        }
+        var driverPieCanvas = document.getElementById("driverPie").getContext("2d");
+        driverPieChart = new Chart(driverPieCanvas, {
+            type: 'doughnut',
+            data: {
+                labels: types,
+                datasets: [{
+                    data: numbers,
+                    backgroundColor: [
+                        '#448AFF',
+                        '#FFD740',
+                        '#B2FF59',
+                    ],
+                    borderColor: [
+                        '#2979FF',
+                        '#FFC400',
+                        '#76FF03',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                legend:{
+                    display: true,
+                    position:'bottom',
+                    labels:{
+                        fontSize: 20,
+                    }
+                }
+
+            }
+        });
+    }
+    function makeMachinePie(data) {
+        var types = [];
+        var numbers = [];
+        for (var j = 0, len = data.length; j < len; j++) {
+            types.push(data[j].status);
+            numbers.push(data[j].number);
+        }
+        var machinePieCanvas = document.getElementById("machinePie").getContext("2d");
+        machinePieChart = new Chart(machinePieCanvas, {
+            type: 'doughnut',
+            data: {
+                labels: types,
+                datasets: [{
+                    data: numbers,
+                    backgroundColor: [
+                        '#448AFF',
+                        '#FFD740',
+                        '#B2FF59',
+                    ],
+                    borderColor: [
+                        '#2979FF',
+                        '#FFC400',
+                        '#76FF03',
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                legend:{
+                    display: true,
+                    position:'bottom',
+                    labels:{
+                        fontSize: 20,
+                    }
+                }
+
+            }
+        });
+    }
+</script>

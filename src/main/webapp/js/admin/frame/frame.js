@@ -24,6 +24,9 @@ $(function() {
 	$("#drawButton").click(function() {
 		leftDrawer.toggle();
 	});
+	$("#homeButton").click(function () {
+        makeBaseboardTab();
+    });
 	//JSON to get navInfo
 	$.getJSON(FRAME_NAV_DATA_URL, function(data) {
 		NAV_DATA = data;
@@ -48,9 +51,31 @@ $(function() {
 			}
 		}
 	});
-
+	makeBaseboardTab();
 	mdui.mutation();
 });
+
+function makeBaseboardTab(){
+    layui.use('element', function() {
+        var element = layui.element;
+        var tabId="baseboard";
+        if (NAV_OPENED.indexOf(tabId) == -1) {
+            $.get(ROUTE_BASEBOARD_PAGE, function(data) {
+                element.tabAdd('model', {
+                    title: '控制台',
+                    content: data,
+                    id: tabId
+                });
+                NAV_OPENED.push(tabId);
+                element.tabChange('model', tabId);
+            });
+        } else {
+            element.tabChange('model', tabId);
+        }
+        mdui.mutation();
+    });
+}
+
 
 //处理导航栏开启的TAB
 function makeTab(tabId) {

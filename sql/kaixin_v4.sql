@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version: 5.5.15)
-# Date: 2019-02-01 08:39:57
+# Date: 2019-02-02 20:08:07
 # Generator: MySQL-Front 5.3  (Build 4.269)
 
 /*!40101 SET NAMES utf8 */;
@@ -95,7 +95,7 @@ CREATE TABLE `bean_driver` (
 # Data for table "bean_driver"
 #
 
-INSERT INTO `bean_driver` VALUES (1,'测试数据1','123123123','21321312','312312321','空闲','普通',NULL,14,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:55:49','2018-12-30 16:07:09'),(2,'测试数据12','123123123','21321312','312312321','空闲','普通',6,16,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','2018-12-30 20:38:04'),(3,'测试数据1213','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','0000-00-00 00:00:00'),(4,'测试数据1213','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','0000-00-00 00:00:00'),(5,'测试数据133425','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','0000-00-00 00:00:00'),(6,'测试数据321','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','0000-00-00 00:00:00'),(7,'测试数234532据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','0000-00-00 00:00:00'),(8,'测试数2543据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','0000-00-00 00:00:00'),(9,'测试23523数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','0000-00-00 00:00:00'),(10,'测试43424523数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','0000-00-00 00:00:00'),(11,'测试数3452据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','0000-00-00 00:00:00'),(12,'测试2452数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','0000-00-00 00:00:00'),(13,'测52435试数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','0000-00-00 00:00:00'),(14,'测试2534数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','0000-00-00 00:00:00'),(15,'测5435试数据1','123123123','21321312','312312321','空闲','普通',NULL,11,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','2018-12-30 16:03:00'),(16,'测试数据12','123123123','21321312','312312321','空闲','普通',NULL,12,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:58:06','2018-12-30 16:05:01'),(17,'测试数据1213','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:58:06','0000-00-00 00:00:00'),(18,'测试数据1213','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:58:06','0000-00-00 00:00:00'),(19,'测试数据133425','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:58:06','0000-00-00 00:00:00'),(20,'测试数据321','123123123','21321312','312312321','空闲','普通',NULL,10,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:58:06','2018-12-30 16:00:23'),(21,'测试数234532据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:58:06','0000-00-00 00:00:00'),(22,'测试数2543据1','123123123','21321312','312312321','空闲','普通',NULL,13,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:58:06','2018-12-30 16:05:42'),(23,'测试23523数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:58:06','0000-00-00 00:00:00'),(24,'测试43424523数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:58:06','0000-00-00 00:00:00'),(25,'测试数3452据1','123123123','21321312','312312321','空闲','普通',27,8,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:58:06','2018-12-30 15:36:46'),(26,'测试2452数据1','123123123','21321312','312312321','空闲','普通',26,9,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:58:06','2018-12-30 15:42:11'),(27,'李延喜','123123123','21321312','312312321','离职','普通',28,19,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:58:06','2018-11-25 10:35:33'),(28,'陈岩测试','123123123','21321312','312312321','休假','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:58:06','2018-11-25 09:54:17'),(29,'陈三十','123123123','213213122121','312312321','工作','临时',18,6,'resource/headPicture/机手_29_陈三十jpg?t=0.8865694685057715','2018-11-14 22:58:06','2018-11-25 10:32:40'),(30,'陈岩','130480','21321312','66666666','工作','普通',NULL,1,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 23:04:26','0000-00-00 00:00:00'),(31,'陈岩是个大帅哥','213123123','9999999999','312313123','休假','临时',NULL,1,'resource/headPicture/机手_31_陈岩是个大帅哥jpg?t=0.05914047188548688','2018-11-25 13:16:03','2018-11-25 13:16:03'),(32,'韩红','12345678','12345678','12345678','空闲','普通',15,7,'resource/headPicture/机手_32_韩红jpg?t=0.06896128266428869','2018-12-28 10:12:03','2018-12-28 10:12:03'),(33,'陈岩','13048062053','674462865','77787777','空闲','普通',21,15,'resource/headPicture/机手_33_陈岩JPG?t=0.2994021205555175','2018-12-30 16:27:07','2018-12-30 16:27:07');
+INSERT INTO `bean_driver` VALUES (1,'测试数据1','123123123','21321312','312312321','空闲','普通',NULL,14,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:55:49','2018-12-30 16:07:09'),(2,'测试数据12','123123123','21321312','312312321','空闲','普通',6,16,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','2018-12-30 20:38:04'),(3,'测试数据1213','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','0000-00-00 00:00:00'),(4,'测试数据1213','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','0000-00-00 00:00:00'),(5,'测试数据133425','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','0000-00-00 00:00:00'),(6,'测试数据321','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','0000-00-00 00:00:00'),(7,'测试数234532据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','0000-00-00 00:00:00'),(8,'测试数2543据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','0000-00-00 00:00:00'),(9,'测试23523数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','0000-00-00 00:00:00'),(10,'测试43424523数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','0000-00-00 00:00:00'),(11,'测试数3452据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','0000-00-00 00:00:00'),(12,'测试2452数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','0000-00-00 00:00:00'),(13,'测52435试数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','0000-00-00 00:00:00'),(14,'测试2534数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','0000-00-00 00:00:00'),(15,'测5435试数据1','123123123','21321312','312312321','空闲','普通',NULL,11,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:57:50','2018-12-30 16:03:00'),(16,'测试数据12','123123123','21321312','312312321','空闲','普通',NULL,12,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:58:06','2018-12-30 16:05:01'),(17,'测试数据1213','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:58:06','0000-00-00 00:00:00'),(18,'测试数据1213','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:58:06','0000-00-00 00:00:00'),(19,'测试数据133425','123123123','21321312','312312321','离职','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:58:06','0000-00-00 00:00:00'),(20,'测试数据321','123123123','21321312','312312321','空闲','普通',NULL,10,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:58:06','2018-12-30 16:00:23'),(21,'测试数234532据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:58:06','0000-00-00 00:00:00'),(22,'测试数2543据1','123123123','21321312','312312321','空闲','普通',NULL,13,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:58:06','2018-12-30 16:05:42'),(23,'测试23523数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:58:06','0000-00-00 00:00:00'),(24,'测试43424523数据1','123123123','21321312','312312321','空闲','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:58:06','0000-00-00 00:00:00'),(25,'测试数3452据1','123123123','21321312','312312321','空闲','普通',27,8,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:58:06','2018-12-30 15:36:46'),(26,'测试2452数据1','123123123','21321312','312312321','空闲','普通',26,9,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:58:06','2018-12-30 15:42:11'),(27,'李延喜','123123123','21321312','312312321','工作','普通',28,19,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:58:06','2018-11-25 10:35:33'),(28,'陈岩测试','123123123','21321312','312312321','休假','普通',NULL,NULL,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 22:58:06','2018-11-25 09:54:17'),(29,'陈三十','123123123','213213122121','312312321','工作','临时',18,6,'resource/headPicture/机手_29_陈三十jpg?t=0.8865694685057715','2018-11-14 22:58:06','2018-11-25 10:32:40'),(30,'陈岩','130480','21321312','66666666','工作','普通',NULL,1,'resource/staticPicResource/defaultHeadPic.jpg','2018-11-14 23:04:26','0000-00-00 00:00:00'),(31,'陈岩是个大帅哥','213123123','9999999999','312313123','休假','临时',NULL,1,'resource/headPicture/机手_31_陈岩是个大帅哥jpg?t=0.05914047188548688','2018-11-25 13:16:03','2018-11-25 13:16:03'),(32,'韩红','12345678','12345678','12345678','空闲','普通',15,7,'resource/headPicture/机手_32_韩红jpg?t=0.06896128266428869','2018-12-28 10:12:03','2018-12-28 10:12:03'),(33,'陈岩','13048062053','674462865','77787777','空闲','普通',21,15,'resource/headPicture/机手_33_陈岩JPG?t=0.2994021205555175','2018-12-30 16:27:07','2018-12-30 16:27:07');
 
 #
 # Structure for table "bean_machine"
@@ -127,7 +127,7 @@ CREATE TABLE `bean_machine` (
 # Data for table "bean_machine"
 #
 
-INSERT INTO `bean_machine` VALUES (1,1,'AC9001','0922','陈岩','分歧',1321,32231,'工作',32232.00,'23421',NULL,NULL,'2018-12-01 08:59:04',NULL,NULL,NULL),(2,1,'ASD','3011','WFQEW','一次性',2342,1234123,'空闲',21313.00,'123',1,NULL,'2018-12-01 09:27:50',NULL,NULL,NULL),(3,3,'WW3939','0930','陈岩','130231231312',999,1024,'工作',2020.00,NULL,NULL,NULL,'2019-01-07 13:18:32',NULL,NULL,NULL),(4,8,'KA0244','02 22','陈岩','分期付款',21212,1212,'转场',12.00,NULL,NULL,NULL,'2019-01-14 10:35:55',NULL,NULL,NULL),(9,3,'AA2020',NULL,NULL,NULL,0,0,'空闲',NULL,NULL,NULL,NULL,'2019-01-15 21:41:52','0000-00-00 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `bean_machine` VALUES (1,1,'AC9001','0922','陈岩','分歧',1321,32231,'工作',32232.00,'23421',NULL,NULL,'2018-12-01 08:59:04',NULL,NULL,NULL),(2,1,'ASD','3011','WFQEW','一次性',2342,1234123,'工作',21313.00,'123',1,NULL,'2018-12-01 09:27:50',NULL,NULL,NULL),(3,3,'WW3939','0930','陈岩','130231231312',999,1024,'工作',2020.00,NULL,NULL,NULL,'2019-01-07 13:18:32',NULL,NULL,NULL),(4,8,'KA0244','02 22','陈岩','分期付款',21212,1212,'转场',12.00,NULL,NULL,NULL,'2019-01-14 10:35:55',NULL,NULL,NULL),(9,3,'AA2020',NULL,NULL,NULL,0,0,'工作',NULL,NULL,NULL,NULL,'2019-01-15 21:41:52','0000-00-00 00:00:00','0000-00-00 00:00:00','0000-00-00 00:00:00');
 
 #
 # Structure for table "bean_machine_brand"
@@ -435,13 +435,13 @@ CREATE TABLE `log_work` (
   `start_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `end_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='工单';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='工单';
 
 #
 # Data for table "log_work"
 #
 
-INSERT INTO `log_work` VALUES (1,32,NULL,NULL,1,'合约工单',1212,NULL,NULL,'已审核',NULL,'2019-01-06 11:50:05','2019-01-06 11:50:05','2019-01-06 11:50:05','2019-01-06 11:50:04'),(2,33,'陈岩','13048062053',3,'合约工单',123112,NULL,NULL,'已审核',NULL,'2019-01-14 23:46:25','2019-01-14 23:46:25','2019-01-14 23:46:25','2019-01-14 23:46:25'),(3,33,'陈岩','13048062053',1,'合约工单',600,NULL,NULL,'已审核','进行中','2019-01-18 22:56:30','2019-01-18 22:56:30','2019-01-18 22:56:30','2019-01-18 22:56:30');
+INSERT INTO `log_work` VALUES (1,32,NULL,NULL,1,'合约工单',1212,NULL,NULL,'已审核',NULL,'2019-01-06 11:50:05','2019-01-06 11:50:05','2019-01-06 11:50:05','2019-01-06 11:50:04'),(2,33,'陈岩','13048062053',3,'合约工单',123112,NULL,NULL,'已审核',NULL,'2019-01-14 23:46:25','2019-01-14 23:46:25','2019-01-14 23:46:25','2019-01-14 23:46:25'),(3,33,'陈岩','13048062053',1,'合约工单',600,NULL,NULL,'已审核','进行中','2019-01-18 22:56:30','2019-01-18 22:56:30','2019-01-18 22:56:30','2019-01-18 22:56:30'),(4,33,'陈岩','13048062053',2,'合约工单',2000,NULL,NULL,'未审核','进行中','2019-02-02 19:40:30','2019-02-02 19:40:30','2019-02-02 00:00:00','2019-02-02 19:40:22'),(5,33,'陈岩','13048062053',9,'合约工单',32223,NULL,NULL,'未审核','进行中','2019-02-02 19:41:19','2019-02-02 19:41:19','2019-02-02 00:00:00','2019-02-02 19:41:17');
 
 #
 # Structure for table "service_compact"
@@ -490,7 +490,7 @@ CREATE TABLE `service_driver_status` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `driver_id` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='机手状态表';
 
 #
 # Data for table "service_driver_status"
@@ -545,7 +545,7 @@ CREATE TABLE `service_machine_status` (
 # Data for table "service_machine_status"
 #
 
-INSERT INTO `service_machine_status` VALUES (1,1,'工作',NULL,3,NULL,NULL,NULL,NULL,113.280637,23.125178,'2019-01-14 23:58:29'),(2,2,'空闲',NULL,NULL,NULL,NULL,NULL,NULL,113.049752,23.109706,'2019-01-14 23:58:38'),(3,3,'空闲',2,NULL,NULL,NULL,NULL,NULL,113.036199,24.63638,'2019-01-15 17:14:16'),(4,4,'转场',NULL,NULL,4,NULL,NULL,NULL,113.036111,22.636442,'2019-01-15 21:16:49'),(5,9,'空闲',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-01-15 21:41:52');
+INSERT INTO `service_machine_status` VALUES (1,1,'工作',NULL,3,NULL,NULL,NULL,NULL,113.280637,23.125178,'2019-01-14 23:58:29'),(2,2,'工作',NULL,4,NULL,NULL,NULL,NULL,113.049752,23.109706,'2019-01-14 23:58:38'),(3,3,'空闲',2,NULL,NULL,NULL,NULL,NULL,113.036199,24.63638,'2019-01-15 17:14:16'),(4,4,'转场',NULL,NULL,4,NULL,NULL,NULL,113.036111,22.636442,'2019-01-15 21:16:49'),(5,9,'工作',NULL,5,NULL,NULL,NULL,NULL,NULL,NULL,'2019-01-15 21:41:52');
 
 #
 # Structure for table "sys_drawer"
@@ -630,6 +630,13 @@ CREATE TABLE `sys_user` (
 INSERT INTO `sys_user` VALUES (1,'admin','123456','',NULL,b'1',b'0',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-01-18 18:58:27');
 
 #
+# Structure for table "view_driver_status_count"
+#
+
+CREATE VIEW `view_driver_status_count` AS 
+  select `bean_driver`.`status` AS `status`,count(`bean_driver`.`id`) AS `number` from `bean_driver` where (`bean_driver`.`status` <> '离职') group by `bean_driver`.`status`;
+
+#
 # Structure for table "view_machine_map"
 #
 
@@ -642,6 +649,20 @@ CREATE VIEW `view_machine_map` AS
 
 CREATE VIEW `view_machine_status` AS 
   select `service_machine_status`.`Id` AS `id`,`service_machine_status`.`machine_id` AS `machine_id`,`service_machine_status`.`status` AS `status`,`bean_machine`.`nameplate` AS `machine_nameplate`,`bean_machine`.`code` AS `machine_code`,`service_machine_status`.`compact_id` AS `compact_id`,`service_compact`.`type` AS `compact_type`,`service_compact`.`number` AS `compact_number`,`service_compact`.`customer_id` AS `customer_id`,`service_compact`.`customer_name` AS `customer_name`,`service_machine_status`.`work_id` AS `work_id`,`log_work`.`driver_id` AS `driver_id`,`log_work`.`driver_name` AS `driver_name`,`log_work`.`driver_tel` AS `driver_tel`,`service_machine_status`.`transport_id` AS `transport_id`,`log_transport`.`support_id` AS `transport_support_id`,`log_transport`.`support_name` AS `transport_support_name`,`log_transport`.`support_tel` AS `transport_support_tel`,`service_machine_status`.`maintain_id` AS `maintain_id`,`log_maintain`.`support_id` AS `maintain_support_id`,`log_maintain`.`support_name` AS `maintain_support_name`,`log_maintain`.`support_tel` AS `maintain_support_tel`,`service_machine_status`.`wgs_x` AS `wgs_x`,`service_machine_status`.`wgs_y` AS `wgs_y`,`service_machine_status`.`gcj_x` AS `gcj_x`,`service_machine_status`.`gcj_y` AS `gcj_y`,`service_machine_status`.`update_time` AS `update_time` from (((((`service_machine_status` left join `bean_machine` on((`service_machine_status`.`machine_id` = `bean_machine`.`id`))) left join `service_compact` on((`service_machine_status`.`compact_id` = `service_compact`.`id`))) left join `log_work` on((`service_machine_status`.`work_id` = `log_work`.`id`))) left join `log_transport` on((`service_machine_status`.`transport_id` = `log_transport`.`id`))) left join `log_maintain` on((`service_machine_status`.`maintain_id` = `log_maintain`.`id`)));
+
+#
+# Structure for table "view_machine_status_count"
+#
+
+CREATE VIEW `view_machine_status_count` AS 
+  select `bean_machine`.`status` AS `status`,count(`bean_machine`.`id`) AS `number` from `bean_machine` where ((`bean_machine`.`status` <> '已出售') and (`bean_machine`.`status` <> '已报废')) group by `bean_machine`.`status`;
+
+#
+# Structure for table "view_work_count"
+#
+
+CREATE VIEW `view_work_count` AS 
+  select date_format(`work`.`create_time`,'%d') AS `time`,count(`work`.`id`) AS `number` from `log_work` `work` where (date_format(`work`.`create_time`,'%Y%m') = date_format(curdate(),'%Y%m')) group by date_format(`work`.`create_time`,'%Y-%m-%d') order by NULL;
 
 #
 # Trigger "compact_customer_trigger"
