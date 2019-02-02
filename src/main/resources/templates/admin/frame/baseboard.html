@@ -1,7 +1,30 @@
 <div class="admin-baseboard-page mdui-container-fluid mdui-center" id="baseboardPage">
     <div class="mdui-row mdui-row-gapless admin-table-area">
         <div class="mdui-col-xs-9">
-
+            <div class="mdui-typo">
+                <h2>
+                    总览
+                </h2>
+            </div>
+            <div class="mdui-row mdui-row-gapless">
+                <div class="mdui-col-xs-12">
+                    <div class="admin-baseboard-card  mdui-ripple">
+                        <div class="admin-baseboard-card-head">
+                            <div class="admin-baseboard-card-title">
+                                工单
+                                <div class="admin-baseboard-card-subtitle">
+                                    本月工单量
+                                </div>
+                            </div>
+                            <i class="admin-baseboard-card-icon mdui-icon material-icons">show_chart</i>
+                        </div>
+                        <br><br><br><br>
+                        <div class="admin-baseboard-card-body">
+                            <canvas id="workLine" width="600" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="mdui-col-xs-3">
             <div class="mdui-typo">
@@ -53,6 +76,7 @@
 <script>
     var driverPieChart;
     var machinePieChart;
+    var workLineChart;
 
     $(function () {
         new Vue({
@@ -60,7 +84,8 @@
             data: {
                 baseboardData: {
                     machineStatusCounts: [],
-                    driverStatusCounts: []
+                    driverStatusCounts: [],
+                    workCounts:[]
                 },
                 requestModel: {}
             },
@@ -75,11 +100,48 @@
                         self.baseboardData = response.data.t;
                         makeDriverPie(self.baseboardData.driverStatusCounts);
                         makeMachinePie(self.baseboardData.machineStatusCounts);
+                        makeWorkLine(self.baseboardData.workCounts);
                     });
                 }
             }
         });
     });
+
+    function makeWorkLine(data) {
+        var types = [];
+        var numbers = [];
+        for (var j = 0, len = data.length; j < len; j++) {
+            types.push(data[j].time);
+            numbers.push(data[j].number);
+        }
+        var driverPieCanvas = document.getElementById("workLine").getContext("2d");
+        driverPieChart = new Chart(driverPieCanvas, {
+            type: 'line',
+            data: {
+                labels: types,
+                datasets: [{
+                    data: numbers,
+                    borderColor: "rgb(75, 192, 192)",
+                    scaleLineWidth: 10,
+                    scaleShowLabels: true,
+                    fill:false,
+                    pointRadius:10,
+                    pointBackgroundColor:"rgb(75, 192, 192)"
+                }]
+            },
+            options: {
+                legend:{
+                    display: false,
+                    position:'bottom',
+                    labels:{
+                        fontSize: 20,
+                    }
+                },
+                //maintainAspectRatio: false,
+
+            }
+        });
+    }
 
     function makeDriverPie(data) {
         var types = [];
