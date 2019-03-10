@@ -27,12 +27,21 @@ $(function() {
 	$("#homeButton").click(function () {
         makeBaseboardTab();
     });
+	$("#logoutButton").click(function () {
+
+		axios.get(FRAME_USER_LOGOUT).then(function (response) {
+            console.log(response);
+			if(response.data.code=="200"){
+                window.location.href = 'login';
+			}
+        });
+    });
 	//JSON to get navInfo
 	$.getJSON(FRAME_NAV_DATA_URL, function(data) {
 		NAV_DATA = data;
 		transformNavData();
 	})
-	//vue
+	//左侧导航栏
 	new Vue({
 		el: '#left-drawer-list',
 		data: {
@@ -50,6 +59,25 @@ $(function() {
 				makeTab(tabId);
 			}
 		}
+	});
+	//用户登陆信息
+	new Vue({
+        el: '#frame-tool-bar',
+        data: {
+            sysUser:{}
+        },
+        mounted: function() {
+            var self = this
+            self.initInfo();
+        },
+        methods: {
+			initInfo:function () {
+                var self = this
+                axios.get(FRAME_LOGINUSER_INFO).then(function(response) {
+                    self.sysUser = response.data.t;
+                });
+            }
+        }
 	});
 	makeBaseboardTab();
 	mdui.mutation();

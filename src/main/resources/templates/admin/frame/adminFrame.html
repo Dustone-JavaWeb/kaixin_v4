@@ -10,15 +10,10 @@
 		<script src="lib/vue/2.5.16/vue.min.js"></script>
 		<script src="lib/axios/0.17.1/axios.min.js"></script>
 		<script src="lib/layui/layui.js"></script>
-		<!--<script src="lib/chart/Chart.min.js"></script>-->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 		<script src="js/admin/frame/const.js"></script>
 		<script src="js/admin/frame/environment.js"></script>
 		<script src="js/admin/frame/util.js"></script>
-
-		<!--百度地图API-->
-		<!-- <script src="http://api.map.baidu.com/api?v=2.0&ak=W27pZ6qidCrVexeVaHriYXYgoXUxKhqN" type="text/javascript"></script> -->
-
 		<link href="lib/layui/css/layui.css" rel="stylesheet" />
 		<link href="lib/mdui/css/mdui.css" rel="stylesheet" />
 		<link href="css/admin/admin.css" rel="stylesheet" />
@@ -31,6 +26,9 @@
 			<a href="javascript:;" id="drawButton" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons mdui-color-theme">menu</i></a>
 			<a href="javascript:;" id="homeButton" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons mdui-color-theme">home</i></a>
 			<span class="mdui-typo-title mdui-color-theme">广州铠信</span>
+			<div class="mdui-toolbar-spacer"></div>
+			<span id="frame-tool-bar" class="mdui-typo-title mdui-color-theme">{{sysUser.nickName}}</span>
+			<a id="logoutButton" class="mdui-typo-title ">注销</a>
 		</div>
 		<!-- </header> -->
 

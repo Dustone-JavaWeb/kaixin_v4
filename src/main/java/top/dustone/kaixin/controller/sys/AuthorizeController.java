@@ -1,6 +1,7 @@
 package top.dustone.kaixin.controller.sys;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,5 +34,34 @@ public class AuthorizeController {
             session.setAttribute("sysUser",sysUser);
             return result;
         }
+    }
+    @GetMapping(value="/admin_user_info")
+    public CommonResponseModel<SysUser> getUserInfo(HttpSession session){
+        CommonResponseModel<SysUser> result=new CommonResponseModel<SysUser>();
+        SysUser sysUser=(SysUser) session.getAttribute("sysUser");
+        if(null==sysUser){
+            result.setMsg("Session信息异常！ 请重新登陆");
+            result.setCode("404");
+            return result;
+        }
+        else{
+            SysUser newUser=new SysUser();
+            newUser.setAvatar(sysUser.getAvatar());
+            newUser.setId(sysUser.getId());
+            newUser.setUsername(sysUser.getUsername());
+            newUser.setNickName(sysUser.getNickName());
+            result.setT(newUser);
+            result.setCode("200");
+            return result;
+        }
+    }
+    @GetMapping(value="/admin_user_logout")
+    public CommonResponseModel<SysUser> logOut(HttpSession session){
+        CommonResponseModel<SysUser> result=new CommonResponseModel<SysUser>();
+        session.removeAttribute("sysUser");
+        result.setCode("200");
+        result.setMsg("注销成功！ 即将返回登陆界面！");
+        //System.out.println(result);
+        return result;
     }
 }

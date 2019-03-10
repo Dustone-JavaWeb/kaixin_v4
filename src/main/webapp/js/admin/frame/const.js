@@ -29,6 +29,8 @@ var ROUTE_COMPACT_INFO = BASE_ROUTE_URL + "admin/pages/compactInfo" + BASE_ROUTE
 //后端API
 var FRAME_NAV_DATA_URL = BASE_URL + "admin_sys_makeDrawer";
 var FRAME_BASEBOARD_DATA = BASE_URL + "admin_baseboard_data";
+var FRAME_LOGINUSER_INFO = BASE_URL + "admin_user_info";
+var FRAME_USER_LOGOUT=BASE_URL+"admin_user_logout";
 var PAGE_DRIVER_QUERY = BASE_URL + "admin_drivers_query";
 var PAGE_DRIVER_UPDATE = BASE_URL + "admin_drivers_update";
 var PAGE_DRIVER_EXPORT = BASE_URL + "admin_driver_export";
