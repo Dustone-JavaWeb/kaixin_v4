@@ -150,6 +150,7 @@
             types.push(data[j].status);
             numbers.push(data[j].number);
         }
+        console.log(numbers);
         var driverPieCanvas = document.getElementById("driverPie").getContext("2d");
         driverPieChart = new Chart(driverPieCanvas, {
             type: 'doughnut',

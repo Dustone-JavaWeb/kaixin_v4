@@ -7,39 +7,22 @@ import java.util.List;
 
 public class Page4Navigator <T>{
     Page<T> pageFromJPA;
-
     int navigatePages;
-
     int totalPages;
-
     int number;
-
     long totalElements;
-
     int size;
-
     int numberOfElements;
-
     List<T> content;
-
     RequestModel<T> example;
-
     String responseStatus;
-
     String responseMessage;
-
     boolean isHasContent;
-
     boolean first;
-
     boolean last;
-
     boolean isHasNext;
-
     boolean isHasPrevious;
-
     int[] navigatepageNums;
-
     public Page4Navigator() {
         //这个空的分页是为了 Redis 从 json格式转换为 Page4Navigator 对象而专门提供的
     }

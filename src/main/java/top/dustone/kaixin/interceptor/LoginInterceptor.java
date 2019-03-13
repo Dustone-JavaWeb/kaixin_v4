@@ -20,11 +20,9 @@ public class LoginInterceptor implements HandlerInterceptor{
         String[] requireLogins=new String[]{
                 "admin"
         };
-
         String uri = request.getRequestURI();
         uri = StringUtils.remove(uri, contextPath+"/");
         String page = uri;
-
         if(begingWith(page, requireLogins)){
             SysUser sysUser = (SysUser) session.getAttribute("sysUser");
             if(sysUser==null) {

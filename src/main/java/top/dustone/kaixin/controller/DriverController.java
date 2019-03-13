@@ -18,14 +18,14 @@ import java.util.Date;
 public class DriverController {
     @Autowired
     DriverService driverService;
-    @GetMapping("/admin_drivers")
-    public Page4Navigator<Driver> list(
-            @RequestParam(value = "start", defaultValue = "0") int start,
-            @RequestParam(value = "size", defaultValue = "9") int size){
-        start = start<0?0:start;
-        Page4Navigator<Driver> page =driverService.list(start, size, 5);
-        return page;
-    }
+//    @GetMapping("/admin_drivers")
+//    public Page4Navigator<Driver> list(
+//            @RequestParam(value = "start", defaultValue = "0") int start,
+//            @RequestParam(value = "size", defaultValue = "9") int size){
+//        start = start<0?0:start;
+//        Page4Navigator<Driver> page =driverService.list(start, size, 5);
+//        return page;
+//    }
     @PostMapping("/admin_drivers_query")
     public Page4Navigator<Driver> list(@RequestBody RequestModel<Driver> requestModel){
         Page4Navigator<Driver> page=driverService.listByExapmle(requestModel.getExample(),requestModel.getStart(),requestModel.getPageSize(),5);
