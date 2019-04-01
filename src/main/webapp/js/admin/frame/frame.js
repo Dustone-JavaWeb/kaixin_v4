@@ -51,6 +51,7 @@ $(function() {
 			var self = this
 			axios.get(FRAME_NAV_DATA_URL).then(function(response) {
 				self.drawerItems = response.data;
+                //console.log(JSON.stringify(self.drawerItems));
 			});
 		},
 		methods: {
@@ -165,9 +166,11 @@ function findTabInfoById(tabId) {
 function transformNavData() {
 	for (var i = 0, len = NAV_DATA.length; i < len; i++) {
 
-		var each = NAV_DATA[i].sysDrawers;
-		for (var j = 0, len1 = each.length; j < len1; j++) {
-			NAV_DATA_TRA.push(each[j]);
+		var each = NAV_DATA[i].childs;
+		if(each!=null){
+            for (var j = 0, len1 = each.length; j < len1; j++) {
+                NAV_DATA_TRA.push(each[j]);
+            }
 		}
 	}
 }
@@ -182,18 +185,29 @@ function changeTabContentHeight() {
 }
 function configAxiosInterceptors(){
     axios.interceptors.response.use(function (response) {
+    	var responseMsg=response.request.responseText;
         if(response.headers["content-length"]==253){
-        	if(response.headers["content-type"]=="text/html;charset=utf-8"){
+        	if(response.headers["content-type"]=="text/html;charset=utf-8") {
                 mdui.snackbar({
                     message: "验证信息失效！ 三秒后返回登陆界面！",
                     timeout: 3000,
                     position: "right-bottom",
                 });
-                function skipToLogin(){
+
+                function skipToLogin() {
                     window.location.href = 'login';
                 }
-                var t=window.setTimeout(skipToLogin,3000);
+
+                var t = window.setTimeout(skipToLogin, 3000);
             }
+		}
+		else if(-1!=responseMsg.indexOf('授权失败！')){
+            mdui.snackbar({
+                message:response.data,
+                buttonText: '关闭',
+                timeout: 5000,
+                position: "right-bottom",
+            });
 		}
         return response;
     }, function (error) {

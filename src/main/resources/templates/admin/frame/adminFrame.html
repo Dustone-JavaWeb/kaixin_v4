@@ -27,7 +27,7 @@
 			<a href="javascript:;" id="homeButton" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons mdui-color-theme">home</i></a>
 			<span class="mdui-typo-title mdui-color-theme">广州铠信</span>
 			<div class="mdui-toolbar-spacer"></div>
-			<span id="frame-tool-bar" class="mdui-typo-title mdui-color-theme">{{sysUser.nickName}}</span>
+			<span id="frame-tool-bar" class="mdui-typo-title mdui-color-theme">{{sysUser.name}}</span>
 			<a id="logoutButton" class="mdui-typo-title ">注销</a>
 		</div>
 		<!-- </header> -->
@@ -41,13 +41,13 @@
 				<ul class="mdui-list" mdui-collapse="{accordion: true}">
 					<li class="mdui-collapse-item mdui-color-theme" v-for="item in drawerItems">
 						<div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-							<i class="mdui-list-item-icon mdui-icon material-icons">{{item.icon}}</i>
+							<i class="mdui-list-item-icon mdui-icon material-icons">{{item.pic}}</i>
 							<div class="mdui-list-item-content">{{item.name}}</div>
 							<i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
 						</div>
 						<ul class="mdui-collapse-item-body mdui-list mdui-list-dense" style="">
-							<li class="mdui-list-item mdui-ripple" v-for="child in item.sysDrawers">
-								<i class="mdui-list-item-icon mdui-icon material-icons">{{child.icon}}</i>
+							<li class="mdui-list-item mdui-ripple" v-for="child in item.childs">
+								<i class="mdui-list-item-icon mdui-icon material-icons">{{child.pic}}</i>
 								<div class="mdui-list-item-content" v-on:click="chooseTab" v-bind:tabId="child.id">{{child.name}}</div>
 							</li>
 						</ul>

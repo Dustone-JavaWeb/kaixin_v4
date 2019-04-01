@@ -41,6 +41,11 @@ function chooseMachineColor(status) {
 	}
 }
 
+String.prototype.startWith=function(str){
+    var reg=new RegExp("^"+str);
+    return reg.test(this);
+}
+
 function chooseFileIcon(type) {
 	var startToken = "resource/staticPicResource/";
 	switch (type) {

@@ -23,7 +23,7 @@ public class PageRouteController {
     }
 
     //后台路由
-    @GetMapping(value = "/admin")
+    @GetMapping(value = "/admin_home")
     public String adminHome() {
         return "admin/frame/adminFrame";
     }

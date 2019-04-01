@@ -1,5 +1,5 @@
 const SYS_LOGIN="login";
-const SYS_HOME="admin";
+const SYS_HOME="admin_home";
 $(function(){
     new Vue({
         el: '#systemLogin',
