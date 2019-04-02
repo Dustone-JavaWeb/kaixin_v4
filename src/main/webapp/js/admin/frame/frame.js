@@ -30,7 +30,6 @@ $(function() {
 	$("#logoutButton").click(function () {
 
 		axios.get(FRAME_USER_LOGOUT).then(function (response) {
-            console.log(response);
 			if(response.data.code=="200"){
                 window.location.href = 'login';
 			}
