@@ -7,14 +7,14 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.Bean;
 
 import org.springframework.remoting.caucho.HessianProxyFactoryBean;
-import top.dustone.UserAuth.service.rmi.UserAuthorityService;
+import top.dustone.uams.service.rmi.UserAuthorityService;
 
 @SpringBootApplication
 public class KaixinApplication extends SpringBootServletInitializer{
 	@Bean
 	public HessianProxyFactoryBean helloClient() {
 		HessianProxyFactoryBean factory = new HessianProxyFactoryBean();
-		factory.setServiceUrl("http://localhost:8081/uams/userAuth");
+		factory.setServiceUrl("http://localhost:8081/uams/apiUserAuth");
 		factory.setServiceInterface(UserAuthorityService.class);
 		return factory;
 	}

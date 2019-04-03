@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.HtmlUtils;
-import top.dustone.UserAuth.pojo.User;
-import top.dustone.UserAuth.service.rmi.UserAuthorityService;
+import top.dustone.uams.pojo.User;
+import top.dustone.uams.service.rmi.UserAuthorityService;
 import top.dustone.kaixin.util.CommonResponseModel;
 
 import javax.servlet.http.HttpSession;

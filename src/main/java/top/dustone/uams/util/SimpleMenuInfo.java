@@ -1,4 +1,4 @@
-package top.dustone.UserAuth.util;
+package top.dustone.uams.util;
 
 import java.io.Serializable;
 import java.util.List;

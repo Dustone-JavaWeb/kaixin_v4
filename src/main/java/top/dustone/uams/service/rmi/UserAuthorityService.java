@@ -1,7 +1,7 @@
-package top.dustone.UserAuth.service.rmi;
+package top.dustone.uams.service.rmi;
 
-import top.dustone.UserAuth.pojo.User;
-import top.dustone.UserAuth.util.SimpleMenuInfo;
+import top.dustone.uams.pojo.User;
+import top.dustone.uams.util.SimpleMenuInfo;
 
 import java.util.List;
 

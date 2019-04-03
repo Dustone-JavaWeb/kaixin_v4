@@ -3,9 +3,9 @@ package top.dustone.kaixin.controller.sys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import top.dustone.UserAuth.pojo.User;
-import top.dustone.UserAuth.service.rmi.UserAuthorityService;
-import top.dustone.UserAuth.util.SimpleMenuInfo;
+import top.dustone.uams.pojo.User;
+import top.dustone.uams.service.rmi.UserAuthorityService;
+import top.dustone.uams.util.SimpleMenuInfo;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;

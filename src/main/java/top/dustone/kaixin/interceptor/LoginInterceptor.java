@@ -4,7 +4,7 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.lang.Nullable;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-import top.dustone.UserAuth.pojo.User;
+import top.dustone.uams.pojo.User;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

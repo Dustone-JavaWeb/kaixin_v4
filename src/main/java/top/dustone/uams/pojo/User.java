@@ -1,4 +1,4 @@
-package top.dustone.UserAuth.pojo;
+package top.dustone.uams.pojo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
