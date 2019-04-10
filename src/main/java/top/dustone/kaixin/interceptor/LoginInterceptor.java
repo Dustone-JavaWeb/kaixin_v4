@@ -29,6 +29,8 @@ public class LoginInterceptor implements HandlerInterceptor {
             if (user == null) {
                 //request.getRequestDispatcher("login").forward(request,response);
                 //response.sendRedirect("/kaixin/login");
+                StringBuilder stringBuilder=new StringBuilder();
+                
                 String responseText = "<div style=\"text-align:center;width:100%;height:100%\">\n" +
                         "\t<h1>认证信息失效！ 将在三秒后返回登陆界面</h1>\n" +
                         "</div>\n" +
