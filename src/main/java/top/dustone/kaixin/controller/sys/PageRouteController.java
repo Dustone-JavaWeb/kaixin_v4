@@ -118,6 +118,11 @@ public class PageRouteController {
         return "admin/dialogs/customerChooser";
     }
 
+    @GetMapping(value = "/admin/dialogs/compactChooser")
+    public String compactChooser() {
+        return "admin/dialogs/compactChooser";
+    }
+
     @GetMapping(value = "/admin/pages/driverInfo")
     public String driverInfo() {
         return "admin/pages/driverInfo";

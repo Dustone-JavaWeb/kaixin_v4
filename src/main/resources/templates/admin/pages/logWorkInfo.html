@@ -18,6 +18,11 @@
 		<div class="mdui-row">
 			<div class="mdui-col-xs-12">
 				<div class="mdui-textfield mdui-col-xs-4">
+					<label class="mdui-textfield-label">合同编号</label>
+					<input v-bind:disabled="inputDisabled" v-model="entity.compact.number" @click="openCompactChooserDialog(entity)" class="mdui-textfield-input"
+						   type="text" readonly placeholder="合同编号" />
+				</div>
+				<div class="mdui-textfield mdui-col-xs-4">
 					<label class="mdui-textfield-label">机手姓名</label>
 					<input v-bind:disabled="inputDisabled" v-model="entity.driver.name" @click="openDriverChooserDialog(entity)" class="mdui-textfield-input"
 					 type="text" readonly placeholder="机手姓名" />
@@ -87,6 +92,7 @@
 				entity: {
 					logMode: "未审核",
 					driver: {},
+					compact:{},
 					working: "",
 					machine: {}
 				},
@@ -109,6 +115,10 @@
 				init: function(tabMsg) {
 					var self = this;
 					self.entity = tabMsg.initData.entity;
+					if(self.entity.compmact==null){
+                        self.entity.compmact={};
+					}
+					console.log(self.entity);
 					if (self.entity.logMode == "未审核") {
 						self.checkPanelModel = "inline";
 						self.delPanelModel = "inline";

@@ -26,6 +26,9 @@ public class CompactService {
             @Override
             public Predicate toPredicate(Root<Compact> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder cb) {
                 List<Predicate> ps = new ArrayList<Predicate>();
+                if(compact.getNumber()!=null&&compact.getNumber().trim().length()>0){
+                    ps.add(cb.like(root.get("number"),compact.getNumber()+"%"));
+                }
                 if(compact.getCustomer()!=null){
                     if(compact.getCustomer().getName()!=null&&compact.getCustomer().getName().trim().length()>0){
                         ps.add(cb.like(root.join("customer", JoinType.INNER).get("name"),"%"+compact.getCustomer().getName()+"%"));

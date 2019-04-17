@@ -20,6 +20,7 @@ public class AuthorizeController {
             "admin/dialogs/supportChooser",
             "admin/dialogs/driverChooser",
             "admin/dialogs/customerChooser",
+            "admin/dialogs/compactChooser",
             "admin_resource_upload",
             "admin_resource_update",
             "admin_resource_delete",
@@ -39,7 +40,7 @@ public class AuthorizeController {
         String accountNumber =  user.getAccountNumber();
         accountNumber = HtmlUtils.htmlEscape(accountNumber);
 
-        user =userAuthorityService.userAuth(user,"铠信后台管理");
+        user =userAuthorityService.userAuth(user,"铠信");
         //System.out.println(user);
         if("ERROR".equals(user.getSex())){
             result.setMsg(user.getName());

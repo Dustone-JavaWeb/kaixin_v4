@@ -30,21 +30,20 @@ public class LoginInterceptor implements HandlerInterceptor {
                 //request.getRequestDispatcher("login").forward(request,response);
                 //response.sendRedirect("/kaixin/login");
                 StringBuilder stringBuilder=new StringBuilder();
-                
-                String responseText = "<div style=\"text-align:center;width:100%;height:100%\">\n" +
-                        "\t<h1>认证信息失效！ 将在三秒后返回登陆界面</h1>\n" +
-                        "</div>\n" +
-                        "<script>\n" +
-                        "\tfunction skipToLogin(){\n" +
-                        "\t\twindow.location.href = 'login';\n" +
-                        "\t}\n" +
-                        "\tvar t=window.setTimeout(skipToLogin,3000); \n" +
-                        "</script>";
+                stringBuilder.append("<div style=\"text-align:center;width:100%;height:100%\">\n");
+                stringBuilder.append("\t<h1>认证信息失效！ 将在三秒后返回登陆界面</h1>\n" );
+                stringBuilder.append("</div>\n");
+                stringBuilder.append("<script>\n");
+                stringBuilder.append("\tfunction skipToLogin(){\n");
+                stringBuilder.append("\t\twindow.location.href = 'login';\n" );
+                stringBuilder.append("\t}\n");
+                stringBuilder.append("\tvar t=window.setTimeout(skipToLogin,3000); \n");
+                stringBuilder.append("</script>");
                 response.setCharacterEncoding("utf-8");
                 response.setContentType("text/html; charset=utf-8");
                 PrintWriter out = response.getWriter();
                 //String chset = response.getCharacterEncoding();
-                out.print(responseText);
+                out.print(stringBuilder.toString());
                 return false;
             }
             if(!begingWith(page,user.getAuthUrls())){

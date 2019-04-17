@@ -10,6 +10,7 @@ var DIALOG_MACHINE_CHOOSER = BASE_ROUTE_URL + "admin/dialogs/machineChooser" + B
 var DIALOG_SUPPORT_CHOOSER = BASE_ROUTE_URL + "admin/dialogs/supportChooser" + BASE_ROUTE_LAST_TOKEN;
 var DIALOG_DRIVER_CHOOSER = BASE_ROUTE_URL + "admin/dialogs/driverChooser" + BASE_ROUTE_LAST_TOKEN;
 var DIALOG_CUSTOMER_CHOOSER = BASE_ROUTE_URL + "admin/dialogs/customerChooser" + BASE_ROUTE_LAST_TOKEN;
+var DIALOG_COMPACT_CHOOSER = BASE_ROUTE_URL + "admin/dialogs/compactChooser" + BASE_ROUTE_LAST_TOKEN;
 var RESOURCE_UPLOAD = BASE_URL + "admin_resource_upload";
 var RESOURCE_UPDATE = BASE_URL + "admin_resource_update";
 var RESOURCE_DELETE = BASE_URL + "admin_resource_delete";

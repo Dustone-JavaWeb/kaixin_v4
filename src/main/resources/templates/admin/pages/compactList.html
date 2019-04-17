@@ -6,6 +6,10 @@
 		<div class="mdui-divider"></div>
 		<form id="select-form" class="admin-select-form">
 			<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
+				<label class="mdui-textfield-label">合同编号</label>
+				<input v-model="requestModel.example.number" class="mdui-textfield-input" type="text" placeholder="合同编号" />
+			</div>
+			<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
 				<label class="mdui-textfield-label">客户名称</label>
 				<input v-model="requestModel.example.customer.name" class="mdui-textfield-input" type="text" placeholder="客户名称" />
 			</div>

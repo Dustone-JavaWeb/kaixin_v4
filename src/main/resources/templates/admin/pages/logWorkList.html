@@ -6,6 +6,10 @@
 		<div class="mdui-divider"></div>
 		<form id="select-form" class="admin-select-form">
 			<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
+				<label class="mdui-textfield-label">合同编号</label>
+				<input v-model="requestModel.example.compact.number" class="mdui-textfield-input" type="text" placeholder="合同编号" />
+			</div>
+			<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
 				<label class="mdui-textfield-label">机手姓名</label>
 				<input v-model="requestModel.example.driver.name" class="mdui-textfield-input" type="text" placeholder="机手姓名" />
 			</div>
@@ -16,7 +20,6 @@
 			<div class="mdui-textfield admin-layout-box mdui-col-xs-4">
 				<label class="mdui-textfield-label">日志状态</label>
 				<select v-model="requestModel.example.logMode" class="mdui-select" style="width: 100%">
-					<option value="">所有日志.example.logMode" class="mdui-select" style="width: 100%">
 					<option value="">所有日志状态</option>
 					<option value="未审核">未审核</option>
 					<option value="已审核">已审核</option>
@@ -55,6 +58,7 @@
 				<thead>
 					<tr>
 						<td>编号</td>
+						<td>合同编号</td>
 						<td>机手姓名</td>
 						<td>机器铭牌</td>
 						<td>工单金额</td>
@@ -67,6 +71,7 @@
 				<tbody>
 					<tr v-for="tr in trs">
 						<td>{{tr.id}}</td>
+						<td>{{tr.compact.number}}</td>
 						<td class="mdui-typo"><a @click="showChildInfo(tr.driver,'driver')">{{tr.driver.name}}</a></td>
 						<td class="mdui-typo"><a @click="showChildInfo(tr.machine,'machine')">{{tr.machine.nameplate}}</a></td>
 						<td>{{tr.money}}</td>

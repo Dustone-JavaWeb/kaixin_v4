@@ -11,6 +11,7 @@ $(function() {
 					logMode: "",
 					driver: {},
 					machine: {},
+                    compact:{},
 					fromTime: "",
 					toTime: ""
 				}

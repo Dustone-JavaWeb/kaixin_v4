@@ -30,6 +30,11 @@ public class LogWorkService {
             @Override
             public Predicate toPredicate(Root<LogWork> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder cb) {
                 List<Predicate> ps = new ArrayList<Predicate>();
+                if(logWork.getCompact()!=null){
+                    if(logWork.getCompact().getNumber()!=null&&logWork.getCompact().getNumber().trim().length()>0){
+                        ps.add(cb.like(root.join("compact",JoinType.INNER).get("number"),logWork.getCompact().getNumber()+"%"));
+                    }
+                }
                 if(logWork.getMachine()!=null){
                     if(logWork.getMachine().getNameplate()!=null&&logWork.getMachine().getNameplate().trim().length()>0){
                         ps.add(cb.like(root.join("machine",JoinType.INNER).get("nameplate"),"%"+logWork.getMachine().getNameplate()+"%"));

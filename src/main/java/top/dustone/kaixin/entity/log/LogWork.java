@@ -2,6 +2,7 @@ package top.dustone.kaixin.entity.log;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cascade;
+import top.dustone.kaixin.entity.Compact;
 import top.dustone.kaixin.entity.Driver;
 import top.dustone.kaixin.entity.Machine;
 import top.dustone.kaixin.entity.Resource;
@@ -16,6 +17,9 @@ public class LogWork {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @ManyToOne(targetEntity = Compact.class)
+    @JoinColumn(name = "compact_id", referencedColumnName = "id", nullable = false)
+    private Compact compact;
     @ManyToOne(targetEntity = Machine.class)
     @JoinColumn(name = "machine_id", referencedColumnName = "id", nullable = false)
     private Machine machine;
@@ -179,5 +183,12 @@ public class LogWork {
 
     public void setWorking(String working) {
         this.working = working;
+    }
+    public Compact getCompact() {
+        return compact;
+    }
+
+    public void setCompact(Compact compact) {
+        this.compact = compact;
     }
 }

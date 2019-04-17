@@ -12,7 +12,7 @@ import top.dustone.uams.service.rmi.UserAuthorityService;
 @SpringBootApplication
 public class KaixinApplication extends SpringBootServletInitializer{
 	@Bean
-	public HessianProxyFactoryBean helloClient() {
+	public HessianProxyFactoryBean Client() {
 		HessianProxyFactoryBean factory = new HessianProxyFactoryBean();
 		factory.setServiceUrl("http://localhost:8081/uams/apiUserAuth");
 		factory.setServiceInterface(UserAuthorityService.class);
